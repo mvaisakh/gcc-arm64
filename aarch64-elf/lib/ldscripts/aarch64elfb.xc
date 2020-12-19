@@ -7,7 +7,7 @@ OUTPUT_FORMAT("elf64-bigaarch64", "elf64-bigaarch64",
 	      "elf64-littleaarch64")
 OUTPUT_ARCH(aarch64)
 ENTRY(_start)
-SEARCH_DIR("=/home/runner/work/build-tools-gcc/build-tools-gcc/../arm64-gcc/aarch64-elf/lib");
+SEARCH_DIR("=/home/runner/work/build-tools-gcc/build-tools-gcc/../gcc-arm64/aarch64-elf/lib");
 SECTIONS
 {
   /* Read-only sections, merged into text segment: */
