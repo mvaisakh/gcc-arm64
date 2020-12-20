@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "11.0.0 20201219 (experimental)")
+(!version  "11.0.0 20201220 (experimental)")
 (!srcdir  "../../gcc/gcc")
 (!languages 11 ada brig c cp d fortran go jit lto objc objcp)
 (!fileslist 224
@@ -22451,16 +22451,16 @@
  )
  
  (!type struct 1346 nil  gc_unused "macinfo_entry_hasher"
-  (!srcfileloc  "dwarf2out.c" 28181)
+  (!srcfileloc  "dwarf2out.c" 28188)
   (!fields 0 )
   nil 2047 nil nil )
  
  (!type user_struct 1347 nil  gc_unused "hash_table<macinfo_entry_hasher>"
-  (!srcfileloc  "dwarf2out.c" 28181)
+  (!srcfileloc  "dwarf2out.c" 28188)
   (!fields 1 
    (!pair  "macinfo_entry_hasher"
     (!type already_seen 1346)
-    (!srcfileloc  "dwarf2out.c" 28181)
+    (!srcfileloc  "dwarf2out.c" 28188)
     nil )
   )
  )
@@ -22470,16 +22470,16 @@
   nil 0 nil nil )
  
  (!type struct 1349 nil  gc_unused "loc_list_hasher"
-  (!srcfileloc  "dwarf2out.c" 31132)
+  (!srcfileloc  "dwarf2out.c" 31139)
   (!fields 0 )
   nil 2047 nil nil )
  
  (!type user_struct 1350 nil  gc_unused "hash_table<loc_list_hasher>"
-  (!srcfileloc  "dwarf2out.c" 31132)
+  (!srcfileloc  "dwarf2out.c" 31139)
   (!fields 1 
    (!pair  "loc_list_hasher"
     (!type already_seen 1349)
-    (!srcfileloc  "dwarf2out.c" 31132)
+    (!srcfileloc  "dwarf2out.c" 31139)
     nil )
   )
  )
@@ -31520,27 +31520,27 @@
   nil )
  (!pair  "loc_list_hash_type"
   (!type already_seen 1350)
-  (!srcfileloc  "dwarf2out.c" 31132)
+  (!srcfileloc  "dwarf2out.c" 31139)
   nil )
  (!pair  "loc_list_hasher"
   (!type already_seen 1349)
-  (!srcfileloc  "dwarf2out.c" 31132)
+  (!srcfileloc  "dwarf2out.c" 31139)
   nil )
  (!pair  "hash_table<loc_list_hasher>"
   (!type already_seen 1350)
-  (!srcfileloc  "dwarf2out.c" 31132)
+  (!srcfileloc  "dwarf2out.c" 31139)
   nil )
  (!pair  "macinfo_hash_type"
   (!type already_seen 1347)
-  (!srcfileloc  "dwarf2out.c" 28181)
+  (!srcfileloc  "dwarf2out.c" 28188)
   nil )
  (!pair  "macinfo_entry_hasher"
   (!type already_seen 1346)
-  (!srcfileloc  "dwarf2out.c" 28181)
+  (!srcfileloc  "dwarf2out.c" 28188)
   nil )
  (!pair  "hash_table<macinfo_entry_hasher>"
   (!type already_seen 1347)
-  (!srcfileloc  "dwarf2out.c" 28181)
+  (!srcfileloc  "dwarf2out.c" 28188)
   nil )
  (!pair  "inline_entry_data_hasher"
   (!type already_seen 1343)

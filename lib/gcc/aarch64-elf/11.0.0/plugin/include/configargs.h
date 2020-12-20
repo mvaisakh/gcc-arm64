@@ -1,5 +1,5 @@
 /* Generated automatically. */
-static const char configuration_arguments[] = "../gcc/configure --target=aarch64-elf --prefix=/home/runner/work/build-tools-gcc/build-tools-gcc/../gcc-arm64 --disable-nls --disable-shared --disable-docs --enable-languages=c,c++ --without-headers";
+static const char configuration_arguments[] = "../gcc/configure --target=aarch64-elf --prefix=/home/runner/work/build-tools-gcc/build-tools-gcc/../gcc-arm64 --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-docs --enable-languages=c,c++ --with-newlib --with-gnu-as --with-gnu-ld --with-sysroot";
 static const char thread_model[] = "single";
 
 static const struct {
