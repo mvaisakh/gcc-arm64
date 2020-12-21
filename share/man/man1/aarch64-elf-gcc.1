@@ -129,7 +129,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2020-12-20" "gcc-11.0.0" "GNU"
+.TH GCC 1 "2020-12-21" "gcc-11.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -27175,7 +27175,7 @@ the backchain is placed into the topmost word of the 96/160 byte register
 save area.
 .Sp
 In general, code compiled with \fB\-mbackchain\fR is call-compatible with
-code compiled with \fB\-mmo\-backchain\fR; however, use of the backchain
+code compiled with \fB\-mno\-backchain\fR; however, use of the backchain
 for debugging purposes usually requires that the whole binary is built with
 \&\fB\-mbackchain\fR.  Note that the combination of \fB\-mbackchain\fR,
 \&\fB\-mpacked\-stack\fR and \fB\-mhard\-float\fR is not supported.  In order

@@ -53,7 +53,7 @@ if [ x$1 != x ] ; then
   prefix=$1
   shift
 else
-  prefix=/home/runner/work/build-tools-gcc/build-tools-gcc/../gcc-arm64
+  prefix=/home/runner/work/gcc-build/gcc-build/../gcc-arm64
 fi
 
 # Allow for alternate isysroot in which to find headers

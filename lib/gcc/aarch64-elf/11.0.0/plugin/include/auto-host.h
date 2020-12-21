@@ -129,7 +129,7 @@
 /* Define if your target supports default stack protector and it is enabled.
    */
 #ifndef USED_FOR_TARGET
-/* #undef ENABLE_DEFAULT_SSP */
+#define ENABLE_DEFAULT_SSP 1
 #endif
 
 
@@ -2223,7 +2223,7 @@
 
 /* Specify plugin linker */
 #ifndef USED_FOR_TARGET
-#define PLUGIN_LD_SUFFIX "ld"
+#define PLUGIN_LD_SUFFIX "gold"
 #endif
 
 
