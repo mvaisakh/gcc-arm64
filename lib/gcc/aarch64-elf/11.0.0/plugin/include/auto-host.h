@@ -1470,7 +1470,7 @@
 
 /* Define to 1 if using GNU ld. */
 #ifndef USED_FOR_TARGET
-#define HAVE_GNU_LD 0
+#define HAVE_GNU_LD 1
 #endif
 
 
@@ -1596,7 +1596,7 @@
 
 /* Define if your linker supports --demangle option. */
 #ifndef USED_FOR_TARGET
-/* #undef HAVE_LD_DEMANGLE */
+#define HAVE_LD_DEMANGLE 1
 #endif
 
 
