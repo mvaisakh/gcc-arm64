@@ -1470,7 +1470,7 @@
 
 /* Define to 1 if using GNU ld. */
 #ifndef USED_FOR_TARGET
-#define HAVE_GNU_LD 1
+#define HAVE_GNU_LD 0
 #endif
 
 
@@ -1596,7 +1596,7 @@
 
 /* Define if your linker supports --demangle option. */
 #ifndef USED_FOR_TARGET
-#define HAVE_LD_DEMANGLE 1
+/* #undef HAVE_LD_DEMANGLE */
 #endif
 
 
@@ -2223,7 +2223,7 @@
 
 /* Specify plugin linker */
 #ifndef USED_FOR_TARGET
-#define PLUGIN_LD_SUFFIX "gold"
+#define PLUGIN_LD_SUFFIX "ld"
 #endif
 
 
