@@ -1590,7 +1590,7 @@
 
 /* Define to the level of your linker's compressed debug section support. */
 #ifndef USED_FOR_TARGET
-#define HAVE_LD_COMPRESS_DEBUG 3
+#define HAVE_LD_COMPRESS_DEBUG 2
 #endif
 
 
@@ -1662,7 +1662,7 @@
 
 /* Define if your linker supports --push-state/--pop-state */
 #ifndef USED_FOR_TARGET
-#define HAVE_LD_PUSHPOPSTATE_SUPPORT 1
+/* #undef HAVE_LD_PUSHPOPSTATE_SUPPORT */
 #endif
 
 

@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "11.0.0 20201221 (experimental)")
+(!version  "11.0.0 20201222 (experimental)")
 (!srcdir  "../../gcc/gcc")
 (!languages 11 ada brig c cp d fortran go jit lto objc objcp)
 (!fileslist 224
@@ -26984,56 +26984,56 @@
    (!type already_seen 1941)
   )
   gc_pointed_to "module_state"
-  (!srcfileloc  "cp/module.cc" 3742)
+  (!srcfileloc  "cp/module.cc" 3744)
   (!fields 26 
    (!pair  "imports"
     (!type already_seen 385)
-    (!srcfileloc  "cp/module.cc" 3497)
+    (!srcfileloc  "cp/module.cc" 3499)
     nil )
    (!pair  "exports"
     (!type already_seen 385)
-    (!srcfileloc  "cp/module.cc" 3498)
+    (!srcfileloc  "cp/module.cc" 3500)
     nil )
    (!pair  "parent"
     (!type already_seen 1942)
-    (!srcfileloc  "cp/module.cc" 3500)
+    (!srcfileloc  "cp/module.cc" 3502)
     nil )
    (!pair  "name"
     (!type already_seen 23)
-    (!srcfileloc  "cp/module.cc" 3501)
+    (!srcfileloc  "cp/module.cc" 3503)
     nil )
    (!pair  "slurp"
     (!type pointer 1943 nil  gc_used
      (!type struct 1944 
       (!type already_seen 1943)
       gc_pointed_to "slurping"
-      (!srcfileloc  "cp/module.cc" 3432)
+      (!srcfileloc  "cp/module.cc" 3434)
       (!fields 9 
        (!pair  "remap"
         (!type pointer 1945 nil  gc_unused
          (!type user_struct 1946 
           (!type already_seen 1945)
           gc_unused "vec<unsigned,va_heap,vl_embed>"
-          (!srcfileloc  "cp/module.cc" 3364)
+          (!srcfileloc  "cp/module.cc" 3366)
           (!fields 3 
            (!pair  "vl_embed"
             (!type undefined 1947 nil  gc_unused "vl_embed"
-             (!srcfileloc  "cp/module.cc" 3364)
+             (!srcfileloc  "cp/module.cc" 3366)
             )
-            (!srcfileloc  "cp/module.cc" 3364)
+            (!srcfileloc  "cp/module.cc" 3366)
             nil )
            (!pair  "va_heap"
             (!type already_seen 819)
-            (!srcfileloc  "cp/module.cc" 3364)
+            (!srcfileloc  "cp/module.cc" 3366)
             nil )
            (!pair  "unsigned"
             (!type already_seen 1639)
-            (!srcfileloc  "cp/module.cc" 3364)
+            (!srcfileloc  "cp/module.cc" 3366)
             nil )
           )
          )
         )
-        (!srcfileloc  "cp/module.cc" 3365)
+        (!srcfileloc  "cp/module.cc" 3367)
         (!options 
          (!option skip string  "")
         )
@@ -27043,167 +27043,167 @@
          (!type struct 1949 
           (!type already_seen 1948)
           gc_unused "elf_in"
-          (!srcfileloc  "cp/module.cc" 3367)
+          (!srcfileloc  "cp/module.cc" 3369)
           (!fields 0 )
           nil 1032 nil nil )
         )
-        (!srcfileloc  "cp/module.cc" 3367)
+        (!srcfileloc  "cp/module.cc" 3369)
         (!options 
          (!option skip string  "")
         )
        )
        (!pair  "headers"
         (!type already_seen 385)
-        (!srcfileloc  "cp/module.cc" 3371)
+        (!srcfileloc  "cp/module.cc" 3373)
         nil )
        (!pair  "macro_defs"
         (!type struct 1950 nil  gc_used "bytes_in"
-         (!srcfileloc  "cp/module.cc" 3378)
+         (!srcfileloc  "cp/module.cc" 3380)
          (!fields 0 )
          nil 1032 nil nil )
-        (!srcfileloc  "cp/module.cc" 3378)
+        (!srcfileloc  "cp/module.cc" 3380)
         nil )
        (!pair  "macro_tbl"
         (!type already_seen 1950)
-        (!srcfileloc  "cp/module.cc" 3379)
+        (!srcfileloc  "cp/module.cc" 3381)
         nil )
        (!pair  "loc_deltas"
         (!type user_struct 1951 nil  gc_unused "std::pair<unsigned,unsigned>"
-         (!srcfileloc  "cp/module.cc" 3268)
+         (!srcfileloc  "cp/module.cc" 3270)
          (!fields 2 
           (!pair  "unsigned"
            (!type already_seen 1639)
-           (!srcfileloc  "cp/module.cc" 3268)
+           (!srcfileloc  "cp/module.cc" 3270)
            nil )
           (!pair  "unsigned"
            (!type already_seen 1639)
-           (!srcfileloc  "cp/module.cc" 3268)
+           (!srcfileloc  "cp/module.cc" 3270)
            nil )
          )
         )
-        (!srcfileloc  "cp/module.cc" 3382)
+        (!srcfileloc  "cp/module.cc" 3384)
         (!options 
          (!option skip string  "")
         )
        )
        (!pair  "current"
         (!type already_seen 2)
-        (!srcfileloc  "cp/module.cc" 3384)
+        (!srcfileloc  "cp/module.cc" 3386)
         nil )
        (!pair  "remaining"
         (!type already_seen 2)
-        (!srcfileloc  "cp/module.cc" 3385)
+        (!srcfileloc  "cp/module.cc" 3387)
         nil )
        (!pair  "lru"
         (!type already_seen 2)
-        (!srcfileloc  "cp/module.cc" 3386)
+        (!srcfileloc  "cp/module.cc" 3388)
         nil )
       )
       nil 1032 nil nil )
     )
-    (!srcfileloc  "cp/module.cc" 3503)
+    (!srcfileloc  "cp/module.cc" 3505)
     nil )
    (!pair  "flatname"
     (!type already_seen 11)
-    (!srcfileloc  "cp/module.cc" 3505)
+    (!srcfileloc  "cp/module.cc" 3507)
     nil )
    (!pair  "filename"
     (!type already_seen 11)
-    (!srcfileloc  "cp/module.cc" 3506)
+    (!srcfileloc  "cp/module.cc" 3508)
     nil )
    (!pair  "entity_lwm"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3509)
+    (!srcfileloc  "cp/module.cc" 3511)
     nil )
    (!pair  "entity_num"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3510)
+    (!srcfileloc  "cp/module.cc" 3512)
     nil )
    (!pair  "ordinary_locs"
     (!type user_struct 1952 nil  gc_unused "std::pair<location_t,location_t>"
-     (!srcfileloc  "cp/module.cc" 3271)
+     (!srcfileloc  "cp/module.cc" 3273)
      (!fields 2 
       (!pair  "location_t"
        (!type already_seen 2)
-       (!srcfileloc  "cp/module.cc" 3271)
+       (!srcfileloc  "cp/module.cc" 3273)
        nil )
       (!pair  "location_t"
        (!type already_seen 2)
-       (!srcfileloc  "cp/module.cc" 3271)
+       (!srcfileloc  "cp/module.cc" 3273)
        nil )
      )
     )
-    (!srcfileloc  "cp/module.cc" 3514)
+    (!srcfileloc  "cp/module.cc" 3516)
     (!options 
      (!option skip string  "")
     )
    )
    (!pair  "macro_locs"
     (!type already_seen 1952)
-    (!srcfileloc  "cp/module.cc" 3515)
+    (!srcfileloc  "cp/module.cc" 3517)
     (!options 
      (!option skip string  "")
     )
    )
    (!pair  "loc"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3520)
+    (!srcfileloc  "cp/module.cc" 3522)
     nil )
    (!pair  "crc"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3521)
+    (!srcfileloc  "cp/module.cc" 3523)
     nil )
    (!pair  "mod"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3523)
+    (!srcfileloc  "cp/module.cc" 3525)
     nil )
    (!pair  "remap"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3524)
+    (!srcfileloc  "cp/module.cc" 3526)
     nil )
    (!pair  "subst"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3526)
+    (!srcfileloc  "cp/module.cc" 3528)
     nil )
    (!pair  "loadedness"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3529)
+    (!srcfileloc  "cp/module.cc" 3531)
     nil )
    (!pair  "module_p"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3531)
+    (!srcfileloc  "cp/module.cc" 3533)
     nil )
    (!pair  "header_p"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3532)
+    (!srcfileloc  "cp/module.cc" 3534)
     nil )
    (!pair  "interface_p"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3533)
+    (!srcfileloc  "cp/module.cc" 3535)
     nil )
    (!pair  "partition_p"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3534)
+    (!srcfileloc  "cp/module.cc" 3536)
     nil )
    (!pair  "directness"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3537)
+    (!srcfileloc  "cp/module.cc" 3539)
     nil )
    (!pair  "exported_p"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3539)
+    (!srcfileloc  "cp/module.cc" 3541)
     nil )
    (!pair  "cmi_noted_p"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3540)
+    (!srcfileloc  "cp/module.cc" 3542)
     nil )
    (!pair  "call_init_p"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3542)
+    (!srcfileloc  "cp/module.cc" 3544)
     nil )
    (!pair  "extensions"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 3545)
+    (!srcfileloc  "cp/module.cc" 3547)
     nil )
   )
   (!options 
@@ -28347,23 +28347,23 @@
   nil 0 nil nil )
  
  (!type user_struct 2081 nil  gc_unused "simple_hashmap_traits<nodel_ptr_hash<void>,int>"
-  (!srcfileloc  "cp/module.cc" 331)
+  (!srcfileloc  "cp/module.cc" 333)
   (!fields 2 
    (!pair  "int"
     (!type already_seen 372)
-    (!srcfileloc  "cp/module.cc" 331)
+    (!srcfileloc  "cp/module.cc" 333)
     nil )
    (!pair  "nodel_ptr_hash<void"
     (!type user_struct 2082 nil  gc_unused "nodel_ptr_hash<void"
-     (!srcfileloc  "cp/module.cc" 331)
+     (!srcfileloc  "cp/module.cc" 333)
      (!fields 1 
       (!pair  "void"
        (!type already_seen 2)
-       (!srcfileloc  "cp/module.cc" 331)
+       (!srcfileloc  "cp/module.cc" 333)
        nil )
      )
     )
-    (!srcfileloc  "cp/module.cc" 331)
+    (!srcfileloc  "cp/module.cc" 333)
     nil )
   )
  )
@@ -28371,17 +28371,17 @@
  (!type already_seen 2082)
  
  (!type user_struct 2083 nil  gc_unused "hash_map<void*,signed,ptr_int_traits>"
-  (!srcfileloc  "cp/module.cc" 332)
+  (!srcfileloc  "cp/module.cc" 334)
   (!fields 3 
    (!pair  "ptr_int_traits"
     (!type already_seen 2081)
-    (!srcfileloc  "cp/module.cc" 332)
+    (!srcfileloc  "cp/module.cc" 334)
     nil )
    (!pair  "signed"
     (!type undefined 2084 nil  gc_unused "signed"
-     (!srcfileloc  "cp/module.cc" 332)
+     (!srcfileloc  "cp/module.cc" 334)
     )
-    (!srcfileloc  "cp/module.cc" 332)
+    (!srcfileloc  "cp/module.cc" 334)
     nil )
    (!pair  "void"
     (!type pointer 2085 nil  gc_unused
@@ -28391,7 +28391,7 @@
       (!fields 0 )
       nil 0 nil nil )
     )
-    (!srcfileloc  "cp/module.cc" 332)
+    (!srcfileloc  "cp/module.cc" 334)
     nil )
   )
  )
@@ -28437,21 +28437,21 @@
   nil 0 nil nil )
  
  (!type user_struct 2095 nil  gc_unused "uintset<unsigned>"
-  (!srcfileloc  "cp/module.cc" 2804)
+  (!srcfileloc  "cp/module.cc" 2806)
   (!fields 1 
    (!pair  "unsigned"
     (!type already_seen 1639)
-    (!srcfileloc  "cp/module.cc" 2804)
+    (!srcfileloc  "cp/module.cc" 2806)
     nil )
   )
  )
  
  (!type user_struct 2096 nil  gc_unused "uintset<tree>"
-  (!srcfileloc  "cp/module.cc" 2810)
+  (!srcfileloc  "cp/module.cc" 2812)
   (!fields 1 
    (!pair  "tree"
     (!type already_seen 23)
-    (!srcfileloc  "cp/module.cc" 2810)
+    (!srcfileloc  "cp/module.cc" 2812)
     nil )
   )
  )
@@ -28461,36 +28461,36 @@
   nil 0 nil nil )
  
  (!type struct 2098 nil  gc_unused "duplicate_hash"
-  (!srcfileloc  "cp/module.cc" 2952)
+  (!srcfileloc  "cp/module.cc" 2954)
   (!fields 0 )
   nil 1032 nil nil )
  
  (!type user_struct 2099 nil  gc_unused "hash_map<tree,uintptr_t,simple_hashmap_traits<duplicate_hash,uintptr_t>>"
-  (!srcfileloc  "cp/module.cc" 2952)
+  (!srcfileloc  "cp/module.cc" 2954)
   (!fields 4 
    (!pair  "uintptr_t"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 2952)
+    (!srcfileloc  "cp/module.cc" 2954)
     nil )
    (!pair  "simple_hashmap_traits<duplicate_hash"
     (!type user_struct 2100 nil  gc_unused "simple_hashmap_traits<duplicate_hash"
-     (!srcfileloc  "cp/module.cc" 2952)
+     (!srcfileloc  "cp/module.cc" 2954)
      (!fields 1 
       (!pair  "duplicate_hash"
        (!type already_seen 2098)
-       (!srcfileloc  "cp/module.cc" 2952)
+       (!srcfileloc  "cp/module.cc" 2954)
        nil )
      )
     )
-    (!srcfileloc  "cp/module.cc" 2952)
+    (!srcfileloc  "cp/module.cc" 2954)
     nil )
    (!pair  "uintptr_t"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 2952)
+    (!srcfileloc  "cp/module.cc" 2954)
     nil )
    (!pair  "tree"
     (!type already_seen 23)
-    (!srcfileloc  "cp/module.cc" 2952)
+    (!srcfileloc  "cp/module.cc" 2954)
     nil )
   )
  )
@@ -28520,7 +28520,7 @@
  (!type already_seen 1944)
  
  (!type struct 2104 nil  gc_unused "location_map_info"
-  (!srcfileloc  "cp/module.cc" 3703)
+  (!srcfileloc  "cp/module.cc" 3705)
   (!fields 0 )
   nil 1032 nil nil )
  
@@ -28529,7 +28529,7 @@
   nil 0 nil nil )
  
  (!type struct 2106 nil  gc_used "module_state_hash"
-  (!srcfileloc  "cp/module.cc" 3912)
+  (!srcfileloc  "cp/module.cc" 3914)
   (!fields 0 )
   nil 1032 nil nil )
  
@@ -28538,15 +28538,15 @@
    (!type already_seen 2107)
   )
   gc_pointed_to "vec<module_state*,va_gc>"
-  (!srcfileloc  "cp/module.cc" 3909)
+  (!srcfileloc  "cp/module.cc" 3911)
   (!fields 2 
    (!pair  "va_gc"
     (!type already_seen 79)
-    (!srcfileloc  "cp/module.cc" 3909)
+    (!srcfileloc  "cp/module.cc" 3911)
     nil )
    (!pair  "module_state"
     (!type already_seen 1942)
-    (!srcfileloc  "cp/module.cc" 3909)
+    (!srcfileloc  "cp/module.cc" 3911)
     nil )
   )
  )
@@ -28556,55 +28556,55 @@
    (!type already_seen 2109)
   )
   gc_pointed_to "hash_table<module_state_hash>"
-  (!srcfileloc  "cp/module.cc" 3912)
+  (!srcfileloc  "cp/module.cc" 3914)
   (!fields 1 
    (!pair  "module_state_hash"
     (!type already_seen 2106)
-    (!srcfileloc  "cp/module.cc" 3912)
+    (!srcfileloc  "cp/module.cc" 3914)
     nil )
   )
  )
  
  (!type user_struct 2111 nil  gc_unused "hash_map<unsigned,unsigned,simple_hashmap_traits<int_hash<unsigned,0>,unsigned>>"
-  (!srcfileloc  "cp/module.cc" 3918)
+  (!srcfileloc  "cp/module.cc" 3920)
   (!fields 5 
    (!pair  "unsigned"
     (!type already_seen 1639)
-    (!srcfileloc  "cp/module.cc" 3918)
+    (!srcfileloc  "cp/module.cc" 3920)
     nil )
    (!pair  "0"
     (!type undefined 2112 nil  gc_unused "0"
-     (!srcfileloc  "cp/module.cc" 3918)
+     (!srcfileloc  "cp/module.cc" 3920)
     )
-    (!srcfileloc  "cp/module.cc" 3918)
+    (!srcfileloc  "cp/module.cc" 3920)
     nil )
    (!pair  "simple_hashmap_traits<int_hash<unsigned"
     (!type user_struct 2113 nil  gc_unused "simple_hashmap_traits<int_hash<unsigned"
-     (!srcfileloc  "cp/module.cc" 3918)
+     (!srcfileloc  "cp/module.cc" 3920)
      (!fields 1 
       (!pair  "int_hash<unsigned"
        (!type user_struct 2114 nil  gc_unused "int_hash<unsigned"
-        (!srcfileloc  "cp/module.cc" 3918)
+        (!srcfileloc  "cp/module.cc" 3920)
         (!fields 1 
          (!pair  "unsigned"
           (!type already_seen 1639)
-          (!srcfileloc  "cp/module.cc" 3918)
+          (!srcfileloc  "cp/module.cc" 3920)
           nil )
         )
        )
-       (!srcfileloc  "cp/module.cc" 3918)
+       (!srcfileloc  "cp/module.cc" 3920)
        nil )
      )
     )
-    (!srcfileloc  "cp/module.cc" 3918)
+    (!srcfileloc  "cp/module.cc" 3920)
     nil )
    (!pair  "unsigned"
     (!type already_seen 1639)
-    (!srcfileloc  "cp/module.cc" 3918)
+    (!srcfileloc  "cp/module.cc" 3920)
     nil )
    (!pair  "unsigned"
     (!type already_seen 1639)
-    (!srcfileloc  "cp/module.cc" 3918)
+    (!srcfileloc  "cp/module.cc" 3920)
     nil )
   )
  )
@@ -28620,7 +28620,7 @@
   nil 0 nil nil )
  
  (!type struct 2116 nil  gc_used "note_def_cache_hasher"
-  (!srcfileloc  "cp/module.cc" 4567)
+  (!srcfileloc  "cp/module.cc" 4569)
   (!fields 0 )
   nil 1032 nil nil )
  
@@ -28629,11 +28629,11 @@
    (!type already_seen 2117)
   )
   gc_pointed_to "hash_table<note_def_cache_hasher>"
-  (!srcfileloc  "cp/module.cc" 4567)
+  (!srcfileloc  "cp/module.cc" 4569)
   (!fields 1 
    (!pair  "note_def_cache_hasher"
     (!type already_seen 2116)
-    (!srcfileloc  "cp/module.cc" 4567)
+    (!srcfileloc  "cp/module.cc" 4569)
     nil )
   )
  )
@@ -29798,7 +29798,7 @@
   nil )
  (!pair  "go_char_p"
   (!type already_seen 9)
-  (!srcfileloc  "go/go-lang.c" 186)
+  (!srcfileloc  "go/go-lang.c" 196)
   nil )
  (!pair  "gfc_interface_mapping"
   (!type already_seen 2219)
@@ -30024,153 +30024,153 @@
   nil )
  (!pair  "note_defs_table_t"
   (!type already_seen 2117)
-  (!srcfileloc  "cp/module.cc" 4567)
+  (!srcfileloc  "cp/module.cc" 4569)
   nil )
  (!pair  "note_def_cache_hasher"
   (!type already_seen 2116)
-  (!srcfileloc  "cp/module.cc" 4567)
+  (!srcfileloc  "cp/module.cc" 4569)
   nil )
  (!pair  "hash_table<note_def_cache_hasher>"
   (!type already_seen 2117)
-  (!srcfileloc  "cp/module.cc" 4567)
+  (!srcfileloc  "cp/module.cc" 4569)
   nil )
  (!pair  "entity_map_t"
   (!type already_seen 2111)
-  (!srcfileloc  "cp/module.cc" 3918)
+  (!srcfileloc  "cp/module.cc" 3920)
   nil )
  (!pair  "0"
   (!type already_seen 2112)
-  (!srcfileloc  "cp/module.cc" 3918)
+  (!srcfileloc  "cp/module.cc" 3920)
   nil )
  (!pair  "int_hash<unsigned"
   (!type already_seen 2114)
-  (!srcfileloc  "cp/module.cc" 3918)
+  (!srcfileloc  "cp/module.cc" 3920)
   nil )
  (!pair  "simple_hashmap_traits<int_hash<unsigned"
   (!type already_seen 2113)
-  (!srcfileloc  "cp/module.cc" 3918)
+  (!srcfileloc  "cp/module.cc" 3920)
   nil )
  (!pair  "hash_map<unsigned,unsigned,simple_hashmap_traits<int_hash<unsigned,0>,unsigned>>"
   (!type already_seen 2111)
-  (!srcfileloc  "cp/module.cc" 3918)
+  (!srcfileloc  "cp/module.cc" 3920)
   nil )
  (!pair  "module_state_hash"
   (!type already_seen 2106)
-  (!srcfileloc  "cp/module.cc" 3912)
+  (!srcfileloc  "cp/module.cc" 3914)
   nil )
  (!pair  "hash_table<module_state_hash>"
   (!type already_seen 2109)
-  (!srcfileloc  "cp/module.cc" 3912)
+  (!srcfileloc  "cp/module.cc" 3914)
   nil )
  (!pair  "vec<module_state*,va_gc>"
   (!type already_seen 2107)
-  (!srcfileloc  "cp/module.cc" 3909)
+  (!srcfileloc  "cp/module.cc" 3911)
   nil )
  (!pair  "location_map_info"
   (!type already_seen 2104)
-  (!srcfileloc  "cp/module.cc" 3703)
+  (!srcfileloc  "cp/module.cc" 3705)
   nil )
  (!pair  "module_state"
   (!type already_seen 1941)
-  (!srcfileloc  "cp/module.cc" 3500)
+  (!srcfileloc  "cp/module.cc" 3502)
   nil )
  (!pair  "slurping"
   (!type already_seen 1944)
-  (!srcfileloc  "cp/module.cc" 3389)
+  (!srcfileloc  "cp/module.cc" 3391)
   nil )
  (!pair  "bytes_in"
   (!type already_seen 1950)
-  (!srcfileloc  "cp/module.cc" 3378)
+  (!srcfileloc  "cp/module.cc" 3380)
   nil )
  (!pair  "elf_in"
   (!type already_seen 1949)
-  (!srcfileloc  "cp/module.cc" 3367)
+  (!srcfileloc  "cp/module.cc" 3369)
   nil )
  (!pair  "vl_embed"
   (!type already_seen 1947)
-  (!srcfileloc  "cp/module.cc" 3364)
+  (!srcfileloc  "cp/module.cc" 3366)
   nil )
  (!pair  "vec<unsigned,va_heap,vl_embed>"
   (!type already_seen 1946)
-  (!srcfileloc  "cp/module.cc" 3364)
+  (!srcfileloc  "cp/module.cc" 3366)
   nil )
  (!pair  "loc_range_t"
   (!type already_seen 1952)
-  (!srcfileloc  "cp/module.cc" 3271)
+  (!srcfileloc  "cp/module.cc" 3273)
   nil )
  (!pair  "std::pair<location_t,location_t>"
   (!type already_seen 1952)
-  (!srcfileloc  "cp/module.cc" 3271)
+  (!srcfileloc  "cp/module.cc" 3273)
   nil )
  (!pair  "range_t"
   (!type already_seen 1951)
-  (!srcfileloc  "cp/module.cc" 3268)
+  (!srcfileloc  "cp/module.cc" 3270)
   nil )
  (!pair  "std::pair<unsigned,unsigned>"
   (!type already_seen 1951)
-  (!srcfileloc  "cp/module.cc" 3268)
+  (!srcfileloc  "cp/module.cc" 3270)
   nil )
  (!pair  "duplicate_hash_map"
   (!type already_seen 2099)
-  (!srcfileloc  "cp/module.cc" 2953)
+  (!srcfileloc  "cp/module.cc" 2955)
   nil )
  (!pair  "duplicate_hash"
   (!type already_seen 2098)
-  (!srcfileloc  "cp/module.cc" 2952)
+  (!srcfileloc  "cp/module.cc" 2954)
   nil )
  (!pair  "simple_hashmap_traits<duplicate_hash"
   (!type already_seen 2100)
-  (!srcfileloc  "cp/module.cc" 2952)
+  (!srcfileloc  "cp/module.cc" 2954)
   nil )
  (!pair  "hash_map<tree,uintptr_t,simple_hashmap_traits<duplicate_hash,uintptr_t>>"
   (!type already_seen 2099)
-  (!srcfileloc  "cp/module.cc" 2952)
+  (!srcfileloc  "cp/module.cc" 2954)
   nil )
  (!pair  "attachset"
   (!type already_seen 2096)
-  (!srcfileloc  "cp/module.cc" 2810)
+  (!srcfileloc  "cp/module.cc" 2812)
   nil )
  (!pair  "uintset<tree>"
   (!type already_seen 2096)
-  (!srcfileloc  "cp/module.cc" 2810)
+  (!srcfileloc  "cp/module.cc" 2812)
   nil )
  (!pair  "pendset"
   (!type already_seen 2095)
-  (!srcfileloc  "cp/module.cc" 2804)
+  (!srcfileloc  "cp/module.cc" 2806)
   nil )
  (!pair  "uintset<unsigned>"
   (!type already_seen 2095)
-  (!srcfileloc  "cp/module.cc" 2804)
+  (!srcfileloc  "cp/module.cc" 2806)
   nil )
  (!pair  "ptr_int_hash_map"
   (!type already_seen 2083)
-  (!srcfileloc  "cp/module.cc" 332)
+  (!srcfileloc  "cp/module.cc" 334)
   nil )
  (!pair  "signed"
   (!type already_seen 2084)
-  (!srcfileloc  "cp/module.cc" 332)
+  (!srcfileloc  "cp/module.cc" 334)
   nil )
  (!pair  "hash_map<void*,signed,ptr_int_traits>"
   (!type already_seen 2083)
-  (!srcfileloc  "cp/module.cc" 332)
+  (!srcfileloc  "cp/module.cc" 334)
   nil )
  (!pair  "ptr_int_traits"
   (!type already_seen 2081)
-  (!srcfileloc  "cp/module.cc" 331)
+  (!srcfileloc  "cp/module.cc" 333)
   nil )
  (!pair  "nodel_ptr_hash<void"
   (!type already_seen 2082)
-  (!srcfileloc  "cp/module.cc" 331)
+  (!srcfileloc  "cp/module.cc" 333)
   nil )
  (!pair  "simple_hashmap_traits<nodel_ptr_hash<void>,int>"
   (!type already_seen 2081)
-  (!srcfileloc  "cp/module.cc" 331)
+  (!srcfileloc  "cp/module.cc" 333)
   nil )
  (!pair  "verstr_t"
   (!type array 2264 nil  gc_unused "32" 
    (!type already_seen 8)
   )
-  (!srcfileloc  "cp/module.cc" 302)
+  (!srcfileloc  "cp/module.cc" 304)
   nil )
  (!pair  "substitution_identifier_index_t"
   (!type already_seen 2)
@@ -33547,7 +33547,7 @@
   nil )
  (!pair  "go_gc_root"
   (!type already_seen 23)
-  (!srcfileloc  "go/go-lang.c" 570)
+  (!srcfileloc  "go/go-lang.c" 580)
   nil )
  (!pair  "gfc_rank_cst"
   (!type array 2274 nil  gc_used "GFC_MAX_DIMENSIONS + 1" 
@@ -34448,34 +34448,34 @@
  )
  (!pair  "headers"
   (!type already_seen 385)
-  (!srcfileloc  "cp/module.cc" 16704)
+  (!srcfileloc  "cp/module.cc" 16707)
   nil )
  (!pair  "note_defs"
   (!type already_seen 2118)
-  (!srcfileloc  "cp/module.cc" 4568)
+  (!srcfileloc  "cp/module.cc" 4570)
   (!options 
    (!option cache string  "")
   )
  )
  (!pair  "partial_specializations"
   (!type already_seen 84)
-  (!srcfileloc  "cp/module.cc" 3942)
+  (!srcfileloc  "cp/module.cc" 3944)
   nil )
  (!pair  "class_members"
   (!type already_seen 84)
-  (!srcfileloc  "cp/module.cc" 3933)
+  (!srcfileloc  "cp/module.cc" 3935)
   nil )
  (!pair  "modules_hash"
   (!type already_seen 2110)
-  (!srcfileloc  "cp/module.cc" 3912)
+  (!srcfileloc  "cp/module.cc" 3914)
   nil )
  (!pair  "modules"
   (!type already_seen 2108)
-  (!srcfileloc  "cp/module.cc" 3909)
+  (!srcfileloc  "cp/module.cc" 3911)
   nil )
  (!pair  "fixed_trees"
   (!type already_seen 84)
-  (!srcfileloc  "cp/module.cc" 3890)
+  (!srcfileloc  "cp/module.cc" 3892)
   nil )
  (!pair  "comp_cat_cache"
   (!type array 2294 nil  gc_used "cc_last" 
