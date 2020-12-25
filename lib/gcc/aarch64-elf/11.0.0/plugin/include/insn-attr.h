@@ -6,6 +6,9 @@
 
 #include "insn-attr-common.h"
 
+#define HAVE_ATTR_autodetect_type 1
+extern enum attr_autodetect_type get_attr_autodetect_type (rtx_insn *);
+
 #define HAVE_ATTR_type 1
 extern enum attr_type get_attr_type (rtx_insn *);
 

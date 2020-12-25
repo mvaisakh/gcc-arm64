@@ -129,7 +129,7 @@
 .\" ========================================================================
 .\"
 .IX Title "LD 1"
-.TH LD 1 "2020-12-22" "binutils-2.35.50" "GNU Development Tools"
+.TH LD 1 "2020-12-25" "binutils-2.35.50" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -1182,6 +1182,62 @@ primarily used to mark fundamental libraries such as libc, libpthread et
 al which do not usually function correctly unless they are the sole instances
 of themselves. This behaviour can be overridden by the \f(CW\*(C`dlmopen\*(C'\fR caller
 and does not apply to certain loading mechanisms (such as audit libraries).
+.IP "\fBlam\-u48\fR" 4
+.IX Item "lam-u48"
+Generate \s-1GNU_PROPERTY_X86_FEATURE_1_LAM_U48\s0 in .note.gnu.property section
+to indicate compatibility with Intel \s-1LAM_U48.\s0  Supported for Linux/x86_64.
+.IP "\fBlam\-u57\fR" 4
+.IX Item "lam-u57"
+Generate \s-1GNU_PROPERTY_X86_FEATURE_1_LAM_U57\s0 in .note.gnu.property section
+to indicate compatibility with Intel \s-1LAM_U57.\s0  Supported for Linux/x86_64.
+.IP "\fBlam\-u48\-report=none\fR" 4
+.IX Item "lam-u48-report=none"
+.PD 0
+.IP "\fBlam\-u48\-report=warning\fR" 4
+.IX Item "lam-u48-report=warning"
+.IP "\fBlam\-u48\-report=error\fR" 4
+.IX Item "lam-u48-report=error"
+.PD
+Specify how to report the missing \s-1GNU_PROPERTY_X86_FEATURE_1_LAM_U48\s0
+property in input .note.gnu.property section.
+\&\fBlam\-u48\-report=none\fR, which is the default, will make the
+linker not report missing properties in input files.
+\&\fBlam\-u48\-report=warning\fR will make the linker issue a warning for
+missing properties in input files.  \fBlam\-u48\-report=error\fR will
+make the linker issue an error for missing properties in input files.
+Supported for Linux/x86_64.
+.IP "\fBlam\-u57\-report=none\fR" 4
+.IX Item "lam-u57-report=none"
+.PD 0
+.IP "\fBlam\-u57\-report=warning\fR" 4
+.IX Item "lam-u57-report=warning"
+.IP "\fBlam\-u57\-report=error\fR" 4
+.IX Item "lam-u57-report=error"
+.PD
+Specify how to report the missing \s-1GNU_PROPERTY_X86_FEATURE_1_LAM_U57\s0
+property in input .note.gnu.property section.
+\&\fBlam\-u57\-report=none\fR, which is the default, will make the
+linker not report missing properties in input files.
+\&\fBlam\-u57\-report=warning\fR will make the linker issue a warning for
+missing properties in input files.  \fBlam\-u57\-report=error\fR will
+make the linker issue an error for missing properties in input files.
+Supported for Linux/x86_64.
+.IP "\fBlam\-report=none\fR" 4
+.IX Item "lam-report=none"
+.PD 0
+.IP "\fBlam\-report=warning\fR" 4
+.IX Item "lam-report=warning"
+.IP "\fBlam\-report=error\fR" 4
+.IX Item "lam-report=error"
+.PD
+Specify how to report the missing \s-1GNU_PROPERTY_X86_FEATURE_1_LAM_U48\s0 and
+\&\s-1GNU_PROPERTY_X86_FEATURE_1_LAM_U57\s0 properties in input .note.gnu.property
+section.  \fBlam\-report=none\fR, which is the default, will make the
+linker not report missing properties in input files.
+\&\fBlam\-report=warning\fR will make the linker issue a warning for
+missing properties in input files.  \fBlam\-report=error\fR will make
+the linker issue an error for missing properties in input files.
+Supported for Linux/x86_64.
 .IP "\fBlazy\fR" 4
 .IX Item "lazy"
 When generating an executable or shared library, mark it to tell the

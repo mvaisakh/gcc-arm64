@@ -129,7 +129,7 @@
 /* Define if your target supports default stack protector and it is enabled.
    */
 #ifndef USED_FOR_TARGET
-#define ENABLE_DEFAULT_SSP 1
+/* #undef ENABLE_DEFAULT_SSP */
 #endif
 
 
@@ -240,6 +240,12 @@
 /* Define to enable evaluating float expressions with double precision in
    standards-compatible mode on s390 targets. */
 /* #undef ENABLE_S390_EXCESS_FLOAT_PRECISION */
+
+/* Define if the -stdlib= option should be enabled. */
+#ifndef USED_FOR_TARGET
+#define ENABLE_STDLIB_OPTION 0
+#endif
+
 
 /* Define if you want all operations on trees (the basic data structure of the
    front ends) to be checked for dynamic type safety at runtime. This is
@@ -2316,7 +2322,7 @@
 
 /* Define if your target C library provides stack protector support */
 #ifndef USED_FOR_TARGET
-#define TARGET_LIBC_PROVIDES_SSP 1
+/* #undef TARGET_LIBC_PROVIDES_SSP */
 #endif
 
 

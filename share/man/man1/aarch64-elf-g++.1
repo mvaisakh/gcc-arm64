@@ -129,7 +129,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2020-12-22" "gcc-11.0.0" "GNU"
+.TH GCC 1 "2020-12-25" "gcc-11.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -266,7 +266,8 @@ in the following sections.
 \&\-fext\-numeric\-literals 
 \&\-flang\-info\-include\-translate\fR[\fB=\fR\fIname\fR] 
 \&\fB\-flang\-info\-include\-translate\-not 
-\&\-Wabi\-tag  \-Wcatch\-value  \-Wcatch\-value=\fR\fIn\fR 
+\&\-stdlib=\fR\fIlibstdc++,libc++\fR 
+\&\fB\-Wabi\-tag  \-Wcatch\-value  \-Wcatch\-value=\fR\fIn\fR 
 \&\fB\-Wno\-class\-conversion  \-Wclass\-memaccess 
 \&\-Wcomma\-subscript  \-Wconditionally\-supported 
 \&\-Wno\-conversion\-null  \-Wctad\-maybe\-unsupported 
@@ -3321,6 +3322,15 @@ is used when building the \*(C+ library.)
 .IX Item "-flang-info-include-translate=header"
 .PD
 Diagnose include translation events.
+.IP "\fB\-stdlib=\fR\fIlibstdc++,libc++\fR" 4
+.IX Item "-stdlib=libstdc++,libc++"
+When G++ is configured to support this option, it allows specification of
+alternate \*(C+ runtime libraries.  Two options are available: \fIlibstdc++\fR
+(the default, native \*(C+ runtime for G++) and \fIlibc++\fR which is the
+\&\*(C+ runtime installed on some operating systems (e.g. Darwin versions from
+Darwin11 onwards).  The option switches G++ to use the headers from the
+specified library and to emit \f(CW\*(C`\-lstdc++\*(C'\fR or \f(CW\*(C`\-lc++\*(C'\fR respectively,
+when a \*(C+ runtime is required for linking.
 .PP
 In addition, these warning options have meanings only for \*(C+ programs:
 .IP "\fB\-Wabi\-tag\fR (\*(C+ and Objective\-\*(C+ only)" 4
