@@ -1,4 +1,4 @@
-This is binutils.info, produced by makeinfo version 6.5 from
+This is binutils.info, produced by makeinfo version 6.7 from
 binutils.texi.
 
 Copyright (C) 1991-2020 Free Software Foundation, Inc.
@@ -5831,3 +5831,8 @@ Node: GNU Free Documentation License201459
 Node: Binutils Index226619
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

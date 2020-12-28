@@ -1,4 +1,4 @@
-This is gprof.info, produced by makeinfo version 6.5 from gprof.texi.
+This is gprof.info, produced by makeinfo version 6.7 from gprof.texi.
 
 This file documents the gprof profiler of the GNU system.
 
@@ -2456,3 +2456,8 @@ Node: Debugging85329
 Node: GNU Free Documentation License86919
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

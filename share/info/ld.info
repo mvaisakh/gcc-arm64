@@ -1,4 +1,4 @@
-This is ld.info, produced by makeinfo version 6.5 from ld.texi.
+This is ld.info, produced by makeinfo version 6.7 from ld.texi.
 
 This file documents the GNU linker LD (Custom BinUtils) version 2.35.50.
 
@@ -9293,3 +9293,8 @@ Node: GNU Free Documentation License342386
 Node: LD Index367523
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:

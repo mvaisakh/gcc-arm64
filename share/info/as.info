@@ -1,4 +1,4 @@
-This is as.info, produced by makeinfo version 6.5 from as.texi.
+This is as.info, produced by makeinfo version 6.7 from as.texi.
 
 This file documents the GNU Assembler "as".
 
@@ -29895,3 +29895,8 @@ Node: GNU Free Documentation License943600
 Node: AS Index968750
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
