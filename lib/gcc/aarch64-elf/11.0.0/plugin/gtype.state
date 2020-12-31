@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "11.0.0 20201229 (experimental)")
+(!version  "11.0.0 20201231 (experimental)")
 (!srcdir  "../../gcc/gcc")
 (!languages 11 ada brig c cp d fortran go jit lto objc objcp)
 (!fileslist 224
@@ -34205,11 +34205,11 @@
   nil )
  (!pair  "d_eh_personality_decl"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-lang.cc" 1694)
+  (!srcfileloc  "d/d-lang.cc" 1703)
   nil )
  (!pair  "d_keep_list"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-lang.cc" 1683)
+  (!srcfileloc  "d/d-lang.cc" 1692)
   nil )
  (!pair  "global_declarations"
   (!type already_seen 84)
@@ -34223,37 +34223,37 @@
   (!type array 2291 nil  gc_used "(int) BT_LAST + 1" 
    (!type already_seen 23)
   )
-  (!srcfileloc  "d/d-builtins.cc" 1007)
+  (!srcfileloc  "d/d-builtins.cc" 1008)
   nil )
  (!pair  "built_in_attributes"
   (!type array 2292 nil  gc_used "(int) ATTR_LAST" 
    (!type already_seen 23)
   )
-  (!srcfileloc  "d/d-builtins.cc" 911)
+  (!srcfileloc  "d/d-builtins.cc" 912)
   nil )
  (!pair  "signed_size_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 762)
+  (!srcfileloc  "d/d-builtins.cc" 763)
   nil )
  (!pair  "uintmax_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 761)
+  (!srcfileloc  "d/d-builtins.cc" 762)
   nil )
  (!pair  "intmax_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 760)
+  (!srcfileloc  "d/d-builtins.cc" 761)
   nil )
  (!pair  "wint_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 759)
+  (!srcfileloc  "d/d-builtins.cc" 760)
   nil )
  (!pair  "const_string_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 758)
+  (!srcfileloc  "d/d-builtins.cc" 759)
   nil )
  (!pair  "string_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 757)
+  (!srcfileloc  "d/d-builtins.cc" 758)
   nil )
  (!pair  "gcc_builtins_types"
   (!type already_seen 84)
