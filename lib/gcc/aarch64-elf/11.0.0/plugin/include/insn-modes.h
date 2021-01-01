@@ -967,6 +967,7 @@ enum machine_mode
 #define CONST_MODE_BASE_ALIGN
 #define CONST_MODE_IBIT const
 #define CONST_MODE_FBIT const
+#define CONST_MODE_MASK
 
 #define BITS_PER_UNIT (8)
 #define MAX_BITSIZE_MODE_ANY_INT (64*BITS_PER_UNIT)
