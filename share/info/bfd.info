@@ -2114,6 +2114,9 @@ Here is the section structure:
        struct bfd_symbol *symbol;
        struct bfd_symbol **symbol_ptr_ptr;
 
+       /* The matching section name pattern in linker script.  */
+       const char *pattern;
+
        /* Early in the link process, map_head and map_tail are used to build
           a list of input sections attached to an output section.  Later,
           output sections use these fields for a list of bfd_link_order
@@ -2307,8 +2310,8 @@ Here is the section structure:
        /* target_index, used_by_bfd, constructor_chain, owner,           */ \
           0,            NULL,        NULL,              NULL,               \
                                                                             \
-       /* symbol,                    symbol_ptr_ptr,                     */ \
-          (struct bfd_symbol *) SYM, &SEC.symbol,                           \
+       /* symbol,                    symbol_ptr_ptr, pattern,            */ \
+          (struct bfd_symbol *) SYM, &SEC.symbol,    NULL,                  \
                                                                             \
        /* map_head, map_tail, already_assigned                           */ \
           { NULL }, { NULL }, NULL                                          \
@@ -14720,54 +14723,54 @@ Node: Sections57244
 Node: Section Input57727
 Node: Section Output58921
 Node: typedef asection61408
-Node: section prototypes86326
-Node: Symbols97070
-Node: Reading Symbols98673
-Node: Writing Symbols99781
-Node: Mini Symbols101525
-Node: typedef asymbol102499
-Node: symbol handling functions108584
-Node: Archives113959
-Node: Formats118096
-Node: Relocations121047
-Node: typedef arelent121774
-Node: howto manager136692
-Node: Core Files270334
-Node: Targets272372
-Node: bfd_target274347
-Node: Architectures301794
-Node: Opening and Closing333566
-Node: Internal351797
-Node: File Caching358629
-Node: Linker Functions360547
-Node: Creating a Linker Hash Table362221
-Node: Adding Symbols to the Hash Table363960
-Node: Differing file formats364860
-Node: Adding symbols from an object file366585
-Node: Adding symbols from an archive368735
-Node: Performing the Final Link371081
-Node: Information provided by the linker372322
-Node: Relocating the section contents373476
-Node: Writing the symbol table375228
-Node: Hash Tables382382
-Node: Creating and Freeing a Hash Table383580
-Node: Looking Up or Entering a String384830
-Node: Traversing a Hash Table386083
-Node: Deriving a New Hash Table Type386872
-Node: Define the Derived Structures387938
-Node: Write the Derived Creation Routine389019
-Node: Write Other Derived Routines391644
-Node: BFD back ends392959
-Node: What to Put Where393229
-Node: aout393409
-Node: coff399691
-Node: elf427842
-Node: mmo428243
-Node: File layout429113
-Node: Symbol-table435026
-Node: mmo section mapping438789
-Node: GNU Free Documentation License442443
-Node: BFD Index467507
+Node: section prototypes86421
+Node: Symbols97165
+Node: Reading Symbols98768
+Node: Writing Symbols99876
+Node: Mini Symbols101620
+Node: typedef asymbol102594
+Node: symbol handling functions108679
+Node: Archives114054
+Node: Formats118191
+Node: Relocations121142
+Node: typedef arelent121869
+Node: howto manager136787
+Node: Core Files270429
+Node: Targets272467
+Node: bfd_target274442
+Node: Architectures301889
+Node: Opening and Closing333661
+Node: Internal351892
+Node: File Caching358724
+Node: Linker Functions360642
+Node: Creating a Linker Hash Table362316
+Node: Adding Symbols to the Hash Table364055
+Node: Differing file formats364955
+Node: Adding symbols from an object file366680
+Node: Adding symbols from an archive368830
+Node: Performing the Final Link371176
+Node: Information provided by the linker372417
+Node: Relocating the section contents373571
+Node: Writing the symbol table375323
+Node: Hash Tables382477
+Node: Creating and Freeing a Hash Table383675
+Node: Looking Up or Entering a String384925
+Node: Traversing a Hash Table386178
+Node: Deriving a New Hash Table Type386967
+Node: Define the Derived Structures388033
+Node: Write the Derived Creation Routine389114
+Node: Write Other Derived Routines391739
+Node: BFD back ends393054
+Node: What to Put Where393324
+Node: aout393504
+Node: coff399786
+Node: elf427937
+Node: mmo428338
+Node: File layout429208
+Node: Symbol-table435121
+Node: mmo section mapping438884
+Node: GNU Free Documentation License442538
+Node: BFD Index467602
 
 End Tag Table
 

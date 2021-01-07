@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "11.0.0 20210103 (experimental)")
+(!version  "11.0.0 20210107 (experimental)")
 (!srcdir  "../../gcc/gcc")
 (!languages 11 ada brig c cp d fortran go jit lto objc objcp)
 (!fileslist 224
@@ -27488,7 +27488,7 @@
    (!type already_seen 1982)
   )
   gc_pointed_to "cp_parser"
-  (!srcfileloc  "cp/parser.c" 44637)
+  (!srcfileloc  "cp/parser.c" 44640)
   (!fields 37 
    (!pair  "lexer"
     (!type already_seen 1968)
@@ -28719,7 +28719,7 @@
   nil 0 nil nil )
  
  (!type undefined 2139 nil  gc_unused "class_to_loc_map_t::iterator"
-  (!srcfileloc  "cp/parser.c" 32406)
+  (!srcfileloc  "cp/parser.c" 32409)
  )
  
  (!type struct 2140 
@@ -28799,15 +28799,15 @@
    (!type already_seen 2153)
   )
   gc_pointed_to "hash_map<tree,tree_pair_p>"
-  (!srcfileloc  "cp/pt.c" 28983)
+  (!srcfileloc  "cp/pt.c" 28994)
   (!fields 2 
    (!pair  "tree_pair_p"
     (!type already_seen 532)
-    (!srcfileloc  "cp/pt.c" 28983)
+    (!srcfileloc  "cp/pt.c" 28994)
     nil )
    (!pair  "tree"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28983)
+    (!srcfileloc  "cp/pt.c" 28994)
     nil )
   )
  )
@@ -29798,7 +29798,7 @@
   nil )
  (!pair  "go_char_p"
   (!type already_seen 9)
-  (!srcfileloc  "go/go-lang.c" 196)
+  (!srcfileloc  "go/go-lang.c" 198)
   nil )
  (!pair  "gfc_interface_mapping"
   (!type already_seen 2219)
@@ -29974,7 +29974,7 @@
   nil )
  (!pair  "hash_map<tree,tree_pair_p>"
   (!type already_seen 2153)
-  (!srcfileloc  "cp/pt.c" 28983)
+  (!srcfileloc  "cp/pt.c" 28994)
   nil )
  (!pair  "pending_template"
   (!type already_seen 2140)
@@ -30002,15 +30002,15 @@
   nil )
  (!pair  "cp_parser"
   (!type already_seen 1982)
-  (!srcfileloc  "cp/parser.c" 44637)
+  (!srcfileloc  "cp/parser.c" 44640)
   nil )
  (!pair  "iter_t"
   (!type already_seen 2139)
-  (!srcfileloc  "cp/parser.c" 32406)
+  (!srcfileloc  "cp/parser.c" 32409)
   nil )
  (!pair  "class_to_loc_map_t::iterator"
   (!type already_seen 2139)
-  (!srcfileloc  "cp/parser.c" 32406)
+  (!srcfileloc  "cp/parser.c" 32409)
   nil )
  (!pair  "cp_parser_expression_stack"
   (!type array 2263 nil  gc_unused "NUM_PREC_VALUES" 
@@ -33543,11 +33543,11 @@
   nil )
  (!pair  "go_non_zero_struct"
   (!type already_seen 23)
-  (!srcfileloc  "go/go-c.h" 80)
+  (!srcfileloc  "go/go-c.h" 81)
   nil )
  (!pair  "go_gc_root"
   (!type already_seen 23)
-  (!srcfileloc  "go/go-lang.c" 580)
+  (!srcfileloc  "go/go-lang.c" 586)
   nil )
  (!pair  "gfc_rank_cst"
   (!type array 2274 nil  gc_used "GFC_MAX_DIMENSIONS + 1" 
@@ -34223,37 +34223,37 @@
   (!type array 2291 nil  gc_used "(int) BT_LAST + 1" 
    (!type already_seen 23)
   )
-  (!srcfileloc  "d/d-builtins.cc" 1008)
+  (!srcfileloc  "d/d-builtins.cc" 1022)
   nil )
  (!pair  "built_in_attributes"
   (!type array 2292 nil  gc_used "(int) ATTR_LAST" 
    (!type already_seen 23)
   )
-  (!srcfileloc  "d/d-builtins.cc" 912)
+  (!srcfileloc  "d/d-builtins.cc" 926)
   nil )
  (!pair  "signed_size_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 763)
+  (!srcfileloc  "d/d-builtins.cc" 777)
   nil )
  (!pair  "uintmax_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 762)
+  (!srcfileloc  "d/d-builtins.cc" 776)
   nil )
  (!pair  "intmax_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 761)
+  (!srcfileloc  "d/d-builtins.cc" 775)
   nil )
  (!pair  "wint_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 760)
+  (!srcfileloc  "d/d-builtins.cc" 774)
   nil )
  (!pair  "const_string_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 759)
+  (!srcfileloc  "d/d-builtins.cc" 773)
   nil )
  (!pair  "string_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 758)
+  (!srcfileloc  "d/d-builtins.cc" 772)
   nil )
  (!pair  "gcc_builtins_types"
   (!type already_seen 84)
@@ -34319,7 +34319,7 @@
   nil )
  (!pair  "dguide_cache"
   (!type already_seen 2154)
-  (!srcfileloc  "cp/pt.c" 28983)
+  (!srcfileloc  "cp/pt.c" 28994)
   (!options 
    (!option deletable string  "")
   )
@@ -34408,11 +34408,11 @@
   nil )
  (!pair  "generic_parm_count"
   (!type already_seen 2)
-  (!srcfileloc  "cp/parser.c" 45129)
+  (!srcfileloc  "cp/parser.c" 45132)
   nil )
  (!pair  "the_parser"
   (!type already_seen 1983)
-  (!srcfileloc  "cp/parser.c" 44637)
+  (!srcfileloc  "cp/parser.c" 44640)
   nil )
  (!pair  "cp_parser_context_free_list"
   (!type already_seen 1975)
@@ -34770,7 +34770,7 @@
  )
  (!pair  "cv_cache"
   (!type already_seen 392)
-  (!srcfileloc  "cp/constexpr.c" 7360)
+  (!srcfileloc  "cp/constexpr.c" 7369)
   (!options 
    (!option deletable string  "")
   )
@@ -35378,21 +35378,21 @@
   nil )
  (!pair  "aarch64_sls_shared_thunks_needed"
   (!type already_seen 2)
-  (!srcfileloc  "config/aarch64/aarch64.c" 23564)
+  (!srcfileloc  "config/aarch64/aarch64.c" 23578)
   nil )
  (!pair  "aarch64_sls_shared_thunks"
   (!type array 2321 nil  gc_used "30" 
    (!type already_seen 23)
   )
-  (!srcfileloc  "config/aarch64/aarch64.c" 23563)
+  (!srcfileloc  "config/aarch64/aarch64.c" 23577)
   nil )
  (!pair  "va_list_type"
   (!type already_seen 23)
-  (!srcfileloc  "config/aarch64/aarch64.c" 16300)
+  (!srcfileloc  "config/aarch64/aarch64.c" 16314)
   nil )
  (!pair  "aarch64_previous_fndecl"
   (!type already_seen 23)
-  (!srcfileloc  "config/aarch64/aarch64.c" 15286)
+  (!srcfileloc  "config/aarch64/aarch64.c" 15300)
   nil )
  (!pair  "tls_get_addr_libfunc"
   (!type already_seen 100)
@@ -35802,7 +35802,7 @@
   nil )
  (!pair  "stack_check_libfunc"
   (!type already_seen 100)
-  (!srcfileloc  "explow.c" 1617)
+  (!srcfileloc  "explow.c" 1637)
   nil )
  (!pair  "hard_reg_clobbers"
   (!type array 2324 nil  gc_used "NUM_MACHINE_MODES" 

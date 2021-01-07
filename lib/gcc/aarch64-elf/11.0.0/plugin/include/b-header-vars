@@ -1,4 +1,5 @@
 USER_H=float.h iso646.h stdarg.h stdbool.h stddef.h varargs.h stdfix.h stdnoreturn.h stdalign.h stdatomic.h config/aarch64/arm_fp16.h arm_neon.h arm_bf16.h arm_acle.h arm_sve.h tgmath.h
+T_GLIMITS_H=glimits.h
 HASHTAB_H=hashtab.h
 OBSTACK_H=obstack.h
 SPLAY_TREE_H=splay-tree.h

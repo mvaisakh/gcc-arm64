@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-01-03" "gcc-11.0.0" "GNU"
+.TH GCC 1 "2021-01-07" "gcc-11.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -2474,18 +2474,20 @@ The name \fBgnu++1z\fR is deprecated.
 .IP "\fBc++2a\fR" 4
 .IX Item "c++2a"
 .PD
-The next revision of the \s-1ISO \*(C+\s0 standard, planned for
-2020.  Support is highly experimental, and will almost certainly
-change in incompatible ways in future releases.
+The 2020 \s-1ISO \*(C+\s0 standard plus amendments.
+Support is experimental, and could change in incompatible ways in
+future releases.
+The name \fBc++2a\fR is deprecated.
 .IP "\fBgnu++20\fR" 4
 .IX Item "gnu++20"
 .PD 0
 .IP "\fBgnu++2a\fR" 4
 .IX Item "gnu++2a"
 .PD
-\&\s-1GNU\s0 dialect of \fB\-std=c++20\fR.  Support is highly experimental,
-and will almost certainly change in incompatible ways in future
-releases.
+\&\s-1GNU\s0 dialect of \fB\-std=c++20\fR.
+Support is experimental, and could change in incompatible ways in
+future releases.
+The name \fBgnu++2a\fR is deprecated.
 .RE
 .RS 4
 .RE
@@ -13686,8 +13688,8 @@ the available options are shown at startup of the instrumented program.  See
 <\fBhttps://github.com/google/sanitizers/wiki/AddressSanitizerFlags#run\-time\-flags\fR>
 for a list of supported options.
 The option cannot be combined with \fB\-fsanitize=thread\fR or
-\&\fB\-fsanitize=hwaddress\fR.  Note that the only target this option is
-currently supported on is AArch64.
+\&\fB\-fsanitize=hwaddress\fR.  Note that the only target
+\&\fB\-fsanitize=hwaddress\fR is currently supported on is AArch64.
 .IP "\fB\-fsanitize=kernel\-address\fR" 4
 .IX Item "-fsanitize=kernel-address"
 Enable AddressSanitizer for Linux kernel.

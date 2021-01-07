@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "AS 1"
-.TH AS 1 "2021-01-03" "binutils-2.35.50" "GNU Development Tools"
+.TH AS 1 "2021-01-07" "binutils-2.35.50" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -377,6 +377,7 @@ as [\fB\-a\fR[\fBcdghlns\fR][=\fIfile\fR]] [\fB\-\-alternate\fR] [\fB\-D\fR]
    [\fB\-fpic\fR|\fB\-fPIC\fR|\fB\-fno\-pic\fR]
    [\fB\-march\fR=\fI\s-1ISA\s0\fR]
    [\fB\-mabi\fR=\fI\s-1ABI\s0\fR]
+   [\fB\-mlittle\-endian\fR|\fB\-mbig\-endian\fR]
 .PP
 \&\fITarget \s-1RL78\s0 options:\fR
    [\fB\-mg10\fR]
@@ -2706,6 +2707,12 @@ read-only \s-1CSR\s0 can not be written by the \s-1CSR\s0 instructions.
 .IP "\fB\-mno\-csr\-check\fR" 4
 .IX Item "-mno-csr-check"
 Don't do \s-1CSR\s0 checking.
+.IP "\fB\-mlittle\-endian\fR" 4
+.IX Item "-mlittle-endian"
+Generate code for a little endian machine.
+.IP "\fB\-mbig\-endian\fR" 4
+.IX Item "-mbig-endian"
+Generate code for a big endian machine.
 .PP
 See the info pages for documentation of the RX-specific options.
 .PP
