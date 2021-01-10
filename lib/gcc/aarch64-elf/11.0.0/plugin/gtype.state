@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "11.0.0 20210107 (experimental)")
+(!version  "11.0.0 20210110 (experimental)")
 (!srcdir  "../../gcc/gcc")
 (!languages 11 ada brig c cp d fortran go jit lto objc objcp)
 (!fileslist 224
@@ -28799,15 +28799,15 @@
    (!type already_seen 2153)
   )
   gc_pointed_to "hash_map<tree,tree_pair_p>"
-  (!srcfileloc  "cp/pt.c" 28994)
+  (!srcfileloc  "cp/pt.c" 29003)
   (!fields 2 
    (!pair  "tree_pair_p"
     (!type already_seen 532)
-    (!srcfileloc  "cp/pt.c" 28994)
+    (!srcfileloc  "cp/pt.c" 29003)
     nil )
    (!pair  "tree"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 28994)
+    (!srcfileloc  "cp/pt.c" 29003)
     nil )
   )
  )
@@ -29974,7 +29974,7 @@
   nil )
  (!pair  "hash_map<tree,tree_pair_p>"
   (!type already_seen 2153)
-  (!srcfileloc  "cp/pt.c" 28994)
+  (!srcfileloc  "cp/pt.c" 29003)
   nil )
  (!pair  "pending_template"
   (!type already_seen 2140)
@@ -34319,7 +34319,7 @@
   nil )
  (!pair  "dguide_cache"
   (!type already_seen 2154)
-  (!srcfileloc  "cp/pt.c" 28994)
+  (!srcfileloc  "cp/pt.c" 29003)
   (!options 
    (!option deletable string  "")
   )
@@ -34770,7 +34770,7 @@
  )
  (!pair  "cv_cache"
   (!type already_seen 392)
-  (!srcfileloc  "cp/constexpr.c" 7369)
+  (!srcfileloc  "cp/constexpr.c" 7375)
   (!options 
    (!option deletable string  "")
   )
@@ -34808,7 +34808,7 @@
   nil )
  (!pair  "default_arg_context"
   (!type already_seen 84)
-  (!srcfileloc  "cp/call.c" 8159)
+  (!srcfileloc  "cp/call.c" 8169)
   nil )
  (!pair  "unemitted_tinfo_decls"
   (!type already_seen 84)
@@ -35776,7 +35776,7 @@
   nil )
  (!pair  "next_block_index"
   (!type already_seen 2)
-  (!srcfileloc  "function.c" 4599)
+  (!srcfileloc  "function.c" 4603)
   nil )
  (!pair  "temp_slot_address_table"
   (!type already_seen 1398)
