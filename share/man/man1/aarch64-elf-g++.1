@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-01-14" "gcc-11.0.0" "GNU"
+.TH GCC 1 "2021-01-16" "gcc-11.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -30789,6 +30789,26 @@ Recognize \s-1EUCJP\s0 characters.
 If \fB\s-1LANG\s0\fR is not defined, or if it has some other value, then the
 compiler uses \f(CW\*(C`mblen\*(C'\fR and \f(CW\*(C`mbtowc\*(C'\fR as defined by the default locale to
 recognize and translate multibyte characters.
+.RE
+.IP "\fB\s-1GCC_EXTRA_DIAGNOSTIC_OUTPUT\s0\fR" 4
+.IX Item "GCC_EXTRA_DIAGNOSTIC_OUTPUT"
+If \fB\s-1GCC_EXTRA_DIAGNOSTIC_OUTPUT\s0\fR is set to one of the following values,
+then additional text will be emitted to stderr when fix-it hints are
+emitted.  \fB\-fdiagnostics\-parseable\-fixits\fR and
+\&\fB\-fno\-diagnostics\-parseable\-fixits\fR take precedence over this
+environment variable.
+.RS 4
+.IP "\fBfixits\-v1\fR" 4
+.IX Item "fixits-v1"
+Emit parseable fix-it hints, equivalent to
+\&\fB\-fdiagnostics\-parseable\-fixits\fR.  In particular, columns are
+expressed as a count of bytes, starting at byte 1 for the initial column.
+.IP "\fBfixits\-v2\fR" 4
+.IX Item "fixits-v2"
+As \f(CW\*(C`fixits\-v1\*(C'\fR, but columns are expressed as display columns,
+as per \fB\-fdiagnostics\-column\-unit=display\fR.
+.RE
+.RS 4
 .RE
 .PP
 Some additional environment variables affect the behavior of the
