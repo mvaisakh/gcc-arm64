@@ -48,7 +48,7 @@ Software development
 * As: (as).                     The GNU assembler.
 * Bfd: (bfd).                   The Binary File Descriptor library.
 * Binutils: (binutils).         The GNU binary utilities.
-* Cpplib: (cppinternals).       Cpplib internals.
+* Cpp: (cpp).                   The GNU C preprocessor.
 * Gas: (as).                    The GNU assembler.
 * Ld: (ld).                     The GNU linker.
 * g++: (gcc).                   The GNU C++ compiler.
