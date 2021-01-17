@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-01-16" "gcc-11.0.0" "GNU"
+.TH GCC 1 "2021-01-17" "gcc-11.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -8880,14 +8880,15 @@ possible.
 .IX Item "-gdwarf-version"
 .PD
 Produce debugging information in \s-1DWARF\s0 format (if that is supported).
-The value of \fIversion\fR may be either 2, 3, 4 or 5; the default version
-for most targets is 4.  \s-1DWARF\s0 Version 5 is only experimental.
+The value of \fIversion\fR may be either 2, 3, 4 or 5; the default
+version for most targets is 5 (with the exception of VxWorks and
+Darwin/Mac \s-1OS X\s0 which default to version 2).
 .Sp
 Note that with \s-1DWARF\s0 Version 2, some ports require and always
 use some non-conflicting \s-1DWARF 3\s0 extensions in the unwind tables.
 .Sp
 Version 4 may require \s-1GDB 7.0\s0 and \fB\-fvar\-tracking\-assignments\fR
-for maximum benefit.
+for maximum benefit. Version 5 requires \s-1GDB 8.0\s0 or higher.
 .Sp
 \&\s-1GCC\s0 no longer supports \s-1DWARF\s0 Version 1, which is substantially
 different than Version 2 and later.  For historical reasons, some
@@ -25166,6 +25167,26 @@ Currently, the following sets are defined:
 \&\-mcustom\-fdivs=255 
 \&\-fsingle\-precision\-constant\fR
 .Sp
+\&\fB\-mcustom\-fpu\-cfg=fph2\fR is equivalent to:
+\&\fB\-mcustom\-fabss=224 
+\&\-mcustom\-fnegs=225 
+\&\-mcustom\-fcmpnes=226 
+\&\-mcustom\-fcmpeqs=227 
+\&\-mcustom\-fcmpges=228 
+\&\-mcustom\-fcmpgts=229 
+\&\-mcustom\-fcmples=230 
+\&\-mcustom\-fcmplts=231 
+\&\-mcustom\-fmaxs=232 
+\&\-mcustom\-fmins=233 
+\&\-mcustom\-round=248 
+\&\-mcustom\-fixsi=249 
+\&\-mcustom\-floatis=250 
+\&\-mcustom\-fsqrts=251 
+\&\-mcustom\-fmuls=252 
+\&\-mcustom\-fadds=253 
+\&\-mcustom\-fsubs=254 
+\&\-mcustom\-fdivs=255\fR
+.Sp
 Custom instruction assignments given by individual
 \&\fB\-mcustom\-\fR\fIinsn\fR\fB=\fR options override those given by
 \&\fB\-mcustom\-fpu\-cfg=\fR, regardless of the
@@ -25175,6 +25196,14 @@ Note that you can gain more local control over selection of a \s-1FPU\s0
 configuration by using the \f(CW\*(C`target("custom\-fpu\-cfg=\f(CIname\f(CW")\*(C'\fR
 function attribute
 or pragma.
+.Sp
+The name \fIfph2\fR is an abbreviation for \fINios \s-1II\s0 Floating Point
+Hardware 2 Component\fR.  Please note that the custom instructions enabled by
+\&\fB\-mcustom\-fmins=233\fR and \fB\-mcustom\-fmaxs=234\fR are only generated
+if \fB\-ffinite\-math\-only\fR is specified.  The custom instruction enabled by
+\&\fB\-mcustom\-round=248\fR is only generated if \fB\-fno\-math\-errno\fR is
+specified.  In contrast to the other configurations,
+\&\fB\-fsingle\-precision\-constant\fR is not set.
 .PP
 These additional \fB\-m\fR options are available for the Altera Nios \s-1II
 ELF\s0 (bare-metal) target:
