@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-01-17" "gcc-11.0.0" "GNU"
+.TH GCC 1 "2021-01-21" "gcc-11.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -8500,7 +8500,8 @@ This warning requires \fB\-fanalyzer\fR, which enables it; use
 \&\fB\-Wno\-analyzer\-double\-free\fR to disable it.
 .Sp
 This diagnostic warns for paths through the code in which a pointer
-can have \f(CW\*(C`free\*(C'\fR called on it more than once.
+can have a deallocator called on it more than once, either \f(CW\*(C`free\*(C'\fR,
+or a deallocator referenced by attribute \f(CW\*(C`malloc\*(C'\fR.
 .IP "\fB\-Wno\-analyzer\-exposure\-through\-output\-file\fR" 4
 .IX Item "-Wno-analyzer-exposure-through-output-file"
 This warning requires \fB\-fanalyzer\fR, which enables it; use
@@ -8533,7 +8534,8 @@ This warning requires \fB\-fanalyzer\fR, which enables it; use
 to disable it.
 .Sp
 This diagnostic warns for paths through the code in which a
-pointer allocated via \f(CW\*(C`malloc\*(C'\fR is leaked.
+pointer allocated via an allocator is leaked: either \f(CW\*(C`malloc\*(C'\fR,
+or a function marked with attribute \f(CW\*(C`malloc\*(C'\fR.
 .IP "\fB\-Wno\-analyzer\-mismatching\-deallocation\fR" 4
 .IX Item "-Wno-analyzer-mismatching-deallocation"
 This warning requires \fB\-fanalyzer\fR, which enables it; use
@@ -8542,7 +8544,10 @@ to disable it.
 .Sp
 This diagnostic warns for paths through the code in which the
 wrong deallocation function is called on a pointer value, based on
-which function was used to allocate the pointer value.
+which function was used to allocate the pointer value.  The diagnostic
+will warn about mismatches between \f(CW\*(C`free\*(C'\fR, scalar \f(CW\*(C`delete\*(C'\fR
+and vector \f(CW\*(C`delete[]\*(C'\fR, and those marked as allocator/deallocator
+pairs using attribute \f(CW\*(C`malloc\*(C'\fR.
 .IP "\fB\-Wno\-analyzer\-possible\-null\-argument\fR" 4
 .IX Item "-Wno-analyzer-possible-null-argument"
 This warning requires \fB\-fanalyzer\fR, which enables it; use
@@ -8637,7 +8642,8 @@ This warning requires \fB\-fanalyzer\fR, which enables it; use
 \&\fB\-Wno\-analyzer\-use\-after\-free\fR to disable it.
 .Sp
 This diagnostic warns for paths through the code in which a
-pointer is used after \f(CW\*(C`free\*(C'\fR is called on it.
+pointer is used after a deallocator is called on it: either \f(CW\*(C`free\*(C'\fR,
+or a deallocator referenced by attribute \f(CW\*(C`malloc\*(C'\fR.
 .IP "\fB\-Wno\-analyzer\-use\-of\-pointer\-in\-stale\-stack\-frame\fR" 4
 .IX Item "-Wno-analyzer-use-of-pointer-in-stale-stack-frame"
 This warning requires \fB\-fanalyzer\fR, which enables it; use
@@ -8881,8 +8887,9 @@ possible.
 .PD
 Produce debugging information in \s-1DWARF\s0 format (if that is supported).
 The value of \fIversion\fR may be either 2, 3, 4 or 5; the default
-version for most targets is 5 (with the exception of VxWorks and
-Darwin/Mac \s-1OS X\s0 which default to version 2).
+version for most targets is 5 (with the exception of VxWorks, \s-1TPF\s0 and
+Darwin/Mac \s-1OS X,\s0 which default to version 2, and \s-1AIX,\s0 which defaults
+to version 4).
 .Sp
 Note that with \s-1DWARF\s0 Version 2, some ports require and always
 use some non-conflicting \s-1DWARF 3\s0 extensions in the unwind tables.
