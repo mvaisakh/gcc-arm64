@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-01-21" "gcc-11.0.0" "GNU"
+.TH GCC 1 "2021-01-24" "gcc-11.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -2839,7 +2839,8 @@ Version 14, which first appeared in G++ 10, corrects the mangling of
 the nullptr expression.
 .Sp
 Version 15, which first appeared in G++ 11, changes the mangling of
-\&\f(CW\*(C`_\|_alignof_\|_\*(C'\fR to be distinct from that of \f(CW\*(C`alignof\*(C'\fR.
+\&\f(CW\*(C`_\|_alignof_\|_\*(C'\fR to be distinct from that of \f(CW\*(C`alignof\*(C'\fR, and
+dependent operator names.
 .Sp
 See also \fB\-Wabi\fR.
 .IP "\fB\-fabi\-compat\-version=\fR\fIn\fR" 4
