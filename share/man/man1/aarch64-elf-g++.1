@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-01-30" "gcc-11.0.0" "GNU"
+.TH GCC 1 "2021-01-31" "gcc-11.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -26519,9 +26519,10 @@ Return structures smaller than 8 bytes in registers (as specified by the
 .IP "\fB\-mabi=\fR\fIabi-type\fR" 4
 .IX Item "-mabi=abi-type"
 Extend the current \s-1ABI\s0 with a particular extension, or remove such extension.
-Valid values are \fBaltivec\fR, \fBno-altivec\fR,
+Valid values are: \fBaltivec\fR, \fBno-altivec\fR,
 \&\fBibmlongdouble\fR, \fBieeelongdouble\fR,
-\&\fBelfv1\fR, \fBelfv2\fR.
+\&\fBelfv1\fR, \fBelfv2\fR,
+and for \s-1AIX:\s0 \fBvec-extabi\fR, \fBvec-default\fR.
 .IP "\fB\-mabi=ibmlongdouble\fR" 4
 .IX Item "-mabi=ibmlongdouble"
 Change the current \s-1ABI\s0 to use \s-1IBM\s0 extended-precision long double.
