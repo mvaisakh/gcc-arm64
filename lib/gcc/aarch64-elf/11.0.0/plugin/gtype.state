@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "11.0.0 20210203 (experimental)")
+(!version  "11.0.0 20210206 (experimental)")
 (!srcdir  "../../gcc/gcc")
 (!languages 11 ada brig c cp d fortran go jit lto objc objcp)
 (!fileslist 224
@@ -27246,19 +27246,19 @@
   (!fields 4 
    (!pair  "decl"
     (!type already_seen 23)
-    (!srcfileloc  "cp/cp-tree.h" 8177)
+    (!srcfileloc  "cp/cp-tree.h" 8178)
     nil )
    (!pair  "body"
     (!type already_seen 23)
-    (!srcfileloc  "cp/cp-tree.h" 8178)
+    (!srcfileloc  "cp/cp-tree.h" 8179)
     nil )
    (!pair  "parms"
     (!type already_seen 23)
-    (!srcfileloc  "cp/cp-tree.h" 8179)
+    (!srcfileloc  "cp/cp-tree.h" 8180)
     nil )
    (!pair  "result"
     (!type already_seen 23)
-    (!srcfileloc  "cp/cp-tree.h" 8180)
+    (!srcfileloc  "cp/cp-tree.h" 8181)
     nil )
   )
   (!options 
@@ -27835,39 +27835,39 @@
  )
  
  (!type struct 2017 nil  gc_pointed_to "sat_entry"
-  (!srcfileloc  "cp/constraint.cc" 2459)
+  (!srcfileloc  "cp/constraint.cc" 2451)
   (!fields 8 
    (!pair  "atom"
     (!type already_seen 23)
-    (!srcfileloc  "cp/constraint.cc" 2429)
+    (!srcfileloc  "cp/constraint.cc" 2421)
     nil )
    (!pair  "args"
     (!type already_seen 23)
-    (!srcfileloc  "cp/constraint.cc" 2432)
+    (!srcfileloc  "cp/constraint.cc" 2424)
     nil )
    (!pair  "result"
     (!type already_seen 23)
-    (!srcfileloc  "cp/constraint.cc" 2439)
+    (!srcfileloc  "cp/constraint.cc" 2431)
     nil )
    (!pair  "location"
     (!type already_seen 2)
-    (!srcfileloc  "cp/constraint.cc" 2443)
+    (!srcfileloc  "cp/constraint.cc" 2435)
     nil )
    (!pair  "ftc_begin"
     (!type already_seen 2)
-    (!srcfileloc  "cp/constraint.cc" 2448)
+    (!srcfileloc  "cp/constraint.cc" 2440)
     nil )
    (!pair  "ftc_end"
     (!type already_seen 2)
-    (!srcfileloc  "cp/constraint.cc" 2448)
+    (!srcfileloc  "cp/constraint.cc" 2440)
     nil )
    (!pair  "diagnose_instability"
     (!type already_seen 2)
-    (!srcfileloc  "cp/constraint.cc" 2453)
+    (!srcfileloc  "cp/constraint.cc" 2445)
     nil )
    (!pair  "evaluating"
     (!type already_seen 2)
-    (!srcfileloc  "cp/constraint.cc" 2458)
+    (!srcfileloc  "cp/constraint.cc" 2450)
     nil )
   )
   (!options 
@@ -27876,7 +27876,7 @@
   1032 nil nil )
  
  (!type struct 2018 nil  gc_used "sat_hasher"
-  (!srcfileloc  "cp/constraint.cc" 2531)
+  (!srcfileloc  "cp/constraint.cc" 2523)
   (!fields 0 )
   nil 1032 nil nil )
  
@@ -27885,11 +27885,11 @@
    (!type already_seen 2019)
   )
   gc_pointed_to "hash_table<sat_hasher>"
-  (!srcfileloc  "cp/constraint.cc" 2531)
+  (!srcfileloc  "cp/constraint.cc" 2523)
   (!fields 1 
    (!pair  "sat_hasher"
     (!type already_seen 2018)
-    (!srcfileloc  "cp/constraint.cc" 2531)
+    (!srcfileloc  "cp/constraint.cc" 2523)
     nil )
   )
  )
@@ -28799,15 +28799,15 @@
    (!type already_seen 2153)
   )
   gc_pointed_to "hash_map<tree,tree_pair_p>"
-  (!srcfileloc  "cp/pt.c" 29080)
+  (!srcfileloc  "cp/pt.c" 29093)
   (!fields 2 
    (!pair  "tree_pair_p"
     (!type already_seen 532)
-    (!srcfileloc  "cp/pt.c" 29080)
+    (!srcfileloc  "cp/pt.c" 29093)
     nil )
    (!pair  "tree"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 29080)
+    (!srcfileloc  "cp/pt.c" 29093)
     nil )
   )
  )
@@ -29974,7 +29974,7 @@
   nil )
  (!pair  "hash_map<tree,tree_pair_p>"
   (!type already_seen 2153)
-  (!srcfileloc  "cp/pt.c" 29080)
+  (!srcfileloc  "cp/pt.c" 29093)
   nil )
  (!pair  "pending_template"
   (!type already_seen 2140)
@@ -30266,11 +30266,11 @@
   nil )
  (!pair  "sat_hasher"
   (!type already_seen 2018)
-  (!srcfileloc  "cp/constraint.cc" 2531)
+  (!srcfileloc  "cp/constraint.cc" 2523)
   nil )
  (!pair  "hash_table<sat_hasher>"
   (!type already_seen 2019)
-  (!srcfileloc  "cp/constraint.cc" 2531)
+  (!srcfileloc  "cp/constraint.cc" 2523)
   nil )
  (!pair  "atom_hasher"
   (!type already_seen 1958)
@@ -34319,21 +34319,21 @@
   nil )
  (!pair  "dguide_cache"
   (!type already_seen 2154)
-  (!srcfileloc  "cp/pt.c" 29080)
+  (!srcfileloc  "cp/pt.c" 29093)
   (!options 
    (!option deletable string  "")
   )
  )
  (!pair  "explicit_specifier_map"
   (!type already_seen 925)
-  (!srcfileloc  "cp/pt.c" 13682)
+  (!srcfileloc  "cp/pt.c" 13688)
   (!options 
    (!option cache string  "")
   )
  )
  (!pair  "defarg_inst"
   (!type already_seen 925)
-  (!srcfileloc  "cp/pt.c" 13566)
+  (!srcfileloc  "cp/pt.c" 13572)
   (!options 
    (!option cache string  "")
   )
@@ -34423,7 +34423,7 @@
  )
  (!pair  "free_saved_scope"
   (!type already_seen 1919)
-  (!srcfileloc  "cp/name-lookup.c" 8515)
+  (!srcfileloc  "cp/name-lookup.c" 8516)
   (!options 
    (!option deletable string  "")
   )
@@ -34588,11 +34588,11 @@
   nil )
  (!pair  "start_cleanup_cnt"
   (!type already_seen 2)
-  (!srcfileloc  "cp/decl.c" 8845)
+  (!srcfileloc  "cp/decl.c" 8858)
   nil )
  (!pair  "decomp_type_table"
   (!type already_seen 925)
-  (!srcfileloc  "cp/decl.c" 8327)
+  (!srcfileloc  "cp/decl.c" 8340)
   (!options 
    (!option cache string  "")
   )
@@ -34728,21 +34728,21 @@
   nil )
  (!pair  "decl_satisfied_cache"
   (!type already_seen 392)
-  (!srcfileloc  "cp/constraint.cc" 2534)
+  (!srcfileloc  "cp/constraint.cc" 2526)
   (!options 
    (!option deletable string  "")
   )
  )
  (!pair  "sat_cache"
   (!type already_seen 2020)
-  (!srcfileloc  "cp/constraint.cc" 2531)
+  (!srcfileloc  "cp/constraint.cc" 2523)
   (!options 
    (!option deletable string  "")
   )
  )
  (!pair  "failed_type_completions"
   (!type already_seen 84)
-  (!srcfileloc  "cp/constraint.cc" 2389)
+  (!srcfileloc  "cp/constraint.cc" 2381)
   (!options 
    (!option deletable string  "")
   )
@@ -34808,7 +34808,7 @@
   nil )
  (!pair  "default_arg_context"
   (!type already_seen 84)
-  (!srcfileloc  "cp/call.c" 8187)
+  (!srcfileloc  "cp/call.c" 8193)
   nil )
  (!pair  "unemitted_tinfo_decls"
   (!type already_seen 84)
@@ -34974,7 +34974,7 @@
   nil )
  (!pair  "ext_block"
   (!type already_seen 23)
-  (!srcfileloc  "c/c-decl.c" 12110)
+  (!srcfileloc  "c/c-decl.c" 12120)
   nil )
  (!pair  "last_structptr_types"
   (!type array 2304 nil  gc_used "builtin_structptr_type_count" 
