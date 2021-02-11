@@ -6029,7 +6029,7 @@ and target defaults are as follows:
 'rel'
      'R_ARM_REL32' (arm*-*-elf, arm*-*-eabi)
 'abs'
-     'R_ARM_ABS32' (arm*-*-symbianelf)
+     'R_ARM_ABS32'
 'got-rel'
      'R_ARM_GOT_PREL' (arm*-*-linux, arm*-*-*bsd)
 
@@ -6063,9 +6063,6 @@ instructions (available on ARMv5t and above) in various situations.
 Currently it is used to perform calls via the PLT from Thumb code using
 BLX rather than using BX and a mode-switching stub before each PLT
 entry.  This should lead to such calls executing slightly faster.
-
-   This option is enabled implicitly for SymbianOS, so there is no need
-to specify it if you are using that target.
 
    The '--vfp11-denorm-fix' switch enables a link-time workaround for a
 bug in certain VFP11 coprocessor hardware, which sometimes allows
@@ -8276,7 +8273,7 @@ LD Index
 * --build-id:                            Options.            (line 2149)
 * --build-id=STYLE:                      Options.            (line 2149)
 * --check-sections:                      Options.            (line 1196)
-* --cmse-implib:                         ARM.                (line  234)
+* --cmse-implib:                         ARM.                (line  231)
 * --code-region:                         MSP430.             (line   34)
 * --compact-branches:                    Options.            (line 2723)
 * --compress-debug-sections=none:        Options.            (line 2107)
@@ -8349,10 +8346,10 @@ LD Index
 * --fatal-warnings:                      Options.            (line 1351)
 * --file-alignment:                      Options.            (line 2281)
 * --filter=NAME:                         Options.            (line  315)
-* --fix-arm1176:                         ARM.                (line  111)
-* --fix-cortex-a53-835769:               ARM.                (line  211)
-* --fix-cortex-a8:                       ARM.                (line  202)
-* --fix-stm32l4xx-629360:                ARM.                (line  120)
+* --fix-arm1176:                         ARM.                (line  108)
+* --fix-cortex-a53-835769:               ARM.                (line  208)
+* --fix-cortex-a8:                       ARM.                (line  199)
+* --fix-stm32l4xx-629360:                ARM.                (line  117)
 * --fix-v4bx:                            ARM.                (line   48)
 * --fix-v4bx-interworking:               ARM.                (line   61)
 * --force-dynamic:                       Options.            (line  596)
@@ -8375,7 +8372,7 @@ LD Index
 * --ignore-branch-isa <1>:               MIPS.               (line   13)
 * --image-base:                          Options.            (line 2294)
 * --imagic:                              Options.            (line 2760)
-* --in-implib=FILE:                      ARM.                (line  239)
+* --in-implib=FILE:                      ARM.                (line  236)
 * --insert-timestamp:                    Options.            (line 2608)
 * --insn32:                              Options.            (line 2702)
 * --insn32 <1>:                          MIPS.               (line    6)
@@ -8387,11 +8384,11 @@ LD Index
 * --library-path=DIR:                    Options.            (line  405)
 * --library=NAMESPEC:                    Options.            (line  372)
 * --local-store=lo:hi:                   SPU ELF.            (line   24)
-* --long-plt:                            ARM.                (line  222)
+* --long-plt:                            ARM.                (line  219)
 * --major-image-version:                 Options.            (line 2324)
 * --major-os-version:                    Options.            (line 2329)
 * --major-subsystem-version:             Options.            (line 2333)
-* --merge-exidx-entries:                 ARM.                (line  219)
+* --merge-exidx-entries:                 ARM.                (line  216)
 * --minor-image-version:                 Options.            (line 2338)
 * --minor-os-version:                    Options.            (line 2343)
 * --minor-subsystem-version:             Options.            (line 2347)
@@ -8402,7 +8399,7 @@ LD Index
 * --no-accept-unknown-input-arch:        Options.            (line 1091)
 * --no-add-needed:                       Options.            (line 1118)
 * --no-allow-shlib-undefined:            Options.            (line 1492)
-* --no-apply-dynamic-relocs:             ARM.                (line  226)
+* --no-apply-dynamic-relocs:             ARM.                (line  223)
 * --no-as-needed:                        Options.            (line 1101)
 * --no-bind:                             Options.            (line 2594)
 * --no-check-sections:                   Options.            (line 1196)
@@ -8414,12 +8411,12 @@ LD Index
 * --no-dotsyms:                          PowerPC64 ELF64.    (line   33)
 * --no-dynamic-linker:                   Options.            (line 1336)
 * --no-eh-frame-hdr:                     Options.            (line 2070)
-* --no-enum-size-warning:                ARM.                (line  158)
+* --no-enum-size-warning:                ARM.                (line  155)
 * --no-export-dynamic:                   Options.            (line  246)
 * --no-fatal-warnings:                   Options.            (line 1351)
-* --no-fix-arm1176:                      ARM.                (line  111)
-* --no-fix-cortex-a53-835769:            ARM.                (line  211)
-* --no-fix-cortex-a8:                    ARM.                (line  202)
+* --no-fix-arm1176:                      ARM.                (line  108)
+* --no-fix-cortex-a53-835769:            ARM.                (line  208)
+* --no-fix-cortex-a8:                    ARM.                (line  199)
 * --no-gc-sections:                      Options.            (line 1366)
 * --no-ignore-branch-isa:                Options.            (line 2712)
 * --no-ignore-branch-isa <1>:            MIPS.               (line   13)
@@ -8430,7 +8427,7 @@ LD Index
 * --no-keep-memory:                      Options.            (line 1469)
 * --no-leading-underscore:               Options.            (line 2241)
 * --no-merge-exidx-entries:              Options.            (line 2644)
-* --no-merge-exidx-entries <1>:          ARM.                (line  219)
+* --no-merge-exidx-entries <1>:          ARM.                (line  216)
 * --no-multi-toc:                        PowerPC64 ELF64.    (line  109)
 * --no-omagic:                           Options.            (line  515)
 * --no-omagic <1>:                       Options.            (line 2774)
@@ -8457,7 +8454,7 @@ LD Index
 * --no-undefined-version:                Options.            (line 1533)
 * --no-warn-mismatch:                    Options.            (line 1546)
 * --no-warn-search-mismatch:             Options.            (line 1555)
-* --no-wchar-size-warning:               ARM.                (line  165)
+* --no-wchar-size-warning:               ARM.                (line  162)
 * --no-whole-archive:                    Options.            (line 1559)
 * --noinhibit-exec:                      Options.            (line 1563)
 * --non-overlapping-opd:                 PowerPC64 ELF64.    (line   81)
@@ -8470,7 +8467,7 @@ LD Index
 * --output-def:                          Options.            (line 2352)
 * --output=OUTPUT:                       Options.            (line  521)
 * --pic-executable:                      Options.            (line 1596)
-* --pic-veneer:                          ARM.                (line  171)
+* --pic-veneer:                          ARM.                (line  168)
 * --plt-align:                           PowerPC64 ELF64.    (line  131)
 * --plt-localentry:                      PowerPC64 ELF64.    (line  160)
 * --plt-static-chain:                    PowerPC64 ELF64.    (line  142)
@@ -8513,7 +8510,7 @@ LD Index
 * --strip-discarded:                     Options.            (line  638)
 * --stub-group-size:                     PowerPC64 ELF64.    (line    6)
 * --stub-group-size on C-SKY:            Options.            (line 2657)
-* --stub-group-size=N:                   ARM.                (line  176)
+* --stub-group-size=N:                   ARM.                (line  173)
 * --stub-group-size=N <1>:               HPPA ELF32.         (line   12)
 * --subsystem:                           Options.            (line 2544)
 * --support-old-code:                    ARM.                (line    6)
@@ -8538,7 +8535,7 @@ LD Index
 * --verbose[=NUMBER]:                    Options.            (line 1878)
 * --version:                             Options.            (line  739)
 * --version-script=VERSION-SCRIPTFILE:   Options.            (line 1886)
-* --vfp11-denorm-fix:                    ARM.                (line   82)
+* --vfp11-denorm-fix:                    ARM.                (line   79)
 * --warn-alternate-em:                   Options.            (line 1998)
 * --warn-common:                         Options.            (line 1896)
 * --warn-constructors:                   Options.            (line 1964)
@@ -8633,7 +8630,7 @@ LD Index
 * .:                                     Location Counter.   (line    6)
 * /DISCARD/:                             Output Section Discarding.
                                                              (line   26)
-* 32-bit PLT entries:                    ARM.                (line  222)
+* 32-bit PLT entries:                    ARM.                (line  219)
 * :PHDR:                                 Output Section Phdr.
                                                              (line    6)
 * =FILLEXP:                              Output Section Fill.
@@ -8642,7 +8639,7 @@ LD Index
                                                              (line    6)
 * [COMMON]:                              Input Section Common.
                                                              (line   29)
-* AArch64 rela addend:                   ARM.                (line  226)
+* AArch64 rela addend:                   ARM.                (line  223)
 * ABSOLUTE (MRI):                        MRI.                (line   32)
 * absolute and relocatable symbols:      Expression Section. (line    6)
 * absolute expressions:                  Expression Section. (line    6)
@@ -8668,7 +8665,7 @@ LD Index
 * arithmetic:                            Expressions.        (line    6)
 * arithmetic operators:                  Operators.          (line    6)
 * ARM interworking support:              ARM.                (line    6)
-* ARM1176 erratum workaround:            ARM.                (line  111)
+* ARM1176 erratum workaround:            ARM.                (line  108)
 * ASSERT:                                Miscellaneous Commands.
                                                              (line    9)
 * assertion in linker script:            Miscellaneous Commands.
@@ -8720,8 +8717,8 @@ LD Index
                                                              (line   19)
 * constructors, arranging in link:       Output Section Keywords.
                                                              (line   19)
-* Cortex-A53 erratum 835769 workaround:  ARM.                (line  211)
-* Cortex-A8 erratum workaround:          ARM.                (line  202)
+* Cortex-A53 erratum 835769 workaround:  ARM.                (line  208)
+* Cortex-A8 erratum workaround:          ARM.                (line  199)
 * crash of linker:                       Bug Criteria.       (line    9)
 * CREATE_OBJECT_SYMBOLS:                 Output Section Keywords.
                                                              (line    9)
@@ -8854,7 +8851,7 @@ LD Index
 * input files, displaying:               Options.            (line  643)
 * input format:                          Options.            (line  121)
 * input format <1>:                      Options.            (line  121)
-* Input import library:                  ARM.                (line  239)
+* Input import library:                  ARM.                (line  236)
 * input object files in linker scripts:  File Commands.      (line   19)
 * input section alignment:               Forced Input Alignment.
                                                              (line    6)
@@ -8925,7 +8922,7 @@ LD Index
                                                              (line    6)
 * memory usage:                          Options.            (line 1420)
 * memory usage <1>:                      Options.            (line 1469)
-* Merging exidx entries:                 ARM.                (line  219)
+* Merging exidx entries:                 ARM.                (line  216)
 * MIN:                                   Builtin Functions.  (line  154)
 * MIPS branch relocation check control:  MIPS.               (line   13)
 * MIPS microMIPS instruction choice selection: MIPS.         (line    6)
@@ -8948,8 +8945,8 @@ LD Index
 * NOLOAD:                                Output Section Type.
                                                              (line   21)
 * not enough room for program headers:   Builtin Functions.  (line  196)
-* NO_ENUM_SIZE_WARNING:                  ARM.                (line  158)
-* NO_WCHAR_SIZE_WARNING:                 ARM.                (line  165)
+* NO_ENUM_SIZE_WARNING:                  ARM.                (line  155)
+* NO_WCHAR_SIZE_WARNING:                 ARM.                (line  162)
 * o =:                                   MEMORY.             (line   67)
 * objdump -i:                            BFD.                (line    6)
 * object file management:                BFD.                (line    6)
@@ -8993,8 +8990,8 @@ LD Index
 * PE import table prefixing:             ARM.                (line   23)
 * PHDRS:                                 PHDRS.              (line    6)
 * PHDRS <1>:                             PHDRS.              (line   62)
-* PIC_VENEER:                            ARM.                (line  171)
-* Placement of SG veneers:               ARM.                (line  229)
+* PIC_VENEER:                            ARM.                (line  168)
+* Placement of SG veneers:               ARM.                (line  226)
 * plugins:                               Plugins.            (line    6)
 * pop state governing input file handling: Options.          (line  583)
 * position independent executables:      Options.            (line 1598)
@@ -9105,7 +9102,7 @@ LD Index
 * sections, discarding:                  Output Section Discarding.
                                                              (line    6)
 * sections, orphan:                      Options.            (line  704)
-* Secure gateway import library:         ARM.                (line  234)
+* Secure gateway import library:         ARM.                (line  231)
 * segment origins, cmd line:             Options.            (line 1828)
 * segments, ELF:                         PHDRS.              (line    6)
 * SEGMENT_START(SEGMENT, DEFAULT):       Builtin Functions.  (line  167)
@@ -9141,11 +9138,11 @@ LD Index
 * start of execution:                    Entry Point.        (line    6)
 * STARTUP(FILENAME):                     File Commands.      (line   88)
 * static library dependencies:           libdep Plugin.      (line    6)
-* STM32L4xx erratum workaround:          ARM.                (line  120)
+* STM32L4xx erratum workaround:          ARM.                (line  117)
 * strip all symbols:                     Options.            (line  629)
 * strip debugger symbols:                Options.            (line  633)
 * stripping all but some symbols:        Options.            (line 1638)
-* STUB_GROUP_SIZE:                       ARM.                (line  176)
+* STUB_GROUP_SIZE:                       ARM.                (line  173)
 * SUBALIGN(SUBSECTION_ALIGN):            Forced Input Alignment.
                                                              (line    6)
 * suffixes for integers:                 Constants.          (line   15)
@@ -9192,7 +9189,7 @@ LD Index
 * version script, symbol versions:       Options.            (line 1886)
 * VERSION {script text}:                 VERSION.            (line    6)
 * versions of symbols:                   VERSION.            (line    6)
-* VFP11_DENORM_FIX:                      ARM.                (line   82)
+* VFP11_DENORM_FIX:                      ARM.                (line   79)
 * visibility:                            Options.            (line 1035)
 * warnings, on combining symbols:        Options.            (line 1896)
 * warnings, on section alignment:        Options.            (line 1987)
@@ -9271,30 +9268,30 @@ Node: Machine Dependent254497
 Node: H8/300255585
 Node: M68HC11/68HC12257658
 Node: ARM259105
-Node: HPPA ELF32271352
-Node: M68K272975
-Node: MIPS273884
-Node: MMIX275000
-Node: MSP430276165
-Node: NDS32278078
-Node: Nios II279042
-Node: PowerPC ELF32280358
-Node: PowerPC64 ELF64283189
-Node: S/390 ELF292947
-Node: SPU ELF293294
-Node: TI COFF295922
-Node: WIN32296448
-Node: Xtensa316595
-Node: BFD320038
-Node: BFD outline321496
-Node: BFD information loss322784
-Node: Canonical format325310
-Node: Reporting Bugs329638
-Node: Bug Criteria330332
-Node: Bug Reporting331031
-Node: MRI338069
-Node: GNU Free Documentation License342540
-Node: LD Index367677
+Node: HPPA ELF32271215
+Node: M68K272838
+Node: MIPS273747
+Node: MMIX274863
+Node: MSP430276028
+Node: NDS32277941
+Node: Nios II278905
+Node: PowerPC ELF32280221
+Node: PowerPC64 ELF64283052
+Node: S/390 ELF292810
+Node: SPU ELF293157
+Node: TI COFF295785
+Node: WIN32296311
+Node: Xtensa316458
+Node: BFD319901
+Node: BFD outline321359
+Node: BFD information loss322647
+Node: Canonical format325173
+Node: Reporting Bugs329501
+Node: Bug Criteria330195
+Node: Bug Reporting330894
+Node: MRI337932
+Node: GNU Free Documentation License342403
+Node: LD Index367540
 
 End Tag Table
 
