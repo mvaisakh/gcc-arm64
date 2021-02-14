@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-02-10" "gcc-11.0.0" "GNU"
+.TH GCC 1 "2021-02-13" "gcc-11.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -12360,6 +12360,14 @@ do so.
 .IX Item "max-stores-to-merge"
 The maximum number of stores to attempt to merge into wider stores in the store
 merging pass.
+.IP "\fBmax-store-chains-to-track\fR" 4
+.IX Item "max-store-chains-to-track"
+The maximum number of store chains to track at the same time in the attempt
+to merge them into wider stores in the store merging pass.
+.IP "\fBmax-stores-to-track\fR" 4
+.IX Item "max-stores-to-track"
+The maximum number of stores to track at the same time in the attemt to
+to merge them into wider stores in the store merging pass.
 .IP "\fBmax-unrolled-insns\fR" 4
 .IX Item "max-unrolled-insns"
 The maximum number of instructions that a loop may have to be unrolled.

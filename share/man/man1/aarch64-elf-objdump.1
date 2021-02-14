@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "OBJDUMP 1"
-.TH OBJDUMP 1 "2021-02-11" "binutils-2.36.50" "GNU Development Tools"
+.TH OBJDUMP 1 "2021-02-14" "binutils-2.36.50" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -167,8 +167,10 @@ objdump [\fB\-a\fR|\fB\-\-archive\-headers\fR]
         [\fB\-r\fR|\fB\-\-reloc\fR]
         [\fB\-R\fR|\fB\-\-dynamic\-reloc\fR]
         [\fB\-s\fR|\fB\-\-full\-contents\fR]
-        [\fB\-W[lLiaprmfFsoORtUuTgAckK]\fR|
-         \fB\-\-dwarf\fR[=rawline,=decodedline,=info,=abbrev,=pubnames,=aranges,=macro,=frames,=frames\-interp,=str,=str\-offsets,=loc,=Ranges,=pubtypes,=trace_info,=trace_abbrev,=trace_aranges,=gdb_index,=addr,=cu_index,=links,=follow\-links]]
+        [\fB\-W[lLiaprmfFsoORtUuTgAck]\fR|
+         \fB\-\-dwarf\fR[=rawline,=decodedline,=info,=abbrev,=pubnames,=aranges,=macro,=frames,=frames\-interp,=str,=str\-offsets,=loc,=Ranges,=pubtypes,=trace_info,=trace_abbrev,=trace_aranges,=gdb_index,=addr,=cu_index,=links]]
+        [\fB\-WK\fR|\fB\-\-dwarf=follow\-links\fR]
+        [\fB\-WN\fR|\fB\-\-dwarf=no\-follow\-links\fR]
         [\fB\-\-ctf=\fR\fIsection\fR]
         [\fB\-G\fR|\fB\-\-stabs\fR]
         [\fB\-t\fR|\fB\-\-syms\fR]
@@ -314,7 +316,7 @@ will stop at the end of the function, otherwise it will stop when the
 next symbol is encountered.  If there are no matches for \fIsymbol\fR
 then nothing will be displayed.
 .Sp
-Note if the \fB\-\-dwarf=follow\-links\fR option has also been enabled
+Note if the \fB\-\-dwarf=follow\-links\fR option is enabled
 then any symbol tables in linked debug info files will be read in and
 used when disassembling.
 .IP "\fB\-D\fR" 4
@@ -339,7 +341,7 @@ If the target is an \s-1ARM\s0 architecture this switch also has the effect
 of forcing the disassembler to decode pieces of data found in code
 sections as if they were instructions.
 .Sp
-Note if the \fB\-\-dwarf=follow\-links\fR option has also been enabled
+Note if the \fB\-\-dwarf=follow\-links\fR option is enabled
 then any symbol tables in linked debug info files will be read in and
 used when disassembling.
 .IP "\fB\-\-no\-addresses\fR" 4
@@ -941,6 +943,22 @@ more than one file.
 In addition, when displaying \s-1DWARF\s0 attributes, if a form is found that
 references the separate debug info file, then the referenced contents
 will also be displayed.
+.Sp
+Note \- in some distributions this option is enabled by default.  It
+can be disabled via the \fBN\fR debug option.  The default can be
+chosen when configuring the binutils via the
+\&\fB\-\-enable\-follow\-debug\-links=yes\fR or
+\&\fB\-\-enable\-follow\-debug\-links=no\fR options.  If these are not
+used then the default is to enable the following of debug links.
+.ie n .IP """N""" 4
+.el .IP "\f(CWN\fR" 4
+.IX Item "N"
+.PD 0
+.ie n .IP """=no\-follow\-links""" 4
+.el .IP "\f(CW=no\-follow\-links\fR" 4
+.IX Item "=no-follow-links"
+.PD
+Disables the following of links to separate debug info files.
 .ie n .IP """l""" 4
 .el .IP "\f(CWl\fR" 4
 .IX Item "l"

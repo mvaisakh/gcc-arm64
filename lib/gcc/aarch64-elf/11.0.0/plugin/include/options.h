@@ -1325,6 +1325,12 @@ extern int param_max_ssa_name_query_depth;
 #define param_max_ssa_name_query_depth global_options.x_param_max_ssa_name_query_depth
 #endif
 #ifdef GENERATOR_FILE
+extern int param_max_store_chains_to_track;
+#else
+  int x_param_max_store_chains_to_track;
+#define param_max_store_chains_to_track global_options.x_param_max_store_chains_to_track
+#endif
+#ifdef GENERATOR_FILE
 extern int param_max_stores_to_merge;
 #else
   int x_param_max_stores_to_merge;
@@ -1335,6 +1341,12 @@ extern int param_max_stores_to_sink;
 #else
   int x_param_max_stores_to_sink;
 #define param_max_stores_to_sink global_options.x_param_max_stores_to_sink
+#endif
+#ifdef GENERATOR_FILE
+extern int param_max_stores_to_track;
+#else
+  int x_param_max_stores_to_track;
+#define param_max_stores_to_track global_options.x_param_max_stores_to_track
 #endif
 #ifdef GENERATOR_FILE
 extern int param_max_tail_merge_comparisons;
@@ -8594,1611 +8606,1613 @@ enum opt_code
   OPT__param_max_slsr_cand_scan_ = 228,      /* --param=max-slsr-cand-scan= */
   OPT__param_max_speculative_devirt_maydefs_ = 229,/* --param=max-speculative-devirt-maydefs= */
   OPT__param_max_ssa_name_query_depth_ = 230,/* --param=max-ssa-name-query-depth= */
-  OPT__param_max_stores_to_merge_ = 231,     /* --param=max-stores-to-merge= */
-  OPT__param_max_stores_to_sink_ = 232,      /* --param=max-stores-to-sink= */
-  OPT__param_max_tail_merge_comparisons_ = 233,/* --param=max-tail-merge-comparisons= */
-  OPT__param_max_tail_merge_iterations_ = 234,/* --param=max-tail-merge-iterations= */
-  OPT__param_max_tracked_strlens_ = 235,     /* --param=max-tracked-strlens= */
-  OPT__param_max_tree_if_conversion_phi_args_ = 236,/* --param=max-tree-if-conversion-phi-args= */
-  OPT__param_max_unroll_times_ = 237,        /* --param=max-unroll-times= */
-  OPT__param_max_unrolled_insns_ = 238,      /* --param=max-unrolled-insns= */
-  OPT__param_max_unswitch_insns_ = 239,      /* --param=max-unswitch-insns= */
-  OPT__param_max_unswitch_level_ = 240,      /* --param=max-unswitch-level= */
-  OPT__param_max_variable_expansions_in_unroller_ = 241,/* --param=max-variable-expansions-in-unroller= */
-  OPT__param_max_vartrack_expr_depth_ = 242, /* --param=max-vartrack-expr-depth= */
-  OPT__param_max_vartrack_reverse_op_size_ = 243,/* --param=max-vartrack-reverse-op-size= */
-  OPT__param_max_vartrack_size_ = 244,       /* --param=max-vartrack-size= */
-  OPT__param_max_vrp_switch_assertions_ = 245,/* --param=max-vrp-switch-assertions= */
-  OPT__param_min_crossjump_insns_ = 246,     /* --param=min-crossjump-insns= */
-  OPT__param_min_inline_recursive_probability_ = 247,/* --param=min-inline-recursive-probability= */
-  OPT__param_min_insn_to_prefetch_ratio_ = 248,/* --param=min-insn-to-prefetch-ratio= */
-  OPT__param_min_loop_cond_split_prob_ = 249,/* --param=min-loop-cond-split-prob= */
-  OPT__param_min_nondebug_insn_uid_ = 250,   /* --param=min-nondebug-insn-uid= */
-  OPT__param_min_size_for_stack_sharing_ = 251,/* --param=min-size-for-stack-sharing= */
-  OPT__param_min_spec_prob_ = 252,           /* --param=min-spec-prob= */
-  OPT__param_min_vect_loop_bound_ = 253,     /* --param=min-vect-loop-bound= */
-  OPT__param_modref_max_accesses_ = 254,     /* --param=modref-max-accesses= */
-  OPT__param_modref_max_bases_ = 255,        /* --param=modref-max-bases= */
-  OPT__param_modref_max_depth_ = 256,        /* --param=modref-max-depth= */
-  OPT__param_modref_max_escape_points_ = 257,/* --param=modref-max-escape-points= */
-  OPT__param_modref_max_refs_ = 258,         /* --param=modref-max-refs= */
-  OPT__param_modref_max_tests_ = 259,        /* --param=modref-max-tests= */
-  OPT__param_parloops_chunk_size_ = 260,     /* --param=parloops-chunk-size= */
-  OPT__param_parloops_min_per_thread_ = 261, /* --param=parloops-min-per-thread= */
-  OPT__param_parloops_schedule_ = 262,       /* --param=parloops-schedule= */
-  OPT__param_partial_inlining_entry_probability_ = 263,/* --param=partial-inlining-entry-probability= */
-  OPT__param_predictable_branch_outcome_ = 264,/* --param=predictable-branch-outcome= */
-  OPT__param_prefetch_dynamic_strides_ = 265,/* --param=prefetch-dynamic-strides= */
-  OPT__param_prefetch_latency_ = 266,        /* --param=prefetch-latency= */
-  OPT__param_prefetch_min_insn_to_mem_ratio_ = 267,/* --param=prefetch-min-insn-to-mem-ratio= */
-  OPT__param_prefetch_minimum_stride_ = 268, /* --param=prefetch-minimum-stride= */
-  OPT__param_profile_func_internal_id_ = 269,/* --param=profile-func-internal-id= */
-  OPT__param_rpo_vn_max_loop_depth_ = 270,   /* --param=rpo-vn-max-loop-depth= */
-  OPT__param_sccvn_max_alias_queries_per_access_ = 271,/* --param=sccvn-max-alias-queries-per-access= */
-  OPT__param_scev_max_expr_complexity_ = 272,/* --param=scev-max-expr-complexity= */
-  OPT__param_scev_max_expr_size_ = 273,      /* --param=scev-max-expr-size= */
-  OPT__param_sched_autopref_queue_depth_ = 274,/* --param=sched-autopref-queue-depth= */
-  OPT__param_sched_mem_true_dep_cost_ = 275, /* --param=sched-mem-true-dep-cost= */
-  OPT__param_sched_pressure_algorithm_ = 276,/* --param=sched-pressure-algorithm= */
-  OPT__param_sched_spec_prob_cutoff_ = 277,  /* --param=sched-spec-prob-cutoff= */
-  OPT__param_sched_state_edge_prob_cutoff_ = 278,/* --param=sched-state-edge-prob-cutoff= */
-  OPT__param_selsched_insns_to_rename_ = 279,/* --param=selsched-insns-to-rename= */
-  OPT__param_selsched_max_lookahead_ = 280,  /* --param=selsched-max-lookahead= */
-  OPT__param_selsched_max_sched_times_ = 281,/* --param=selsched-max-sched-times= */
-  OPT__param_simultaneous_prefetches_ = 282, /* --param=simultaneous-prefetches= */
-  OPT__param_sink_frequency_threshold_ = 283,/* --param=sink-frequency-threshold= */
-  OPT__param_sms_dfa_history_ = 284,         /* --param=sms-dfa-history= */
-  OPT__param_sms_loop_average_count_threshold_ = 285,/* --param=sms-loop-average-count-threshold= */
-  OPT__param_sms_max_ii_factor_ = 286,       /* --param=sms-max-ii-factor= */
-  OPT__param_sms_min_sc_ = 287,              /* --param=sms-min-sc= */
-  OPT__param_sra_max_propagations_ = 288,    /* --param=sra-max-propagations= */
-  OPT__param_sra_max_scalarization_size_Osize_ = 289,/* --param=sra-max-scalarization-size-Osize= */
-  OPT__param_sra_max_scalarization_size_Ospeed_ = 290,/* --param=sra-max-scalarization-size-Ospeed= */
-  OPT__param_ssa_name_def_chain_limit_ = 291,/* --param=ssa-name-def-chain-limit= */
-  OPT__param_ssp_buffer_size_ = 292,         /* --param=ssp-buffer-size= */
-  OPT__param_stack_clash_protection_guard_size_ = 293,/* --param=stack-clash-protection-guard-size= */
-  OPT__param_stack_clash_protection_probe_interval_ = 294,/* --param=stack-clash-protection-probe-interval= */
-  OPT__param_store_merging_allow_unaligned_ = 295,/* --param=store-merging-allow-unaligned= */
-  OPT__param_store_merging_max_size_ = 296,  /* --param=store-merging-max-size= */
-  OPT__param_switch_conversion_max_branch_ratio_ = 297,/* --param=switch-conversion-max-branch-ratio= */
-  OPT__param_tm_max_aggregate_size_ = 298,   /* --param=tm-max-aggregate-size= */
-  OPT__param_tracer_dynamic_coverage_feedback_ = 299,/* --param=tracer-dynamic-coverage-feedback= */
-  OPT__param_tracer_dynamic_coverage_ = 300, /* --param=tracer-dynamic-coverage= */
-  OPT__param_tracer_max_code_growth_ = 301,  /* --param=tracer-max-code-growth= */
-  OPT__param_tracer_min_branch_probability_feedback_ = 302,/* --param=tracer-min-branch-probability-feedback= */
-  OPT__param_tracer_min_branch_probability_ = 303,/* --param=tracer-min-branch-probability= */
-  OPT__param_tracer_min_branch_ratio_ = 304, /* --param=tracer-min-branch-ratio= */
-  OPT__param_tree_reassoc_width_ = 305,      /* --param=tree-reassoc-width= */
-  OPT__param_tsan_distinguish_volatile_ = 306,/* --param=tsan-distinguish-volatile= */
-  OPT__param_tsan_instrument_func_entry_exit_ = 307,/* --param=tsan-instrument-func-entry-exit= */
-  OPT__param_uninit_control_dep_attempts_ = 308,/* --param=uninit-control-dep-attempts= */
-  OPT__param_uninlined_function_insns_ = 309,/* --param=uninlined-function-insns= */
-  OPT__param_uninlined_function_time_ = 310, /* --param=uninlined-function-time= */
-  OPT__param_uninlined_thunk_insns_ = 311,   /* --param=uninlined-thunk-insns= */
-  OPT__param_uninlined_thunk_time_ = 312,    /* --param=uninlined-thunk-time= */
-  OPT__param_unlikely_bb_count_fraction_ = 313,/* --param=unlikely-bb-count-fraction= */
-  OPT__param_unroll_jam_max_unroll_ = 314,   /* --param=unroll-jam-max-unroll= */
-  OPT__param_unroll_jam_min_percent_ = 315,  /* --param=unroll-jam-min-percent= */
-  OPT__param_use_after_scope_direct_emission_threshold_ = 316,/* --param=use-after-scope-direct-emission-threshold= */
-  OPT__param_use_canonical_types_ = 317,     /* --param=use-canonical-types= */
-  OPT__param_vect_epilogues_nomask_ = 318,   /* --param=vect-epilogues-nomask= */
-  OPT__param_vect_max_peeling_for_alignment_ = 319,/* --param=vect-max-peeling-for-alignment= */
-  OPT__param_vect_max_version_for_alias_checks_ = 320,/* --param=vect-max-version-for-alias-checks= */
-  OPT__param_vect_max_version_for_alignment_checks_ = 321,/* --param=vect-max-version-for-alignment-checks= */
-  OPT__param_vect_partial_vector_usage_ = 322,/* --param=vect-partial-vector-usage= */
-  /* OPT__pass_exit_codes = 323, */          /* --pass-exit-codes */
-  /* OPT__pedantic = 324, */                 /* --pedantic */
-  /* OPT__pedantic_errors = 325, */          /* --pedantic-errors */
-  /* OPT__pie = 326, */                      /* --pie */
-  /* OPT__pipe = 327, */                     /* --pipe */
-  /* OPT__prefix = 328, */                   /* --prefix */
-  /* OPT__prefix_ = 329, */                  /* --prefix= */
-  /* OPT__preprocess = 330, */               /* --preprocess */
-  /* OPT__print_file_name = 331, */          /* --print-file-name */
-  /* OPT__print_file_name_ = 332, */         /* --print-file-name= */
-  /* OPT__print_libgcc_file_name = 333, */   /* --print-libgcc-file-name */
-  /* OPT__print_missing_file_dependencies = 334, *//* --print-missing-file-dependencies */
-  /* OPT__print_multi_directory = 335, */    /* --print-multi-directory */
-  /* OPT__print_multi_lib = 336, */          /* --print-multi-lib */
-  /* OPT__print_multi_os_directory = 337, */ /* --print-multi-os-directory */
-  /* OPT__print_multiarch = 338, */          /* --print-multiarch */
-  /* OPT__print_prog_name = 339, */          /* --print-prog-name */
-  /* OPT__print_prog_name_ = 340, */         /* --print-prog-name= */
-  /* OPT__print_search_dirs = 341, */        /* --print-search-dirs */
-  /* OPT__print_sysroot = 342, */            /* --print-sysroot */
-  /* OPT__print_sysroot_headers_suffix = 343, *//* --print-sysroot-headers-suffix */
-  /* OPT__profile = 344, */                  /* --profile */
-  /* OPT__save_temps = 345, */               /* --save-temps */
-  /* OPT__shared = 346, */                   /* --shared */
-  /* OPT__specs = 347, */                    /* --specs */
-  /* OPT__specs_ = 348, */                   /* --specs= */
-  /* OPT__static = 349, */                   /* --static */
-  /* OPT__static_pie = 350, */               /* --static-pie */
-  /* OPT__symbolic = 351, */                 /* --symbolic */
-  /* OPT__sysroot = 352, */                  /* --sysroot */
-  OPT__sysroot_ = 353,                       /* --sysroot= */
-  OPT__target_help = 354,                    /* --target-help */
-  /* OPT__time = 355, */                     /* --time */
-  /* OPT__trace_includes = 356, */           /* --trace-includes */
-  /* OPT__traditional = 357, */              /* --traditional */
-  /* OPT__traditional_cpp = 358, */          /* --traditional-cpp */
-  /* OPT__trigraphs = 359, */                /* --trigraphs */
-  /* OPT__undefine_macro = 360, */           /* --undefine-macro */
-  /* OPT__undefine_macro_ = 361, */          /* --undefine-macro= */
-  /* OPT__user_dependencies = 362, */        /* --user-dependencies */
-  /* OPT__verbose = 363, */                  /* --verbose */
-  OPT__version = 364,                        /* --version */
-  /* OPT__write_dependencies = 365, */       /* --write-dependencies */
-  /* OPT__write_user_dependencies = 366, */  /* --write-user-dependencies */
-  OPT_A = 367,                               /* -A */
-  OPT_B = 368,                               /* -B */
-  OPT_C = 369,                               /* -C */
-  OPT_CC = 370,                              /* -CC */
-  OPT_D = 371,                               /* -D */
-  OPT_E = 372,                               /* -E */
-  OPT_F = 373,                               /* -F */
-  OPT_H = 374,                               /* -H */
-  OPT_Hd = 375,                              /* -Hd */
-  OPT_Hf = 376,                              /* -Hf */
-  OPT_I = 377,                               /* -I */
-  OPT_J = 378,                               /* -J */
-  OPT_L = 379,                               /* -L */
-  OPT_M = 380,                               /* -M */
-  OPT_MD = 381,                              /* -MD */
-  OPT_MF = 382,                              /* -MF */
-  OPT_MG = 383,                              /* -MG */
-  OPT_MM = 384,                              /* -MM */
-  OPT_MMD = 385,                             /* -MMD */
-  OPT_MP = 386,                              /* -MP */
-  OPT_MQ = 387,                              /* -MQ */
-  OPT_MT = 388,                              /* -MT */
-  OPT_Mmodules = 389,                        /* -Mmodules */
-  OPT_Mno_modules = 390,                     /* -Mno-modules */
-  OPT_N = 391,                               /* -N */
-  OPT_O = 392,                               /* -O */
-  OPT_Ofast = 393,                           /* -Ofast */
-  OPT_Og = 394,                              /* -Og */
-  OPT_Os = 395,                              /* -Os */
-  OPT_P = 396,                               /* -P */
-  OPT_Q = 397,                               /* -Q */
-  OPT_Qn = 398,                              /* -Qn */
-  OPT_Qy = 399,                              /* -Qy */
-  OPT_R = 400,                               /* -R */
-  OPT_S = 401,                               /* -S */
-  OPT_T = 402,                               /* -T */
-  OPT_Tbss = 403,                            /* -Tbss */
-  OPT_Tbss_ = 404,                           /* -Tbss= */
-  OPT_Tdata = 405,                           /* -Tdata */
-  OPT_Tdata_ = 406,                          /* -Tdata= */
-  OPT_Ttext = 407,                           /* -Ttext */
-  OPT_Ttext_ = 408,                          /* -Ttext= */
-  OPT_U = 409,                               /* -U */
-  /* OPT_W = 410, */                         /* -W */
-  OPT_WNSObject_attribute = 411,             /* -WNSObject-attribute */
-  OPT_Wa_ = 412,                             /* -Wa, */
-  OPT_Wabi = 413,                            /* -Wabi */
-  OPT_Wabi_tag = 414,                        /* -Wabi-tag */
-  OPT_Wabi_ = 415,                           /* -Wabi= */
-  OPT_Wabsolute_value = 416,                 /* -Wabsolute-value */
-  OPT_Waddress = 417,                        /* -Waddress */
-  OPT_Waddress_of_packed_member = 418,       /* -Waddress-of-packed-member */
-  OPT_Waggregate_return = 419,               /* -Waggregate-return */
-  OPT_Waggressive_loop_optimizations = 420,  /* -Waggressive-loop-optimizations */
-  OPT_Waliasing = 421,                       /* -Waliasing */
-  OPT_Walign_commons = 422,                  /* -Walign-commons */
-  /* OPT_Waligned_new = 423, */              /* -Waligned-new */
-  OPT_Waligned_new_ = 424,                   /* -Waligned-new= */
-  OPT_Wall = 425,                            /* -Wall */
-  OPT_Walloc_size_larger_than_ = 426,        /* -Walloc-size-larger-than= */
-  OPT_Walloc_zero = 427,                     /* -Walloc-zero */
-  OPT_Walloca = 428,                         /* -Walloca */
-  OPT_Walloca_larger_than_ = 429,            /* -Walloca-larger-than= */
-  OPT_Wampersand = 430,                      /* -Wampersand */
-  OPT_Wanalyzer_double_fclose = 431,         /* -Wanalyzer-double-fclose */
-  OPT_Wanalyzer_double_free = 432,           /* -Wanalyzer-double-free */
-  OPT_Wanalyzer_exposure_through_output_file = 433,/* -Wanalyzer-exposure-through-output-file */
-  OPT_Wanalyzer_file_leak = 434,             /* -Wanalyzer-file-leak */
-  OPT_Wanalyzer_free_of_non_heap = 435,      /* -Wanalyzer-free-of-non-heap */
-  OPT_Wanalyzer_malloc_leak = 436,           /* -Wanalyzer-malloc-leak */
-  OPT_Wanalyzer_mismatching_deallocation = 437,/* -Wanalyzer-mismatching-deallocation */
-  OPT_Wanalyzer_null_argument = 438,         /* -Wanalyzer-null-argument */
-  OPT_Wanalyzer_null_dereference = 439,      /* -Wanalyzer-null-dereference */
-  OPT_Wanalyzer_possible_null_argument = 440,/* -Wanalyzer-possible-null-argument */
-  OPT_Wanalyzer_possible_null_dereference = 441,/* -Wanalyzer-possible-null-dereference */
-  OPT_Wanalyzer_shift_count_negative = 442,  /* -Wanalyzer-shift-count-negative */
-  OPT_Wanalyzer_shift_count_overflow = 443,  /* -Wanalyzer-shift-count-overflow */
-  OPT_Wanalyzer_stale_setjmp_buffer = 444,   /* -Wanalyzer-stale-setjmp-buffer */
-  OPT_Wanalyzer_tainted_array_index = 445,   /* -Wanalyzer-tainted-array-index */
-  OPT_Wanalyzer_too_complex = 446,           /* -Wanalyzer-too-complex */
-  OPT_Wanalyzer_unsafe_call_within_signal_handler = 447,/* -Wanalyzer-unsafe-call-within-signal-handler */
-  OPT_Wanalyzer_use_after_free = 448,        /* -Wanalyzer-use-after-free */
-  OPT_Wanalyzer_use_of_pointer_in_stale_stack_frame = 449,/* -Wanalyzer-use-of-pointer-in-stale-stack-frame */
-  OPT_Wanalyzer_write_to_const = 450,        /* -Wanalyzer-write-to-const */
-  OPT_Wanalyzer_write_to_string_literal = 451,/* -Wanalyzer-write-to-string-literal */
-  OPT_Wargument_mismatch = 452,              /* -Wargument-mismatch */
-  OPT_Warith_conversion = 453,               /* -Warith-conversion */
-  OPT_Warray_bounds = 454,                   /* -Warray-bounds */
-  OPT_Warray_bounds_ = 455,                  /* -Warray-bounds= */
-  /* OPT_Warray_parameter = 456, */          /* -Warray-parameter */
-  OPT_Warray_parameter_ = 457,               /* -Warray-parameter= */
-  OPT_Warray_temporaries = 458,              /* -Warray-temporaries */
-  OPT_Wassign_intercept = 459,               /* -Wassign-intercept */
-  /* OPT_Wattribute_alias = 460, */          /* -Wattribute-alias */
-  OPT_Wattribute_alias_ = 461,               /* -Wattribute-alias= */
-  OPT_Wattribute_warning = 462,              /* -Wattribute-warning */
-  OPT_Wattributes = 463,                     /* -Wattributes */
-  OPT_Wbad_function_cast = 464,              /* -Wbad-function-cast */
-  OPT_Wbool_compare = 465,                   /* -Wbool-compare */
-  OPT_Wbool_operation = 466,                 /* -Wbool-operation */
-  OPT_Wbuiltin_declaration_mismatch = 467,   /* -Wbuiltin-declaration-mismatch */
-  OPT_Wbuiltin_macro_redefined = 468,        /* -Wbuiltin-macro-redefined */
-  OPT_Wc___compat = 469,                     /* -Wc++-compat */
-  /* OPT_Wc__0x_compat = 470, */             /* -Wc++0x-compat */
-  OPT_Wc__11_compat = 471,                   /* -Wc++11-compat */
-  OPT_Wc__14_compat = 472,                   /* -Wc++14-compat */
-  OPT_Wc__17_compat = 473,                   /* -Wc++17-compat */
-  /* OPT_Wc__1z_compat = 474, */             /* -Wc++1z-compat */
-  OPT_Wc__20_compat = 475,                   /* -Wc++20-compat */
-  /* OPT_Wc__2a_compat = 476, */             /* -Wc++2a-compat */
-  OPT_Wc_binding_type = 477,                 /* -Wc-binding-type */
-  OPT_Wc11_c2x_compat = 478,                 /* -Wc11-c2x-compat */
-  OPT_Wc90_c99_compat = 479,                 /* -Wc90-c99-compat */
-  OPT_Wc99_c11_compat = 480,                 /* -Wc99-c11-compat */
-  OPT_Wcannot_profile = 481,                 /* -Wcannot-profile */
-  OPT_Wcast_align = 482,                     /* -Wcast-align */
-  OPT_Wcast_align_strict = 483,              /* -Wcast-align=strict */
-  OPT_Wcast_function_type = 484,             /* -Wcast-function-type */
-  OPT_Wcast_qual = 485,                      /* -Wcast-qual */
-  OPT_Wcast_result = 486,                    /* -Wcast-result */
-  /* OPT_Wcatch_value = 487, */              /* -Wcatch-value */
-  OPT_Wcatch_value_ = 488,                   /* -Wcatch-value= */
-  OPT_Wchar_subscripts = 489,                /* -Wchar-subscripts */
-  OPT_Wcharacter_truncation = 490,           /* -Wcharacter-truncation */
-  OPT_Wchkp = 491,                           /* -Wchkp */
-  OPT_Wclass_conversion = 492,               /* -Wclass-conversion */
-  OPT_Wclass_memaccess = 493,                /* -Wclass-memaccess */
-  OPT_Wclobbered = 494,                      /* -Wclobbered */
-  OPT_Wcomma_subscript = 495,                /* -Wcomma-subscript */
-  OPT_Wcomment = 496,                        /* -Wcomment */
-  /* OPT_Wcomments = 497, */                 /* -Wcomments */
-  OPT_Wcompare_reals = 498,                  /* -Wcompare-reals */
-  OPT_Wconditionally_supported = 499,        /* -Wconditionally-supported */
-  OPT_Wconversion = 500,                     /* -Wconversion */
-  OPT_Wconversion_extra = 501,               /* -Wconversion-extra */
-  OPT_Wconversion_null = 502,                /* -Wconversion-null */
-  OPT_Wcoverage_mismatch = 503,              /* -Wcoverage-mismatch */
-  OPT_Wcpp = 504,                            /* -Wcpp */
-  OPT_Wctad_maybe_unsupported = 505,         /* -Wctad-maybe-unsupported */
-  OPT_Wctor_dtor_privacy = 506,              /* -Wctor-dtor-privacy */
-  OPT_Wdangling_else = 507,                  /* -Wdangling-else */
-  OPT_Wdate_time = 508,                      /* -Wdate-time */
-  OPT_Wdeclaration_after_statement = 509,    /* -Wdeclaration-after-statement */
-  OPT_Wdelete_incomplete = 510,              /* -Wdelete-incomplete */
-  OPT_Wdelete_non_virtual_dtor = 511,        /* -Wdelete-non-virtual-dtor */
-  OPT_Wdeprecated = 512,                     /* -Wdeprecated */
-  OPT_Wdeprecated_copy = 513,                /* -Wdeprecated-copy */
-  OPT_Wdeprecated_copy_dtor = 514,           /* -Wdeprecated-copy-dtor */
-  OPT_Wdeprecated_declarations = 515,        /* -Wdeprecated-declarations */
-  OPT_Wdeprecated_enum_enum_conversion = 516,/* -Wdeprecated-enum-enum-conversion */
-  OPT_Wdeprecated_enum_float_conversion = 517,/* -Wdeprecated-enum-float-conversion */
-  OPT_Wdesignated_init = 518,                /* -Wdesignated-init */
-  OPT_Wdisabled_optimization = 519,          /* -Wdisabled-optimization */
-  OPT_Wdiscarded_array_qualifiers = 520,     /* -Wdiscarded-array-qualifiers */
-  OPT_Wdiscarded_qualifiers = 521,           /* -Wdiscarded-qualifiers */
-  OPT_Wdiv_by_zero = 522,                    /* -Wdiv-by-zero */
-  OPT_Wdo_subscript = 523,                   /* -Wdo-subscript */
-  OPT_Wdouble_promotion = 524,               /* -Wdouble-promotion */
-  OPT_Wduplicate_decl_specifier = 525,       /* -Wduplicate-decl-specifier */
-  OPT_Wduplicated_branches = 526,            /* -Wduplicated-branches */
-  OPT_Wduplicated_cond = 527,                /* -Wduplicated-cond */
-  OPT_Weffc__ = 528,                         /* -Weffc++ */
-  OPT_Wempty_body = 529,                     /* -Wempty-body */
-  OPT_Wendif_labels = 530,                   /* -Wendif-labels */
-  OPT_Wenum_compare = 531,                   /* -Wenum-compare */
-  OPT_Wenum_conversion = 532,                /* -Wenum-conversion */
-  OPT_Werror = 533,                          /* -Werror */
-  /* OPT_Werror_implicit_function_declaration = 534, *//* -Werror-implicit-function-declaration */
-  OPT_Werror_ = 535,                         /* -Werror= */
-  OPT_Wexceptions = 536,                     /* -Wexceptions */
-  OPT_Wexpansion_to_defined = 537,           /* -Wexpansion-to-defined */
-  OPT_Wextra = 538,                          /* -Wextra */
-  OPT_Wextra_semi = 539,                     /* -Wextra-semi */
-  OPT_Wfatal_errors = 540,                   /* -Wfatal-errors */
-  OPT_Wfloat_conversion = 541,               /* -Wfloat-conversion */
-  OPT_Wfloat_equal = 542,                    /* -Wfloat-equal */
-  /* OPT_Wformat = 543, */                   /* -Wformat */
-  OPT_Wformat_contains_nul = 544,            /* -Wformat-contains-nul */
-  OPT_Wformat_diag = 545,                    /* -Wformat-diag */
-  OPT_Wformat_extra_args = 546,              /* -Wformat-extra-args */
-  OPT_Wformat_nonliteral = 547,              /* -Wformat-nonliteral */
-  /* OPT_Wformat_overflow = 548, */          /* -Wformat-overflow */
-  OPT_Wformat_overflow_ = 549,               /* -Wformat-overflow= */
-  OPT_Wformat_security = 550,                /* -Wformat-security */
-  OPT_Wformat_signedness = 551,              /* -Wformat-signedness */
-  /* OPT_Wformat_truncation = 552, */        /* -Wformat-truncation */
-  OPT_Wformat_truncation_ = 553,             /* -Wformat-truncation= */
-  OPT_Wformat_y2k = 554,                     /* -Wformat-y2k */
-  OPT_Wformat_zero_length = 555,             /* -Wformat-zero-length */
-  OPT_Wformat_ = 556,                        /* -Wformat= */
-  OPT_Wframe_address = 557,                  /* -Wframe-address */
-  OPT_Wframe_larger_than_ = 558,             /* -Wframe-larger-than= */
-  OPT_Wfree_nonheap_object = 559,            /* -Wfree-nonheap-object */
-  OPT_Wfrontend_loop_interchange = 560,      /* -Wfrontend-loop-interchange */
-  OPT_Wfunction_elimination = 561,           /* -Wfunction-elimination */
-  /* OPT_Whsa = 562, */                      /* -Whsa */
-  OPT_Wif_not_aligned = 563,                 /* -Wif-not-aligned */
-  OPT_Wignored_attributes = 564,             /* -Wignored-attributes */
-  OPT_Wignored_qualifiers = 565,             /* -Wignored-qualifiers */
-  OPT_Wimplicit = 566,                       /* -Wimplicit */
-  /* OPT_Wimplicit_fallthrough = 567, */     /* -Wimplicit-fallthrough */
-  OPT_Wimplicit_fallthrough_ = 568,          /* -Wimplicit-fallthrough= */
-  OPT_Wimplicit_function_declaration = 569,  /* -Wimplicit-function-declaration */
-  OPT_Wimplicit_int = 570,                   /* -Wimplicit-int */
-  OPT_Wimplicit_interface = 571,             /* -Wimplicit-interface */
-  OPT_Wimplicit_procedure = 572,             /* -Wimplicit-procedure */
-  /* OPT_Wimport = 573, */                   /* -Wimport */
-  OPT_Winaccessible_base = 574,              /* -Winaccessible-base */
-  OPT_Wincompatible_pointer_types = 575,     /* -Wincompatible-pointer-types */
-  OPT_Winherited_variadic_ctor = 576,        /* -Winherited-variadic-ctor */
-  OPT_Winit_list_lifetime = 577,             /* -Winit-list-lifetime */
-  OPT_Winit_self = 578,                      /* -Winit-self */
-  OPT_Winline = 579,                         /* -Winline */
-  OPT_Wint_conversion = 580,                 /* -Wint-conversion */
-  OPT_Wint_in_bool_context = 581,            /* -Wint-in-bool-context */
-  OPT_Wint_to_pointer_cast = 582,            /* -Wint-to-pointer-cast */
-  OPT_Winteger_division = 583,               /* -Winteger-division */
-  OPT_Wintrinsic_shadow = 584,               /* -Wintrinsic-shadow */
-  OPT_Wintrinsics_std = 585,                 /* -Wintrinsics-std */
-  OPT_Winvalid_imported_macros = 586,        /* -Winvalid-imported-macros */
-  OPT_Winvalid_memory_model = 587,           /* -Winvalid-memory-model */
-  OPT_Winvalid_offsetof = 588,               /* -Winvalid-offsetof */
-  OPT_Winvalid_pch = 589,                    /* -Winvalid-pch */
-  OPT_Wjump_misses_init = 590,               /* -Wjump-misses-init */
-  OPT_Wl_ = 591,                             /* -Wl, */
-  /* OPT_Wlarger_than_ = 592, */             /* -Wlarger-than- */
-  OPT_Wlarger_than_ = 593,                   /* -Wlarger-than= */
-  OPT_Wline_truncation = 594,                /* -Wline-truncation */
-  OPT_Wliteral_suffix = 595,                 /* -Wliteral-suffix */
-  OPT_Wlogical_not_parentheses = 596,        /* -Wlogical-not-parentheses */
-  OPT_Wlogical_op = 597,                     /* -Wlogical-op */
-  OPT_Wlong_long = 598,                      /* -Wlong-long */
-  OPT_Wlto_type_mismatch = 599,              /* -Wlto-type-mismatch */
-  OPT_Wmain = 600,                           /* -Wmain */
-  OPT_Wmaybe_uninitialized = 601,            /* -Wmaybe-uninitialized */
-  OPT_Wmemset_elt_size = 602,                /* -Wmemset-elt-size */
-  OPT_Wmemset_transposed_args = 603,         /* -Wmemset-transposed-args */
-  OPT_Wmisleading_indentation = 604,         /* -Wmisleading-indentation */
-  OPT_Wmismatched_dealloc = 605,             /* -Wmismatched-dealloc */
-  OPT_Wmismatched_new_delete = 606,          /* -Wmismatched-new-delete */
-  OPT_Wmismatched_tags = 607,                /* -Wmismatched-tags */
-  OPT_Wmissing_attributes = 608,             /* -Wmissing-attributes */
-  OPT_Wmissing_braces = 609,                 /* -Wmissing-braces */
-  OPT_Wmissing_declarations = 610,           /* -Wmissing-declarations */
-  OPT_Wmissing_field_initializers = 611,     /* -Wmissing-field-initializers */
-  /* OPT_Wmissing_format_attribute = 612, */ /* -Wmissing-format-attribute */
-  OPT_Wmissing_include_dirs = 613,           /* -Wmissing-include-dirs */
-  /* OPT_Wmissing_noreturn = 614, */         /* -Wmissing-noreturn */
-  OPT_Wmissing_parameter_type = 615,         /* -Wmissing-parameter-type */
-  OPT_Wmissing_profile = 616,                /* -Wmissing-profile */
-  OPT_Wmissing_prototypes = 617,             /* -Wmissing-prototypes */
-  OPT_Wmudflap = 618,                        /* -Wmudflap */
-  OPT_Wmultichar = 619,                      /* -Wmultichar */
-  OPT_Wmultiple_inheritance = 620,           /* -Wmultiple-inheritance */
-  OPT_Wmultistatement_macros = 621,          /* -Wmultistatement-macros */
-  OPT_Wnamespaces = 622,                     /* -Wnamespaces */
-  OPT_Wnarrowing = 623,                      /* -Wnarrowing */
-  OPT_Wnested_externs = 624,                 /* -Wnested-externs */
-  /* OPT_Wno_alloc_size_larger_than = 625, *//* -Wno-alloc-size-larger-than */
-  /* OPT_Wno_alloca_larger_than = 626, */    /* -Wno-alloca-larger-than */
-  /* OPT_Wno_frame_larger_than = 627, */     /* -Wno-frame-larger-than */
-  /* OPT_Wno_larger_than = 628, */           /* -Wno-larger-than */
-  /* OPT_Wno_stack_usage = 629, */           /* -Wno-stack-usage */
-  /* OPT_Wno_vla_larger_than = 630, */       /* -Wno-vla-larger-than */
-  OPT_Wnoexcept = 631,                       /* -Wnoexcept */
-  OPT_Wnoexcept_type = 632,                  /* -Wnoexcept-type */
-  OPT_Wnon_template_friend = 633,            /* -Wnon-template-friend */
-  OPT_Wnon_virtual_dtor = 634,               /* -Wnon-virtual-dtor */
-  OPT_Wnonnull = 635,                        /* -Wnonnull */
-  OPT_Wnonnull_compare = 636,                /* -Wnonnull-compare */
-  /* OPT_Wnormalized = 637, */               /* -Wnormalized */
-  OPT_Wnormalized_ = 638,                    /* -Wnormalized= */
-  OPT_Wnull_dereference = 639,               /* -Wnull-dereference */
-  OPT_Wobjc_root_class = 640,                /* -Wobjc-root-class */
-  OPT_Wodr = 641,                            /* -Wodr */
-  OPT_Wold_style_cast = 642,                 /* -Wold-style-cast */
-  OPT_Wold_style_declaration = 643,          /* -Wold-style-declaration */
-  OPT_Wold_style_definition = 644,           /* -Wold-style-definition */
-  OPT_Wopenmp_simd = 645,                    /* -Wopenmp-simd */
-  OPT_Woverflow = 646,                       /* -Woverflow */
-  OPT_Woverlength_strings = 647,             /* -Woverlength-strings */
-  OPT_Woverloaded_virtual = 648,             /* -Woverloaded-virtual */
-  OPT_Woverride_init = 649,                  /* -Woverride-init */
-  OPT_Woverride_init_side_effects = 650,     /* -Woverride-init-side-effects */
-  OPT_Woverwrite_recursive = 651,            /* -Woverwrite-recursive */
-  OPT_Wp_ = 652,                             /* -Wp, */
-  OPT_Wpacked = 653,                         /* -Wpacked */
-  OPT_Wpacked_bitfield_compat = 654,         /* -Wpacked-bitfield-compat */
-  OPT_Wpacked_not_aligned = 655,             /* -Wpacked-not-aligned */
-  OPT_Wpadded = 656,                         /* -Wpadded */
-  OPT_Wparentheses = 657,                    /* -Wparentheses */
-  OPT_Wpedantic = 658,                       /* -Wpedantic */
-  OPT_Wpessimizing_move = 659,               /* -Wpessimizing-move */
-  /* OPT_Wplacement_new = 660, */            /* -Wplacement-new */
-  OPT_Wplacement_new_ = 661,                 /* -Wplacement-new= */
-  OPT_Wpmf_conversions = 662,                /* -Wpmf-conversions */
-  OPT_Wpointer_arith = 663,                  /* -Wpointer-arith */
-  OPT_Wpointer_compare = 664,                /* -Wpointer-compare */
-  OPT_Wpointer_sign = 665,                   /* -Wpointer-sign */
-  OPT_Wpointer_to_int_cast = 666,            /* -Wpointer-to-int-cast */
-  OPT_Wpragmas = 667,                        /* -Wpragmas */
-  OPT_Wprio_ctor_dtor = 668,                 /* -Wprio-ctor-dtor */
-  OPT_Wproperty_assign_default = 669,        /* -Wproperty-assign-default */
-  OPT_Wprotocol = 670,                       /* -Wprotocol */
-  OPT_Wpsabi = 671,                          /* -Wpsabi */
-  OPT_Wrange_loop_construct = 672,           /* -Wrange-loop-construct */
-  OPT_Wreal_q_constant = 673,                /* -Wreal-q-constant */
-  OPT_Wrealloc_lhs = 674,                    /* -Wrealloc-lhs */
-  OPT_Wrealloc_lhs_all = 675,                /* -Wrealloc-lhs-all */
-  OPT_Wredundant_decls = 676,                /* -Wredundant-decls */
-  OPT_Wredundant_move = 677,                 /* -Wredundant-move */
-  OPT_Wredundant_tags = 678,                 /* -Wredundant-tags */
-  OPT_Wregister = 679,                       /* -Wregister */
-  OPT_Wreorder = 680,                        /* -Wreorder */
-  OPT_Wrestrict = 681,                       /* -Wrestrict */
-  OPT_Wreturn_local_addr = 682,              /* -Wreturn-local-addr */
-  OPT_Wreturn_type = 683,                    /* -Wreturn-type */
-  OPT_Wscalar_storage_order = 684,           /* -Wscalar-storage-order */
-  OPT_Wselector = 685,                       /* -Wselector */
-  OPT_Wsequence_point = 686,                 /* -Wsequence-point */
-  OPT_Wshadow = 687,                         /* -Wshadow */
-  /* OPT_Wshadow_compatible_local = 688, */  /* -Wshadow-compatible-local */
-  OPT_Wshadow_ivar = 689,                    /* -Wshadow-ivar */
-  /* OPT_Wshadow_local = 690, */             /* -Wshadow-local */
-  OPT_Wshadow_compatible_local = 691,        /* -Wshadow=compatible-local */
-  /* OPT_Wshadow_global = 692, */            /* -Wshadow=global */
-  OPT_Wshadow_local = 693,                   /* -Wshadow=local */
-  OPT_Wshift_count_negative = 694,           /* -Wshift-count-negative */
-  OPT_Wshift_count_overflow = 695,           /* -Wshift-count-overflow */
-  OPT_Wshift_negative_value = 696,           /* -Wshift-negative-value */
-  /* OPT_Wshift_overflow = 697, */           /* -Wshift-overflow */
-  OPT_Wshift_overflow_ = 698,                /* -Wshift-overflow= */
-  OPT_Wsign_compare = 699,                   /* -Wsign-compare */
-  OPT_Wsign_conversion = 700,                /* -Wsign-conversion */
-  OPT_Wsign_promo = 701,                     /* -Wsign-promo */
-  OPT_Wsized_deallocation = 702,             /* -Wsized-deallocation */
-  OPT_Wsizeof_array_argument = 703,          /* -Wsizeof-array-argument */
-  OPT_Wsizeof_array_div = 704,               /* -Wsizeof-array-div */
-  OPT_Wsizeof_pointer_div = 705,             /* -Wsizeof-pointer-div */
-  OPT_Wsizeof_pointer_memaccess = 706,       /* -Wsizeof-pointer-memaccess */
-  OPT_Wspeculative = 707,                    /* -Wspeculative */
-  OPT_Wstack_protector = 708,                /* -Wstack-protector */
-  OPT_Wstack_usage_ = 709,                   /* -Wstack-usage= */
-  OPT_Wstrict_aliasing = 710,                /* -Wstrict-aliasing */
-  OPT_Wstrict_aliasing_ = 711,               /* -Wstrict-aliasing= */
-  OPT_Wstrict_null_sentinel = 712,           /* -Wstrict-null-sentinel */
-  OPT_Wstrict_overflow = 713,                /* -Wstrict-overflow */
-  OPT_Wstrict_overflow_ = 714,               /* -Wstrict-overflow= */
-  OPT_Wstrict_prototypes = 715,              /* -Wstrict-prototypes */
-  OPT_Wstrict_selector_match = 716,          /* -Wstrict-selector-match */
-  OPT_Wstring_compare = 717,                 /* -Wstring-compare */
-  /* OPT_Wstringop_overflow = 718, */        /* -Wstringop-overflow */
-  OPT_Wstringop_overflow_ = 719,             /* -Wstringop-overflow= */
-  OPT_Wstringop_overread = 720,              /* -Wstringop-overread */
-  OPT_Wstringop_truncation = 721,            /* -Wstringop-truncation */
-  OPT_Wsubobject_linkage = 722,              /* -Wsubobject-linkage */
-  OPT_Wsuggest_attribute_cold = 723,         /* -Wsuggest-attribute=cold */
-  OPT_Wsuggest_attribute_const = 724,        /* -Wsuggest-attribute=const */
-  OPT_Wsuggest_attribute_format = 725,       /* -Wsuggest-attribute=format */
-  OPT_Wsuggest_attribute_malloc = 726,       /* -Wsuggest-attribute=malloc */
-  OPT_Wsuggest_attribute_noreturn = 727,     /* -Wsuggest-attribute=noreturn */
-  OPT_Wsuggest_attribute_pure = 728,         /* -Wsuggest-attribute=pure */
-  OPT_Wsuggest_final_methods = 729,          /* -Wsuggest-final-methods */
-  OPT_Wsuggest_final_types = 730,            /* -Wsuggest-final-types */
-  OPT_Wsuggest_override = 731,               /* -Wsuggest-override */
-  OPT_Wsurprising = 732,                     /* -Wsurprising */
-  OPT_Wswitch = 733,                         /* -Wswitch */
-  OPT_Wswitch_bool = 734,                    /* -Wswitch-bool */
-  OPT_Wswitch_default = 735,                 /* -Wswitch-default */
-  OPT_Wswitch_enum = 736,                    /* -Wswitch-enum */
-  OPT_Wswitch_outside_range = 737,           /* -Wswitch-outside-range */
-  OPT_Wswitch_unreachable = 738,             /* -Wswitch-unreachable */
-  OPT_Wsync_nand = 739,                      /* -Wsync-nand */
-  OPT_Wsynth = 740,                          /* -Wsynth */
-  OPT_Wsystem_headers = 741,                 /* -Wsystem-headers */
-  OPT_Wtabs = 742,                           /* -Wtabs */
-  OPT_Wtarget_lifetime = 743,                /* -Wtarget-lifetime */
-  OPT_Wtautological_compare = 744,           /* -Wtautological-compare */
-  OPT_Wtemplates = 745,                      /* -Wtemplates */
-  OPT_Wterminate = 746,                      /* -Wterminate */
-  OPT_Wtraditional = 747,                    /* -Wtraditional */
-  OPT_Wtraditional_conversion = 748,         /* -Wtraditional-conversion */
-  OPT_Wtrampolines = 749,                    /* -Wtrampolines */
-  OPT_Wtrigraphs = 750,                      /* -Wtrigraphs */
-  OPT_Wtsan = 751,                           /* -Wtsan */
-  OPT_Wtype_limits = 752,                    /* -Wtype-limits */
-  OPT_Wundeclared_selector = 753,            /* -Wundeclared-selector */
-  OPT_Wundef = 754,                          /* -Wundef */
-  OPT_Wundefined_do_loop = 755,              /* -Wundefined-do-loop */
-  OPT_Wunderflow = 756,                      /* -Wunderflow */
-  OPT_Wuninitialized = 757,                  /* -Wuninitialized */
-  OPT_Wunknown_pragmas = 758,                /* -Wunknown-pragmas */
-  /* OPT_Wunreachable_code = 759, */         /* -Wunreachable-code */
-  /* OPT_Wunsafe_loop_optimizations = 760, *//* -Wunsafe-loop-optimizations */
-  OPT_Wunsuffixed_float_constants = 761,     /* -Wunsuffixed-float-constants */
-  OPT_Wunused = 762,                         /* -Wunused */
-  OPT_Wunused_but_set_parameter = 763,       /* -Wunused-but-set-parameter */
-  OPT_Wunused_but_set_variable = 764,        /* -Wunused-but-set-variable */
-  /* OPT_Wunused_const_variable = 765, */    /* -Wunused-const-variable */
-  OPT_Wunused_const_variable_ = 766,         /* -Wunused-const-variable= */
-  OPT_Wunused_dummy_argument = 767,          /* -Wunused-dummy-argument */
-  OPT_Wunused_function = 768,                /* -Wunused-function */
-  OPT_Wunused_label = 769,                   /* -Wunused-label */
-  OPT_Wunused_local_typedefs = 770,          /* -Wunused-local-typedefs */
-  OPT_Wunused_macros = 771,                  /* -Wunused-macros */
-  OPT_Wunused_parameter = 772,               /* -Wunused-parameter */
-  OPT_Wunused_result = 773,                  /* -Wunused-result */
-  OPT_Wunused_value = 774,                   /* -Wunused-value */
-  OPT_Wunused_variable = 775,                /* -Wunused-variable */
-  OPT_Wuse_without_only = 776,               /* -Wuse-without-only */
-  OPT_Wuseless_cast = 777,                   /* -Wuseless-cast */
-  OPT_Wvarargs = 778,                        /* -Wvarargs */
-  OPT_Wvariadic_macros = 779,                /* -Wvariadic-macros */
-  OPT_Wvector_operation_performance = 780,   /* -Wvector-operation-performance */
-  OPT_Wvexing_parse = 781,                   /* -Wvexing-parse */
-  OPT_Wvirtual_inheritance = 782,            /* -Wvirtual-inheritance */
-  OPT_Wvirtual_move_assign = 783,            /* -Wvirtual-move-assign */
-  OPT_Wvla = 784,                            /* -Wvla */
-  OPT_Wvla_larger_than_ = 785,               /* -Wvla-larger-than= */
-  OPT_Wvla_parameter = 786,                  /* -Wvla-parameter */
-  OPT_Wvolatile = 787,                       /* -Wvolatile */
-  OPT_Wvolatile_register_var = 788,          /* -Wvolatile-register-var */
-  OPT_Wwrite_strings = 789,                  /* -Wwrite-strings */
-  OPT_Wzero_as_null_pointer_constant = 790,  /* -Wzero-as-null-pointer-constant */
-  OPT_Wzero_length_bounds = 791,             /* -Wzero-length-bounds */
-  OPT_Wzerotrip = 792,                       /* -Wzerotrip */
-  OPT_X = 793,                               /* -X */
-  OPT_Xassembler = 794,                      /* -Xassembler */
-  OPT_Xf = 795,                              /* -Xf */
-  OPT_Xlinker = 796,                         /* -Xlinker */
-  OPT_Xpreprocessor = 797,                   /* -Xpreprocessor */
-  OPT_Z = 798,                               /* -Z */
-  OPT_ansi = 799,                            /* -ansi */
-  OPT_aux_info = 800,                        /* -aux-info */
-  /* OPT_aux_info_ = 801, */                 /* -aux-info= */
-  OPT_c = 802,                               /* -c */
-  OPT_callgraph = 803,                       /* -callgraph */
-  OPT_coverage = 804,                        /* -coverage */
-  OPT_cpp = 805,                             /* -cpp */
-  OPT_cpp_ = 806,                            /* -cpp= */
-  OPT_d = 807,                               /* -d */
-  OPT_debuglib_ = 808,                       /* -debuglib= */
-  OPT_defaultlib_ = 809,                     /* -defaultlib= */
-  OPT_defined_only = 810,                    /* -defined-only */
-  OPT_demangle = 811,                        /* -demangle */
-  OPT_dstartfiles = 812,                     /* -dstartfiles */
-  OPT_dump_body_ = 813,                      /* -dump-body= */
-  OPT_dump_level_ = 814,                     /* -dump-level= */
-  OPT_dumpbase = 815,                        /* -dumpbase */
-  OPT_dumpbase_ext = 816,                    /* -dumpbase-ext */
-  OPT_dumpdir = 817,                         /* -dumpdir */
-  OPT_dumpfullversion = 818,                 /* -dumpfullversion */
-  OPT_dumpmachine = 819,                     /* -dumpmachine */
-  OPT_dumpspecs = 820,                       /* -dumpspecs */
-  OPT_dumpversion = 821,                     /* -dumpversion */
-  OPT_e = 822,                               /* -e */
-  OPT_export_dynamic = 823,                  /* -export-dynamic */
-  OPT_fPIC = 824,                            /* -fPIC */
-  OPT_fPIE = 825,                            /* -fPIE */
-  OPT_fRTS_ = 826,                           /* -fRTS= */
-  OPT_fabi_compat_version_ = 827,            /* -fabi-compat-version= */
-  OPT_fabi_version_ = 828,                   /* -fabi-version= */
-  OPT_faccess_control = 829,                 /* -faccess-control */
-  OPT_fada_spec_parent_ = 830,               /* -fada-spec-parent= */
-  OPT_faggressive_function_elimination = 831,/* -faggressive-function-elimination */
-  OPT_faggressive_loop_optimizations = 832,  /* -faggressive-loop-optimizations */
-  OPT_falign_commons = 833,                  /* -falign-commons */
-  OPT_falign_functions = 834,                /* -falign-functions */
-  OPT_falign_functions_ = 835,               /* -falign-functions= */
-  OPT_falign_jumps = 836,                    /* -falign-jumps */
-  OPT_falign_jumps_ = 837,                   /* -falign-jumps= */
-  OPT_falign_labels = 838,                   /* -falign-labels */
-  OPT_falign_labels_ = 839,                  /* -falign-labels= */
-  OPT_falign_loops = 840,                    /* -falign-loops */
-  OPT_falign_loops_ = 841,                   /* -falign-loops= */
-  /* OPT_faligned_new = 842, */              /* -faligned-new */
-  OPT_faligned_new_ = 843,                   /* -faligned-new= */
-  OPT_fall_instantiations = 844,             /* -fall-instantiations */
-  OPT_fall_intrinsics = 845,                 /* -fall-intrinsics */
-  OPT_fall_virtual = 846,                    /* -fall-virtual */
-  OPT_fallocation_dce = 847,                 /* -fallocation-dce */
-  OPT_fallow_argument_mismatch = 848,        /* -fallow-argument-mismatch */
-  OPT_fallow_invalid_boz = 849,              /* -fallow-invalid-boz */
-  OPT_fallow_leading_underscore = 850,       /* -fallow-leading-underscore */
-  OPT_fallow_parameterless_variadic_functions = 851,/* -fallow-parameterless-variadic-functions */
-  OPT_fallow_store_data_races = 852,         /* -fallow-store-data-races */
-  OPT_falt_external_templates = 853,         /* -falt-external-templates */
-  OPT_fanalyzer = 854,                       /* -fanalyzer */
-  OPT_fanalyzer_call_summaries = 855,        /* -fanalyzer-call-summaries */
-  OPT_fanalyzer_checker_ = 856,              /* -fanalyzer-checker= */
-  OPT_fanalyzer_feasibility = 857,           /* -fanalyzer-feasibility */
-  OPT_fanalyzer_fine_grained = 858,          /* -fanalyzer-fine-grained */
-  OPT_fanalyzer_show_duplicate_count = 859,  /* -fanalyzer-show-duplicate-count */
-  OPT_fanalyzer_state_merge = 860,           /* -fanalyzer-state-merge */
-  OPT_fanalyzer_state_purge = 861,           /* -fanalyzer-state-purge */
-  OPT_fanalyzer_transitivity = 862,          /* -fanalyzer-transitivity */
-  OPT_fanalyzer_verbose_edges = 863,         /* -fanalyzer-verbose-edges */
-  OPT_fanalyzer_verbose_state_changes = 864, /* -fanalyzer-verbose-state-changes */
-  OPT_fanalyzer_verbosity_ = 865,            /* -fanalyzer-verbosity= */
-  /* OPT_fargument_alias = 866, */           /* -fargument-alias */
-  /* OPT_fargument_noalias = 867, */         /* -fargument-noalias */
-  /* OPT_fargument_noalias_anything = 868, *//* -fargument-noalias-anything */
-  /* OPT_fargument_noalias_global = 869, */  /* -fargument-noalias-global */
-  OPT_fasan_shadow_offset_ = 870,            /* -fasan-shadow-offset= */
-  OPT_fasm = 871,                            /* -fasm */
-  OPT_fassert = 872,                         /* -fassert */
-  OPT_fassociative_math = 873,               /* -fassociative-math */
-  OPT_fassume_phsa = 874,                    /* -fassume-phsa */
-  OPT_fasynchronous_unwind_tables = 875,     /* -fasynchronous-unwind-tables */
-  OPT_fauto_inc_dec = 876,                   /* -fauto-inc-dec */
-  OPT_fauto_profile = 877,                   /* -fauto-profile */
-  OPT_fauto_profile_ = 878,                  /* -fauto-profile= */
-  OPT_fautomatic = 879,                      /* -fautomatic */
-  OPT_fbackslash = 880,                      /* -fbackslash */
-  OPT_fbacktrace = 881,                      /* -fbacktrace */
-  OPT_fbit_tests = 882,                      /* -fbit-tests */
-  OPT_fblas_matmul_limit_ = 883,             /* -fblas-matmul-limit= */
-  OPT_fbounds_check = 884,                   /* -fbounds-check */
-  OPT_fbounds_check_ = 885,                  /* -fbounds-check= */
-  OPT_fbranch_count_reg = 886,               /* -fbranch-count-reg */
-  OPT_fbranch_probabilities = 887,           /* -fbranch-probabilities */
-  /* OPT_fbranch_target_load_optimize = 888, *//* -fbranch-target-load-optimize */
-  /* OPT_fbranch_target_load_optimize2 = 889, *//* -fbranch-target-load-optimize2 */
-  /* OPT_fbtr_bb_exclusive = 890, */         /* -fbtr-bb-exclusive */
-  OPT_fbuilding_libgcc = 891,                /* -fbuilding-libgcc */
-  OPT_fbuilding_libphobos_tests = 892,       /* -fbuilding-libphobos-tests */
-  OPT_fbuiltin = 893,                        /* -fbuiltin */
-  OPT_fbuiltin_ = 894,                       /* -fbuiltin- */
-  OPT_fbuiltin_printf = 895,                 /* -fbuiltin-printf */
-  OPT_fc_prototypes = 896,                   /* -fc-prototypes */
-  OPT_fc_prototypes_external = 897,          /* -fc-prototypes-external */
-  OPT_fcall_saved_ = 898,                    /* -fcall-saved- */
-  OPT_fcall_used_ = 899,                     /* -fcall-used- */
-  OPT_fcaller_saves = 900,                   /* -fcaller-saves */
-  OPT_fcallgraph_info = 901,                 /* -fcallgraph-info */
-  OPT_fcallgraph_info_ = 902,                /* -fcallgraph-info= */
-  OPT_fcanonical_system_headers = 903,       /* -fcanonical-system-headers */
-  /* OPT_fcf_protection = 904, */            /* -fcf-protection */
-  OPT_fcf_protection_ = 905,                 /* -fcf-protection= */
-  OPT_fchar8_t = 906,                        /* -fchar8_t */
-  OPT_fcheck_array_temporaries = 907,        /* -fcheck-array-temporaries */
-  /* OPT_fcheck_data_deps = 908, */          /* -fcheck-data-deps */
-  OPT_fcheck_new = 909,                      /* -fcheck-new */
-  OPT_fcheck_pointer_bounds = 910,           /* -fcheck-pointer-bounds */
-  OPT_fcheck_ = 911,                         /* -fcheck= */
-  OPT_fchecking = 912,                       /* -fchecking */
-  OPT_fchecking_ = 913,                      /* -fchecking= */
-  OPT_fchkp_check_incomplete_type = 914,     /* -fchkp-check-incomplete-type */
-  OPT_fchkp_check_read = 915,                /* -fchkp-check-read */
-  OPT_fchkp_check_write = 916,               /* -fchkp-check-write */
-  OPT_fchkp_first_field_has_own_bounds = 917,/* -fchkp-first-field-has-own-bounds */
-  OPT_fchkp_flexible_struct_trailing_arrays = 918,/* -fchkp-flexible-struct-trailing-arrays */
-  OPT_fchkp_instrument_calls = 919,          /* -fchkp-instrument-calls */
-  OPT_fchkp_instrument_marked_only = 920,    /* -fchkp-instrument-marked-only */
-  OPT_fchkp_narrow_bounds = 921,             /* -fchkp-narrow-bounds */
-  OPT_fchkp_narrow_to_innermost_array = 922, /* -fchkp-narrow-to-innermost-array */
-  OPT_fchkp_optimize = 923,                  /* -fchkp-optimize */
-  OPT_fchkp_store_bounds = 924,              /* -fchkp-store-bounds */
-  OPT_fchkp_treat_zero_dynamic_size_as_infinite = 925,/* -fchkp-treat-zero-dynamic-size-as-infinite */
-  OPT_fchkp_use_fast_string_functions = 926, /* -fchkp-use-fast-string-functions */
-  OPT_fchkp_use_nochk_string_functions = 927,/* -fchkp-use-nochk-string-functions */
-  OPT_fchkp_use_static_bounds = 928,         /* -fchkp-use-static-bounds */
-  OPT_fchkp_use_static_const_bounds = 929,   /* -fchkp-use-static-const-bounds */
-  OPT_fchkp_use_wrappers = 930,              /* -fchkp-use-wrappers */
-  OPT_fchkp_zero_input_bounds_for_main = 931,/* -fchkp-zero-input-bounds-for-main */
-  /* OPT_fcilkplus = 932, */                 /* -fcilkplus */
-  OPT_fcoarray_ = 933,                       /* -fcoarray= */
-  OPT_fcode_hoisting = 934,                  /* -fcode-hoisting */
-  OPT_fcombine_stack_adjustments = 935,      /* -fcombine-stack-adjustments */
-  OPT_fcommon = 936,                         /* -fcommon */
-  OPT_fcompare_debug = 937,                  /* -fcompare-debug */
-  OPT_fcompare_debug_second = 938,           /* -fcompare-debug-second */
-  OPT_fcompare_debug_ = 939,                 /* -fcompare-debug= */
-  OPT_fcompare_elim = 940,                   /* -fcompare-elim */
-  OPT_fconcepts = 941,                       /* -fconcepts */
-  OPT_fconcepts_diagnostics_depth_ = 942,    /* -fconcepts-diagnostics-depth= */
-  OPT_fconcepts_ts = 943,                    /* -fconcepts-ts */
-  OPT_fcond_mismatch = 944,                  /* -fcond-mismatch */
-  /* OPT_fconserve_space = 945, */           /* -fconserve-space */
-  OPT_fconserve_stack = 946,                 /* -fconserve-stack */
-  OPT_fconstant_string_class_ = 947,         /* -fconstant-string-class= */
-  OPT_fconstexpr_cache_depth_ = 948,         /* -fconstexpr-cache-depth= */
-  OPT_fconstexpr_depth_ = 949,               /* -fconstexpr-depth= */
-  OPT_fconstexpr_loop_limit_ = 950,          /* -fconstexpr-loop-limit= */
-  OPT_fconstexpr_ops_limit_ = 951,           /* -fconstexpr-ops-limit= */
-  OPT_fconvert_ = 952,                       /* -fconvert= */
-  OPT_fcoroutines = 953,                     /* -fcoroutines */
-  OPT_fcprop_registers = 954,                /* -fcprop-registers */
-  OPT_fcray_pointer = 955,                   /* -fcray-pointer */
-  OPT_fcrossjumping = 956,                   /* -fcrossjumping */
-  OPT_fcse_follow_jumps = 957,               /* -fcse-follow-jumps */
-  /* OPT_fcse_skip_blocks = 958, */          /* -fcse-skip-blocks */
-  OPT_fcx_fortran_rules = 959,               /* -fcx-fortran-rules */
-  OPT_fcx_limited_range = 960,               /* -fcx-limited-range */
-  OPT_fd_lines_as_code = 961,                /* -fd-lines-as-code */
-  OPT_fd_lines_as_comments = 962,            /* -fd-lines-as-comments */
-  OPT_fdata_sections = 963,                  /* -fdata-sections */
-  OPT_fdbg_cnt_list = 964,                   /* -fdbg-cnt-list */
-  OPT_fdbg_cnt_ = 965,                       /* -fdbg-cnt= */
-  OPT_fdce = 966,                            /* -fdce */
-  OPT_fdebug = 967,                          /* -fdebug */
-  OPT_fdebug_aux_vars = 968,                 /* -fdebug-aux-vars */
-  OPT_fdebug_cpp = 969,                      /* -fdebug-cpp */
-  OPT_fdebug_prefix_map_ = 970,              /* -fdebug-prefix-map= */
-  OPT_fdebug_types_section = 971,            /* -fdebug-types-section */
-  OPT_fdebug_ = 972,                         /* -fdebug= */
-  OPT_fdec = 973,                            /* -fdec */
-  OPT_fdec_blank_format_item = 974,          /* -fdec-blank-format-item */
-  OPT_fdec_char_conversions = 975,           /* -fdec-char-conversions */
-  OPT_fdec_format_defaults = 976,            /* -fdec-format-defaults */
-  OPT_fdec_include = 977,                    /* -fdec-include */
-  OPT_fdec_intrinsic_ints = 978,             /* -fdec-intrinsic-ints */
-  OPT_fdec_math = 979,                       /* -fdec-math */
-  OPT_fdec_static = 980,                     /* -fdec-static */
-  OPT_fdec_structure = 981,                  /* -fdec-structure */
-  OPT_fdeclone_ctor_dtor = 982,              /* -fdeclone-ctor-dtor */
-  /* OPT_fdeduce_init_list = 983, */         /* -fdeduce-init-list */
-  OPT_fdefault_double_8 = 984,               /* -fdefault-double-8 */
-  /* OPT_fdefault_inline = 985, */           /* -fdefault-inline */
-  OPT_fdefault_integer_8 = 986,              /* -fdefault-integer-8 */
-  OPT_fdefault_real_10 = 987,                /* -fdefault-real-10 */
-  OPT_fdefault_real_16 = 988,                /* -fdefault-real-16 */
-  OPT_fdefault_real_8 = 989,                 /* -fdefault-real-8 */
-  OPT_fdefer_pop = 990,                      /* -fdefer-pop */
-  OPT_fdelayed_branch = 991,                 /* -fdelayed-branch */
-  OPT_fdelete_dead_exceptions = 992,         /* -fdelete-dead-exceptions */
-  OPT_fdelete_null_pointer_checks = 993,     /* -fdelete-null-pointer-checks */
-  OPT_fdevirtualize = 994,                   /* -fdevirtualize */
-  OPT_fdevirtualize_at_ltrans = 995,         /* -fdevirtualize-at-ltrans */
-  OPT_fdevirtualize_speculatively = 996,     /* -fdevirtualize-speculatively */
-  /* OPT_fdiagnostics_color = 997, */        /* -fdiagnostics-color */
-  OPT_fdiagnostics_color_ = 998,             /* -fdiagnostics-color= */
-  OPT_fdiagnostics_column_origin_ = 999,     /* -fdiagnostics-column-origin= */
-  OPT_fdiagnostics_column_unit_ = 1000,      /* -fdiagnostics-column-unit= */
-  OPT_fdiagnostics_format_ = 1001,           /* -fdiagnostics-format= */
-  OPT_fdiagnostics_generate_patch = 1002,    /* -fdiagnostics-generate-patch */
-  OPT_fdiagnostics_minimum_margin_width_ = 1003,/* -fdiagnostics-minimum-margin-width= */
-  OPT_fdiagnostics_parseable_fixits = 1004,  /* -fdiagnostics-parseable-fixits */
-  OPT_fdiagnostics_path_format_ = 1005,      /* -fdiagnostics-path-format= */
-  OPT_fdiagnostics_plain_output = 1006,      /* -fdiagnostics-plain-output */
-  OPT_fdiagnostics_show_caret = 1007,        /* -fdiagnostics-show-caret */
-  OPT_fdiagnostics_show_cwe = 1008,          /* -fdiagnostics-show-cwe */
-  OPT_fdiagnostics_show_labels = 1009,       /* -fdiagnostics-show-labels */
-  OPT_fdiagnostics_show_line_numbers = 1010, /* -fdiagnostics-show-line-numbers */
-  OPT_fdiagnostics_show_location_ = 1011,    /* -fdiagnostics-show-location= */
-  OPT_fdiagnostics_show_option = 1012,       /* -fdiagnostics-show-option */
-  OPT_fdiagnostics_show_path_depths = 1013,  /* -fdiagnostics-show-path-depths */
-  OPT_fdiagnostics_show_template_tree = 1014,/* -fdiagnostics-show-template-tree */
-  OPT_fdiagnostics_urls_ = 1015,             /* -fdiagnostics-urls= */
-  OPT_fdirectives_only = 1016,               /* -fdirectives-only */
-  OPT_fdisable_ = 1017,                      /* -fdisable- */
-  OPT_fdoc = 1018,                           /* -fdoc */
-  OPT_fdoc_dir_ = 1019,                      /* -fdoc-dir= */
-  OPT_fdoc_file_ = 1020,                     /* -fdoc-file= */
-  OPT_fdoc_inc_ = 1021,                      /* -fdoc-inc= */
-  OPT_fdollar_ok = 1022,                     /* -fdollar-ok */
-  OPT_fdollars_in_identifiers = 1023,        /* -fdollars-in-identifiers */
-  OPT_fdruntime = 1024,                      /* -fdruntime */
-  OPT_fdse = 1025,                           /* -fdse */
-  OPT_fdump_ = 1026,                         /* -fdump- */
-  OPT_fdump_ada_spec = 1027,                 /* -fdump-ada-spec */
-  OPT_fdump_ada_spec_slim = 1028,            /* -fdump-ada-spec-slim */
-  OPT_fdump_analyzer = 1029,                 /* -fdump-analyzer */
-  OPT_fdump_analyzer_callgraph = 1030,       /* -fdump-analyzer-callgraph */
-  OPT_fdump_analyzer_exploded_graph = 1031,  /* -fdump-analyzer-exploded-graph */
-  OPT_fdump_analyzer_exploded_nodes = 1032,  /* -fdump-analyzer-exploded-nodes */
-  OPT_fdump_analyzer_exploded_nodes_2 = 1033,/* -fdump-analyzer-exploded-nodes-2 */
-  OPT_fdump_analyzer_exploded_nodes_3 = 1034,/* -fdump-analyzer-exploded-nodes-3 */
-  OPT_fdump_analyzer_json = 1035,            /* -fdump-analyzer-json */
-  OPT_fdump_analyzer_state_purge = 1036,     /* -fdump-analyzer-state-purge */
-  OPT_fdump_analyzer_stderr = 1037,          /* -fdump-analyzer-stderr */
-  OPT_fdump_analyzer_supergraph = 1038,      /* -fdump-analyzer-supergraph */
-  /* OPT_fdump_core = 1039, */               /* -fdump-core */
-  OPT_fdump_d_original = 1040,               /* -fdump-d-original */
-  OPT_fdump_final_insns = 1041,              /* -fdump-final-insns */
-  OPT_fdump_final_insns_ = 1042,             /* -fdump-final-insns= */
-  OPT_fdump_fortran_global = 1043,           /* -fdump-fortran-global */
-  OPT_fdump_fortran_optimized = 1044,        /* -fdump-fortran-optimized */
-  OPT_fdump_fortran_original = 1045,         /* -fdump-fortran-original */
-  OPT_fdump_go_spec_ = 1046,                 /* -fdump-go-spec= */
-  OPT_fdump_internal_locations = 1047,       /* -fdump-internal-locations */
-  OPT_fdump_noaddr = 1048,                   /* -fdump-noaddr */
-  /* OPT_fdump_parse_tree = 1049, */         /* -fdump-parse-tree */
-  OPT_fdump_passes = 1050,                   /* -fdump-passes */
-  OPT_fdump_scos = 1051,                     /* -fdump-scos */
-  OPT_fdump_unnumbered = 1052,               /* -fdump-unnumbered */
-  OPT_fdump_unnumbered_links = 1053,         /* -fdump-unnumbered-links */
-  OPT_fdwarf2_cfi_asm = 1054,                /* -fdwarf2-cfi-asm */
-  OPT_fearly_inlining = 1055,                /* -fearly-inlining */
-  OPT_felide_constructors = 1056,            /* -felide-constructors */
-  OPT_felide_type = 1057,                    /* -felide-type */
-  /* OPT_feliminate_dwarf2_dups = 1058, */   /* -feliminate-dwarf2-dups */
-  OPT_feliminate_unused_debug_symbols = 1059,/* -feliminate-unused-debug-symbols */
-  OPT_feliminate_unused_debug_types = 1060,  /* -feliminate-unused-debug-types */
-  OPT_femit_class_debug_always = 1061,       /* -femit-class-debug-always */
-  OPT_femit_struct_debug_baseonly = 1062,    /* -femit-struct-debug-baseonly */
-  OPT_femit_struct_debug_detailed_ = 1063,   /* -femit-struct-debug-detailed= */
-  OPT_femit_struct_debug_reduced = 1064,     /* -femit-struct-debug-reduced */
-  OPT_fenable_ = 1065,                       /* -fenable- */
-  OPT_fenforce_eh_specs = 1066,              /* -fenforce-eh-specs */
-  OPT_fenum_int_equiv = 1067,                /* -fenum-int-equiv */
-  OPT_fexceptions = 1068,                    /* -fexceptions */
-  OPT_fexcess_precision_ = 1069,             /* -fexcess-precision= */
-  OPT_fexec_charset_ = 1070,                 /* -fexec-charset= */
-  OPT_fexpensive_optimizations = 1071,       /* -fexpensive-optimizations */
-  OPT_fext_numeric_literals = 1072,          /* -fext-numeric-literals */
-  OPT_fextended_identifiers = 1073,          /* -fextended-identifiers */
-  OPT_fextern_tls_init = 1074,               /* -fextern-tls-init */
-  OPT_fexternal_blas = 1075,                 /* -fexternal-blas */
-  OPT_fexternal_templates = 1076,            /* -fexternal-templates */
-  OPT_ff2c = 1077,                           /* -ff2c */
-  OPT_ffast_math = 1078,                     /* -ffast-math */
-  OPT_ffat_lto_objects = 1079,               /* -ffat-lto-objects */
-  OPT_ffile_prefix_map_ = 1080,              /* -ffile-prefix-map= */
-  OPT_ffinite_loops = 1081,                  /* -ffinite-loops */
-  OPT_ffinite_math_only = 1082,              /* -ffinite-math-only */
-  OPT_ffixed_ = 1083,                        /* -ffixed- */
-  OPT_ffixed_form = 1084,                    /* -ffixed-form */
-  OPT_ffixed_line_length_ = 1085,            /* -ffixed-line-length- */
-  OPT_ffixed_line_length_none = 1086,        /* -ffixed-line-length-none */
-  OPT_ffloat_store = 1087,                   /* -ffloat-store */
-  OPT_ffor_scope = 1088,                     /* -ffor-scope */
-  /* OPT_fforce_addr = 1089, */              /* -fforce-addr */
-  OPT_fforward_propagate = 1090,             /* -fforward-propagate */
-  OPT_ffp_contract_ = 1091,                  /* -ffp-contract= */
-  OPT_ffp_int_builtin_inexact = 1092,        /* -ffp-int-builtin-inexact */
-  OPT_ffpe_summary_ = 1093,                  /* -ffpe-summary= */
-  OPT_ffpe_trap_ = 1094,                     /* -ffpe-trap= */
-  OPT_ffree_form = 1095,                     /* -ffree-form */
-  OPT_ffree_line_length_ = 1096,             /* -ffree-line-length- */
-  OPT_ffree_line_length_none = 1097,         /* -ffree-line-length-none */
-  OPT_ffreestanding = 1098,                  /* -ffreestanding */
-  OPT_ffriend_injection = 1099,              /* -ffriend-injection */
-  OPT_ffrontend_loop_interchange = 1100,     /* -ffrontend-loop-interchange */
-  OPT_ffrontend_optimize = 1101,             /* -ffrontend-optimize */
-  OPT_ffunction_cse = 1102,                  /* -ffunction-cse */
-  OPT_ffunction_sections = 1103,             /* -ffunction-sections */
-  OPT_fgcse = 1104,                          /* -fgcse */
-  OPT_fgcse_after_reload = 1105,             /* -fgcse-after-reload */
-  OPT_fgcse_las = 1106,                      /* -fgcse-las */
-  OPT_fgcse_lm = 1107,                       /* -fgcse-lm */
-  OPT_fgcse_sm = 1108,                       /* -fgcse-sm */
-  OPT_fgimple = 1109,                        /* -fgimple */
-  OPT_fgnat_encodings_ = 1110,               /* -fgnat-encodings= */
-  OPT_fgnu_keywords = 1111,                  /* -fgnu-keywords */
-  OPT_fgnu_runtime = 1112,                   /* -fgnu-runtime */
-  OPT_fgnu_tm = 1113,                        /* -fgnu-tm */
-  OPT_fgnu_unique = 1114,                    /* -fgnu-unique */
-  OPT_fgnu89_inline = 1115,                  /* -fgnu89-inline */
-  OPT_fgo_c_header_ = 1116,                  /* -fgo-c-header= */
-  OPT_fgo_check_divide_overflow = 1117,      /* -fgo-check-divide-overflow */
-  OPT_fgo_check_divide_zero = 1118,          /* -fgo-check-divide-zero */
-  OPT_fgo_compiling_runtime = 1119,          /* -fgo-compiling-runtime */
-  OPT_fgo_debug_escape = 1120,               /* -fgo-debug-escape */
-  OPT_fgo_debug_escape_hash_ = 1121,         /* -fgo-debug-escape-hash= */
-  OPT_fgo_debug_optimization = 1122,         /* -fgo-debug-optimization */
-  OPT_fgo_dump_ = 1123,                      /* -fgo-dump- */
-  OPT_fgo_embedcfg_ = 1124,                  /* -fgo-embedcfg= */
-  OPT_fgo_optimize_ = 1125,                  /* -fgo-optimize- */
-  OPT_fgo_pkgpath_ = 1126,                   /* -fgo-pkgpath= */
-  OPT_fgo_prefix_ = 1127,                    /* -fgo-prefix= */
-  OPT_fgo_relative_import_path_ = 1128,      /* -fgo-relative-import-path= */
-  OPT_fgraphite = 1129,                      /* -fgraphite */
-  OPT_fgraphite_identity = 1130,             /* -fgraphite-identity */
-  OPT_fguess_branch_probability = 1131,      /* -fguess-branch-probability */
-  OPT_fguiding_decls = 1132,                 /* -fguiding-decls */
-  /* OPT_fhandle_exceptions = 1133, */       /* -fhandle-exceptions */
-  /* OPT_fhelp = 1134, */                    /* -fhelp */
-  /* OPT_fhelp_ = 1135, */                   /* -fhelp= */
-  OPT_fhoist_adjacent_loads = 1136,          /* -fhoist-adjacent-loads */
-  OPT_fhonor_std = 1137,                     /* -fhonor-std */
-  OPT_fhosted = 1138,                        /* -fhosted */
-  OPT_fhuge_objects = 1139,                  /* -fhuge-objects */
-  OPT_fident = 1140,                         /* -fident */
-  OPT_fif_conversion = 1141,                 /* -fif-conversion */
-  OPT_fif_conversion2 = 1142,                /* -fif-conversion2 */
-  OPT_fignore_unknown_pragmas = 1143,        /* -fignore-unknown-pragmas */
-  OPT_fimplement_inlines = 1144,             /* -fimplement-inlines */
-  OPT_fimplicit_inline_templates = 1145,     /* -fimplicit-inline-templates */
-  OPT_fimplicit_none = 1146,                 /* -fimplicit-none */
-  OPT_fimplicit_templates = 1147,            /* -fimplicit-templates */
-  OPT_findirect_inlining = 1148,             /* -findirect-inlining */
-  OPT_finhibit_size_directive = 1149,        /* -finhibit-size-directive */
-  OPT_finit_character_ = 1150,               /* -finit-character= */
-  OPT_finit_derived = 1151,                  /* -finit-derived */
-  OPT_finit_integer_ = 1152,                 /* -finit-integer= */
-  OPT_finit_local_zero = 1153,               /* -finit-local-zero */
-  OPT_finit_logical_ = 1154,                 /* -finit-logical= */
-  OPT_finit_real_ = 1155,                    /* -finit-real= */
-  OPT_finline = 1156,                        /* -finline */
-  OPT_finline_arg_packing = 1157,            /* -finline-arg-packing */
-  OPT_finline_atomics = 1158,                /* -finline-atomics */
-  OPT_finline_functions = 1159,              /* -finline-functions */
-  OPT_finline_functions_called_once = 1160,  /* -finline-functions-called-once */
-  /* OPT_finline_limit_ = 1161, */           /* -finline-limit- */
-  OPT_finline_limit_ = 1162,                 /* -finline-limit= */
-  OPT_finline_matmul_limit_ = 1163,          /* -finline-matmul-limit= */
-  OPT_finline_small_functions = 1164,        /* -finline-small-functions */
-  OPT_finput_charset_ = 1165,                /* -finput-charset= */
-  OPT_finstrument_functions = 1166,          /* -finstrument-functions */
-  OPT_finstrument_functions_exclude_file_list_ = 1167,/* -finstrument-functions-exclude-file-list= */
-  OPT_finstrument_functions_exclude_function_list_ = 1168,/* -finstrument-functions-exclude-function-list= */
-  OPT_finteger_4_integer_8 = 1169,           /* -finteger-4-integer-8 */
-  OPT_fintrinsic_modules_path = 1170,        /* -fintrinsic-modules-path */
-  OPT_fintrinsic_modules_path_ = 1171,       /* -fintrinsic-modules-path= */
-  OPT_finvariants = 1172,                    /* -finvariants */
-  OPT_fipa_bit_cp = 1173,                    /* -fipa-bit-cp */
-  OPT_fipa_cp = 1174,                        /* -fipa-cp */
-  /* OPT_fipa_cp_alignment = 1175, */        /* -fipa-cp-alignment */
-  OPT_fipa_cp_clone = 1176,                  /* -fipa-cp-clone */
-  OPT_fipa_icf = 1177,                       /* -fipa-icf */
-  OPT_fipa_icf_functions = 1178,             /* -fipa-icf-functions */
-  OPT_fipa_icf_variables = 1179,             /* -fipa-icf-variables */
-  /* OPT_fipa_matrix_reorg = 1180, */        /* -fipa-matrix-reorg */
-  OPT_fipa_modref = 1181,                    /* -fipa-modref */
-  OPT_fipa_profile = 1182,                   /* -fipa-profile */
-  OPT_fipa_pta = 1183,                       /* -fipa-pta */
-  OPT_fipa_pure_const = 1184,                /* -fipa-pure-const */
-  OPT_fipa_ra = 1185,                        /* -fipa-ra */
-  OPT_fipa_reference = 1186,                 /* -fipa-reference */
-  OPT_fipa_reference_addressable = 1187,     /* -fipa-reference-addressable */
-  OPT_fipa_sra = 1188,                       /* -fipa-sra */
-  OPT_fipa_stack_alignment = 1189,           /* -fipa-stack-alignment */
-  /* OPT_fipa_struct_reorg = 1190, */        /* -fipa-struct-reorg */
-  OPT_fipa_vrp = 1191,                       /* -fipa-vrp */
-  OPT_fira_algorithm_ = 1192,                /* -fira-algorithm= */
-  OPT_fira_hoist_pressure = 1193,            /* -fira-hoist-pressure */
-  OPT_fira_loop_pressure = 1194,             /* -fira-loop-pressure */
-  OPT_fira_region_ = 1195,                   /* -fira-region= */
-  OPT_fira_share_save_slots = 1196,          /* -fira-share-save-slots */
-  OPT_fira_share_spill_slots = 1197,         /* -fira-share-spill-slots */
-  OPT_fira_verbose_ = 1198,                  /* -fira-verbose= */
-  OPT_fisolate_erroneous_paths_attribute = 1199,/* -fisolate-erroneous-paths-attribute */
-  OPT_fisolate_erroneous_paths_dereference = 1200,/* -fisolate-erroneous-paths-dereference */
-  OPT_fivar_visibility_ = 1201,              /* -fivar-visibility= */
-  OPT_fivopts = 1202,                        /* -fivopts */
-  OPT_fjump_tables = 1203,                   /* -fjump-tables */
-  OPT_fkeep_gc_roots_live = 1204,            /* -fkeep-gc-roots-live */
-  OPT_fkeep_inline_dllexport = 1205,         /* -fkeep-inline-dllexport */
-  OPT_fkeep_inline_functions = 1206,         /* -fkeep-inline-functions */
-  OPT_fkeep_static_consts = 1207,            /* -fkeep-static-consts */
-  OPT_fkeep_static_functions = 1208,         /* -fkeep-static-functions */
-  OPT_flabels_ok = 1209,                     /* -flabels-ok */
-  OPT_flang_info_include_translate = 1210,   /* -flang-info-include-translate */
-  OPT_flang_info_include_translate_not = 1211,/* -flang-info-include-translate-not */
-  OPT_flang_info_include_translate_ = 1212,  /* -flang-info-include-translate= */
-  OPT_flarge_source_files = 1213,            /* -flarge-source-files */
-  OPT_flax_vector_conversions = 1214,        /* -flax-vector-conversions */
-  OPT_fleading_underscore = 1215,            /* -fleading-underscore */
-  OPT_flifetime_dse = 1216,                  /* -flifetime-dse */
-  OPT_flifetime_dse_ = 1217,                 /* -flifetime-dse= */
-  OPT_flimit_function_alignment = 1218,      /* -flimit-function-alignment */
-  OPT_flinker_output_ = 1219,                /* -flinker-output= */
-  /* OPT_flive_patching = 1220, */           /* -flive-patching */
-  OPT_flive_patching_ = 1221,                /* -flive-patching= */
-  OPT_flive_range_shrinkage = 1222,          /* -flive-range-shrinkage */
-  OPT_flocal_ivars = 1223,                   /* -flocal-ivars */
-  /* OPT_floop_block = 1224, */              /* -floop-block */
-  /* OPT_floop_flatten = 1225, */            /* -floop-flatten */
-  OPT_floop_interchange = 1226,              /* -floop-interchange */
-  OPT_floop_nest_optimize = 1227,            /* -floop-nest-optimize */
-  /* OPT_floop_optimize = 1228, */           /* -floop-optimize */
-  OPT_floop_parallelize_all = 1229,          /* -floop-parallelize-all */
-  /* OPT_floop_strip_mine = 1230, */         /* -floop-strip-mine */
-  OPT_floop_unroll_and_jam = 1231,           /* -floop-unroll-and-jam */
-  OPT_flra_remat = 1232,                     /* -flra-remat */
-  OPT_flto = 1233,                           /* -flto */
-  OPT_flto_compression_level_ = 1234,        /* -flto-compression-level= */
-  /* OPT_flto_odr_type_merging = 1235, */    /* -flto-odr-type-merging */
-  OPT_flto_partition_ = 1236,                /* -flto-partition= */
-  OPT_flto_report = 1237,                    /* -flto-report */
-  OPT_flto_report_wpa = 1238,                /* -flto-report-wpa */
-  OPT_flto_ = 1239,                          /* -flto= */
-  OPT_fltrans = 1240,                        /* -fltrans */
-  OPT_fltrans_output_list_ = 1241,           /* -fltrans-output-list= */
-  OPT_fmacro_prefix_map_ = 1242,             /* -fmacro-prefix-map= */
-  OPT_fmain = 1243,                          /* -fmain */
-  OPT_fmath_errno = 1244,                    /* -fmath-errno */
-  OPT_fmax_array_constructor_ = 1245,        /* -fmax-array-constructor= */
-  OPT_fmax_errors_ = 1246,                   /* -fmax-errors= */
-  OPT_fmax_identifier_length_ = 1247,        /* -fmax-identifier-length= */
-  OPT_fmax_include_depth_ = 1248,            /* -fmax-include-depth= */
-  OPT_fmax_stack_var_size_ = 1249,           /* -fmax-stack-var-size= */
-  OPT_fmax_subrecord_length_ = 1250,         /* -fmax-subrecord-length= */
-  OPT_fmem_report = 1251,                    /* -fmem-report */
-  OPT_fmem_report_wpa = 1252,                /* -fmem-report-wpa */
-  OPT_fmerge_all_constants = 1253,           /* -fmerge-all-constants */
-  OPT_fmerge_constants = 1254,               /* -fmerge-constants */
-  OPT_fmerge_debug_strings = 1255,           /* -fmerge-debug-strings */
-  OPT_fmessage_length_ = 1256,               /* -fmessage-length= */
-  OPT_fmodule_file_ = 1257,                  /* -fmodule-file= */
-  OPT_fmodule_header = 1258,                 /* -fmodule-header */
-  OPT_fmodule_header_ = 1259,                /* -fmodule-header= */
-  OPT_fmodule_implicit_inline = 1260,        /* -fmodule-implicit-inline */
-  OPT_fmodule_lazy = 1261,                   /* -fmodule-lazy */
-  OPT_fmodule_mapper_ = 1262,                /* -fmodule-mapper= */
-  OPT_fmodule_only = 1263,                   /* -fmodule-only */
-  OPT_fmodule_private = 1264,                /* -fmodule-private */
-  OPT_fmodule_version_ignore = 1265,         /* -fmodule-version-ignore */
-  OPT_fmoduleinfo = 1266,                    /* -fmoduleinfo */
-  OPT_fmodules_ts = 1267,                    /* -fmodules-ts */
-  OPT_fmodulo_sched = 1268,                  /* -fmodulo-sched */
-  OPT_fmodulo_sched_allow_regmoves = 1269,   /* -fmodulo-sched-allow-regmoves */
-  OPT_fmove_loop_invariants = 1270,          /* -fmove-loop-invariants */
-  OPT_fms_extensions = 1271,                 /* -fms-extensions */
-  OPT_fmudflap = 1272,                       /* -fmudflap */
-  OPT_fmudflapir = 1273,                     /* -fmudflapir */
-  OPT_fmudflapth = 1274,                     /* -fmudflapth */
-  OPT_fname_mangling_version_ = 1275,        /* -fname-mangling-version- */
-  OPT_fnew_abi = 1276,                       /* -fnew-abi */
-  OPT_fnew_inheriting_ctors = 1277,          /* -fnew-inheriting-ctors */
-  OPT_fnew_ttp_matching = 1278,              /* -fnew-ttp-matching */
-  OPT_fnext_runtime = 1279,                  /* -fnext-runtime */
-  OPT_fnil_receivers = 1280,                 /* -fnil-receivers */
-  OPT_fno_modules = 1281,                    /* -fno-modules */
-  OPT_fnon_call_exceptions = 1282,           /* -fnon-call-exceptions */
-  OPT_fnonansi_builtins = 1283,              /* -fnonansi-builtins */
-  OPT_fnonnull_objects = 1284,               /* -fnonnull-objects */
-  OPT_fnothrow_opt = 1285,                   /* -fnothrow-opt */
-  OPT_fobjc_abi_version_ = 1286,             /* -fobjc-abi-version= */
-  OPT_fobjc_call_cxx_cdtors = 1287,          /* -fobjc-call-cxx-cdtors */
-  OPT_fobjc_direct_dispatch = 1288,          /* -fobjc-direct-dispatch */
-  OPT_fobjc_exceptions = 1289,               /* -fobjc-exceptions */
-  OPT_fobjc_gc = 1290,                       /* -fobjc-gc */
-  OPT_fobjc_nilcheck = 1291,                 /* -fobjc-nilcheck */
-  OPT_fobjc_sjlj_exceptions = 1292,          /* -fobjc-sjlj-exceptions */
-  OPT_fobjc_std_objc1 = 1293,                /* -fobjc-std=objc1 */
-  OPT_foffload_abi_ = 1294,                  /* -foffload-abi= */
-  OPT_foffload_ = 1295,                      /* -foffload= */
-  OPT_fomit_frame_pointer = 1296,            /* -fomit-frame-pointer */
-  OPT_fonly_ = 1297,                         /* -fonly= */
-  OPT_fopenacc = 1298,                       /* -fopenacc */
-  OPT_fopenacc_dim_ = 1299,                  /* -fopenacc-dim= */
-  OPT_fopenacc_kernels_ = 1300,              /* -fopenacc-kernels= */
-  OPT_fopenmp = 1301,                        /* -fopenmp */
-  OPT_fopenmp_simd = 1302,                   /* -fopenmp-simd */
-  OPT_foperator_names = 1303,                /* -foperator-names */
-  OPT_fopt_info = 1304,                      /* -fopt-info */
-  OPT_fopt_info_ = 1305,                     /* -fopt-info- */
-  /* OPT_foptimize_register_move = 1306, */  /* -foptimize-register-move */
-  OPT_foptimize_sibling_calls = 1307,        /* -foptimize-sibling-calls */
-  OPT_foptimize_strlen = 1308,               /* -foptimize-strlen */
-  /* OPT_foptional_diags = 1309, */          /* -foptional-diags */
-  OPT_fpack_derived = 1310,                  /* -fpack-derived */
-  OPT_fpack_struct = 1311,                   /* -fpack-struct */
-  OPT_fpack_struct_ = 1312,                  /* -fpack-struct= */
-  OPT_fpad_source = 1313,                    /* -fpad-source */
-  OPT_fpartial_inlining = 1314,              /* -fpartial-inlining */
-  OPT_fpatchable_function_entry_ = 1315,     /* -fpatchable-function-entry= */
-  OPT_fpcc_struct_return = 1316,             /* -fpcc-struct-return */
-  OPT_fpch_deps = 1317,                      /* -fpch-deps */
-  OPT_fpch_preprocess = 1318,                /* -fpch-preprocess */
-  OPT_fpeel_loops = 1319,                    /* -fpeel-loops */
-  OPT_fpeephole = 1320,                      /* -fpeephole */
-  OPT_fpeephole2 = 1321,                     /* -fpeephole2 */
-  OPT_fpermissive = 1322,                    /* -fpermissive */
-  OPT_fpermitted_flt_eval_methods_ = 1323,   /* -fpermitted-flt-eval-methods= */
-  OPT_fpic = 1324,                           /* -fpic */
-  OPT_fpie = 1325,                           /* -fpie */
-  OPT_fplan9_extensions = 1326,              /* -fplan9-extensions */
-  OPT_fplt = 1327,                           /* -fplt */
-  OPT_fplugin_arg_ = 1328,                   /* -fplugin-arg- */
-  OPT_fplugin_ = 1329,                       /* -fplugin= */
-  OPT_fpost_ipa_mem_report = 1330,           /* -fpost-ipa-mem-report */
-  OPT_fpostconditions = 1331,                /* -fpostconditions */
-  OPT_fpre_include_ = 1332,                  /* -fpre-include= */
-  OPT_fpre_ipa_mem_report = 1333,            /* -fpre-ipa-mem-report */
-  OPT_fpreconditions = 1334,                 /* -fpreconditions */
-  OPT_fpredictive_commoning = 1335,          /* -fpredictive-commoning */
-  OPT_fprefetch_loop_arrays = 1336,          /* -fprefetch-loop-arrays */
-  OPT_fpreprocessed = 1337,                  /* -fpreprocessed */
-  OPT_fpretty_templates = 1338,              /* -fpretty-templates */
-  OPT_fprintf_return_value = 1339,           /* -fprintf-return-value */
-  OPT_fprofile = 1340,                       /* -fprofile */
-  OPT_fprofile_abs_path = 1341,              /* -fprofile-abs-path */
-  OPT_fprofile_arcs = 1342,                  /* -fprofile-arcs */
-  OPT_fprofile_correction = 1343,            /* -fprofile-correction */
-  OPT_fprofile_dir_ = 1344,                  /* -fprofile-dir= */
-  OPT_fprofile_exclude_files_ = 1345,        /* -fprofile-exclude-files= */
-  OPT_fprofile_filter_files_ = 1346,         /* -fprofile-filter-files= */
-  OPT_fprofile_generate = 1347,              /* -fprofile-generate */
-  OPT_fprofile_generate_ = 1348,             /* -fprofile-generate= */
-  OPT_fprofile_info_section = 1349,          /* -fprofile-info-section */
-  OPT_fprofile_info_section_ = 1350,         /* -fprofile-info-section= */
-  OPT_fprofile_note_ = 1351,                 /* -fprofile-note= */
-  OPT_fprofile_partial_training = 1352,      /* -fprofile-partial-training */
-  OPT_fprofile_prefix_path_ = 1353,          /* -fprofile-prefix-path= */
-  OPT_fprofile_reorder_functions = 1354,     /* -fprofile-reorder-functions */
-  OPT_fprofile_report = 1355,                /* -fprofile-report */
-  OPT_fprofile_reproducible_ = 1356,         /* -fprofile-reproducible= */
-  OPT_fprofile_update_ = 1357,               /* -fprofile-update= */
-  OPT_fprofile_use = 1358,                   /* -fprofile-use */
-  OPT_fprofile_use_ = 1359,                  /* -fprofile-use= */
-  OPT_fprofile_values = 1360,                /* -fprofile-values */
-  OPT_fprotect_parens = 1361,                /* -fprotect-parens */
-  OPT_frandom_seed = 1362,                   /* -frandom-seed */
-  OPT_frandom_seed_ = 1363,                  /* -frandom-seed= */
-  OPT_frange_check = 1364,                   /* -frange-check */
-  OPT_freal_4_real_10 = 1365,                /* -freal-4-real-10 */
-  OPT_freal_4_real_16 = 1366,                /* -freal-4-real-16 */
-  OPT_freal_4_real_8 = 1367,                 /* -freal-4-real-8 */
-  OPT_freal_8_real_10 = 1368,                /* -freal-8-real-10 */
-  OPT_freal_8_real_16 = 1369,                /* -freal-8-real-16 */
-  OPT_freal_8_real_4 = 1370,                 /* -freal-8-real-4 */
-  OPT_frealloc_lhs = 1371,                   /* -frealloc-lhs */
-  OPT_freciprocal_math = 1372,               /* -freciprocal-math */
-  OPT_frecord_gcc_switches = 1373,           /* -frecord-gcc-switches */
-  OPT_frecord_marker_4 = 1374,               /* -frecord-marker=4 */
-  OPT_frecord_marker_8 = 1375,               /* -frecord-marker=8 */
-  OPT_frecursive = 1376,                     /* -frecursive */
-  OPT_free = 1377,                           /* -free */
-  OPT_freg_struct_return = 1378,             /* -freg-struct-return */
-  /* OPT_fregmove = 1379, */                 /* -fregmove */
-  OPT_frelease = 1380,                       /* -frelease */
-  OPT_frename_registers = 1381,              /* -frename-registers */
-  OPT_freorder_blocks = 1382,                /* -freorder-blocks */
-  OPT_freorder_blocks_algorithm_ = 1383,     /* -freorder-blocks-algorithm= */
-  OPT_freorder_blocks_and_partition = 1384,  /* -freorder-blocks-and-partition */
-  OPT_freorder_functions = 1385,             /* -freorder-functions */
-  OPT_frepack_arrays = 1386,                 /* -frepack-arrays */
-  OPT_freplace_objc_classes = 1387,          /* -freplace-objc-classes */
-  OPT_frepo = 1388,                          /* -frepo */
-  OPT_freport_bug = 1389,                    /* -freport-bug */
-  OPT_frequire_return_statement = 1390,      /* -frequire-return-statement */
-  OPT_frerun_cse_after_loop = 1391,          /* -frerun-cse-after-loop */
-  /* OPT_frerun_loop_opt = 1392, */          /* -frerun-loop-opt */
-  OPT_freschedule_modulo_scheduled_loops = 1393,/* -freschedule-modulo-scheduled-loops */
-  OPT_fresolution_ = 1394,                   /* -fresolution= */
-  OPT_frounding_math = 1395,                 /* -frounding-math */
-  OPT_frtti = 1396,                          /* -frtti */
-  OPT_fsanitize_address_use_after_scope = 1397,/* -fsanitize-address-use-after-scope */
-  OPT_fsanitize_coverage_ = 1398,            /* -fsanitize-coverage= */
-  OPT_fsanitize_recover = 1399,              /* -fsanitize-recover */
-  OPT_fsanitize_recover_ = 1400,             /* -fsanitize-recover= */
-  OPT_fsanitize_sections_ = 1401,            /* -fsanitize-sections= */
-  OPT_fsanitize_undefined_trap_on_error = 1402,/* -fsanitize-undefined-trap-on-error */
-  OPT_fsanitize_ = 1403,                     /* -fsanitize= */
-  OPT_fsave_optimization_record = 1404,      /* -fsave-optimization-record */
-  OPT_fsched_critical_path_heuristic = 1405, /* -fsched-critical-path-heuristic */
-  OPT_fsched_dep_count_heuristic = 1406,     /* -fsched-dep-count-heuristic */
-  OPT_fsched_group_heuristic = 1407,         /* -fsched-group-heuristic */
-  OPT_fsched_interblock = 1408,              /* -fsched-interblock */
-  OPT_fsched_last_insn_heuristic = 1409,     /* -fsched-last-insn-heuristic */
-  OPT_fsched_pressure = 1410,                /* -fsched-pressure */
-  OPT_fsched_rank_heuristic = 1411,          /* -fsched-rank-heuristic */
-  OPT_fsched_spec = 1412,                    /* -fsched-spec */
-  OPT_fsched_spec_insn_heuristic = 1413,     /* -fsched-spec-insn-heuristic */
-  OPT_fsched_spec_load = 1414,               /* -fsched-spec-load */
-  OPT_fsched_spec_load_dangerous = 1415,     /* -fsched-spec-load-dangerous */
-  OPT_fsched_stalled_insns = 1416,           /* -fsched-stalled-insns */
-  OPT_fsched_stalled_insns_dep = 1417,       /* -fsched-stalled-insns-dep */
-  OPT_fsched_stalled_insns_dep_ = 1418,      /* -fsched-stalled-insns-dep= */
-  OPT_fsched_stalled_insns_ = 1419,          /* -fsched-stalled-insns= */
-  OPT_fsched_verbose_ = 1420,                /* -fsched-verbose= */
-  OPT_fsched2_use_superblocks = 1421,        /* -fsched2-use-superblocks */
-  /* OPT_fsched2_use_traces = 1422, */       /* -fsched2-use-traces */
-  OPT_fschedule_fusion = 1423,               /* -fschedule-fusion */
-  OPT_fschedule_insns = 1424,                /* -fschedule-insns */
-  OPT_fschedule_insns2 = 1425,               /* -fschedule-insns2 */
-  OPT_fsecond_underscore = 1426,             /* -fsecond-underscore */
-  OPT_fsection_anchors = 1427,               /* -fsection-anchors */
-  /* OPT_fsee = 1428, */                     /* -fsee */
-  OPT_fsel_sched_pipelining = 1429,          /* -fsel-sched-pipelining */
-  OPT_fsel_sched_pipelining_outer_loops = 1430,/* -fsel-sched-pipelining-outer-loops */
-  OPT_fsel_sched_reschedule_pipelined = 1431,/* -fsel-sched-reschedule-pipelined */
-  OPT_fselective_scheduling = 1432,          /* -fselective-scheduling */
-  OPT_fselective_scheduling2 = 1433,         /* -fselective-scheduling2 */
-  OPT_fself_test_ = 1434,                    /* -fself-test= */
-  OPT_fsemantic_interposition = 1435,        /* -fsemantic-interposition */
-  OPT_fshort_enums = 1436,                   /* -fshort-enums */
-  OPT_fshort_wchar = 1437,                   /* -fshort-wchar */
-  OPT_fshow_column = 1438,                   /* -fshow-column */
-  OPT_fshrink_wrap = 1439,                   /* -fshrink-wrap */
-  OPT_fshrink_wrap_separate = 1440,          /* -fshrink-wrap-separate */
-  OPT_fsign_zero = 1441,                     /* -fsign-zero */
-  OPT_fsignaling_nans = 1442,                /* -fsignaling-nans */
-  OPT_fsigned_bitfields = 1443,              /* -fsigned-bitfields */
-  OPT_fsigned_char = 1444,                   /* -fsigned-char */
-  OPT_fsigned_zeros = 1445,                  /* -fsigned-zeros */
-  OPT_fsimd_cost_model_ = 1446,              /* -fsimd-cost-model= */
-  OPT_fsingle_precision_constant = 1447,     /* -fsingle-precision-constant */
-  OPT_fsized_deallocation = 1448,            /* -fsized-deallocation */
-  OPT_fsplit_ivs_in_unroller = 1449,         /* -fsplit-ivs-in-unroller */
-  OPT_fsplit_loops = 1450,                   /* -fsplit-loops */
-  OPT_fsplit_paths = 1451,                   /* -fsplit-paths */
-  OPT_fsplit_stack = 1452,                   /* -fsplit-stack */
-  OPT_fsplit_wide_types = 1453,              /* -fsplit-wide-types */
-  OPT_fsplit_wide_types_early = 1454,        /* -fsplit-wide-types-early */
-  OPT_fsquangle = 1455,                      /* -fsquangle */
-  OPT_fssa_backprop = 1456,                  /* -fssa-backprop */
-  OPT_fssa_phiopt = 1457,                    /* -fssa-phiopt */
-  OPT_fsso_struct_ = 1458,                   /* -fsso-struct= */
-  OPT_fstack_arrays = 1459,                  /* -fstack-arrays */
-  /* OPT_fstack_check = 1460, */             /* -fstack-check */
-  OPT_fstack_check_ = 1461,                  /* -fstack-check= */
-  OPT_fstack_clash_protection = 1462,        /* -fstack-clash-protection */
-  OPT_fstack_limit = 1463,                   /* -fstack-limit */
-  OPT_fstack_limit_register_ = 1464,         /* -fstack-limit-register= */
-  OPT_fstack_limit_symbol_ = 1465,           /* -fstack-limit-symbol= */
-  OPT_fstack_protector = 1466,               /* -fstack-protector */
-  OPT_fstack_protector_all = 1467,           /* -fstack-protector-all */
-  OPT_fstack_protector_explicit = 1468,      /* -fstack-protector-explicit */
-  OPT_fstack_protector_strong = 1469,        /* -fstack-protector-strong */
-  OPT_fstack_reuse_ = 1470,                  /* -fstack-reuse= */
-  OPT_fstack_usage = 1471,                   /* -fstack-usage */
-  OPT_fstats = 1472,                         /* -fstats */
-  OPT_fstdarg_opt = 1473,                    /* -fstdarg-opt */
-  OPT_fstore_merging = 1474,                 /* -fstore-merging */
-  /* OPT_fstrength_reduce = 1475, */         /* -fstrength-reduce */
-  OPT_fstrict_aliasing = 1476,               /* -fstrict-aliasing */
-  OPT_fstrict_enums = 1477,                  /* -fstrict-enums */
-  OPT_fstrict_overflow = 1478,               /* -fstrict-overflow */
-  OPT_fstrict_prototype = 1479,              /* -fstrict-prototype */
-  OPT_fstrict_volatile_bitfields = 1480,     /* -fstrict-volatile-bitfields */
-  /* OPT_fstrong_eval_order = 1481, */       /* -fstrong-eval-order */
-  OPT_fstrong_eval_order_ = 1482,            /* -fstrong-eval-order= */
-  OPT_fswitch_errors = 1483,                 /* -fswitch-errors */
-  OPT_fsync_libcalls = 1484,                 /* -fsync-libcalls */
-  OPT_fsyntax_only = 1485,                   /* -fsyntax-only */
-  OPT_ftabstop_ = 1486,                      /* -ftabstop= */
-  /* OPT_ftail_call_workaround = 1487, */    /* -ftail-call-workaround */
-  OPT_ftail_call_workaround_ = 1488,         /* -ftail-call-workaround= */
-  /* OPT_ftarget_help = 1489, */             /* -ftarget-help */
-  OPT_ftemplate_backtrace_limit_ = 1490,     /* -ftemplate-backtrace-limit= */
-  /* OPT_ftemplate_depth_ = 1491, */         /* -ftemplate-depth- */
-  OPT_ftemplate_depth_ = 1492,               /* -ftemplate-depth= */
-  OPT_ftest_coverage = 1493,                 /* -ftest-coverage */
-  OPT_ftest_forall_temp = 1494,              /* -ftest-forall-temp */
-  OPT_fthis_is_variable = 1495,              /* -fthis-is-variable */
-  OPT_fthread_jumps = 1496,                  /* -fthread-jumps */
-  OPT_fthreadsafe_statics = 1497,            /* -fthreadsafe-statics */
-  OPT_ftime_report = 1498,                   /* -ftime-report */
-  OPT_ftime_report_details = 1499,           /* -ftime-report-details */
-  OPT_ftls_model_ = 1500,                    /* -ftls-model= */
-  OPT_ftoplevel_reorder = 1501,              /* -ftoplevel-reorder */
-  OPT_ftracer = 1502,                        /* -ftracer */
-  OPT_ftrack_macro_expansion = 1503,         /* -ftrack-macro-expansion */
-  OPT_ftrack_macro_expansion_ = 1504,        /* -ftrack-macro-expansion= */
-  OPT_ftrampolines = 1505,                   /* -ftrampolines */
-  OPT_ftransition_all = 1506,                /* -ftransition=all */
-  OPT_ftransition_complex = 1507,            /* -ftransition=complex */
-  OPT_ftransition_dip1000 = 1508,            /* -ftransition=dip1000 */
-  OPT_ftransition_dip25 = 1509,              /* -ftransition=dip25 */
-  OPT_ftransition_field = 1510,              /* -ftransition=field */
-  OPT_ftransition_nogc = 1511,               /* -ftransition=nogc */
-  OPT_ftransition_tls = 1512,                /* -ftransition=tls */
-  OPT_ftrapping_math = 1513,                 /* -ftrapping-math */
-  OPT_ftrapv = 1514,                         /* -ftrapv */
-  OPT_ftree_bit_ccp = 1515,                  /* -ftree-bit-ccp */
-  OPT_ftree_builtin_call_dce = 1516,         /* -ftree-builtin-call-dce */
-  OPT_ftree_ccp = 1517,                      /* -ftree-ccp */
-  OPT_ftree_ch = 1518,                       /* -ftree-ch */
-  /* OPT_ftree_coalesce_inlined_vars = 1519, *//* -ftree-coalesce-inlined-vars */
-  OPT_ftree_coalesce_vars = 1520,            /* -ftree-coalesce-vars */
-  OPT_ftree_copy_prop = 1521,                /* -ftree-copy-prop */
-  /* OPT_ftree_copyrename = 1522, */         /* -ftree-copyrename */
-  OPT_ftree_cselim = 1523,                   /* -ftree-cselim */
-  OPT_ftree_dce = 1524,                      /* -ftree-dce */
-  OPT_ftree_dominator_opts = 1525,           /* -ftree-dominator-opts */
-  OPT_ftree_dse = 1526,                      /* -ftree-dse */
-  OPT_ftree_forwprop = 1527,                 /* -ftree-forwprop */
-  OPT_ftree_fre = 1528,                      /* -ftree-fre */
-  OPT_ftree_loop_distribute_patterns = 1529, /* -ftree-loop-distribute-patterns */
-  OPT_ftree_loop_distribution = 1530,        /* -ftree-loop-distribution */
-  OPT_ftree_loop_if_convert = 1531,          /* -ftree-loop-if-convert */
-  /* OPT_ftree_loop_if_convert_stores = 1532, *//* -ftree-loop-if-convert-stores */
-  OPT_ftree_loop_im = 1533,                  /* -ftree-loop-im */
-  OPT_ftree_loop_ivcanon = 1534,             /* -ftree-loop-ivcanon */
-  /* OPT_ftree_loop_linear = 1535, */        /* -ftree-loop-linear */
-  OPT_ftree_loop_optimize = 1536,            /* -ftree-loop-optimize */
-  OPT_ftree_loop_vectorize = 1537,           /* -ftree-loop-vectorize */
-  OPT_ftree_lrs = 1538,                      /* -ftree-lrs */
-  OPT_ftree_parallelize_loops_ = 1539,       /* -ftree-parallelize-loops= */
-  OPT_ftree_partial_pre = 1540,              /* -ftree-partial-pre */
-  OPT_ftree_phiprop = 1541,                  /* -ftree-phiprop */
-  OPT_ftree_pre = 1542,                      /* -ftree-pre */
-  OPT_ftree_pta = 1543,                      /* -ftree-pta */
-  OPT_ftree_reassoc = 1544,                  /* -ftree-reassoc */
-  /* OPT_ftree_salias = 1545, */             /* -ftree-salias */
-  OPT_ftree_scev_cprop = 1546,               /* -ftree-scev-cprop */
-  OPT_ftree_sink = 1547,                     /* -ftree-sink */
-  OPT_ftree_slp_vectorize = 1548,            /* -ftree-slp-vectorize */
-  OPT_ftree_slsr = 1549,                     /* -ftree-slsr */
-  OPT_ftree_sra = 1550,                      /* -ftree-sra */
-  /* OPT_ftree_store_ccp = 1551, */          /* -ftree-store-ccp */
-  /* OPT_ftree_store_copy_prop = 1552, */    /* -ftree-store-copy-prop */
-  OPT_ftree_switch_conversion = 1553,        /* -ftree-switch-conversion */
-  OPT_ftree_tail_merge = 1554,               /* -ftree-tail-merge */
-  OPT_ftree_ter = 1555,                      /* -ftree-ter */
-  /* OPT_ftree_vect_loop_version = 1556, */  /* -ftree-vect-loop-version */
-  OPT_ftree_vectorize = 1557,                /* -ftree-vectorize */
-  /* OPT_ftree_vectorizer_verbose_ = 1558, *//* -ftree-vectorizer-verbose= */
-  OPT_ftree_vrp = 1559,                      /* -ftree-vrp */
-  OPT_funconstrained_commons = 1560,         /* -funconstrained-commons */
-  OPT_funderscoring = 1561,                  /* -funderscoring */
-  OPT_funit_at_a_time = 1562,                /* -funit-at-a-time */
-  OPT_funittest = 1563,                      /* -funittest */
-  OPT_funroll_all_loops = 1564,              /* -funroll-all-loops */
-  OPT_funroll_completely_grow_size = 1565,   /* -funroll-completely-grow-size */
-  OPT_funroll_loops = 1566,                  /* -funroll-loops */
-  /* OPT_funsafe_loop_optimizations = 1567, *//* -funsafe-loop-optimizations */
-  OPT_funsafe_math_optimizations = 1568,     /* -funsafe-math-optimizations */
-  OPT_funsigned_bitfields = 1569,            /* -funsigned-bitfields */
-  OPT_funsigned_char = 1570,                 /* -funsigned-char */
-  OPT_funswitch_loops = 1571,                /* -funswitch-loops */
-  OPT_funwind_tables = 1572,                 /* -funwind-tables */
-  OPT_fuse_cxa_atexit = 1573,                /* -fuse-cxa-atexit */
-  OPT_fuse_cxa_get_exception_ptr = 1574,     /* -fuse-cxa-get-exception-ptr */
-  OPT_fuse_ld_bfd = 1575,                    /* -fuse-ld=bfd */
-  OPT_fuse_ld_gold = 1576,                   /* -fuse-ld=gold */
-  OPT_fuse_ld_lld = 1577,                    /* -fuse-ld=lld */
-  OPT_fuse_linker_plugin = 1578,             /* -fuse-linker-plugin */
-  OPT_fvar_tracking = 1579,                  /* -fvar-tracking */
-  OPT_fvar_tracking_assignments = 1580,      /* -fvar-tracking-assignments */
-  OPT_fvar_tracking_assignments_toggle = 1581,/* -fvar-tracking-assignments-toggle */
-  OPT_fvar_tracking_uninit = 1582,           /* -fvar-tracking-uninit */
-  OPT_fvariable_expansion_in_unroller = 1583,/* -fvariable-expansion-in-unroller */
-  /* OPT_fvect_cost_model = 1584, */         /* -fvect-cost-model */
-  OPT_fvect_cost_model_ = 1585,              /* -fvect-cost-model= */
-  OPT_fverbose_asm = 1586,                   /* -fverbose-asm */
-  /* OPT_fversion = 1587, */                 /* -fversion */
-  OPT_fversion_loops_for_strides = 1588,     /* -fversion-loops-for-strides */
-  OPT_fversion_ = 1589,                      /* -fversion= */
-  OPT_fvisibility_inlines_hidden = 1590,     /* -fvisibility-inlines-hidden */
-  OPT_fvisibility_ms_compat = 1591,          /* -fvisibility-ms-compat */
-  OPT_fvisibility_ = 1592,                   /* -fvisibility= */
-  OPT_fvpt = 1593,                           /* -fvpt */
-  OPT_fvtable_gc = 1594,                     /* -fvtable-gc */
-  OPT_fvtable_thunks = 1595,                 /* -fvtable-thunks */
-  OPT_fvtable_verify_ = 1596,                /* -fvtable-verify= */
-  OPT_fvtv_counts = 1597,                    /* -fvtv-counts */
-  OPT_fvtv_debug = 1598,                     /* -fvtv-debug */
-  OPT_fweak = 1599,                          /* -fweak */
-  OPT_fweb = 1600,                           /* -fweb */
-  /* OPT_fwhole_file = 1601, */              /* -fwhole-file */
-  OPT_fwhole_program = 1602,                 /* -fwhole-program */
-  OPT_fwide_exec_charset_ = 1603,            /* -fwide-exec-charset= */
-  OPT_fworking_directory = 1604,             /* -fworking-directory */
-  OPT_fwpa = 1605,                           /* -fwpa */
-  OPT_fwpa_ = 1606,                          /* -fwpa= */
-  OPT_fwrapv = 1607,                         /* -fwrapv */
-  OPT_fwrapv_pointer = 1608,                 /* -fwrapv-pointer */
-  OPT_fxref = 1609,                          /* -fxref */
-  /* OPT_fzee = 1610, */                     /* -fzee */
-  OPT_fzero_call_used_regs_ = 1611,          /* -fzero-call-used-regs= */
-  OPT_fzero_initialized_in_bss = 1612,       /* -fzero-initialized-in-bss */
-  OPT_fzero_link = 1613,                     /* -fzero-link */
-  OPT_g = 1614,                              /* -g */
-  OPT_gant = 1615,                           /* -gant */
-  OPT_gas_loc_support = 1616,                /* -gas-loc-support */
-  OPT_gas_locview_support = 1617,            /* -gas-locview-support */
-  OPT_gcoff = 1618,                          /* -gcoff */
-  OPT_gcoff1 = 1619,                         /* -gcoff1 */
-  OPT_gcoff2 = 1620,                         /* -gcoff2 */
-  OPT_gcoff3 = 1621,                         /* -gcoff3 */
-  OPT_gcolumn_info = 1622,                   /* -gcolumn-info */
-  OPT_gdescribe_dies = 1623,                 /* -gdescribe-dies */
-  OPT_gdwarf = 1624,                         /* -gdwarf */
-  OPT_gdwarf_ = 1625,                        /* -gdwarf- */
-  OPT_gdwarf32 = 1626,                       /* -gdwarf32 */
-  OPT_gdwarf64 = 1627,                       /* -gdwarf64 */
-  OPT_gen_decls = 1628,                      /* -gen-decls */
-  OPT_ggdb = 1629,                           /* -ggdb */
-  OPT_ggnu_pubnames = 1630,                  /* -ggnu-pubnames */
-  OPT_gimple_stats = 1631,                   /* -gimple-stats */
-  OPT_ginline_points = 1632,                 /* -ginline-points */
-  OPT_ginternal_reset_location_views = 1633, /* -ginternal-reset-location-views */
-  OPT_gnat = 1634,                           /* -gnat */
-  OPT_gnatO = 1635,                          /* -gnatO */
-  OPT_gno_ = 1636,                           /* -gno- */
-  OPT_gno_pubnames = 1637,                   /* -gno-pubnames */
-  OPT_gpubnames = 1638,                      /* -gpubnames */
-  OPT_grecord_gcc_switches = 1639,           /* -grecord-gcc-switches */
-  OPT_gsplit_dwarf = 1640,                   /* -gsplit-dwarf */
-  OPT_gstabs = 1641,                         /* -gstabs */
-  OPT_gstabs_ = 1642,                        /* -gstabs+ */
-  OPT_gstatement_frontiers = 1643,           /* -gstatement-frontiers */
-  OPT_gstrict_dwarf = 1644,                  /* -gstrict-dwarf */
-  OPT_gtoggle = 1645,                        /* -gtoggle */
-  OPT_gvariable_location_views = 1646,       /* -gvariable-location-views */
-  OPT_gvariable_location_views_incompat5 = 1647,/* -gvariable-location-views=incompat5 */
-  OPT_gvms = 1648,                           /* -gvms */
-  OPT_gxcoff = 1649,                         /* -gxcoff */
-  OPT_gxcoff_ = 1650,                        /* -gxcoff+ */
-  OPT_gz = 1651,                             /* -gz */
-  OPT_gz_ = 1652,                            /* -gz= */
-  OPT_h = 1653,                              /* -h */
-  OPT_help = 1654,                           /* -help */
-  OPT_idirafter = 1655,                      /* -idirafter */
-  OPT_imacros = 1656,                        /* -imacros */
-  OPT_imultiarch = 1657,                     /* -imultiarch */
-  OPT_imultilib = 1658,                      /* -imultilib */
-  OPT_include = 1659,                        /* -include */
-  OPT_iplugindir_ = 1660,                    /* -iplugindir= */
-  OPT_iprefix = 1661,                        /* -iprefix */
-  OPT_iquote = 1662,                         /* -iquote */
-  OPT_isysroot = 1663,                       /* -isysroot */
-  OPT_isystem = 1664,                        /* -isystem */
-  OPT_iwithprefix = 1665,                    /* -iwithprefix */
-  OPT_iwithprefixbefore = 1666,              /* -iwithprefixbefore */
-  OPT_k8 = 1667,                             /* -k8 */
-  OPT_l = 1668,                              /* -l */
-  OPT_lang_asm = 1669,                       /* -lang-asm */
-  OPT_list = 1670,                           /* -list */
-  OPT_mabi_ = 1671,                          /* -mabi= */
-  OPT_march_ = 1672,                         /* -march= */
-  OPT_mbig_endian = 1673,                    /* -mbig-endian */
-  OPT_mbranch_protection_ = 1674,            /* -mbranch-protection= */
-  OPT_mcmodel_ = 1675,                       /* -mcmodel= */
-  OPT_mcpu_ = 1676,                          /* -mcpu= */
-  OPT_mfix_cortex_a53_835769 = 1677,         /* -mfix-cortex-a53-835769 */
-  OPT_mfix_cortex_a53_843419 = 1678,         /* -mfix-cortex-a53-843419 */
-  OPT_mgeneral_regs_only = 1679,             /* -mgeneral-regs-only */
-  OPT_mharden_sls_ = 1680,                   /* -mharden-sls= */
-  OPT_mlittle_endian = 1681,                 /* -mlittle-endian */
-  OPT_mlow_precision_div = 1682,             /* -mlow-precision-div */
-  OPT_mlow_precision_recip_sqrt = 1683,      /* -mlow-precision-recip-sqrt */
-  OPT_mlow_precision_sqrt = 1684,            /* -mlow-precision-sqrt */
-  OPT_momit_leaf_frame_pointer = 1685,       /* -momit-leaf-frame-pointer */
-  OPT_moutline_atomics = 1686,               /* -moutline-atomics */
-  OPT_moverride_ = 1687,                     /* -moverride= */
-  OPT_mpc_relative_literal_loads = 1688,     /* -mpc-relative-literal-loads */
-  OPT_msign_return_address_ = 1689,          /* -msign-return-address= */
-  OPT_mstack_protector_guard_offset_ = 1690, /* -mstack-protector-guard-offset= */
-  OPT_mstack_protector_guard_reg_ = 1691,    /* -mstack-protector-guard-reg= */
-  OPT_mstack_protector_guard_ = 1692,        /* -mstack-protector-guard= */
-  OPT_mstrict_align = 1693,                  /* -mstrict-align */
-  OPT_msve_vector_bits_ = 1694,              /* -msve-vector-bits= */
-  OPT_mtls_dialect_ = 1695,                  /* -mtls-dialect= */
-  OPT_mtls_size_ = 1696,                     /* -mtls-size= */
-  OPT_mtrack_speculation = 1697,             /* -mtrack-speculation */
-  OPT_mtune_ = 1698,                         /* -mtune= */
-  OPT_mverbose_cost_dump = 1699,             /* -mverbose-cost-dump */
-  OPT_n = 1700,                              /* -n */
-  OPT_name_sort = 1701,                      /* -name-sort */
-  OPT_no_canonical_prefixes = 1702,          /* -no-canonical-prefixes */
-  OPT_no_integrated_cpp = 1703,              /* -no-integrated-cpp */
-  OPT_no_pie = 1704,                         /* -no-pie */
-  OPT_nocpp = 1705,                          /* -nocpp */
-  OPT_nodefaultlibs = 1706,                  /* -nodefaultlibs */
-  OPT_nolibc = 1707,                         /* -nolibc */
-  OPT_nophoboslib = 1708,                    /* -nophoboslib */
-  OPT_nostartfiles = 1709,                   /* -nostartfiles */
-  OPT_nostdinc = 1710,                       /* -nostdinc */
-  OPT_nostdinc__ = 1711,                     /* -nostdinc++ */
-  OPT_nostdlib = 1712,                       /* -nostdlib */
-  OPT_o = 1713,                              /* -o */
-  OPT_objects = 1714,                        /* -objects */
-  OPT_p = 1715,                              /* -p */
-  OPT_pass_exit_codes = 1716,                /* -pass-exit-codes */
-  /* OPT_pedantic = 1717, */                 /* -pedantic */
-  OPT_pedantic_errors = 1718,                /* -pedantic-errors */
-  OPT_pg = 1719,                             /* -pg */
-  OPT_pie = 1720,                            /* -pie */
-  OPT_pipe = 1721,                           /* -pipe */
-  OPT_print_file_name_ = 1722,               /* -print-file-name= */
-  OPT_print_libgcc_file_name = 1723,         /* -print-libgcc-file-name */
-  OPT_print_multi_directory = 1724,          /* -print-multi-directory */
-  OPT_print_multi_lib = 1725,                /* -print-multi-lib */
-  OPT_print_multi_os_directory = 1726,       /* -print-multi-os-directory */
-  OPT_print_multiarch = 1727,                /* -print-multiarch */
-  OPT_print_objc_runtime_info = 1728,        /* -print-objc-runtime-info */
-  OPT_print_prog_name_ = 1729,               /* -print-prog-name= */
-  OPT_print_search_dirs = 1730,              /* -print-search-dirs */
-  OPT_print_sysroot = 1731,                  /* -print-sysroot */
-  OPT_print_sysroot_headers_suffix = 1732,   /* -print-sysroot-headers-suffix */
-  OPT_print_value = 1733,                    /* -print-value */
-  OPT_quiet = 1734,                          /* -quiet */
-  OPT_r = 1735,                              /* -r */
-  OPT_remap = 1736,                          /* -remap */
-  OPT_reverse_sort = 1737,                   /* -reverse-sort */
-  OPT_s = 1738,                              /* -s */
-  OPT_save_temps = 1739,                     /* -save-temps */
-  OPT_save_temps_ = 1740,                    /* -save-temps= */
-  OPT_shared = 1741,                         /* -shared */
-  OPT_shared_libgcc = 1742,                  /* -shared-libgcc */
-  OPT_shared_libphobos = 1743,               /* -shared-libphobos */
-  OPT_size_sort = 1744,                      /* -size-sort */
-  /* OPT_specs = 1745, */                    /* -specs */
-  OPT_specs_ = 1746,                         /* -specs= */
-  OPT_static = 1747,                         /* -static */
-  OPT_static_libasan = 1748,                 /* -static-libasan */
-  OPT_static_libgcc = 1749,                  /* -static-libgcc */
-  OPT_static_libgfortran = 1750,             /* -static-libgfortran */
-  OPT_static_libgo = 1751,                   /* -static-libgo */
-  OPT_static_libhwasan = 1752,               /* -static-libhwasan */
-  OPT_static_liblsan = 1753,                 /* -static-liblsan */
-  OPT_static_libmpx = 1754,                  /* -static-libmpx */
-  OPT_static_libmpxwrappers = 1755,          /* -static-libmpxwrappers */
-  OPT_static_libphobos = 1756,               /* -static-libphobos */
-  OPT_static_libstdc__ = 1757,               /* -static-libstdc++ */
-  OPT_static_libtsan = 1758,                 /* -static-libtsan */
-  OPT_static_libubsan = 1759,                /* -static-libubsan */
-  OPT_static_pie = 1760,                     /* -static-pie */
-  /* OPT_std_c__03 = 1761, */                /* -std=c++03 */
-  /* OPT_std_c__0x = 1762, */                /* -std=c++0x */
-  OPT_std_c__11 = 1763,                      /* -std=c++11 */
-  OPT_std_c__14 = 1764,                      /* -std=c++14 */
-  OPT_std_c__17 = 1765,                      /* -std=c++17 */
-  /* OPT_std_c__1y = 1766, */                /* -std=c++1y */
-  /* OPT_std_c__1z = 1767, */                /* -std=c++1z */
-  OPT_std_c__20 = 1768,                      /* -std=c++20 */
-  OPT_std_c__23 = 1769,                      /* -std=c++23 */
-  /* OPT_std_c__2a = 1770, */                /* -std=c++2a */
-  /* OPT_std_c__2b = 1771, */                /* -std=c++2b */
-  OPT_std_c__98 = 1772,                      /* -std=c++98 */
-  OPT_std_c11 = 1773,                        /* -std=c11 */
-  OPT_std_c17 = 1774,                        /* -std=c17 */
-  /* OPT_std_c18 = 1775, */                  /* -std=c18 */
-  /* OPT_std_c1x = 1776, */                  /* -std=c1x */
-  OPT_std_c2x = 1777,                        /* -std=c2x */
-  /* OPT_std_c89 = 1778, */                  /* -std=c89 */
-  OPT_std_c90 = 1779,                        /* -std=c90 */
-  OPT_std_c99 = 1780,                        /* -std=c99 */
-  /* OPT_std_c9x = 1781, */                  /* -std=c9x */
-  OPT_std_f2003 = 1782,                      /* -std=f2003 */
-  OPT_std_f2008 = 1783,                      /* -std=f2008 */
-  OPT_std_f2008ts = 1784,                    /* -std=f2008ts */
-  OPT_std_f2018 = 1785,                      /* -std=f2018 */
-  OPT_std_f95 = 1786,                        /* -std=f95 */
-  OPT_std_gnu = 1787,                        /* -std=gnu */
-  /* OPT_std_gnu__03 = 1788, */              /* -std=gnu++03 */
-  /* OPT_std_gnu__0x = 1789, */              /* -std=gnu++0x */
-  OPT_std_gnu__11 = 1790,                    /* -std=gnu++11 */
-  OPT_std_gnu__14 = 1791,                    /* -std=gnu++14 */
-  OPT_std_gnu__17 = 1792,                    /* -std=gnu++17 */
-  /* OPT_std_gnu__1y = 1793, */              /* -std=gnu++1y */
-  /* OPT_std_gnu__1z = 1794, */              /* -std=gnu++1z */
-  OPT_std_gnu__20 = 1795,                    /* -std=gnu++20 */
-  OPT_std_gnu__23 = 1796,                    /* -std=gnu++23 */
-  /* OPT_std_gnu__2a = 1797, */              /* -std=gnu++2a */
-  /* OPT_std_gnu__2b = 1798, */              /* -std=gnu++2b */
-  OPT_std_gnu__98 = 1799,                    /* -std=gnu++98 */
-  OPT_std_gnu11 = 1800,                      /* -std=gnu11 */
-  OPT_std_gnu17 = 1801,                      /* -std=gnu17 */
-  /* OPT_std_gnu18 = 1802, */                /* -std=gnu18 */
-  /* OPT_std_gnu1x = 1803, */                /* -std=gnu1x */
-  OPT_std_gnu2x = 1804,                      /* -std=gnu2x */
-  /* OPT_std_gnu89 = 1805, */                /* -std=gnu89 */
-  OPT_std_gnu90 = 1806,                      /* -std=gnu90 */
-  OPT_std_gnu99 = 1807,                      /* -std=gnu99 */
-  /* OPT_std_gnu9x = 1808, */                /* -std=gnu9x */
-  /* OPT_std_iso9899_1990 = 1809, */         /* -std=iso9899:1990 */
-  OPT_std_iso9899_199409 = 1810,             /* -std=iso9899:199409 */
-  /* OPT_std_iso9899_1999 = 1811, */         /* -std=iso9899:1999 */
-  /* OPT_std_iso9899_199x = 1812, */         /* -std=iso9899:199x */
-  /* OPT_std_iso9899_2011 = 1813, */         /* -std=iso9899:2011 */
-  /* OPT_std_iso9899_2017 = 1814, */         /* -std=iso9899:2017 */
-  /* OPT_std_iso9899_2018 = 1815, */         /* -std=iso9899:2018 */
-  OPT_std_legacy = 1816,                     /* -std=legacy */
-  OPT_stdlib_ = 1817,                        /* -stdlib= */
-  OPT_symbol_ = 1818,                        /* -symbol= */
-  OPT_symbolic = 1819,                       /* -symbolic */
-  OPT_t = 1820,                              /* -t */
-  OPT_time = 1821,                           /* -time */
-  OPT_time_ = 1822,                          /* -time= */
-  OPT_traditional = 1823,                    /* -traditional */
-  OPT_traditional_cpp = 1824,                /* -traditional-cpp */
-  OPT_tree_stats = 1825,                     /* -tree-stats */
-  OPT_trigraphs = 1826,                      /* -trigraphs */
-  OPT_type_stats = 1827,                     /* -type-stats */
-  OPT_u = 1828,                              /* -u */
-  OPT_undef = 1829,                          /* -undef */
-  OPT_v = 1830,                              /* -v */
-  OPT_version = 1831,                        /* -version */
-  OPT_w = 1832,                              /* -w */
-  OPT_wrapper = 1833,                        /* -wrapper */
-  OPT_x = 1834,                              /* -x */
-  OPT_z = 1835,                              /* -z */
+  OPT__param_max_store_chains_to_track_ = 231,/* --param=max-store-chains-to-track= */
+  OPT__param_max_stores_to_merge_ = 232,     /* --param=max-stores-to-merge= */
+  OPT__param_max_stores_to_sink_ = 233,      /* --param=max-stores-to-sink= */
+  OPT__param_max_stores_to_track_ = 234,     /* --param=max-stores-to-track= */
+  OPT__param_max_tail_merge_comparisons_ = 235,/* --param=max-tail-merge-comparisons= */
+  OPT__param_max_tail_merge_iterations_ = 236,/* --param=max-tail-merge-iterations= */
+  OPT__param_max_tracked_strlens_ = 237,     /* --param=max-tracked-strlens= */
+  OPT__param_max_tree_if_conversion_phi_args_ = 238,/* --param=max-tree-if-conversion-phi-args= */
+  OPT__param_max_unroll_times_ = 239,        /* --param=max-unroll-times= */
+  OPT__param_max_unrolled_insns_ = 240,      /* --param=max-unrolled-insns= */
+  OPT__param_max_unswitch_insns_ = 241,      /* --param=max-unswitch-insns= */
+  OPT__param_max_unswitch_level_ = 242,      /* --param=max-unswitch-level= */
+  OPT__param_max_variable_expansions_in_unroller_ = 243,/* --param=max-variable-expansions-in-unroller= */
+  OPT__param_max_vartrack_expr_depth_ = 244, /* --param=max-vartrack-expr-depth= */
+  OPT__param_max_vartrack_reverse_op_size_ = 245,/* --param=max-vartrack-reverse-op-size= */
+  OPT__param_max_vartrack_size_ = 246,       /* --param=max-vartrack-size= */
+  OPT__param_max_vrp_switch_assertions_ = 247,/* --param=max-vrp-switch-assertions= */
+  OPT__param_min_crossjump_insns_ = 248,     /* --param=min-crossjump-insns= */
+  OPT__param_min_inline_recursive_probability_ = 249,/* --param=min-inline-recursive-probability= */
+  OPT__param_min_insn_to_prefetch_ratio_ = 250,/* --param=min-insn-to-prefetch-ratio= */
+  OPT__param_min_loop_cond_split_prob_ = 251,/* --param=min-loop-cond-split-prob= */
+  OPT__param_min_nondebug_insn_uid_ = 252,   /* --param=min-nondebug-insn-uid= */
+  OPT__param_min_size_for_stack_sharing_ = 253,/* --param=min-size-for-stack-sharing= */
+  OPT__param_min_spec_prob_ = 254,           /* --param=min-spec-prob= */
+  OPT__param_min_vect_loop_bound_ = 255,     /* --param=min-vect-loop-bound= */
+  OPT__param_modref_max_accesses_ = 256,     /* --param=modref-max-accesses= */
+  OPT__param_modref_max_bases_ = 257,        /* --param=modref-max-bases= */
+  OPT__param_modref_max_depth_ = 258,        /* --param=modref-max-depth= */
+  OPT__param_modref_max_escape_points_ = 259,/* --param=modref-max-escape-points= */
+  OPT__param_modref_max_refs_ = 260,         /* --param=modref-max-refs= */
+  OPT__param_modref_max_tests_ = 261,        /* --param=modref-max-tests= */
+  OPT__param_parloops_chunk_size_ = 262,     /* --param=parloops-chunk-size= */
+  OPT__param_parloops_min_per_thread_ = 263, /* --param=parloops-min-per-thread= */
+  OPT__param_parloops_schedule_ = 264,       /* --param=parloops-schedule= */
+  OPT__param_partial_inlining_entry_probability_ = 265,/* --param=partial-inlining-entry-probability= */
+  OPT__param_predictable_branch_outcome_ = 266,/* --param=predictable-branch-outcome= */
+  OPT__param_prefetch_dynamic_strides_ = 267,/* --param=prefetch-dynamic-strides= */
+  OPT__param_prefetch_latency_ = 268,        /* --param=prefetch-latency= */
+  OPT__param_prefetch_min_insn_to_mem_ratio_ = 269,/* --param=prefetch-min-insn-to-mem-ratio= */
+  OPT__param_prefetch_minimum_stride_ = 270, /* --param=prefetch-minimum-stride= */
+  OPT__param_profile_func_internal_id_ = 271,/* --param=profile-func-internal-id= */
+  OPT__param_rpo_vn_max_loop_depth_ = 272,   /* --param=rpo-vn-max-loop-depth= */
+  OPT__param_sccvn_max_alias_queries_per_access_ = 273,/* --param=sccvn-max-alias-queries-per-access= */
+  OPT__param_scev_max_expr_complexity_ = 274,/* --param=scev-max-expr-complexity= */
+  OPT__param_scev_max_expr_size_ = 275,      /* --param=scev-max-expr-size= */
+  OPT__param_sched_autopref_queue_depth_ = 276,/* --param=sched-autopref-queue-depth= */
+  OPT__param_sched_mem_true_dep_cost_ = 277, /* --param=sched-mem-true-dep-cost= */
+  OPT__param_sched_pressure_algorithm_ = 278,/* --param=sched-pressure-algorithm= */
+  OPT__param_sched_spec_prob_cutoff_ = 279,  /* --param=sched-spec-prob-cutoff= */
+  OPT__param_sched_state_edge_prob_cutoff_ = 280,/* --param=sched-state-edge-prob-cutoff= */
+  OPT__param_selsched_insns_to_rename_ = 281,/* --param=selsched-insns-to-rename= */
+  OPT__param_selsched_max_lookahead_ = 282,  /* --param=selsched-max-lookahead= */
+  OPT__param_selsched_max_sched_times_ = 283,/* --param=selsched-max-sched-times= */
+  OPT__param_simultaneous_prefetches_ = 284, /* --param=simultaneous-prefetches= */
+  OPT__param_sink_frequency_threshold_ = 285,/* --param=sink-frequency-threshold= */
+  OPT__param_sms_dfa_history_ = 286,         /* --param=sms-dfa-history= */
+  OPT__param_sms_loop_average_count_threshold_ = 287,/* --param=sms-loop-average-count-threshold= */
+  OPT__param_sms_max_ii_factor_ = 288,       /* --param=sms-max-ii-factor= */
+  OPT__param_sms_min_sc_ = 289,              /* --param=sms-min-sc= */
+  OPT__param_sra_max_propagations_ = 290,    /* --param=sra-max-propagations= */
+  OPT__param_sra_max_scalarization_size_Osize_ = 291,/* --param=sra-max-scalarization-size-Osize= */
+  OPT__param_sra_max_scalarization_size_Ospeed_ = 292,/* --param=sra-max-scalarization-size-Ospeed= */
+  OPT__param_ssa_name_def_chain_limit_ = 293,/* --param=ssa-name-def-chain-limit= */
+  OPT__param_ssp_buffer_size_ = 294,         /* --param=ssp-buffer-size= */
+  OPT__param_stack_clash_protection_guard_size_ = 295,/* --param=stack-clash-protection-guard-size= */
+  OPT__param_stack_clash_protection_probe_interval_ = 296,/* --param=stack-clash-protection-probe-interval= */
+  OPT__param_store_merging_allow_unaligned_ = 297,/* --param=store-merging-allow-unaligned= */
+  OPT__param_store_merging_max_size_ = 298,  /* --param=store-merging-max-size= */
+  OPT__param_switch_conversion_max_branch_ratio_ = 299,/* --param=switch-conversion-max-branch-ratio= */
+  OPT__param_tm_max_aggregate_size_ = 300,   /* --param=tm-max-aggregate-size= */
+  OPT__param_tracer_dynamic_coverage_feedback_ = 301,/* --param=tracer-dynamic-coverage-feedback= */
+  OPT__param_tracer_dynamic_coverage_ = 302, /* --param=tracer-dynamic-coverage= */
+  OPT__param_tracer_max_code_growth_ = 303,  /* --param=tracer-max-code-growth= */
+  OPT__param_tracer_min_branch_probability_feedback_ = 304,/* --param=tracer-min-branch-probability-feedback= */
+  OPT__param_tracer_min_branch_probability_ = 305,/* --param=tracer-min-branch-probability= */
+  OPT__param_tracer_min_branch_ratio_ = 306, /* --param=tracer-min-branch-ratio= */
+  OPT__param_tree_reassoc_width_ = 307,      /* --param=tree-reassoc-width= */
+  OPT__param_tsan_distinguish_volatile_ = 308,/* --param=tsan-distinguish-volatile= */
+  OPT__param_tsan_instrument_func_entry_exit_ = 309,/* --param=tsan-instrument-func-entry-exit= */
+  OPT__param_uninit_control_dep_attempts_ = 310,/* --param=uninit-control-dep-attempts= */
+  OPT__param_uninlined_function_insns_ = 311,/* --param=uninlined-function-insns= */
+  OPT__param_uninlined_function_time_ = 312, /* --param=uninlined-function-time= */
+  OPT__param_uninlined_thunk_insns_ = 313,   /* --param=uninlined-thunk-insns= */
+  OPT__param_uninlined_thunk_time_ = 314,    /* --param=uninlined-thunk-time= */
+  OPT__param_unlikely_bb_count_fraction_ = 315,/* --param=unlikely-bb-count-fraction= */
+  OPT__param_unroll_jam_max_unroll_ = 316,   /* --param=unroll-jam-max-unroll= */
+  OPT__param_unroll_jam_min_percent_ = 317,  /* --param=unroll-jam-min-percent= */
+  OPT__param_use_after_scope_direct_emission_threshold_ = 318,/* --param=use-after-scope-direct-emission-threshold= */
+  OPT__param_use_canonical_types_ = 319,     /* --param=use-canonical-types= */
+  OPT__param_vect_epilogues_nomask_ = 320,   /* --param=vect-epilogues-nomask= */
+  OPT__param_vect_max_peeling_for_alignment_ = 321,/* --param=vect-max-peeling-for-alignment= */
+  OPT__param_vect_max_version_for_alias_checks_ = 322,/* --param=vect-max-version-for-alias-checks= */
+  OPT__param_vect_max_version_for_alignment_checks_ = 323,/* --param=vect-max-version-for-alignment-checks= */
+  OPT__param_vect_partial_vector_usage_ = 324,/* --param=vect-partial-vector-usage= */
+  /* OPT__pass_exit_codes = 325, */          /* --pass-exit-codes */
+  /* OPT__pedantic = 326, */                 /* --pedantic */
+  /* OPT__pedantic_errors = 327, */          /* --pedantic-errors */
+  /* OPT__pie = 328, */                      /* --pie */
+  /* OPT__pipe = 329, */                     /* --pipe */
+  /* OPT__prefix = 330, */                   /* --prefix */
+  /* OPT__prefix_ = 331, */                  /* --prefix= */
+  /* OPT__preprocess = 332, */               /* --preprocess */
+  /* OPT__print_file_name = 333, */          /* --print-file-name */
+  /* OPT__print_file_name_ = 334, */         /* --print-file-name= */
+  /* OPT__print_libgcc_file_name = 335, */   /* --print-libgcc-file-name */
+  /* OPT__print_missing_file_dependencies = 336, *//* --print-missing-file-dependencies */
+  /* OPT__print_multi_directory = 337, */    /* --print-multi-directory */
+  /* OPT__print_multi_lib = 338, */          /* --print-multi-lib */
+  /* OPT__print_multi_os_directory = 339, */ /* --print-multi-os-directory */
+  /* OPT__print_multiarch = 340, */          /* --print-multiarch */
+  /* OPT__print_prog_name = 341, */          /* --print-prog-name */
+  /* OPT__print_prog_name_ = 342, */         /* --print-prog-name= */
+  /* OPT__print_search_dirs = 343, */        /* --print-search-dirs */
+  /* OPT__print_sysroot = 344, */            /* --print-sysroot */
+  /* OPT__print_sysroot_headers_suffix = 345, *//* --print-sysroot-headers-suffix */
+  /* OPT__profile = 346, */                  /* --profile */
+  /* OPT__save_temps = 347, */               /* --save-temps */
+  /* OPT__shared = 348, */                   /* --shared */
+  /* OPT__specs = 349, */                    /* --specs */
+  /* OPT__specs_ = 350, */                   /* --specs= */
+  /* OPT__static = 351, */                   /* --static */
+  /* OPT__static_pie = 352, */               /* --static-pie */
+  /* OPT__symbolic = 353, */                 /* --symbolic */
+  /* OPT__sysroot = 354, */                  /* --sysroot */
+  OPT__sysroot_ = 355,                       /* --sysroot= */
+  OPT__target_help = 356,                    /* --target-help */
+  /* OPT__time = 357, */                     /* --time */
+  /* OPT__trace_includes = 358, */           /* --trace-includes */
+  /* OPT__traditional = 359, */              /* --traditional */
+  /* OPT__traditional_cpp = 360, */          /* --traditional-cpp */
+  /* OPT__trigraphs = 361, */                /* --trigraphs */
+  /* OPT__undefine_macro = 362, */           /* --undefine-macro */
+  /* OPT__undefine_macro_ = 363, */          /* --undefine-macro= */
+  /* OPT__user_dependencies = 364, */        /* --user-dependencies */
+  /* OPT__verbose = 365, */                  /* --verbose */
+  OPT__version = 366,                        /* --version */
+  /* OPT__write_dependencies = 367, */       /* --write-dependencies */
+  /* OPT__write_user_dependencies = 368, */  /* --write-user-dependencies */
+  OPT_A = 369,                               /* -A */
+  OPT_B = 370,                               /* -B */
+  OPT_C = 371,                               /* -C */
+  OPT_CC = 372,                              /* -CC */
+  OPT_D = 373,                               /* -D */
+  OPT_E = 374,                               /* -E */
+  OPT_F = 375,                               /* -F */
+  OPT_H = 376,                               /* -H */
+  OPT_Hd = 377,                              /* -Hd */
+  OPT_Hf = 378,                              /* -Hf */
+  OPT_I = 379,                               /* -I */
+  OPT_J = 380,                               /* -J */
+  OPT_L = 381,                               /* -L */
+  OPT_M = 382,                               /* -M */
+  OPT_MD = 383,                              /* -MD */
+  OPT_MF = 384,                              /* -MF */
+  OPT_MG = 385,                              /* -MG */
+  OPT_MM = 386,                              /* -MM */
+  OPT_MMD = 387,                             /* -MMD */
+  OPT_MP = 388,                              /* -MP */
+  OPT_MQ = 389,                              /* -MQ */
+  OPT_MT = 390,                              /* -MT */
+  OPT_Mmodules = 391,                        /* -Mmodules */
+  OPT_Mno_modules = 392,                     /* -Mno-modules */
+  OPT_N = 393,                               /* -N */
+  OPT_O = 394,                               /* -O */
+  OPT_Ofast = 395,                           /* -Ofast */
+  OPT_Og = 396,                              /* -Og */
+  OPT_Os = 397,                              /* -Os */
+  OPT_P = 398,                               /* -P */
+  OPT_Q = 399,                               /* -Q */
+  OPT_Qn = 400,                              /* -Qn */
+  OPT_Qy = 401,                              /* -Qy */
+  OPT_R = 402,                               /* -R */
+  OPT_S = 403,                               /* -S */
+  OPT_T = 404,                               /* -T */
+  OPT_Tbss = 405,                            /* -Tbss */
+  OPT_Tbss_ = 406,                           /* -Tbss= */
+  OPT_Tdata = 407,                           /* -Tdata */
+  OPT_Tdata_ = 408,                          /* -Tdata= */
+  OPT_Ttext = 409,                           /* -Ttext */
+  OPT_Ttext_ = 410,                          /* -Ttext= */
+  OPT_U = 411,                               /* -U */
+  /* OPT_W = 412, */                         /* -W */
+  OPT_WNSObject_attribute = 413,             /* -WNSObject-attribute */
+  OPT_Wa_ = 414,                             /* -Wa, */
+  OPT_Wabi = 415,                            /* -Wabi */
+  OPT_Wabi_tag = 416,                        /* -Wabi-tag */
+  OPT_Wabi_ = 417,                           /* -Wabi= */
+  OPT_Wabsolute_value = 418,                 /* -Wabsolute-value */
+  OPT_Waddress = 419,                        /* -Waddress */
+  OPT_Waddress_of_packed_member = 420,       /* -Waddress-of-packed-member */
+  OPT_Waggregate_return = 421,               /* -Waggregate-return */
+  OPT_Waggressive_loop_optimizations = 422,  /* -Waggressive-loop-optimizations */
+  OPT_Waliasing = 423,                       /* -Waliasing */
+  OPT_Walign_commons = 424,                  /* -Walign-commons */
+  /* OPT_Waligned_new = 425, */              /* -Waligned-new */
+  OPT_Waligned_new_ = 426,                   /* -Waligned-new= */
+  OPT_Wall = 427,                            /* -Wall */
+  OPT_Walloc_size_larger_than_ = 428,        /* -Walloc-size-larger-than= */
+  OPT_Walloc_zero = 429,                     /* -Walloc-zero */
+  OPT_Walloca = 430,                         /* -Walloca */
+  OPT_Walloca_larger_than_ = 431,            /* -Walloca-larger-than= */
+  OPT_Wampersand = 432,                      /* -Wampersand */
+  OPT_Wanalyzer_double_fclose = 433,         /* -Wanalyzer-double-fclose */
+  OPT_Wanalyzer_double_free = 434,           /* -Wanalyzer-double-free */
+  OPT_Wanalyzer_exposure_through_output_file = 435,/* -Wanalyzer-exposure-through-output-file */
+  OPT_Wanalyzer_file_leak = 436,             /* -Wanalyzer-file-leak */
+  OPT_Wanalyzer_free_of_non_heap = 437,      /* -Wanalyzer-free-of-non-heap */
+  OPT_Wanalyzer_malloc_leak = 438,           /* -Wanalyzer-malloc-leak */
+  OPT_Wanalyzer_mismatching_deallocation = 439,/* -Wanalyzer-mismatching-deallocation */
+  OPT_Wanalyzer_null_argument = 440,         /* -Wanalyzer-null-argument */
+  OPT_Wanalyzer_null_dereference = 441,      /* -Wanalyzer-null-dereference */
+  OPT_Wanalyzer_possible_null_argument = 442,/* -Wanalyzer-possible-null-argument */
+  OPT_Wanalyzer_possible_null_dereference = 443,/* -Wanalyzer-possible-null-dereference */
+  OPT_Wanalyzer_shift_count_negative = 444,  /* -Wanalyzer-shift-count-negative */
+  OPT_Wanalyzer_shift_count_overflow = 445,  /* -Wanalyzer-shift-count-overflow */
+  OPT_Wanalyzer_stale_setjmp_buffer = 446,   /* -Wanalyzer-stale-setjmp-buffer */
+  OPT_Wanalyzer_tainted_array_index = 447,   /* -Wanalyzer-tainted-array-index */
+  OPT_Wanalyzer_too_complex = 448,           /* -Wanalyzer-too-complex */
+  OPT_Wanalyzer_unsafe_call_within_signal_handler = 449,/* -Wanalyzer-unsafe-call-within-signal-handler */
+  OPT_Wanalyzer_use_after_free = 450,        /* -Wanalyzer-use-after-free */
+  OPT_Wanalyzer_use_of_pointer_in_stale_stack_frame = 451,/* -Wanalyzer-use-of-pointer-in-stale-stack-frame */
+  OPT_Wanalyzer_write_to_const = 452,        /* -Wanalyzer-write-to-const */
+  OPT_Wanalyzer_write_to_string_literal = 453,/* -Wanalyzer-write-to-string-literal */
+  OPT_Wargument_mismatch = 454,              /* -Wargument-mismatch */
+  OPT_Warith_conversion = 455,               /* -Warith-conversion */
+  OPT_Warray_bounds = 456,                   /* -Warray-bounds */
+  OPT_Warray_bounds_ = 457,                  /* -Warray-bounds= */
+  /* OPT_Warray_parameter = 458, */          /* -Warray-parameter */
+  OPT_Warray_parameter_ = 459,               /* -Warray-parameter= */
+  OPT_Warray_temporaries = 460,              /* -Warray-temporaries */
+  OPT_Wassign_intercept = 461,               /* -Wassign-intercept */
+  /* OPT_Wattribute_alias = 462, */          /* -Wattribute-alias */
+  OPT_Wattribute_alias_ = 463,               /* -Wattribute-alias= */
+  OPT_Wattribute_warning = 464,              /* -Wattribute-warning */
+  OPT_Wattributes = 465,                     /* -Wattributes */
+  OPT_Wbad_function_cast = 466,              /* -Wbad-function-cast */
+  OPT_Wbool_compare = 467,                   /* -Wbool-compare */
+  OPT_Wbool_operation = 468,                 /* -Wbool-operation */
+  OPT_Wbuiltin_declaration_mismatch = 469,   /* -Wbuiltin-declaration-mismatch */
+  OPT_Wbuiltin_macro_redefined = 470,        /* -Wbuiltin-macro-redefined */
+  OPT_Wc___compat = 471,                     /* -Wc++-compat */
+  /* OPT_Wc__0x_compat = 472, */             /* -Wc++0x-compat */
+  OPT_Wc__11_compat = 473,                   /* -Wc++11-compat */
+  OPT_Wc__14_compat = 474,                   /* -Wc++14-compat */
+  OPT_Wc__17_compat = 475,                   /* -Wc++17-compat */
+  /* OPT_Wc__1z_compat = 476, */             /* -Wc++1z-compat */
+  OPT_Wc__20_compat = 477,                   /* -Wc++20-compat */
+  /* OPT_Wc__2a_compat = 478, */             /* -Wc++2a-compat */
+  OPT_Wc_binding_type = 479,                 /* -Wc-binding-type */
+  OPT_Wc11_c2x_compat = 480,                 /* -Wc11-c2x-compat */
+  OPT_Wc90_c99_compat = 481,                 /* -Wc90-c99-compat */
+  OPT_Wc99_c11_compat = 482,                 /* -Wc99-c11-compat */
+  OPT_Wcannot_profile = 483,                 /* -Wcannot-profile */
+  OPT_Wcast_align = 484,                     /* -Wcast-align */
+  OPT_Wcast_align_strict = 485,              /* -Wcast-align=strict */
+  OPT_Wcast_function_type = 486,             /* -Wcast-function-type */
+  OPT_Wcast_qual = 487,                      /* -Wcast-qual */
+  OPT_Wcast_result = 488,                    /* -Wcast-result */
+  /* OPT_Wcatch_value = 489, */              /* -Wcatch-value */
+  OPT_Wcatch_value_ = 490,                   /* -Wcatch-value= */
+  OPT_Wchar_subscripts = 491,                /* -Wchar-subscripts */
+  OPT_Wcharacter_truncation = 492,           /* -Wcharacter-truncation */
+  OPT_Wchkp = 493,                           /* -Wchkp */
+  OPT_Wclass_conversion = 494,               /* -Wclass-conversion */
+  OPT_Wclass_memaccess = 495,                /* -Wclass-memaccess */
+  OPT_Wclobbered = 496,                      /* -Wclobbered */
+  OPT_Wcomma_subscript = 497,                /* -Wcomma-subscript */
+  OPT_Wcomment = 498,                        /* -Wcomment */
+  /* OPT_Wcomments = 499, */                 /* -Wcomments */
+  OPT_Wcompare_reals = 500,                  /* -Wcompare-reals */
+  OPT_Wconditionally_supported = 501,        /* -Wconditionally-supported */
+  OPT_Wconversion = 502,                     /* -Wconversion */
+  OPT_Wconversion_extra = 503,               /* -Wconversion-extra */
+  OPT_Wconversion_null = 504,                /* -Wconversion-null */
+  OPT_Wcoverage_mismatch = 505,              /* -Wcoverage-mismatch */
+  OPT_Wcpp = 506,                            /* -Wcpp */
+  OPT_Wctad_maybe_unsupported = 507,         /* -Wctad-maybe-unsupported */
+  OPT_Wctor_dtor_privacy = 508,              /* -Wctor-dtor-privacy */
+  OPT_Wdangling_else = 509,                  /* -Wdangling-else */
+  OPT_Wdate_time = 510,                      /* -Wdate-time */
+  OPT_Wdeclaration_after_statement = 511,    /* -Wdeclaration-after-statement */
+  OPT_Wdelete_incomplete = 512,              /* -Wdelete-incomplete */
+  OPT_Wdelete_non_virtual_dtor = 513,        /* -Wdelete-non-virtual-dtor */
+  OPT_Wdeprecated = 514,                     /* -Wdeprecated */
+  OPT_Wdeprecated_copy = 515,                /* -Wdeprecated-copy */
+  OPT_Wdeprecated_copy_dtor = 516,           /* -Wdeprecated-copy-dtor */
+  OPT_Wdeprecated_declarations = 517,        /* -Wdeprecated-declarations */
+  OPT_Wdeprecated_enum_enum_conversion = 518,/* -Wdeprecated-enum-enum-conversion */
+  OPT_Wdeprecated_enum_float_conversion = 519,/* -Wdeprecated-enum-float-conversion */
+  OPT_Wdesignated_init = 520,                /* -Wdesignated-init */
+  OPT_Wdisabled_optimization = 521,          /* -Wdisabled-optimization */
+  OPT_Wdiscarded_array_qualifiers = 522,     /* -Wdiscarded-array-qualifiers */
+  OPT_Wdiscarded_qualifiers = 523,           /* -Wdiscarded-qualifiers */
+  OPT_Wdiv_by_zero = 524,                    /* -Wdiv-by-zero */
+  OPT_Wdo_subscript = 525,                   /* -Wdo-subscript */
+  OPT_Wdouble_promotion = 526,               /* -Wdouble-promotion */
+  OPT_Wduplicate_decl_specifier = 527,       /* -Wduplicate-decl-specifier */
+  OPT_Wduplicated_branches = 528,            /* -Wduplicated-branches */
+  OPT_Wduplicated_cond = 529,                /* -Wduplicated-cond */
+  OPT_Weffc__ = 530,                         /* -Weffc++ */
+  OPT_Wempty_body = 531,                     /* -Wempty-body */
+  OPT_Wendif_labels = 532,                   /* -Wendif-labels */
+  OPT_Wenum_compare = 533,                   /* -Wenum-compare */
+  OPT_Wenum_conversion = 534,                /* -Wenum-conversion */
+  OPT_Werror = 535,                          /* -Werror */
+  /* OPT_Werror_implicit_function_declaration = 536, *//* -Werror-implicit-function-declaration */
+  OPT_Werror_ = 537,                         /* -Werror= */
+  OPT_Wexceptions = 538,                     /* -Wexceptions */
+  OPT_Wexpansion_to_defined = 539,           /* -Wexpansion-to-defined */
+  OPT_Wextra = 540,                          /* -Wextra */
+  OPT_Wextra_semi = 541,                     /* -Wextra-semi */
+  OPT_Wfatal_errors = 542,                   /* -Wfatal-errors */
+  OPT_Wfloat_conversion = 543,               /* -Wfloat-conversion */
+  OPT_Wfloat_equal = 544,                    /* -Wfloat-equal */
+  /* OPT_Wformat = 545, */                   /* -Wformat */
+  OPT_Wformat_contains_nul = 546,            /* -Wformat-contains-nul */
+  OPT_Wformat_diag = 547,                    /* -Wformat-diag */
+  OPT_Wformat_extra_args = 548,              /* -Wformat-extra-args */
+  OPT_Wformat_nonliteral = 549,              /* -Wformat-nonliteral */
+  /* OPT_Wformat_overflow = 550, */          /* -Wformat-overflow */
+  OPT_Wformat_overflow_ = 551,               /* -Wformat-overflow= */
+  OPT_Wformat_security = 552,                /* -Wformat-security */
+  OPT_Wformat_signedness = 553,              /* -Wformat-signedness */
+  /* OPT_Wformat_truncation = 554, */        /* -Wformat-truncation */
+  OPT_Wformat_truncation_ = 555,             /* -Wformat-truncation= */
+  OPT_Wformat_y2k = 556,                     /* -Wformat-y2k */
+  OPT_Wformat_zero_length = 557,             /* -Wformat-zero-length */
+  OPT_Wformat_ = 558,                        /* -Wformat= */
+  OPT_Wframe_address = 559,                  /* -Wframe-address */
+  OPT_Wframe_larger_than_ = 560,             /* -Wframe-larger-than= */
+  OPT_Wfree_nonheap_object = 561,            /* -Wfree-nonheap-object */
+  OPT_Wfrontend_loop_interchange = 562,      /* -Wfrontend-loop-interchange */
+  OPT_Wfunction_elimination = 563,           /* -Wfunction-elimination */
+  /* OPT_Whsa = 564, */                      /* -Whsa */
+  OPT_Wif_not_aligned = 565,                 /* -Wif-not-aligned */
+  OPT_Wignored_attributes = 566,             /* -Wignored-attributes */
+  OPT_Wignored_qualifiers = 567,             /* -Wignored-qualifiers */
+  OPT_Wimplicit = 568,                       /* -Wimplicit */
+  /* OPT_Wimplicit_fallthrough = 569, */     /* -Wimplicit-fallthrough */
+  OPT_Wimplicit_fallthrough_ = 570,          /* -Wimplicit-fallthrough= */
+  OPT_Wimplicit_function_declaration = 571,  /* -Wimplicit-function-declaration */
+  OPT_Wimplicit_int = 572,                   /* -Wimplicit-int */
+  OPT_Wimplicit_interface = 573,             /* -Wimplicit-interface */
+  OPT_Wimplicit_procedure = 574,             /* -Wimplicit-procedure */
+  /* OPT_Wimport = 575, */                   /* -Wimport */
+  OPT_Winaccessible_base = 576,              /* -Winaccessible-base */
+  OPT_Wincompatible_pointer_types = 577,     /* -Wincompatible-pointer-types */
+  OPT_Winherited_variadic_ctor = 578,        /* -Winherited-variadic-ctor */
+  OPT_Winit_list_lifetime = 579,             /* -Winit-list-lifetime */
+  OPT_Winit_self = 580,                      /* -Winit-self */
+  OPT_Winline = 581,                         /* -Winline */
+  OPT_Wint_conversion = 582,                 /* -Wint-conversion */
+  OPT_Wint_in_bool_context = 583,            /* -Wint-in-bool-context */
+  OPT_Wint_to_pointer_cast = 584,            /* -Wint-to-pointer-cast */
+  OPT_Winteger_division = 585,               /* -Winteger-division */
+  OPT_Wintrinsic_shadow = 586,               /* -Wintrinsic-shadow */
+  OPT_Wintrinsics_std = 587,                 /* -Wintrinsics-std */
+  OPT_Winvalid_imported_macros = 588,        /* -Winvalid-imported-macros */
+  OPT_Winvalid_memory_model = 589,           /* -Winvalid-memory-model */
+  OPT_Winvalid_offsetof = 590,               /* -Winvalid-offsetof */
+  OPT_Winvalid_pch = 591,                    /* -Winvalid-pch */
+  OPT_Wjump_misses_init = 592,               /* -Wjump-misses-init */
+  OPT_Wl_ = 593,                             /* -Wl, */
+  /* OPT_Wlarger_than_ = 594, */             /* -Wlarger-than- */
+  OPT_Wlarger_than_ = 595,                   /* -Wlarger-than= */
+  OPT_Wline_truncation = 596,                /* -Wline-truncation */
+  OPT_Wliteral_suffix = 597,                 /* -Wliteral-suffix */
+  OPT_Wlogical_not_parentheses = 598,        /* -Wlogical-not-parentheses */
+  OPT_Wlogical_op = 599,                     /* -Wlogical-op */
+  OPT_Wlong_long = 600,                      /* -Wlong-long */
+  OPT_Wlto_type_mismatch = 601,              /* -Wlto-type-mismatch */
+  OPT_Wmain = 602,                           /* -Wmain */
+  OPT_Wmaybe_uninitialized = 603,            /* -Wmaybe-uninitialized */
+  OPT_Wmemset_elt_size = 604,                /* -Wmemset-elt-size */
+  OPT_Wmemset_transposed_args = 605,         /* -Wmemset-transposed-args */
+  OPT_Wmisleading_indentation = 606,         /* -Wmisleading-indentation */
+  OPT_Wmismatched_dealloc = 607,             /* -Wmismatched-dealloc */
+  OPT_Wmismatched_new_delete = 608,          /* -Wmismatched-new-delete */
+  OPT_Wmismatched_tags = 609,                /* -Wmismatched-tags */
+  OPT_Wmissing_attributes = 610,             /* -Wmissing-attributes */
+  OPT_Wmissing_braces = 611,                 /* -Wmissing-braces */
+  OPT_Wmissing_declarations = 612,           /* -Wmissing-declarations */
+  OPT_Wmissing_field_initializers = 613,     /* -Wmissing-field-initializers */
+  /* OPT_Wmissing_format_attribute = 614, */ /* -Wmissing-format-attribute */
+  OPT_Wmissing_include_dirs = 615,           /* -Wmissing-include-dirs */
+  /* OPT_Wmissing_noreturn = 616, */         /* -Wmissing-noreturn */
+  OPT_Wmissing_parameter_type = 617,         /* -Wmissing-parameter-type */
+  OPT_Wmissing_profile = 618,                /* -Wmissing-profile */
+  OPT_Wmissing_prototypes = 619,             /* -Wmissing-prototypes */
+  OPT_Wmudflap = 620,                        /* -Wmudflap */
+  OPT_Wmultichar = 621,                      /* -Wmultichar */
+  OPT_Wmultiple_inheritance = 622,           /* -Wmultiple-inheritance */
+  OPT_Wmultistatement_macros = 623,          /* -Wmultistatement-macros */
+  OPT_Wnamespaces = 624,                     /* -Wnamespaces */
+  OPT_Wnarrowing = 625,                      /* -Wnarrowing */
+  OPT_Wnested_externs = 626,                 /* -Wnested-externs */
+  /* OPT_Wno_alloc_size_larger_than = 627, *//* -Wno-alloc-size-larger-than */
+  /* OPT_Wno_alloca_larger_than = 628, */    /* -Wno-alloca-larger-than */
+  /* OPT_Wno_frame_larger_than = 629, */     /* -Wno-frame-larger-than */
+  /* OPT_Wno_larger_than = 630, */           /* -Wno-larger-than */
+  /* OPT_Wno_stack_usage = 631, */           /* -Wno-stack-usage */
+  /* OPT_Wno_vla_larger_than = 632, */       /* -Wno-vla-larger-than */
+  OPT_Wnoexcept = 633,                       /* -Wnoexcept */
+  OPT_Wnoexcept_type = 634,                  /* -Wnoexcept-type */
+  OPT_Wnon_template_friend = 635,            /* -Wnon-template-friend */
+  OPT_Wnon_virtual_dtor = 636,               /* -Wnon-virtual-dtor */
+  OPT_Wnonnull = 637,                        /* -Wnonnull */
+  OPT_Wnonnull_compare = 638,                /* -Wnonnull-compare */
+  /* OPT_Wnormalized = 639, */               /* -Wnormalized */
+  OPT_Wnormalized_ = 640,                    /* -Wnormalized= */
+  OPT_Wnull_dereference = 641,               /* -Wnull-dereference */
+  OPT_Wobjc_root_class = 642,                /* -Wobjc-root-class */
+  OPT_Wodr = 643,                            /* -Wodr */
+  OPT_Wold_style_cast = 644,                 /* -Wold-style-cast */
+  OPT_Wold_style_declaration = 645,          /* -Wold-style-declaration */
+  OPT_Wold_style_definition = 646,           /* -Wold-style-definition */
+  OPT_Wopenmp_simd = 647,                    /* -Wopenmp-simd */
+  OPT_Woverflow = 648,                       /* -Woverflow */
+  OPT_Woverlength_strings = 649,             /* -Woverlength-strings */
+  OPT_Woverloaded_virtual = 650,             /* -Woverloaded-virtual */
+  OPT_Woverride_init = 651,                  /* -Woverride-init */
+  OPT_Woverride_init_side_effects = 652,     /* -Woverride-init-side-effects */
+  OPT_Woverwrite_recursive = 653,            /* -Woverwrite-recursive */
+  OPT_Wp_ = 654,                             /* -Wp, */
+  OPT_Wpacked = 655,                         /* -Wpacked */
+  OPT_Wpacked_bitfield_compat = 656,         /* -Wpacked-bitfield-compat */
+  OPT_Wpacked_not_aligned = 657,             /* -Wpacked-not-aligned */
+  OPT_Wpadded = 658,                         /* -Wpadded */
+  OPT_Wparentheses = 659,                    /* -Wparentheses */
+  OPT_Wpedantic = 660,                       /* -Wpedantic */
+  OPT_Wpessimizing_move = 661,               /* -Wpessimizing-move */
+  /* OPT_Wplacement_new = 662, */            /* -Wplacement-new */
+  OPT_Wplacement_new_ = 663,                 /* -Wplacement-new= */
+  OPT_Wpmf_conversions = 664,                /* -Wpmf-conversions */
+  OPT_Wpointer_arith = 665,                  /* -Wpointer-arith */
+  OPT_Wpointer_compare = 666,                /* -Wpointer-compare */
+  OPT_Wpointer_sign = 667,                   /* -Wpointer-sign */
+  OPT_Wpointer_to_int_cast = 668,            /* -Wpointer-to-int-cast */
+  OPT_Wpragmas = 669,                        /* -Wpragmas */
+  OPT_Wprio_ctor_dtor = 670,                 /* -Wprio-ctor-dtor */
+  OPT_Wproperty_assign_default = 671,        /* -Wproperty-assign-default */
+  OPT_Wprotocol = 672,                       /* -Wprotocol */
+  OPT_Wpsabi = 673,                          /* -Wpsabi */
+  OPT_Wrange_loop_construct = 674,           /* -Wrange-loop-construct */
+  OPT_Wreal_q_constant = 675,                /* -Wreal-q-constant */
+  OPT_Wrealloc_lhs = 676,                    /* -Wrealloc-lhs */
+  OPT_Wrealloc_lhs_all = 677,                /* -Wrealloc-lhs-all */
+  OPT_Wredundant_decls = 678,                /* -Wredundant-decls */
+  OPT_Wredundant_move = 679,                 /* -Wredundant-move */
+  OPT_Wredundant_tags = 680,                 /* -Wredundant-tags */
+  OPT_Wregister = 681,                       /* -Wregister */
+  OPT_Wreorder = 682,                        /* -Wreorder */
+  OPT_Wrestrict = 683,                       /* -Wrestrict */
+  OPT_Wreturn_local_addr = 684,              /* -Wreturn-local-addr */
+  OPT_Wreturn_type = 685,                    /* -Wreturn-type */
+  OPT_Wscalar_storage_order = 686,           /* -Wscalar-storage-order */
+  OPT_Wselector = 687,                       /* -Wselector */
+  OPT_Wsequence_point = 688,                 /* -Wsequence-point */
+  OPT_Wshadow = 689,                         /* -Wshadow */
+  /* OPT_Wshadow_compatible_local = 690, */  /* -Wshadow-compatible-local */
+  OPT_Wshadow_ivar = 691,                    /* -Wshadow-ivar */
+  /* OPT_Wshadow_local = 692, */             /* -Wshadow-local */
+  OPT_Wshadow_compatible_local = 693,        /* -Wshadow=compatible-local */
+  /* OPT_Wshadow_global = 694, */            /* -Wshadow=global */
+  OPT_Wshadow_local = 695,                   /* -Wshadow=local */
+  OPT_Wshift_count_negative = 696,           /* -Wshift-count-negative */
+  OPT_Wshift_count_overflow = 697,           /* -Wshift-count-overflow */
+  OPT_Wshift_negative_value = 698,           /* -Wshift-negative-value */
+  /* OPT_Wshift_overflow = 699, */           /* -Wshift-overflow */
+  OPT_Wshift_overflow_ = 700,                /* -Wshift-overflow= */
+  OPT_Wsign_compare = 701,                   /* -Wsign-compare */
+  OPT_Wsign_conversion = 702,                /* -Wsign-conversion */
+  OPT_Wsign_promo = 703,                     /* -Wsign-promo */
+  OPT_Wsized_deallocation = 704,             /* -Wsized-deallocation */
+  OPT_Wsizeof_array_argument = 705,          /* -Wsizeof-array-argument */
+  OPT_Wsizeof_array_div = 706,               /* -Wsizeof-array-div */
+  OPT_Wsizeof_pointer_div = 707,             /* -Wsizeof-pointer-div */
+  OPT_Wsizeof_pointer_memaccess = 708,       /* -Wsizeof-pointer-memaccess */
+  OPT_Wspeculative = 709,                    /* -Wspeculative */
+  OPT_Wstack_protector = 710,                /* -Wstack-protector */
+  OPT_Wstack_usage_ = 711,                   /* -Wstack-usage= */
+  OPT_Wstrict_aliasing = 712,                /* -Wstrict-aliasing */
+  OPT_Wstrict_aliasing_ = 713,               /* -Wstrict-aliasing= */
+  OPT_Wstrict_null_sentinel = 714,           /* -Wstrict-null-sentinel */
+  OPT_Wstrict_overflow = 715,                /* -Wstrict-overflow */
+  OPT_Wstrict_overflow_ = 716,               /* -Wstrict-overflow= */
+  OPT_Wstrict_prototypes = 717,              /* -Wstrict-prototypes */
+  OPT_Wstrict_selector_match = 718,          /* -Wstrict-selector-match */
+  OPT_Wstring_compare = 719,                 /* -Wstring-compare */
+  /* OPT_Wstringop_overflow = 720, */        /* -Wstringop-overflow */
+  OPT_Wstringop_overflow_ = 721,             /* -Wstringop-overflow= */
+  OPT_Wstringop_overread = 722,              /* -Wstringop-overread */
+  OPT_Wstringop_truncation = 723,            /* -Wstringop-truncation */
+  OPT_Wsubobject_linkage = 724,              /* -Wsubobject-linkage */
+  OPT_Wsuggest_attribute_cold = 725,         /* -Wsuggest-attribute=cold */
+  OPT_Wsuggest_attribute_const = 726,        /* -Wsuggest-attribute=const */
+  OPT_Wsuggest_attribute_format = 727,       /* -Wsuggest-attribute=format */
+  OPT_Wsuggest_attribute_malloc = 728,       /* -Wsuggest-attribute=malloc */
+  OPT_Wsuggest_attribute_noreturn = 729,     /* -Wsuggest-attribute=noreturn */
+  OPT_Wsuggest_attribute_pure = 730,         /* -Wsuggest-attribute=pure */
+  OPT_Wsuggest_final_methods = 731,          /* -Wsuggest-final-methods */
+  OPT_Wsuggest_final_types = 732,            /* -Wsuggest-final-types */
+  OPT_Wsuggest_override = 733,               /* -Wsuggest-override */
+  OPT_Wsurprising = 734,                     /* -Wsurprising */
+  OPT_Wswitch = 735,                         /* -Wswitch */
+  OPT_Wswitch_bool = 736,                    /* -Wswitch-bool */
+  OPT_Wswitch_default = 737,                 /* -Wswitch-default */
+  OPT_Wswitch_enum = 738,                    /* -Wswitch-enum */
+  OPT_Wswitch_outside_range = 739,           /* -Wswitch-outside-range */
+  OPT_Wswitch_unreachable = 740,             /* -Wswitch-unreachable */
+  OPT_Wsync_nand = 741,                      /* -Wsync-nand */
+  OPT_Wsynth = 742,                          /* -Wsynth */
+  OPT_Wsystem_headers = 743,                 /* -Wsystem-headers */
+  OPT_Wtabs = 744,                           /* -Wtabs */
+  OPT_Wtarget_lifetime = 745,                /* -Wtarget-lifetime */
+  OPT_Wtautological_compare = 746,           /* -Wtautological-compare */
+  OPT_Wtemplates = 747,                      /* -Wtemplates */
+  OPT_Wterminate = 748,                      /* -Wterminate */
+  OPT_Wtraditional = 749,                    /* -Wtraditional */
+  OPT_Wtraditional_conversion = 750,         /* -Wtraditional-conversion */
+  OPT_Wtrampolines = 751,                    /* -Wtrampolines */
+  OPT_Wtrigraphs = 752,                      /* -Wtrigraphs */
+  OPT_Wtsan = 753,                           /* -Wtsan */
+  OPT_Wtype_limits = 754,                    /* -Wtype-limits */
+  OPT_Wundeclared_selector = 755,            /* -Wundeclared-selector */
+  OPT_Wundef = 756,                          /* -Wundef */
+  OPT_Wundefined_do_loop = 757,              /* -Wundefined-do-loop */
+  OPT_Wunderflow = 758,                      /* -Wunderflow */
+  OPT_Wuninitialized = 759,                  /* -Wuninitialized */
+  OPT_Wunknown_pragmas = 760,                /* -Wunknown-pragmas */
+  /* OPT_Wunreachable_code = 761, */         /* -Wunreachable-code */
+  /* OPT_Wunsafe_loop_optimizations = 762, *//* -Wunsafe-loop-optimizations */
+  OPT_Wunsuffixed_float_constants = 763,     /* -Wunsuffixed-float-constants */
+  OPT_Wunused = 764,                         /* -Wunused */
+  OPT_Wunused_but_set_parameter = 765,       /* -Wunused-but-set-parameter */
+  OPT_Wunused_but_set_variable = 766,        /* -Wunused-but-set-variable */
+  /* OPT_Wunused_const_variable = 767, */    /* -Wunused-const-variable */
+  OPT_Wunused_const_variable_ = 768,         /* -Wunused-const-variable= */
+  OPT_Wunused_dummy_argument = 769,          /* -Wunused-dummy-argument */
+  OPT_Wunused_function = 770,                /* -Wunused-function */
+  OPT_Wunused_label = 771,                   /* -Wunused-label */
+  OPT_Wunused_local_typedefs = 772,          /* -Wunused-local-typedefs */
+  OPT_Wunused_macros = 773,                  /* -Wunused-macros */
+  OPT_Wunused_parameter = 774,               /* -Wunused-parameter */
+  OPT_Wunused_result = 775,                  /* -Wunused-result */
+  OPT_Wunused_value = 776,                   /* -Wunused-value */
+  OPT_Wunused_variable = 777,                /* -Wunused-variable */
+  OPT_Wuse_without_only = 778,               /* -Wuse-without-only */
+  OPT_Wuseless_cast = 779,                   /* -Wuseless-cast */
+  OPT_Wvarargs = 780,                        /* -Wvarargs */
+  OPT_Wvariadic_macros = 781,                /* -Wvariadic-macros */
+  OPT_Wvector_operation_performance = 782,   /* -Wvector-operation-performance */
+  OPT_Wvexing_parse = 783,                   /* -Wvexing-parse */
+  OPT_Wvirtual_inheritance = 784,            /* -Wvirtual-inheritance */
+  OPT_Wvirtual_move_assign = 785,            /* -Wvirtual-move-assign */
+  OPT_Wvla = 786,                            /* -Wvla */
+  OPT_Wvla_larger_than_ = 787,               /* -Wvla-larger-than= */
+  OPT_Wvla_parameter = 788,                  /* -Wvla-parameter */
+  OPT_Wvolatile = 789,                       /* -Wvolatile */
+  OPT_Wvolatile_register_var = 790,          /* -Wvolatile-register-var */
+  OPT_Wwrite_strings = 791,                  /* -Wwrite-strings */
+  OPT_Wzero_as_null_pointer_constant = 792,  /* -Wzero-as-null-pointer-constant */
+  OPT_Wzero_length_bounds = 793,             /* -Wzero-length-bounds */
+  OPT_Wzerotrip = 794,                       /* -Wzerotrip */
+  OPT_X = 795,                               /* -X */
+  OPT_Xassembler = 796,                      /* -Xassembler */
+  OPT_Xf = 797,                              /* -Xf */
+  OPT_Xlinker = 798,                         /* -Xlinker */
+  OPT_Xpreprocessor = 799,                   /* -Xpreprocessor */
+  OPT_Z = 800,                               /* -Z */
+  OPT_ansi = 801,                            /* -ansi */
+  OPT_aux_info = 802,                        /* -aux-info */
+  /* OPT_aux_info_ = 803, */                 /* -aux-info= */
+  OPT_c = 804,                               /* -c */
+  OPT_callgraph = 805,                       /* -callgraph */
+  OPT_coverage = 806,                        /* -coverage */
+  OPT_cpp = 807,                             /* -cpp */
+  OPT_cpp_ = 808,                            /* -cpp= */
+  OPT_d = 809,                               /* -d */
+  OPT_debuglib_ = 810,                       /* -debuglib= */
+  OPT_defaultlib_ = 811,                     /* -defaultlib= */
+  OPT_defined_only = 812,                    /* -defined-only */
+  OPT_demangle = 813,                        /* -demangle */
+  OPT_dstartfiles = 814,                     /* -dstartfiles */
+  OPT_dump_body_ = 815,                      /* -dump-body= */
+  OPT_dump_level_ = 816,                     /* -dump-level= */
+  OPT_dumpbase = 817,                        /* -dumpbase */
+  OPT_dumpbase_ext = 818,                    /* -dumpbase-ext */
+  OPT_dumpdir = 819,                         /* -dumpdir */
+  OPT_dumpfullversion = 820,                 /* -dumpfullversion */
+  OPT_dumpmachine = 821,                     /* -dumpmachine */
+  OPT_dumpspecs = 822,                       /* -dumpspecs */
+  OPT_dumpversion = 823,                     /* -dumpversion */
+  OPT_e = 824,                               /* -e */
+  OPT_export_dynamic = 825,                  /* -export-dynamic */
+  OPT_fPIC = 826,                            /* -fPIC */
+  OPT_fPIE = 827,                            /* -fPIE */
+  OPT_fRTS_ = 828,                           /* -fRTS= */
+  OPT_fabi_compat_version_ = 829,            /* -fabi-compat-version= */
+  OPT_fabi_version_ = 830,                   /* -fabi-version= */
+  OPT_faccess_control = 831,                 /* -faccess-control */
+  OPT_fada_spec_parent_ = 832,               /* -fada-spec-parent= */
+  OPT_faggressive_function_elimination = 833,/* -faggressive-function-elimination */
+  OPT_faggressive_loop_optimizations = 834,  /* -faggressive-loop-optimizations */
+  OPT_falign_commons = 835,                  /* -falign-commons */
+  OPT_falign_functions = 836,                /* -falign-functions */
+  OPT_falign_functions_ = 837,               /* -falign-functions= */
+  OPT_falign_jumps = 838,                    /* -falign-jumps */
+  OPT_falign_jumps_ = 839,                   /* -falign-jumps= */
+  OPT_falign_labels = 840,                   /* -falign-labels */
+  OPT_falign_labels_ = 841,                  /* -falign-labels= */
+  OPT_falign_loops = 842,                    /* -falign-loops */
+  OPT_falign_loops_ = 843,                   /* -falign-loops= */
+  /* OPT_faligned_new = 844, */              /* -faligned-new */
+  OPT_faligned_new_ = 845,                   /* -faligned-new= */
+  OPT_fall_instantiations = 846,             /* -fall-instantiations */
+  OPT_fall_intrinsics = 847,                 /* -fall-intrinsics */
+  OPT_fall_virtual = 848,                    /* -fall-virtual */
+  OPT_fallocation_dce = 849,                 /* -fallocation-dce */
+  OPT_fallow_argument_mismatch = 850,        /* -fallow-argument-mismatch */
+  OPT_fallow_invalid_boz = 851,              /* -fallow-invalid-boz */
+  OPT_fallow_leading_underscore = 852,       /* -fallow-leading-underscore */
+  OPT_fallow_parameterless_variadic_functions = 853,/* -fallow-parameterless-variadic-functions */
+  OPT_fallow_store_data_races = 854,         /* -fallow-store-data-races */
+  OPT_falt_external_templates = 855,         /* -falt-external-templates */
+  OPT_fanalyzer = 856,                       /* -fanalyzer */
+  OPT_fanalyzer_call_summaries = 857,        /* -fanalyzer-call-summaries */
+  OPT_fanalyzer_checker_ = 858,              /* -fanalyzer-checker= */
+  OPT_fanalyzer_feasibility = 859,           /* -fanalyzer-feasibility */
+  OPT_fanalyzer_fine_grained = 860,          /* -fanalyzer-fine-grained */
+  OPT_fanalyzer_show_duplicate_count = 861,  /* -fanalyzer-show-duplicate-count */
+  OPT_fanalyzer_state_merge = 862,           /* -fanalyzer-state-merge */
+  OPT_fanalyzer_state_purge = 863,           /* -fanalyzer-state-purge */
+  OPT_fanalyzer_transitivity = 864,          /* -fanalyzer-transitivity */
+  OPT_fanalyzer_verbose_edges = 865,         /* -fanalyzer-verbose-edges */
+  OPT_fanalyzer_verbose_state_changes = 866, /* -fanalyzer-verbose-state-changes */
+  OPT_fanalyzer_verbosity_ = 867,            /* -fanalyzer-verbosity= */
+  /* OPT_fargument_alias = 868, */           /* -fargument-alias */
+  /* OPT_fargument_noalias = 869, */         /* -fargument-noalias */
+  /* OPT_fargument_noalias_anything = 870, *//* -fargument-noalias-anything */
+  /* OPT_fargument_noalias_global = 871, */  /* -fargument-noalias-global */
+  OPT_fasan_shadow_offset_ = 872,            /* -fasan-shadow-offset= */
+  OPT_fasm = 873,                            /* -fasm */
+  OPT_fassert = 874,                         /* -fassert */
+  OPT_fassociative_math = 875,               /* -fassociative-math */
+  OPT_fassume_phsa = 876,                    /* -fassume-phsa */
+  OPT_fasynchronous_unwind_tables = 877,     /* -fasynchronous-unwind-tables */
+  OPT_fauto_inc_dec = 878,                   /* -fauto-inc-dec */
+  OPT_fauto_profile = 879,                   /* -fauto-profile */
+  OPT_fauto_profile_ = 880,                  /* -fauto-profile= */
+  OPT_fautomatic = 881,                      /* -fautomatic */
+  OPT_fbackslash = 882,                      /* -fbackslash */
+  OPT_fbacktrace = 883,                      /* -fbacktrace */
+  OPT_fbit_tests = 884,                      /* -fbit-tests */
+  OPT_fblas_matmul_limit_ = 885,             /* -fblas-matmul-limit= */
+  OPT_fbounds_check = 886,                   /* -fbounds-check */
+  OPT_fbounds_check_ = 887,                  /* -fbounds-check= */
+  OPT_fbranch_count_reg = 888,               /* -fbranch-count-reg */
+  OPT_fbranch_probabilities = 889,           /* -fbranch-probabilities */
+  /* OPT_fbranch_target_load_optimize = 890, *//* -fbranch-target-load-optimize */
+  /* OPT_fbranch_target_load_optimize2 = 891, *//* -fbranch-target-load-optimize2 */
+  /* OPT_fbtr_bb_exclusive = 892, */         /* -fbtr-bb-exclusive */
+  OPT_fbuilding_libgcc = 893,                /* -fbuilding-libgcc */
+  OPT_fbuilding_libphobos_tests = 894,       /* -fbuilding-libphobos-tests */
+  OPT_fbuiltin = 895,                        /* -fbuiltin */
+  OPT_fbuiltin_ = 896,                       /* -fbuiltin- */
+  OPT_fbuiltin_printf = 897,                 /* -fbuiltin-printf */
+  OPT_fc_prototypes = 898,                   /* -fc-prototypes */
+  OPT_fc_prototypes_external = 899,          /* -fc-prototypes-external */
+  OPT_fcall_saved_ = 900,                    /* -fcall-saved- */
+  OPT_fcall_used_ = 901,                     /* -fcall-used- */
+  OPT_fcaller_saves = 902,                   /* -fcaller-saves */
+  OPT_fcallgraph_info = 903,                 /* -fcallgraph-info */
+  OPT_fcallgraph_info_ = 904,                /* -fcallgraph-info= */
+  OPT_fcanonical_system_headers = 905,       /* -fcanonical-system-headers */
+  /* OPT_fcf_protection = 906, */            /* -fcf-protection */
+  OPT_fcf_protection_ = 907,                 /* -fcf-protection= */
+  OPT_fchar8_t = 908,                        /* -fchar8_t */
+  OPT_fcheck_array_temporaries = 909,        /* -fcheck-array-temporaries */
+  /* OPT_fcheck_data_deps = 910, */          /* -fcheck-data-deps */
+  OPT_fcheck_new = 911,                      /* -fcheck-new */
+  OPT_fcheck_pointer_bounds = 912,           /* -fcheck-pointer-bounds */
+  OPT_fcheck_ = 913,                         /* -fcheck= */
+  OPT_fchecking = 914,                       /* -fchecking */
+  OPT_fchecking_ = 915,                      /* -fchecking= */
+  OPT_fchkp_check_incomplete_type = 916,     /* -fchkp-check-incomplete-type */
+  OPT_fchkp_check_read = 917,                /* -fchkp-check-read */
+  OPT_fchkp_check_write = 918,               /* -fchkp-check-write */
+  OPT_fchkp_first_field_has_own_bounds = 919,/* -fchkp-first-field-has-own-bounds */
+  OPT_fchkp_flexible_struct_trailing_arrays = 920,/* -fchkp-flexible-struct-trailing-arrays */
+  OPT_fchkp_instrument_calls = 921,          /* -fchkp-instrument-calls */
+  OPT_fchkp_instrument_marked_only = 922,    /* -fchkp-instrument-marked-only */
+  OPT_fchkp_narrow_bounds = 923,             /* -fchkp-narrow-bounds */
+  OPT_fchkp_narrow_to_innermost_array = 924, /* -fchkp-narrow-to-innermost-array */
+  OPT_fchkp_optimize = 925,                  /* -fchkp-optimize */
+  OPT_fchkp_store_bounds = 926,              /* -fchkp-store-bounds */
+  OPT_fchkp_treat_zero_dynamic_size_as_infinite = 927,/* -fchkp-treat-zero-dynamic-size-as-infinite */
+  OPT_fchkp_use_fast_string_functions = 928, /* -fchkp-use-fast-string-functions */
+  OPT_fchkp_use_nochk_string_functions = 929,/* -fchkp-use-nochk-string-functions */
+  OPT_fchkp_use_static_bounds = 930,         /* -fchkp-use-static-bounds */
+  OPT_fchkp_use_static_const_bounds = 931,   /* -fchkp-use-static-const-bounds */
+  OPT_fchkp_use_wrappers = 932,              /* -fchkp-use-wrappers */
+  OPT_fchkp_zero_input_bounds_for_main = 933,/* -fchkp-zero-input-bounds-for-main */
+  /* OPT_fcilkplus = 934, */                 /* -fcilkplus */
+  OPT_fcoarray_ = 935,                       /* -fcoarray= */
+  OPT_fcode_hoisting = 936,                  /* -fcode-hoisting */
+  OPT_fcombine_stack_adjustments = 937,      /* -fcombine-stack-adjustments */
+  OPT_fcommon = 938,                         /* -fcommon */
+  OPT_fcompare_debug = 939,                  /* -fcompare-debug */
+  OPT_fcompare_debug_second = 940,           /* -fcompare-debug-second */
+  OPT_fcompare_debug_ = 941,                 /* -fcompare-debug= */
+  OPT_fcompare_elim = 942,                   /* -fcompare-elim */
+  OPT_fconcepts = 943,                       /* -fconcepts */
+  OPT_fconcepts_diagnostics_depth_ = 944,    /* -fconcepts-diagnostics-depth= */
+  OPT_fconcepts_ts = 945,                    /* -fconcepts-ts */
+  OPT_fcond_mismatch = 946,                  /* -fcond-mismatch */
+  /* OPT_fconserve_space = 947, */           /* -fconserve-space */
+  OPT_fconserve_stack = 948,                 /* -fconserve-stack */
+  OPT_fconstant_string_class_ = 949,         /* -fconstant-string-class= */
+  OPT_fconstexpr_cache_depth_ = 950,         /* -fconstexpr-cache-depth= */
+  OPT_fconstexpr_depth_ = 951,               /* -fconstexpr-depth= */
+  OPT_fconstexpr_loop_limit_ = 952,          /* -fconstexpr-loop-limit= */
+  OPT_fconstexpr_ops_limit_ = 953,           /* -fconstexpr-ops-limit= */
+  OPT_fconvert_ = 954,                       /* -fconvert= */
+  OPT_fcoroutines = 955,                     /* -fcoroutines */
+  OPT_fcprop_registers = 956,                /* -fcprop-registers */
+  OPT_fcray_pointer = 957,                   /* -fcray-pointer */
+  OPT_fcrossjumping = 958,                   /* -fcrossjumping */
+  OPT_fcse_follow_jumps = 959,               /* -fcse-follow-jumps */
+  /* OPT_fcse_skip_blocks = 960, */          /* -fcse-skip-blocks */
+  OPT_fcx_fortran_rules = 961,               /* -fcx-fortran-rules */
+  OPT_fcx_limited_range = 962,               /* -fcx-limited-range */
+  OPT_fd_lines_as_code = 963,                /* -fd-lines-as-code */
+  OPT_fd_lines_as_comments = 964,            /* -fd-lines-as-comments */
+  OPT_fdata_sections = 965,                  /* -fdata-sections */
+  OPT_fdbg_cnt_list = 966,                   /* -fdbg-cnt-list */
+  OPT_fdbg_cnt_ = 967,                       /* -fdbg-cnt= */
+  OPT_fdce = 968,                            /* -fdce */
+  OPT_fdebug = 969,                          /* -fdebug */
+  OPT_fdebug_aux_vars = 970,                 /* -fdebug-aux-vars */
+  OPT_fdebug_cpp = 971,                      /* -fdebug-cpp */
+  OPT_fdebug_prefix_map_ = 972,              /* -fdebug-prefix-map= */
+  OPT_fdebug_types_section = 973,            /* -fdebug-types-section */
+  OPT_fdebug_ = 974,                         /* -fdebug= */
+  OPT_fdec = 975,                            /* -fdec */
+  OPT_fdec_blank_format_item = 976,          /* -fdec-blank-format-item */
+  OPT_fdec_char_conversions = 977,           /* -fdec-char-conversions */
+  OPT_fdec_format_defaults = 978,            /* -fdec-format-defaults */
+  OPT_fdec_include = 979,                    /* -fdec-include */
+  OPT_fdec_intrinsic_ints = 980,             /* -fdec-intrinsic-ints */
+  OPT_fdec_math = 981,                       /* -fdec-math */
+  OPT_fdec_static = 982,                     /* -fdec-static */
+  OPT_fdec_structure = 983,                  /* -fdec-structure */
+  OPT_fdeclone_ctor_dtor = 984,              /* -fdeclone-ctor-dtor */
+  /* OPT_fdeduce_init_list = 985, */         /* -fdeduce-init-list */
+  OPT_fdefault_double_8 = 986,               /* -fdefault-double-8 */
+  /* OPT_fdefault_inline = 987, */           /* -fdefault-inline */
+  OPT_fdefault_integer_8 = 988,              /* -fdefault-integer-8 */
+  OPT_fdefault_real_10 = 989,                /* -fdefault-real-10 */
+  OPT_fdefault_real_16 = 990,                /* -fdefault-real-16 */
+  OPT_fdefault_real_8 = 991,                 /* -fdefault-real-8 */
+  OPT_fdefer_pop = 992,                      /* -fdefer-pop */
+  OPT_fdelayed_branch = 993,                 /* -fdelayed-branch */
+  OPT_fdelete_dead_exceptions = 994,         /* -fdelete-dead-exceptions */
+  OPT_fdelete_null_pointer_checks = 995,     /* -fdelete-null-pointer-checks */
+  OPT_fdevirtualize = 996,                   /* -fdevirtualize */
+  OPT_fdevirtualize_at_ltrans = 997,         /* -fdevirtualize-at-ltrans */
+  OPT_fdevirtualize_speculatively = 998,     /* -fdevirtualize-speculatively */
+  /* OPT_fdiagnostics_color = 999, */        /* -fdiagnostics-color */
+  OPT_fdiagnostics_color_ = 1000,            /* -fdiagnostics-color= */
+  OPT_fdiagnostics_column_origin_ = 1001,    /* -fdiagnostics-column-origin= */
+  OPT_fdiagnostics_column_unit_ = 1002,      /* -fdiagnostics-column-unit= */
+  OPT_fdiagnostics_format_ = 1003,           /* -fdiagnostics-format= */
+  OPT_fdiagnostics_generate_patch = 1004,    /* -fdiagnostics-generate-patch */
+  OPT_fdiagnostics_minimum_margin_width_ = 1005,/* -fdiagnostics-minimum-margin-width= */
+  OPT_fdiagnostics_parseable_fixits = 1006,  /* -fdiagnostics-parseable-fixits */
+  OPT_fdiagnostics_path_format_ = 1007,      /* -fdiagnostics-path-format= */
+  OPT_fdiagnostics_plain_output = 1008,      /* -fdiagnostics-plain-output */
+  OPT_fdiagnostics_show_caret = 1009,        /* -fdiagnostics-show-caret */
+  OPT_fdiagnostics_show_cwe = 1010,          /* -fdiagnostics-show-cwe */
+  OPT_fdiagnostics_show_labels = 1011,       /* -fdiagnostics-show-labels */
+  OPT_fdiagnostics_show_line_numbers = 1012, /* -fdiagnostics-show-line-numbers */
+  OPT_fdiagnostics_show_location_ = 1013,    /* -fdiagnostics-show-location= */
+  OPT_fdiagnostics_show_option = 1014,       /* -fdiagnostics-show-option */
+  OPT_fdiagnostics_show_path_depths = 1015,  /* -fdiagnostics-show-path-depths */
+  OPT_fdiagnostics_show_template_tree = 1016,/* -fdiagnostics-show-template-tree */
+  OPT_fdiagnostics_urls_ = 1017,             /* -fdiagnostics-urls= */
+  OPT_fdirectives_only = 1018,               /* -fdirectives-only */
+  OPT_fdisable_ = 1019,                      /* -fdisable- */
+  OPT_fdoc = 1020,                           /* -fdoc */
+  OPT_fdoc_dir_ = 1021,                      /* -fdoc-dir= */
+  OPT_fdoc_file_ = 1022,                     /* -fdoc-file= */
+  OPT_fdoc_inc_ = 1023,                      /* -fdoc-inc= */
+  OPT_fdollar_ok = 1024,                     /* -fdollar-ok */
+  OPT_fdollars_in_identifiers = 1025,        /* -fdollars-in-identifiers */
+  OPT_fdruntime = 1026,                      /* -fdruntime */
+  OPT_fdse = 1027,                           /* -fdse */
+  OPT_fdump_ = 1028,                         /* -fdump- */
+  OPT_fdump_ada_spec = 1029,                 /* -fdump-ada-spec */
+  OPT_fdump_ada_spec_slim = 1030,            /* -fdump-ada-spec-slim */
+  OPT_fdump_analyzer = 1031,                 /* -fdump-analyzer */
+  OPT_fdump_analyzer_callgraph = 1032,       /* -fdump-analyzer-callgraph */
+  OPT_fdump_analyzer_exploded_graph = 1033,  /* -fdump-analyzer-exploded-graph */
+  OPT_fdump_analyzer_exploded_nodes = 1034,  /* -fdump-analyzer-exploded-nodes */
+  OPT_fdump_analyzer_exploded_nodes_2 = 1035,/* -fdump-analyzer-exploded-nodes-2 */
+  OPT_fdump_analyzer_exploded_nodes_3 = 1036,/* -fdump-analyzer-exploded-nodes-3 */
+  OPT_fdump_analyzer_json = 1037,            /* -fdump-analyzer-json */
+  OPT_fdump_analyzer_state_purge = 1038,     /* -fdump-analyzer-state-purge */
+  OPT_fdump_analyzer_stderr = 1039,          /* -fdump-analyzer-stderr */
+  OPT_fdump_analyzer_supergraph = 1040,      /* -fdump-analyzer-supergraph */
+  /* OPT_fdump_core = 1041, */               /* -fdump-core */
+  OPT_fdump_d_original = 1042,               /* -fdump-d-original */
+  OPT_fdump_final_insns = 1043,              /* -fdump-final-insns */
+  OPT_fdump_final_insns_ = 1044,             /* -fdump-final-insns= */
+  OPT_fdump_fortran_global = 1045,           /* -fdump-fortran-global */
+  OPT_fdump_fortran_optimized = 1046,        /* -fdump-fortran-optimized */
+  OPT_fdump_fortran_original = 1047,         /* -fdump-fortran-original */
+  OPT_fdump_go_spec_ = 1048,                 /* -fdump-go-spec= */
+  OPT_fdump_internal_locations = 1049,       /* -fdump-internal-locations */
+  OPT_fdump_noaddr = 1050,                   /* -fdump-noaddr */
+  /* OPT_fdump_parse_tree = 1051, */         /* -fdump-parse-tree */
+  OPT_fdump_passes = 1052,                   /* -fdump-passes */
+  OPT_fdump_scos = 1053,                     /* -fdump-scos */
+  OPT_fdump_unnumbered = 1054,               /* -fdump-unnumbered */
+  OPT_fdump_unnumbered_links = 1055,         /* -fdump-unnumbered-links */
+  OPT_fdwarf2_cfi_asm = 1056,                /* -fdwarf2-cfi-asm */
+  OPT_fearly_inlining = 1057,                /* -fearly-inlining */
+  OPT_felide_constructors = 1058,            /* -felide-constructors */
+  OPT_felide_type = 1059,                    /* -felide-type */
+  /* OPT_feliminate_dwarf2_dups = 1060, */   /* -feliminate-dwarf2-dups */
+  OPT_feliminate_unused_debug_symbols = 1061,/* -feliminate-unused-debug-symbols */
+  OPT_feliminate_unused_debug_types = 1062,  /* -feliminate-unused-debug-types */
+  OPT_femit_class_debug_always = 1063,       /* -femit-class-debug-always */
+  OPT_femit_struct_debug_baseonly = 1064,    /* -femit-struct-debug-baseonly */
+  OPT_femit_struct_debug_detailed_ = 1065,   /* -femit-struct-debug-detailed= */
+  OPT_femit_struct_debug_reduced = 1066,     /* -femit-struct-debug-reduced */
+  OPT_fenable_ = 1067,                       /* -fenable- */
+  OPT_fenforce_eh_specs = 1068,              /* -fenforce-eh-specs */
+  OPT_fenum_int_equiv = 1069,                /* -fenum-int-equiv */
+  OPT_fexceptions = 1070,                    /* -fexceptions */
+  OPT_fexcess_precision_ = 1071,             /* -fexcess-precision= */
+  OPT_fexec_charset_ = 1072,                 /* -fexec-charset= */
+  OPT_fexpensive_optimizations = 1073,       /* -fexpensive-optimizations */
+  OPT_fext_numeric_literals = 1074,          /* -fext-numeric-literals */
+  OPT_fextended_identifiers = 1075,          /* -fextended-identifiers */
+  OPT_fextern_tls_init = 1076,               /* -fextern-tls-init */
+  OPT_fexternal_blas = 1077,                 /* -fexternal-blas */
+  OPT_fexternal_templates = 1078,            /* -fexternal-templates */
+  OPT_ff2c = 1079,                           /* -ff2c */
+  OPT_ffast_math = 1080,                     /* -ffast-math */
+  OPT_ffat_lto_objects = 1081,               /* -ffat-lto-objects */
+  OPT_ffile_prefix_map_ = 1082,              /* -ffile-prefix-map= */
+  OPT_ffinite_loops = 1083,                  /* -ffinite-loops */
+  OPT_ffinite_math_only = 1084,              /* -ffinite-math-only */
+  OPT_ffixed_ = 1085,                        /* -ffixed- */
+  OPT_ffixed_form = 1086,                    /* -ffixed-form */
+  OPT_ffixed_line_length_ = 1087,            /* -ffixed-line-length- */
+  OPT_ffixed_line_length_none = 1088,        /* -ffixed-line-length-none */
+  OPT_ffloat_store = 1089,                   /* -ffloat-store */
+  OPT_ffor_scope = 1090,                     /* -ffor-scope */
+  /* OPT_fforce_addr = 1091, */              /* -fforce-addr */
+  OPT_fforward_propagate = 1092,             /* -fforward-propagate */
+  OPT_ffp_contract_ = 1093,                  /* -ffp-contract= */
+  OPT_ffp_int_builtin_inexact = 1094,        /* -ffp-int-builtin-inexact */
+  OPT_ffpe_summary_ = 1095,                  /* -ffpe-summary= */
+  OPT_ffpe_trap_ = 1096,                     /* -ffpe-trap= */
+  OPT_ffree_form = 1097,                     /* -ffree-form */
+  OPT_ffree_line_length_ = 1098,             /* -ffree-line-length- */
+  OPT_ffree_line_length_none = 1099,         /* -ffree-line-length-none */
+  OPT_ffreestanding = 1100,                  /* -ffreestanding */
+  OPT_ffriend_injection = 1101,              /* -ffriend-injection */
+  OPT_ffrontend_loop_interchange = 1102,     /* -ffrontend-loop-interchange */
+  OPT_ffrontend_optimize = 1103,             /* -ffrontend-optimize */
+  OPT_ffunction_cse = 1104,                  /* -ffunction-cse */
+  OPT_ffunction_sections = 1105,             /* -ffunction-sections */
+  OPT_fgcse = 1106,                          /* -fgcse */
+  OPT_fgcse_after_reload = 1107,             /* -fgcse-after-reload */
+  OPT_fgcse_las = 1108,                      /* -fgcse-las */
+  OPT_fgcse_lm = 1109,                       /* -fgcse-lm */
+  OPT_fgcse_sm = 1110,                       /* -fgcse-sm */
+  OPT_fgimple = 1111,                        /* -fgimple */
+  OPT_fgnat_encodings_ = 1112,               /* -fgnat-encodings= */
+  OPT_fgnu_keywords = 1113,                  /* -fgnu-keywords */
+  OPT_fgnu_runtime = 1114,                   /* -fgnu-runtime */
+  OPT_fgnu_tm = 1115,                        /* -fgnu-tm */
+  OPT_fgnu_unique = 1116,                    /* -fgnu-unique */
+  OPT_fgnu89_inline = 1117,                  /* -fgnu89-inline */
+  OPT_fgo_c_header_ = 1118,                  /* -fgo-c-header= */
+  OPT_fgo_check_divide_overflow = 1119,      /* -fgo-check-divide-overflow */
+  OPT_fgo_check_divide_zero = 1120,          /* -fgo-check-divide-zero */
+  OPT_fgo_compiling_runtime = 1121,          /* -fgo-compiling-runtime */
+  OPT_fgo_debug_escape = 1122,               /* -fgo-debug-escape */
+  OPT_fgo_debug_escape_hash_ = 1123,         /* -fgo-debug-escape-hash= */
+  OPT_fgo_debug_optimization = 1124,         /* -fgo-debug-optimization */
+  OPT_fgo_dump_ = 1125,                      /* -fgo-dump- */
+  OPT_fgo_embedcfg_ = 1126,                  /* -fgo-embedcfg= */
+  OPT_fgo_optimize_ = 1127,                  /* -fgo-optimize- */
+  OPT_fgo_pkgpath_ = 1128,                   /* -fgo-pkgpath= */
+  OPT_fgo_prefix_ = 1129,                    /* -fgo-prefix= */
+  OPT_fgo_relative_import_path_ = 1130,      /* -fgo-relative-import-path= */
+  OPT_fgraphite = 1131,                      /* -fgraphite */
+  OPT_fgraphite_identity = 1132,             /* -fgraphite-identity */
+  OPT_fguess_branch_probability = 1133,      /* -fguess-branch-probability */
+  OPT_fguiding_decls = 1134,                 /* -fguiding-decls */
+  /* OPT_fhandle_exceptions = 1135, */       /* -fhandle-exceptions */
+  /* OPT_fhelp = 1136, */                    /* -fhelp */
+  /* OPT_fhelp_ = 1137, */                   /* -fhelp= */
+  OPT_fhoist_adjacent_loads = 1138,          /* -fhoist-adjacent-loads */
+  OPT_fhonor_std = 1139,                     /* -fhonor-std */
+  OPT_fhosted = 1140,                        /* -fhosted */
+  OPT_fhuge_objects = 1141,                  /* -fhuge-objects */
+  OPT_fident = 1142,                         /* -fident */
+  OPT_fif_conversion = 1143,                 /* -fif-conversion */
+  OPT_fif_conversion2 = 1144,                /* -fif-conversion2 */
+  OPT_fignore_unknown_pragmas = 1145,        /* -fignore-unknown-pragmas */
+  OPT_fimplement_inlines = 1146,             /* -fimplement-inlines */
+  OPT_fimplicit_inline_templates = 1147,     /* -fimplicit-inline-templates */
+  OPT_fimplicit_none = 1148,                 /* -fimplicit-none */
+  OPT_fimplicit_templates = 1149,            /* -fimplicit-templates */
+  OPT_findirect_inlining = 1150,             /* -findirect-inlining */
+  OPT_finhibit_size_directive = 1151,        /* -finhibit-size-directive */
+  OPT_finit_character_ = 1152,               /* -finit-character= */
+  OPT_finit_derived = 1153,                  /* -finit-derived */
+  OPT_finit_integer_ = 1154,                 /* -finit-integer= */
+  OPT_finit_local_zero = 1155,               /* -finit-local-zero */
+  OPT_finit_logical_ = 1156,                 /* -finit-logical= */
+  OPT_finit_real_ = 1157,                    /* -finit-real= */
+  OPT_finline = 1158,                        /* -finline */
+  OPT_finline_arg_packing = 1159,            /* -finline-arg-packing */
+  OPT_finline_atomics = 1160,                /* -finline-atomics */
+  OPT_finline_functions = 1161,              /* -finline-functions */
+  OPT_finline_functions_called_once = 1162,  /* -finline-functions-called-once */
+  /* OPT_finline_limit_ = 1163, */           /* -finline-limit- */
+  OPT_finline_limit_ = 1164,                 /* -finline-limit= */
+  OPT_finline_matmul_limit_ = 1165,          /* -finline-matmul-limit= */
+  OPT_finline_small_functions = 1166,        /* -finline-small-functions */
+  OPT_finput_charset_ = 1167,                /* -finput-charset= */
+  OPT_finstrument_functions = 1168,          /* -finstrument-functions */
+  OPT_finstrument_functions_exclude_file_list_ = 1169,/* -finstrument-functions-exclude-file-list= */
+  OPT_finstrument_functions_exclude_function_list_ = 1170,/* -finstrument-functions-exclude-function-list= */
+  OPT_finteger_4_integer_8 = 1171,           /* -finteger-4-integer-8 */
+  OPT_fintrinsic_modules_path = 1172,        /* -fintrinsic-modules-path */
+  OPT_fintrinsic_modules_path_ = 1173,       /* -fintrinsic-modules-path= */
+  OPT_finvariants = 1174,                    /* -finvariants */
+  OPT_fipa_bit_cp = 1175,                    /* -fipa-bit-cp */
+  OPT_fipa_cp = 1176,                        /* -fipa-cp */
+  /* OPT_fipa_cp_alignment = 1177, */        /* -fipa-cp-alignment */
+  OPT_fipa_cp_clone = 1178,                  /* -fipa-cp-clone */
+  OPT_fipa_icf = 1179,                       /* -fipa-icf */
+  OPT_fipa_icf_functions = 1180,             /* -fipa-icf-functions */
+  OPT_fipa_icf_variables = 1181,             /* -fipa-icf-variables */
+  /* OPT_fipa_matrix_reorg = 1182, */        /* -fipa-matrix-reorg */
+  OPT_fipa_modref = 1183,                    /* -fipa-modref */
+  OPT_fipa_profile = 1184,                   /* -fipa-profile */
+  OPT_fipa_pta = 1185,                       /* -fipa-pta */
+  OPT_fipa_pure_const = 1186,                /* -fipa-pure-const */
+  OPT_fipa_ra = 1187,                        /* -fipa-ra */
+  OPT_fipa_reference = 1188,                 /* -fipa-reference */
+  OPT_fipa_reference_addressable = 1189,     /* -fipa-reference-addressable */
+  OPT_fipa_sra = 1190,                       /* -fipa-sra */
+  OPT_fipa_stack_alignment = 1191,           /* -fipa-stack-alignment */
+  /* OPT_fipa_struct_reorg = 1192, */        /* -fipa-struct-reorg */
+  OPT_fipa_vrp = 1193,                       /* -fipa-vrp */
+  OPT_fira_algorithm_ = 1194,                /* -fira-algorithm= */
+  OPT_fira_hoist_pressure = 1195,            /* -fira-hoist-pressure */
+  OPT_fira_loop_pressure = 1196,             /* -fira-loop-pressure */
+  OPT_fira_region_ = 1197,                   /* -fira-region= */
+  OPT_fira_share_save_slots = 1198,          /* -fira-share-save-slots */
+  OPT_fira_share_spill_slots = 1199,         /* -fira-share-spill-slots */
+  OPT_fira_verbose_ = 1200,                  /* -fira-verbose= */
+  OPT_fisolate_erroneous_paths_attribute = 1201,/* -fisolate-erroneous-paths-attribute */
+  OPT_fisolate_erroneous_paths_dereference = 1202,/* -fisolate-erroneous-paths-dereference */
+  OPT_fivar_visibility_ = 1203,              /* -fivar-visibility= */
+  OPT_fivopts = 1204,                        /* -fivopts */
+  OPT_fjump_tables = 1205,                   /* -fjump-tables */
+  OPT_fkeep_gc_roots_live = 1206,            /* -fkeep-gc-roots-live */
+  OPT_fkeep_inline_dllexport = 1207,         /* -fkeep-inline-dllexport */
+  OPT_fkeep_inline_functions = 1208,         /* -fkeep-inline-functions */
+  OPT_fkeep_static_consts = 1209,            /* -fkeep-static-consts */
+  OPT_fkeep_static_functions = 1210,         /* -fkeep-static-functions */
+  OPT_flabels_ok = 1211,                     /* -flabels-ok */
+  OPT_flang_info_include_translate = 1212,   /* -flang-info-include-translate */
+  OPT_flang_info_include_translate_not = 1213,/* -flang-info-include-translate-not */
+  OPT_flang_info_include_translate_ = 1214,  /* -flang-info-include-translate= */
+  OPT_flarge_source_files = 1215,            /* -flarge-source-files */
+  OPT_flax_vector_conversions = 1216,        /* -flax-vector-conversions */
+  OPT_fleading_underscore = 1217,            /* -fleading-underscore */
+  OPT_flifetime_dse = 1218,                  /* -flifetime-dse */
+  OPT_flifetime_dse_ = 1219,                 /* -flifetime-dse= */
+  OPT_flimit_function_alignment = 1220,      /* -flimit-function-alignment */
+  OPT_flinker_output_ = 1221,                /* -flinker-output= */
+  /* OPT_flive_patching = 1222, */           /* -flive-patching */
+  OPT_flive_patching_ = 1223,                /* -flive-patching= */
+  OPT_flive_range_shrinkage = 1224,          /* -flive-range-shrinkage */
+  OPT_flocal_ivars = 1225,                   /* -flocal-ivars */
+  /* OPT_floop_block = 1226, */              /* -floop-block */
+  /* OPT_floop_flatten = 1227, */            /* -floop-flatten */
+  OPT_floop_interchange = 1228,              /* -floop-interchange */
+  OPT_floop_nest_optimize = 1229,            /* -floop-nest-optimize */
+  /* OPT_floop_optimize = 1230, */           /* -floop-optimize */
+  OPT_floop_parallelize_all = 1231,          /* -floop-parallelize-all */
+  /* OPT_floop_strip_mine = 1232, */         /* -floop-strip-mine */
+  OPT_floop_unroll_and_jam = 1233,           /* -floop-unroll-and-jam */
+  OPT_flra_remat = 1234,                     /* -flra-remat */
+  OPT_flto = 1235,                           /* -flto */
+  OPT_flto_compression_level_ = 1236,        /* -flto-compression-level= */
+  /* OPT_flto_odr_type_merging = 1237, */    /* -flto-odr-type-merging */
+  OPT_flto_partition_ = 1238,                /* -flto-partition= */
+  OPT_flto_report = 1239,                    /* -flto-report */
+  OPT_flto_report_wpa = 1240,                /* -flto-report-wpa */
+  OPT_flto_ = 1241,                          /* -flto= */
+  OPT_fltrans = 1242,                        /* -fltrans */
+  OPT_fltrans_output_list_ = 1243,           /* -fltrans-output-list= */
+  OPT_fmacro_prefix_map_ = 1244,             /* -fmacro-prefix-map= */
+  OPT_fmain = 1245,                          /* -fmain */
+  OPT_fmath_errno = 1246,                    /* -fmath-errno */
+  OPT_fmax_array_constructor_ = 1247,        /* -fmax-array-constructor= */
+  OPT_fmax_errors_ = 1248,                   /* -fmax-errors= */
+  OPT_fmax_identifier_length_ = 1249,        /* -fmax-identifier-length= */
+  OPT_fmax_include_depth_ = 1250,            /* -fmax-include-depth= */
+  OPT_fmax_stack_var_size_ = 1251,           /* -fmax-stack-var-size= */
+  OPT_fmax_subrecord_length_ = 1252,         /* -fmax-subrecord-length= */
+  OPT_fmem_report = 1253,                    /* -fmem-report */
+  OPT_fmem_report_wpa = 1254,                /* -fmem-report-wpa */
+  OPT_fmerge_all_constants = 1255,           /* -fmerge-all-constants */
+  OPT_fmerge_constants = 1256,               /* -fmerge-constants */
+  OPT_fmerge_debug_strings = 1257,           /* -fmerge-debug-strings */
+  OPT_fmessage_length_ = 1258,               /* -fmessage-length= */
+  OPT_fmodule_file_ = 1259,                  /* -fmodule-file= */
+  OPT_fmodule_header = 1260,                 /* -fmodule-header */
+  OPT_fmodule_header_ = 1261,                /* -fmodule-header= */
+  OPT_fmodule_implicit_inline = 1262,        /* -fmodule-implicit-inline */
+  OPT_fmodule_lazy = 1263,                   /* -fmodule-lazy */
+  OPT_fmodule_mapper_ = 1264,                /* -fmodule-mapper= */
+  OPT_fmodule_only = 1265,                   /* -fmodule-only */
+  OPT_fmodule_private = 1266,                /* -fmodule-private */
+  OPT_fmodule_version_ignore = 1267,         /* -fmodule-version-ignore */
+  OPT_fmoduleinfo = 1268,                    /* -fmoduleinfo */
+  OPT_fmodules_ts = 1269,                    /* -fmodules-ts */
+  OPT_fmodulo_sched = 1270,                  /* -fmodulo-sched */
+  OPT_fmodulo_sched_allow_regmoves = 1271,   /* -fmodulo-sched-allow-regmoves */
+  OPT_fmove_loop_invariants = 1272,          /* -fmove-loop-invariants */
+  OPT_fms_extensions = 1273,                 /* -fms-extensions */
+  OPT_fmudflap = 1274,                       /* -fmudflap */
+  OPT_fmudflapir = 1275,                     /* -fmudflapir */
+  OPT_fmudflapth = 1276,                     /* -fmudflapth */
+  OPT_fname_mangling_version_ = 1277,        /* -fname-mangling-version- */
+  OPT_fnew_abi = 1278,                       /* -fnew-abi */
+  OPT_fnew_inheriting_ctors = 1279,          /* -fnew-inheriting-ctors */
+  OPT_fnew_ttp_matching = 1280,              /* -fnew-ttp-matching */
+  OPT_fnext_runtime = 1281,                  /* -fnext-runtime */
+  OPT_fnil_receivers = 1282,                 /* -fnil-receivers */
+  OPT_fno_modules = 1283,                    /* -fno-modules */
+  OPT_fnon_call_exceptions = 1284,           /* -fnon-call-exceptions */
+  OPT_fnonansi_builtins = 1285,              /* -fnonansi-builtins */
+  OPT_fnonnull_objects = 1286,               /* -fnonnull-objects */
+  OPT_fnothrow_opt = 1287,                   /* -fnothrow-opt */
+  OPT_fobjc_abi_version_ = 1288,             /* -fobjc-abi-version= */
+  OPT_fobjc_call_cxx_cdtors = 1289,          /* -fobjc-call-cxx-cdtors */
+  OPT_fobjc_direct_dispatch = 1290,          /* -fobjc-direct-dispatch */
+  OPT_fobjc_exceptions = 1291,               /* -fobjc-exceptions */
+  OPT_fobjc_gc = 1292,                       /* -fobjc-gc */
+  OPT_fobjc_nilcheck = 1293,                 /* -fobjc-nilcheck */
+  OPT_fobjc_sjlj_exceptions = 1294,          /* -fobjc-sjlj-exceptions */
+  OPT_fobjc_std_objc1 = 1295,                /* -fobjc-std=objc1 */
+  OPT_foffload_abi_ = 1296,                  /* -foffload-abi= */
+  OPT_foffload_ = 1297,                      /* -foffload= */
+  OPT_fomit_frame_pointer = 1298,            /* -fomit-frame-pointer */
+  OPT_fonly_ = 1299,                         /* -fonly= */
+  OPT_fopenacc = 1300,                       /* -fopenacc */
+  OPT_fopenacc_dim_ = 1301,                  /* -fopenacc-dim= */
+  OPT_fopenacc_kernels_ = 1302,              /* -fopenacc-kernels= */
+  OPT_fopenmp = 1303,                        /* -fopenmp */
+  OPT_fopenmp_simd = 1304,                   /* -fopenmp-simd */
+  OPT_foperator_names = 1305,                /* -foperator-names */
+  OPT_fopt_info = 1306,                      /* -fopt-info */
+  OPT_fopt_info_ = 1307,                     /* -fopt-info- */
+  /* OPT_foptimize_register_move = 1308, */  /* -foptimize-register-move */
+  OPT_foptimize_sibling_calls = 1309,        /* -foptimize-sibling-calls */
+  OPT_foptimize_strlen = 1310,               /* -foptimize-strlen */
+  /* OPT_foptional_diags = 1311, */          /* -foptional-diags */
+  OPT_fpack_derived = 1312,                  /* -fpack-derived */
+  OPT_fpack_struct = 1313,                   /* -fpack-struct */
+  OPT_fpack_struct_ = 1314,                  /* -fpack-struct= */
+  OPT_fpad_source = 1315,                    /* -fpad-source */
+  OPT_fpartial_inlining = 1316,              /* -fpartial-inlining */
+  OPT_fpatchable_function_entry_ = 1317,     /* -fpatchable-function-entry= */
+  OPT_fpcc_struct_return = 1318,             /* -fpcc-struct-return */
+  OPT_fpch_deps = 1319,                      /* -fpch-deps */
+  OPT_fpch_preprocess = 1320,                /* -fpch-preprocess */
+  OPT_fpeel_loops = 1321,                    /* -fpeel-loops */
+  OPT_fpeephole = 1322,                      /* -fpeephole */
+  OPT_fpeephole2 = 1323,                     /* -fpeephole2 */
+  OPT_fpermissive = 1324,                    /* -fpermissive */
+  OPT_fpermitted_flt_eval_methods_ = 1325,   /* -fpermitted-flt-eval-methods= */
+  OPT_fpic = 1326,                           /* -fpic */
+  OPT_fpie = 1327,                           /* -fpie */
+  OPT_fplan9_extensions = 1328,              /* -fplan9-extensions */
+  OPT_fplt = 1329,                           /* -fplt */
+  OPT_fplugin_arg_ = 1330,                   /* -fplugin-arg- */
+  OPT_fplugin_ = 1331,                       /* -fplugin= */
+  OPT_fpost_ipa_mem_report = 1332,           /* -fpost-ipa-mem-report */
+  OPT_fpostconditions = 1333,                /* -fpostconditions */
+  OPT_fpre_include_ = 1334,                  /* -fpre-include= */
+  OPT_fpre_ipa_mem_report = 1335,            /* -fpre-ipa-mem-report */
+  OPT_fpreconditions = 1336,                 /* -fpreconditions */
+  OPT_fpredictive_commoning = 1337,          /* -fpredictive-commoning */
+  OPT_fprefetch_loop_arrays = 1338,          /* -fprefetch-loop-arrays */
+  OPT_fpreprocessed = 1339,                  /* -fpreprocessed */
+  OPT_fpretty_templates = 1340,              /* -fpretty-templates */
+  OPT_fprintf_return_value = 1341,           /* -fprintf-return-value */
+  OPT_fprofile = 1342,                       /* -fprofile */
+  OPT_fprofile_abs_path = 1343,              /* -fprofile-abs-path */
+  OPT_fprofile_arcs = 1344,                  /* -fprofile-arcs */
+  OPT_fprofile_correction = 1345,            /* -fprofile-correction */
+  OPT_fprofile_dir_ = 1346,                  /* -fprofile-dir= */
+  OPT_fprofile_exclude_files_ = 1347,        /* -fprofile-exclude-files= */
+  OPT_fprofile_filter_files_ = 1348,         /* -fprofile-filter-files= */
+  OPT_fprofile_generate = 1349,              /* -fprofile-generate */
+  OPT_fprofile_generate_ = 1350,             /* -fprofile-generate= */
+  OPT_fprofile_info_section = 1351,          /* -fprofile-info-section */
+  OPT_fprofile_info_section_ = 1352,         /* -fprofile-info-section= */
+  OPT_fprofile_note_ = 1353,                 /* -fprofile-note= */
+  OPT_fprofile_partial_training = 1354,      /* -fprofile-partial-training */
+  OPT_fprofile_prefix_path_ = 1355,          /* -fprofile-prefix-path= */
+  OPT_fprofile_reorder_functions = 1356,     /* -fprofile-reorder-functions */
+  OPT_fprofile_report = 1357,                /* -fprofile-report */
+  OPT_fprofile_reproducible_ = 1358,         /* -fprofile-reproducible= */
+  OPT_fprofile_update_ = 1359,               /* -fprofile-update= */
+  OPT_fprofile_use = 1360,                   /* -fprofile-use */
+  OPT_fprofile_use_ = 1361,                  /* -fprofile-use= */
+  OPT_fprofile_values = 1362,                /* -fprofile-values */
+  OPT_fprotect_parens = 1363,                /* -fprotect-parens */
+  OPT_frandom_seed = 1364,                   /* -frandom-seed */
+  OPT_frandom_seed_ = 1365,                  /* -frandom-seed= */
+  OPT_frange_check = 1366,                   /* -frange-check */
+  OPT_freal_4_real_10 = 1367,                /* -freal-4-real-10 */
+  OPT_freal_4_real_16 = 1368,                /* -freal-4-real-16 */
+  OPT_freal_4_real_8 = 1369,                 /* -freal-4-real-8 */
+  OPT_freal_8_real_10 = 1370,                /* -freal-8-real-10 */
+  OPT_freal_8_real_16 = 1371,                /* -freal-8-real-16 */
+  OPT_freal_8_real_4 = 1372,                 /* -freal-8-real-4 */
+  OPT_frealloc_lhs = 1373,                   /* -frealloc-lhs */
+  OPT_freciprocal_math = 1374,               /* -freciprocal-math */
+  OPT_frecord_gcc_switches = 1375,           /* -frecord-gcc-switches */
+  OPT_frecord_marker_4 = 1376,               /* -frecord-marker=4 */
+  OPT_frecord_marker_8 = 1377,               /* -frecord-marker=8 */
+  OPT_frecursive = 1378,                     /* -frecursive */
+  OPT_free = 1379,                           /* -free */
+  OPT_freg_struct_return = 1380,             /* -freg-struct-return */
+  /* OPT_fregmove = 1381, */                 /* -fregmove */
+  OPT_frelease = 1382,                       /* -frelease */
+  OPT_frename_registers = 1383,              /* -frename-registers */
+  OPT_freorder_blocks = 1384,                /* -freorder-blocks */
+  OPT_freorder_blocks_algorithm_ = 1385,     /* -freorder-blocks-algorithm= */
+  OPT_freorder_blocks_and_partition = 1386,  /* -freorder-blocks-and-partition */
+  OPT_freorder_functions = 1387,             /* -freorder-functions */
+  OPT_frepack_arrays = 1388,                 /* -frepack-arrays */
+  OPT_freplace_objc_classes = 1389,          /* -freplace-objc-classes */
+  OPT_frepo = 1390,                          /* -frepo */
+  OPT_freport_bug = 1391,                    /* -freport-bug */
+  OPT_frequire_return_statement = 1392,      /* -frequire-return-statement */
+  OPT_frerun_cse_after_loop = 1393,          /* -frerun-cse-after-loop */
+  /* OPT_frerun_loop_opt = 1394, */          /* -frerun-loop-opt */
+  OPT_freschedule_modulo_scheduled_loops = 1395,/* -freschedule-modulo-scheduled-loops */
+  OPT_fresolution_ = 1396,                   /* -fresolution= */
+  OPT_frounding_math = 1397,                 /* -frounding-math */
+  OPT_frtti = 1398,                          /* -frtti */
+  OPT_fsanitize_address_use_after_scope = 1399,/* -fsanitize-address-use-after-scope */
+  OPT_fsanitize_coverage_ = 1400,            /* -fsanitize-coverage= */
+  OPT_fsanitize_recover = 1401,              /* -fsanitize-recover */
+  OPT_fsanitize_recover_ = 1402,             /* -fsanitize-recover= */
+  OPT_fsanitize_sections_ = 1403,            /* -fsanitize-sections= */
+  OPT_fsanitize_undefined_trap_on_error = 1404,/* -fsanitize-undefined-trap-on-error */
+  OPT_fsanitize_ = 1405,                     /* -fsanitize= */
+  OPT_fsave_optimization_record = 1406,      /* -fsave-optimization-record */
+  OPT_fsched_critical_path_heuristic = 1407, /* -fsched-critical-path-heuristic */
+  OPT_fsched_dep_count_heuristic = 1408,     /* -fsched-dep-count-heuristic */
+  OPT_fsched_group_heuristic = 1409,         /* -fsched-group-heuristic */
+  OPT_fsched_interblock = 1410,              /* -fsched-interblock */
+  OPT_fsched_last_insn_heuristic = 1411,     /* -fsched-last-insn-heuristic */
+  OPT_fsched_pressure = 1412,                /* -fsched-pressure */
+  OPT_fsched_rank_heuristic = 1413,          /* -fsched-rank-heuristic */
+  OPT_fsched_spec = 1414,                    /* -fsched-spec */
+  OPT_fsched_spec_insn_heuristic = 1415,     /* -fsched-spec-insn-heuristic */
+  OPT_fsched_spec_load = 1416,               /* -fsched-spec-load */
+  OPT_fsched_spec_load_dangerous = 1417,     /* -fsched-spec-load-dangerous */
+  OPT_fsched_stalled_insns = 1418,           /* -fsched-stalled-insns */
+  OPT_fsched_stalled_insns_dep = 1419,       /* -fsched-stalled-insns-dep */
+  OPT_fsched_stalled_insns_dep_ = 1420,      /* -fsched-stalled-insns-dep= */
+  OPT_fsched_stalled_insns_ = 1421,          /* -fsched-stalled-insns= */
+  OPT_fsched_verbose_ = 1422,                /* -fsched-verbose= */
+  OPT_fsched2_use_superblocks = 1423,        /* -fsched2-use-superblocks */
+  /* OPT_fsched2_use_traces = 1424, */       /* -fsched2-use-traces */
+  OPT_fschedule_fusion = 1425,               /* -fschedule-fusion */
+  OPT_fschedule_insns = 1426,                /* -fschedule-insns */
+  OPT_fschedule_insns2 = 1427,               /* -fschedule-insns2 */
+  OPT_fsecond_underscore = 1428,             /* -fsecond-underscore */
+  OPT_fsection_anchors = 1429,               /* -fsection-anchors */
+  /* OPT_fsee = 1430, */                     /* -fsee */
+  OPT_fsel_sched_pipelining = 1431,          /* -fsel-sched-pipelining */
+  OPT_fsel_sched_pipelining_outer_loops = 1432,/* -fsel-sched-pipelining-outer-loops */
+  OPT_fsel_sched_reschedule_pipelined = 1433,/* -fsel-sched-reschedule-pipelined */
+  OPT_fselective_scheduling = 1434,          /* -fselective-scheduling */
+  OPT_fselective_scheduling2 = 1435,         /* -fselective-scheduling2 */
+  OPT_fself_test_ = 1436,                    /* -fself-test= */
+  OPT_fsemantic_interposition = 1437,        /* -fsemantic-interposition */
+  OPT_fshort_enums = 1438,                   /* -fshort-enums */
+  OPT_fshort_wchar = 1439,                   /* -fshort-wchar */
+  OPT_fshow_column = 1440,                   /* -fshow-column */
+  OPT_fshrink_wrap = 1441,                   /* -fshrink-wrap */
+  OPT_fshrink_wrap_separate = 1442,          /* -fshrink-wrap-separate */
+  OPT_fsign_zero = 1443,                     /* -fsign-zero */
+  OPT_fsignaling_nans = 1444,                /* -fsignaling-nans */
+  OPT_fsigned_bitfields = 1445,              /* -fsigned-bitfields */
+  OPT_fsigned_char = 1446,                   /* -fsigned-char */
+  OPT_fsigned_zeros = 1447,                  /* -fsigned-zeros */
+  OPT_fsimd_cost_model_ = 1448,              /* -fsimd-cost-model= */
+  OPT_fsingle_precision_constant = 1449,     /* -fsingle-precision-constant */
+  OPT_fsized_deallocation = 1450,            /* -fsized-deallocation */
+  OPT_fsplit_ivs_in_unroller = 1451,         /* -fsplit-ivs-in-unroller */
+  OPT_fsplit_loops = 1452,                   /* -fsplit-loops */
+  OPT_fsplit_paths = 1453,                   /* -fsplit-paths */
+  OPT_fsplit_stack = 1454,                   /* -fsplit-stack */
+  OPT_fsplit_wide_types = 1455,              /* -fsplit-wide-types */
+  OPT_fsplit_wide_types_early = 1456,        /* -fsplit-wide-types-early */
+  OPT_fsquangle = 1457,                      /* -fsquangle */
+  OPT_fssa_backprop = 1458,                  /* -fssa-backprop */
+  OPT_fssa_phiopt = 1459,                    /* -fssa-phiopt */
+  OPT_fsso_struct_ = 1460,                   /* -fsso-struct= */
+  OPT_fstack_arrays = 1461,                  /* -fstack-arrays */
+  /* OPT_fstack_check = 1462, */             /* -fstack-check */
+  OPT_fstack_check_ = 1463,                  /* -fstack-check= */
+  OPT_fstack_clash_protection = 1464,        /* -fstack-clash-protection */
+  OPT_fstack_limit = 1465,                   /* -fstack-limit */
+  OPT_fstack_limit_register_ = 1466,         /* -fstack-limit-register= */
+  OPT_fstack_limit_symbol_ = 1467,           /* -fstack-limit-symbol= */
+  OPT_fstack_protector = 1468,               /* -fstack-protector */
+  OPT_fstack_protector_all = 1469,           /* -fstack-protector-all */
+  OPT_fstack_protector_explicit = 1470,      /* -fstack-protector-explicit */
+  OPT_fstack_protector_strong = 1471,        /* -fstack-protector-strong */
+  OPT_fstack_reuse_ = 1472,                  /* -fstack-reuse= */
+  OPT_fstack_usage = 1473,                   /* -fstack-usage */
+  OPT_fstats = 1474,                         /* -fstats */
+  OPT_fstdarg_opt = 1475,                    /* -fstdarg-opt */
+  OPT_fstore_merging = 1476,                 /* -fstore-merging */
+  /* OPT_fstrength_reduce = 1477, */         /* -fstrength-reduce */
+  OPT_fstrict_aliasing = 1478,               /* -fstrict-aliasing */
+  OPT_fstrict_enums = 1479,                  /* -fstrict-enums */
+  OPT_fstrict_overflow = 1480,               /* -fstrict-overflow */
+  OPT_fstrict_prototype = 1481,              /* -fstrict-prototype */
+  OPT_fstrict_volatile_bitfields = 1482,     /* -fstrict-volatile-bitfields */
+  /* OPT_fstrong_eval_order = 1483, */       /* -fstrong-eval-order */
+  OPT_fstrong_eval_order_ = 1484,            /* -fstrong-eval-order= */
+  OPT_fswitch_errors = 1485,                 /* -fswitch-errors */
+  OPT_fsync_libcalls = 1486,                 /* -fsync-libcalls */
+  OPT_fsyntax_only = 1487,                   /* -fsyntax-only */
+  OPT_ftabstop_ = 1488,                      /* -ftabstop= */
+  /* OPT_ftail_call_workaround = 1489, */    /* -ftail-call-workaround */
+  OPT_ftail_call_workaround_ = 1490,         /* -ftail-call-workaround= */
+  /* OPT_ftarget_help = 1491, */             /* -ftarget-help */
+  OPT_ftemplate_backtrace_limit_ = 1492,     /* -ftemplate-backtrace-limit= */
+  /* OPT_ftemplate_depth_ = 1493, */         /* -ftemplate-depth- */
+  OPT_ftemplate_depth_ = 1494,               /* -ftemplate-depth= */
+  OPT_ftest_coverage = 1495,                 /* -ftest-coverage */
+  OPT_ftest_forall_temp = 1496,              /* -ftest-forall-temp */
+  OPT_fthis_is_variable = 1497,              /* -fthis-is-variable */
+  OPT_fthread_jumps = 1498,                  /* -fthread-jumps */
+  OPT_fthreadsafe_statics = 1499,            /* -fthreadsafe-statics */
+  OPT_ftime_report = 1500,                   /* -ftime-report */
+  OPT_ftime_report_details = 1501,           /* -ftime-report-details */
+  OPT_ftls_model_ = 1502,                    /* -ftls-model= */
+  OPT_ftoplevel_reorder = 1503,              /* -ftoplevel-reorder */
+  OPT_ftracer = 1504,                        /* -ftracer */
+  OPT_ftrack_macro_expansion = 1505,         /* -ftrack-macro-expansion */
+  OPT_ftrack_macro_expansion_ = 1506,        /* -ftrack-macro-expansion= */
+  OPT_ftrampolines = 1507,                   /* -ftrampolines */
+  OPT_ftransition_all = 1508,                /* -ftransition=all */
+  OPT_ftransition_complex = 1509,            /* -ftransition=complex */
+  OPT_ftransition_dip1000 = 1510,            /* -ftransition=dip1000 */
+  OPT_ftransition_dip25 = 1511,              /* -ftransition=dip25 */
+  OPT_ftransition_field = 1512,              /* -ftransition=field */
+  OPT_ftransition_nogc = 1513,               /* -ftransition=nogc */
+  OPT_ftransition_tls = 1514,                /* -ftransition=tls */
+  OPT_ftrapping_math = 1515,                 /* -ftrapping-math */
+  OPT_ftrapv = 1516,                         /* -ftrapv */
+  OPT_ftree_bit_ccp = 1517,                  /* -ftree-bit-ccp */
+  OPT_ftree_builtin_call_dce = 1518,         /* -ftree-builtin-call-dce */
+  OPT_ftree_ccp = 1519,                      /* -ftree-ccp */
+  OPT_ftree_ch = 1520,                       /* -ftree-ch */
+  /* OPT_ftree_coalesce_inlined_vars = 1521, *//* -ftree-coalesce-inlined-vars */
+  OPT_ftree_coalesce_vars = 1522,            /* -ftree-coalesce-vars */
+  OPT_ftree_copy_prop = 1523,                /* -ftree-copy-prop */
+  /* OPT_ftree_copyrename = 1524, */         /* -ftree-copyrename */
+  OPT_ftree_cselim = 1525,                   /* -ftree-cselim */
+  OPT_ftree_dce = 1526,                      /* -ftree-dce */
+  OPT_ftree_dominator_opts = 1527,           /* -ftree-dominator-opts */
+  OPT_ftree_dse = 1528,                      /* -ftree-dse */
+  OPT_ftree_forwprop = 1529,                 /* -ftree-forwprop */
+  OPT_ftree_fre = 1530,                      /* -ftree-fre */
+  OPT_ftree_loop_distribute_patterns = 1531, /* -ftree-loop-distribute-patterns */
+  OPT_ftree_loop_distribution = 1532,        /* -ftree-loop-distribution */
+  OPT_ftree_loop_if_convert = 1533,          /* -ftree-loop-if-convert */
+  /* OPT_ftree_loop_if_convert_stores = 1534, *//* -ftree-loop-if-convert-stores */
+  OPT_ftree_loop_im = 1535,                  /* -ftree-loop-im */
+  OPT_ftree_loop_ivcanon = 1536,             /* -ftree-loop-ivcanon */
+  /* OPT_ftree_loop_linear = 1537, */        /* -ftree-loop-linear */
+  OPT_ftree_loop_optimize = 1538,            /* -ftree-loop-optimize */
+  OPT_ftree_loop_vectorize = 1539,           /* -ftree-loop-vectorize */
+  OPT_ftree_lrs = 1540,                      /* -ftree-lrs */
+  OPT_ftree_parallelize_loops_ = 1541,       /* -ftree-parallelize-loops= */
+  OPT_ftree_partial_pre = 1542,              /* -ftree-partial-pre */
+  OPT_ftree_phiprop = 1543,                  /* -ftree-phiprop */
+  OPT_ftree_pre = 1544,                      /* -ftree-pre */
+  OPT_ftree_pta = 1545,                      /* -ftree-pta */
+  OPT_ftree_reassoc = 1546,                  /* -ftree-reassoc */
+  /* OPT_ftree_salias = 1547, */             /* -ftree-salias */
+  OPT_ftree_scev_cprop = 1548,               /* -ftree-scev-cprop */
+  OPT_ftree_sink = 1549,                     /* -ftree-sink */
+  OPT_ftree_slp_vectorize = 1550,            /* -ftree-slp-vectorize */
+  OPT_ftree_slsr = 1551,                     /* -ftree-slsr */
+  OPT_ftree_sra = 1552,                      /* -ftree-sra */
+  /* OPT_ftree_store_ccp = 1553, */          /* -ftree-store-ccp */
+  /* OPT_ftree_store_copy_prop = 1554, */    /* -ftree-store-copy-prop */
+  OPT_ftree_switch_conversion = 1555,        /* -ftree-switch-conversion */
+  OPT_ftree_tail_merge = 1556,               /* -ftree-tail-merge */
+  OPT_ftree_ter = 1557,                      /* -ftree-ter */
+  /* OPT_ftree_vect_loop_version = 1558, */  /* -ftree-vect-loop-version */
+  OPT_ftree_vectorize = 1559,                /* -ftree-vectorize */
+  /* OPT_ftree_vectorizer_verbose_ = 1560, *//* -ftree-vectorizer-verbose= */
+  OPT_ftree_vrp = 1561,                      /* -ftree-vrp */
+  OPT_funconstrained_commons = 1562,         /* -funconstrained-commons */
+  OPT_funderscoring = 1563,                  /* -funderscoring */
+  OPT_funit_at_a_time = 1564,                /* -funit-at-a-time */
+  OPT_funittest = 1565,                      /* -funittest */
+  OPT_funroll_all_loops = 1566,              /* -funroll-all-loops */
+  OPT_funroll_completely_grow_size = 1567,   /* -funroll-completely-grow-size */
+  OPT_funroll_loops = 1568,                  /* -funroll-loops */
+  /* OPT_funsafe_loop_optimizations = 1569, *//* -funsafe-loop-optimizations */
+  OPT_funsafe_math_optimizations = 1570,     /* -funsafe-math-optimizations */
+  OPT_funsigned_bitfields = 1571,            /* -funsigned-bitfields */
+  OPT_funsigned_char = 1572,                 /* -funsigned-char */
+  OPT_funswitch_loops = 1573,                /* -funswitch-loops */
+  OPT_funwind_tables = 1574,                 /* -funwind-tables */
+  OPT_fuse_cxa_atexit = 1575,                /* -fuse-cxa-atexit */
+  OPT_fuse_cxa_get_exception_ptr = 1576,     /* -fuse-cxa-get-exception-ptr */
+  OPT_fuse_ld_bfd = 1577,                    /* -fuse-ld=bfd */
+  OPT_fuse_ld_gold = 1578,                   /* -fuse-ld=gold */
+  OPT_fuse_ld_lld = 1579,                    /* -fuse-ld=lld */
+  OPT_fuse_linker_plugin = 1580,             /* -fuse-linker-plugin */
+  OPT_fvar_tracking = 1581,                  /* -fvar-tracking */
+  OPT_fvar_tracking_assignments = 1582,      /* -fvar-tracking-assignments */
+  OPT_fvar_tracking_assignments_toggle = 1583,/* -fvar-tracking-assignments-toggle */
+  OPT_fvar_tracking_uninit = 1584,           /* -fvar-tracking-uninit */
+  OPT_fvariable_expansion_in_unroller = 1585,/* -fvariable-expansion-in-unroller */
+  /* OPT_fvect_cost_model = 1586, */         /* -fvect-cost-model */
+  OPT_fvect_cost_model_ = 1587,              /* -fvect-cost-model= */
+  OPT_fverbose_asm = 1588,                   /* -fverbose-asm */
+  /* OPT_fversion = 1589, */                 /* -fversion */
+  OPT_fversion_loops_for_strides = 1590,     /* -fversion-loops-for-strides */
+  OPT_fversion_ = 1591,                      /* -fversion= */
+  OPT_fvisibility_inlines_hidden = 1592,     /* -fvisibility-inlines-hidden */
+  OPT_fvisibility_ms_compat = 1593,          /* -fvisibility-ms-compat */
+  OPT_fvisibility_ = 1594,                   /* -fvisibility= */
+  OPT_fvpt = 1595,                           /* -fvpt */
+  OPT_fvtable_gc = 1596,                     /* -fvtable-gc */
+  OPT_fvtable_thunks = 1597,                 /* -fvtable-thunks */
+  OPT_fvtable_verify_ = 1598,                /* -fvtable-verify= */
+  OPT_fvtv_counts = 1599,                    /* -fvtv-counts */
+  OPT_fvtv_debug = 1600,                     /* -fvtv-debug */
+  OPT_fweak = 1601,                          /* -fweak */
+  OPT_fweb = 1602,                           /* -fweb */
+  /* OPT_fwhole_file = 1603, */              /* -fwhole-file */
+  OPT_fwhole_program = 1604,                 /* -fwhole-program */
+  OPT_fwide_exec_charset_ = 1605,            /* -fwide-exec-charset= */
+  OPT_fworking_directory = 1606,             /* -fworking-directory */
+  OPT_fwpa = 1607,                           /* -fwpa */
+  OPT_fwpa_ = 1608,                          /* -fwpa= */
+  OPT_fwrapv = 1609,                         /* -fwrapv */
+  OPT_fwrapv_pointer = 1610,                 /* -fwrapv-pointer */
+  OPT_fxref = 1611,                          /* -fxref */
+  /* OPT_fzee = 1612, */                     /* -fzee */
+  OPT_fzero_call_used_regs_ = 1613,          /* -fzero-call-used-regs= */
+  OPT_fzero_initialized_in_bss = 1614,       /* -fzero-initialized-in-bss */
+  OPT_fzero_link = 1615,                     /* -fzero-link */
+  OPT_g = 1616,                              /* -g */
+  OPT_gant = 1617,                           /* -gant */
+  OPT_gas_loc_support = 1618,                /* -gas-loc-support */
+  OPT_gas_locview_support = 1619,            /* -gas-locview-support */
+  OPT_gcoff = 1620,                          /* -gcoff */
+  OPT_gcoff1 = 1621,                         /* -gcoff1 */
+  OPT_gcoff2 = 1622,                         /* -gcoff2 */
+  OPT_gcoff3 = 1623,                         /* -gcoff3 */
+  OPT_gcolumn_info = 1624,                   /* -gcolumn-info */
+  OPT_gdescribe_dies = 1625,                 /* -gdescribe-dies */
+  OPT_gdwarf = 1626,                         /* -gdwarf */
+  OPT_gdwarf_ = 1627,                        /* -gdwarf- */
+  OPT_gdwarf32 = 1628,                       /* -gdwarf32 */
+  OPT_gdwarf64 = 1629,                       /* -gdwarf64 */
+  OPT_gen_decls = 1630,                      /* -gen-decls */
+  OPT_ggdb = 1631,                           /* -ggdb */
+  OPT_ggnu_pubnames = 1632,                  /* -ggnu-pubnames */
+  OPT_gimple_stats = 1633,                   /* -gimple-stats */
+  OPT_ginline_points = 1634,                 /* -ginline-points */
+  OPT_ginternal_reset_location_views = 1635, /* -ginternal-reset-location-views */
+  OPT_gnat = 1636,                           /* -gnat */
+  OPT_gnatO = 1637,                          /* -gnatO */
+  OPT_gno_ = 1638,                           /* -gno- */
+  OPT_gno_pubnames = 1639,                   /* -gno-pubnames */
+  OPT_gpubnames = 1640,                      /* -gpubnames */
+  OPT_grecord_gcc_switches = 1641,           /* -grecord-gcc-switches */
+  OPT_gsplit_dwarf = 1642,                   /* -gsplit-dwarf */
+  OPT_gstabs = 1643,                         /* -gstabs */
+  OPT_gstabs_ = 1644,                        /* -gstabs+ */
+  OPT_gstatement_frontiers = 1645,           /* -gstatement-frontiers */
+  OPT_gstrict_dwarf = 1646,                  /* -gstrict-dwarf */
+  OPT_gtoggle = 1647,                        /* -gtoggle */
+  OPT_gvariable_location_views = 1648,       /* -gvariable-location-views */
+  OPT_gvariable_location_views_incompat5 = 1649,/* -gvariable-location-views=incompat5 */
+  OPT_gvms = 1650,                           /* -gvms */
+  OPT_gxcoff = 1651,                         /* -gxcoff */
+  OPT_gxcoff_ = 1652,                        /* -gxcoff+ */
+  OPT_gz = 1653,                             /* -gz */
+  OPT_gz_ = 1654,                            /* -gz= */
+  OPT_h = 1655,                              /* -h */
+  OPT_help = 1656,                           /* -help */
+  OPT_idirafter = 1657,                      /* -idirafter */
+  OPT_imacros = 1658,                        /* -imacros */
+  OPT_imultiarch = 1659,                     /* -imultiarch */
+  OPT_imultilib = 1660,                      /* -imultilib */
+  OPT_include = 1661,                        /* -include */
+  OPT_iplugindir_ = 1662,                    /* -iplugindir= */
+  OPT_iprefix = 1663,                        /* -iprefix */
+  OPT_iquote = 1664,                         /* -iquote */
+  OPT_isysroot = 1665,                       /* -isysroot */
+  OPT_isystem = 1666,                        /* -isystem */
+  OPT_iwithprefix = 1667,                    /* -iwithprefix */
+  OPT_iwithprefixbefore = 1668,              /* -iwithprefixbefore */
+  OPT_k8 = 1669,                             /* -k8 */
+  OPT_l = 1670,                              /* -l */
+  OPT_lang_asm = 1671,                       /* -lang-asm */
+  OPT_list = 1672,                           /* -list */
+  OPT_mabi_ = 1673,                          /* -mabi= */
+  OPT_march_ = 1674,                         /* -march= */
+  OPT_mbig_endian = 1675,                    /* -mbig-endian */
+  OPT_mbranch_protection_ = 1676,            /* -mbranch-protection= */
+  OPT_mcmodel_ = 1677,                       /* -mcmodel= */
+  OPT_mcpu_ = 1678,                          /* -mcpu= */
+  OPT_mfix_cortex_a53_835769 = 1679,         /* -mfix-cortex-a53-835769 */
+  OPT_mfix_cortex_a53_843419 = 1680,         /* -mfix-cortex-a53-843419 */
+  OPT_mgeneral_regs_only = 1681,             /* -mgeneral-regs-only */
+  OPT_mharden_sls_ = 1682,                   /* -mharden-sls= */
+  OPT_mlittle_endian = 1683,                 /* -mlittle-endian */
+  OPT_mlow_precision_div = 1684,             /* -mlow-precision-div */
+  OPT_mlow_precision_recip_sqrt = 1685,      /* -mlow-precision-recip-sqrt */
+  OPT_mlow_precision_sqrt = 1686,            /* -mlow-precision-sqrt */
+  OPT_momit_leaf_frame_pointer = 1687,       /* -momit-leaf-frame-pointer */
+  OPT_moutline_atomics = 1688,               /* -moutline-atomics */
+  OPT_moverride_ = 1689,                     /* -moverride= */
+  OPT_mpc_relative_literal_loads = 1690,     /* -mpc-relative-literal-loads */
+  OPT_msign_return_address_ = 1691,          /* -msign-return-address= */
+  OPT_mstack_protector_guard_offset_ = 1692, /* -mstack-protector-guard-offset= */
+  OPT_mstack_protector_guard_reg_ = 1693,    /* -mstack-protector-guard-reg= */
+  OPT_mstack_protector_guard_ = 1694,        /* -mstack-protector-guard= */
+  OPT_mstrict_align = 1695,                  /* -mstrict-align */
+  OPT_msve_vector_bits_ = 1696,              /* -msve-vector-bits= */
+  OPT_mtls_dialect_ = 1697,                  /* -mtls-dialect= */
+  OPT_mtls_size_ = 1698,                     /* -mtls-size= */
+  OPT_mtrack_speculation = 1699,             /* -mtrack-speculation */
+  OPT_mtune_ = 1700,                         /* -mtune= */
+  OPT_mverbose_cost_dump = 1701,             /* -mverbose-cost-dump */
+  OPT_n = 1702,                              /* -n */
+  OPT_name_sort = 1703,                      /* -name-sort */
+  OPT_no_canonical_prefixes = 1704,          /* -no-canonical-prefixes */
+  OPT_no_integrated_cpp = 1705,              /* -no-integrated-cpp */
+  OPT_no_pie = 1706,                         /* -no-pie */
+  OPT_nocpp = 1707,                          /* -nocpp */
+  OPT_nodefaultlibs = 1708,                  /* -nodefaultlibs */
+  OPT_nolibc = 1709,                         /* -nolibc */
+  OPT_nophoboslib = 1710,                    /* -nophoboslib */
+  OPT_nostartfiles = 1711,                   /* -nostartfiles */
+  OPT_nostdinc = 1712,                       /* -nostdinc */
+  OPT_nostdinc__ = 1713,                     /* -nostdinc++ */
+  OPT_nostdlib = 1714,                       /* -nostdlib */
+  OPT_o = 1715,                              /* -o */
+  OPT_objects = 1716,                        /* -objects */
+  OPT_p = 1717,                              /* -p */
+  OPT_pass_exit_codes = 1718,                /* -pass-exit-codes */
+  /* OPT_pedantic = 1719, */                 /* -pedantic */
+  OPT_pedantic_errors = 1720,                /* -pedantic-errors */
+  OPT_pg = 1721,                             /* -pg */
+  OPT_pie = 1722,                            /* -pie */
+  OPT_pipe = 1723,                           /* -pipe */
+  OPT_print_file_name_ = 1724,               /* -print-file-name= */
+  OPT_print_libgcc_file_name = 1725,         /* -print-libgcc-file-name */
+  OPT_print_multi_directory = 1726,          /* -print-multi-directory */
+  OPT_print_multi_lib = 1727,                /* -print-multi-lib */
+  OPT_print_multi_os_directory = 1728,       /* -print-multi-os-directory */
+  OPT_print_multiarch = 1729,                /* -print-multiarch */
+  OPT_print_objc_runtime_info = 1730,        /* -print-objc-runtime-info */
+  OPT_print_prog_name_ = 1731,               /* -print-prog-name= */
+  OPT_print_search_dirs = 1732,              /* -print-search-dirs */
+  OPT_print_sysroot = 1733,                  /* -print-sysroot */
+  OPT_print_sysroot_headers_suffix = 1734,   /* -print-sysroot-headers-suffix */
+  OPT_print_value = 1735,                    /* -print-value */
+  OPT_quiet = 1736,                          /* -quiet */
+  OPT_r = 1737,                              /* -r */
+  OPT_remap = 1738,                          /* -remap */
+  OPT_reverse_sort = 1739,                   /* -reverse-sort */
+  OPT_s = 1740,                              /* -s */
+  OPT_save_temps = 1741,                     /* -save-temps */
+  OPT_save_temps_ = 1742,                    /* -save-temps= */
+  OPT_shared = 1743,                         /* -shared */
+  OPT_shared_libgcc = 1744,                  /* -shared-libgcc */
+  OPT_shared_libphobos = 1745,               /* -shared-libphobos */
+  OPT_size_sort = 1746,                      /* -size-sort */
+  /* OPT_specs = 1747, */                    /* -specs */
+  OPT_specs_ = 1748,                         /* -specs= */
+  OPT_static = 1749,                         /* -static */
+  OPT_static_libasan = 1750,                 /* -static-libasan */
+  OPT_static_libgcc = 1751,                  /* -static-libgcc */
+  OPT_static_libgfortran = 1752,             /* -static-libgfortran */
+  OPT_static_libgo = 1753,                   /* -static-libgo */
+  OPT_static_libhwasan = 1754,               /* -static-libhwasan */
+  OPT_static_liblsan = 1755,                 /* -static-liblsan */
+  OPT_static_libmpx = 1756,                  /* -static-libmpx */
+  OPT_static_libmpxwrappers = 1757,          /* -static-libmpxwrappers */
+  OPT_static_libphobos = 1758,               /* -static-libphobos */
+  OPT_static_libstdc__ = 1759,               /* -static-libstdc++ */
+  OPT_static_libtsan = 1760,                 /* -static-libtsan */
+  OPT_static_libubsan = 1761,                /* -static-libubsan */
+  OPT_static_pie = 1762,                     /* -static-pie */
+  /* OPT_std_c__03 = 1763, */                /* -std=c++03 */
+  /* OPT_std_c__0x = 1764, */                /* -std=c++0x */
+  OPT_std_c__11 = 1765,                      /* -std=c++11 */
+  OPT_std_c__14 = 1766,                      /* -std=c++14 */
+  OPT_std_c__17 = 1767,                      /* -std=c++17 */
+  /* OPT_std_c__1y = 1768, */                /* -std=c++1y */
+  /* OPT_std_c__1z = 1769, */                /* -std=c++1z */
+  OPT_std_c__20 = 1770,                      /* -std=c++20 */
+  OPT_std_c__23 = 1771,                      /* -std=c++23 */
+  /* OPT_std_c__2a = 1772, */                /* -std=c++2a */
+  /* OPT_std_c__2b = 1773, */                /* -std=c++2b */
+  OPT_std_c__98 = 1774,                      /* -std=c++98 */
+  OPT_std_c11 = 1775,                        /* -std=c11 */
+  OPT_std_c17 = 1776,                        /* -std=c17 */
+  /* OPT_std_c18 = 1777, */                  /* -std=c18 */
+  /* OPT_std_c1x = 1778, */                  /* -std=c1x */
+  OPT_std_c2x = 1779,                        /* -std=c2x */
+  /* OPT_std_c89 = 1780, */                  /* -std=c89 */
+  OPT_std_c90 = 1781,                        /* -std=c90 */
+  OPT_std_c99 = 1782,                        /* -std=c99 */
+  /* OPT_std_c9x = 1783, */                  /* -std=c9x */
+  OPT_std_f2003 = 1784,                      /* -std=f2003 */
+  OPT_std_f2008 = 1785,                      /* -std=f2008 */
+  OPT_std_f2008ts = 1786,                    /* -std=f2008ts */
+  OPT_std_f2018 = 1787,                      /* -std=f2018 */
+  OPT_std_f95 = 1788,                        /* -std=f95 */
+  OPT_std_gnu = 1789,                        /* -std=gnu */
+  /* OPT_std_gnu__03 = 1790, */              /* -std=gnu++03 */
+  /* OPT_std_gnu__0x = 1791, */              /* -std=gnu++0x */
+  OPT_std_gnu__11 = 1792,                    /* -std=gnu++11 */
+  OPT_std_gnu__14 = 1793,                    /* -std=gnu++14 */
+  OPT_std_gnu__17 = 1794,                    /* -std=gnu++17 */
+  /* OPT_std_gnu__1y = 1795, */              /* -std=gnu++1y */
+  /* OPT_std_gnu__1z = 1796, */              /* -std=gnu++1z */
+  OPT_std_gnu__20 = 1797,                    /* -std=gnu++20 */
+  OPT_std_gnu__23 = 1798,                    /* -std=gnu++23 */
+  /* OPT_std_gnu__2a = 1799, */              /* -std=gnu++2a */
+  /* OPT_std_gnu__2b = 1800, */              /* -std=gnu++2b */
+  OPT_std_gnu__98 = 1801,                    /* -std=gnu++98 */
+  OPT_std_gnu11 = 1802,                      /* -std=gnu11 */
+  OPT_std_gnu17 = 1803,                      /* -std=gnu17 */
+  /* OPT_std_gnu18 = 1804, */                /* -std=gnu18 */
+  /* OPT_std_gnu1x = 1805, */                /* -std=gnu1x */
+  OPT_std_gnu2x = 1806,                      /* -std=gnu2x */
+  /* OPT_std_gnu89 = 1807, */                /* -std=gnu89 */
+  OPT_std_gnu90 = 1808,                      /* -std=gnu90 */
+  OPT_std_gnu99 = 1809,                      /* -std=gnu99 */
+  /* OPT_std_gnu9x = 1810, */                /* -std=gnu9x */
+  /* OPT_std_iso9899_1990 = 1811, */         /* -std=iso9899:1990 */
+  OPT_std_iso9899_199409 = 1812,             /* -std=iso9899:199409 */
+  /* OPT_std_iso9899_1999 = 1813, */         /* -std=iso9899:1999 */
+  /* OPT_std_iso9899_199x = 1814, */         /* -std=iso9899:199x */
+  /* OPT_std_iso9899_2011 = 1815, */         /* -std=iso9899:2011 */
+  /* OPT_std_iso9899_2017 = 1816, */         /* -std=iso9899:2017 */
+  /* OPT_std_iso9899_2018 = 1817, */         /* -std=iso9899:2018 */
+  OPT_std_legacy = 1818,                     /* -std=legacy */
+  OPT_stdlib_ = 1819,                        /* -stdlib= */
+  OPT_symbol_ = 1820,                        /* -symbol= */
+  OPT_symbolic = 1821,                       /* -symbolic */
+  OPT_t = 1822,                              /* -t */
+  OPT_time = 1823,                           /* -time */
+  OPT_time_ = 1824,                          /* -time= */
+  OPT_traditional = 1825,                    /* -traditional */
+  OPT_traditional_cpp = 1826,                /* -traditional-cpp */
+  OPT_tree_stats = 1827,                     /* -tree-stats */
+  OPT_trigraphs = 1828,                      /* -trigraphs */
+  OPT_type_stats = 1829,                     /* -type-stats */
+  OPT_u = 1830,                              /* -u */
+  OPT_undef = 1831,                          /* -undef */
+  OPT_v = 1832,                              /* -v */
+  OPT_version = 1833,                        /* -version */
+  OPT_w = 1834,                              /* -w */
+  OPT_wrapper = 1835,                        /* -wrapper */
+  OPT_x = 1836,                              /* -x */
+  OPT_z = 1837,                              /* -z */
   N_OPTS,
   OPT_SPECIAL_unknown,
   OPT_SPECIAL_ignore,
