@@ -1321,6 +1321,10 @@ extern void gt_ggc_mx_hash_table_module_state_hash_ (void *);
   if (X != NULL) gt_ggc_mx_hash_table_note_def_cache_hasher_ (X);\
   } while (0)
 extern void gt_ggc_mx_hash_table_note_def_cache_hasher_ (void *);
+#define gt_ggc_m_23vec_macro_export_va_gc_(X) do { \
+  if (X != NULL) gt_ggc_mx_vec_macro_export_va_gc_ (X);\
+  } while (0)
+extern void gt_ggc_mx_vec_macro_export_va_gc_ (void *);
 #define gt_ggc_m_16pending_template(X) do { \
   if (X != NULL) gt_ggc_mx_pending_template (X);\
   } while (0)
@@ -2722,6 +2726,10 @@ extern void gt_pch_nx_hash_table_module_state_hash_ (void *);
   if (X != NULL) gt_pch_nx_hash_table_note_def_cache_hasher_ (X);\
   } while (0)
 extern void gt_pch_nx_hash_table_note_def_cache_hasher_ (void *);
+#define gt_pch_n_23vec_macro_export_va_gc_(X) do { \
+  if (X != NULL) gt_pch_nx_vec_macro_export_va_gc_ (X);\
+  } while (0)
+extern void gt_pch_nx_vec_macro_export_va_gc_ (void *);
 #define gt_pch_n_16pending_template(X) do { \
   if (X != NULL) gt_pch_nx_pending_template (X);\
   } while (0)
@@ -3590,6 +3598,8 @@ extern void gt_pch_p_24vec_module_state__va_gc_
 extern void gt_pch_p_29hash_table_module_state_hash_
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_33hash_table_note_def_cache_hasher_
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_23vec_macro_export_va_gc_
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_16pending_template
     (void *, void *, gt_pointer_operator, void *);
