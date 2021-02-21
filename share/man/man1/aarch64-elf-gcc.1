@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-02-18" "gcc-11.0.0" "GNU"
+.TH GCC 1 "2021-02-20" "gcc-11.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -268,9 +268,10 @@ in the following sections.
 \&\-fvisibility\-inlines\-hidden 
 \&\-fvisibility\-ms\-compat 
 \&\-fext\-numeric\-literals 
-\&\-flang\-info\-include\-translate\fR[\fB=\fR\fIname\fR] 
+\&\-flang\-info\-include\-translate\fR[\fB=\fR\fIheader\fR] 
 \&\fB\-flang\-info\-include\-translate\-not 
-\&\-stdlib=\fR\fIlibstdc++,libc++\fR 
+\&\-flang\-info\-module\-read\fR[\fB=\fR\fImodule\fR] 
+\&\fB\-stdlib=\fR\fIlibstdc++,libc++\fR 
 \&\fB\-Wabi\-tag  \-Wcatch\-value  \-Wcatch\-value=\fR\fIn\fR 
 \&\fB\-Wno\-class\-conversion  \-Wclass\-memaccess 
 \&\-Wcomma\-subscript  \-Wconditionally\-supported 
@@ -3346,7 +3347,23 @@ is used when building the \*(C+ library.)
 .IP "\fB\-flang\-info\-include\-translate=\fR\fIheader\fR" 4
 .IX Item "-flang-info-include-translate=header"
 .PD
-Diagnose include translation events.
+Inform of include translation events.  The first will note accepted
+include translations, the second will note declined include
+translations.  The \fIheader\fR form will inform of include
+translations relating to that specific header.  If \fIheader\fR is of
+the form \f(CW"user"\fR or \f(CW\*(C`<system>\*(C'\fR it will be resolved to a
+specific user or system header using the include path.
+.IP "\fB\-flang\-info\-module\-read\fR" 4
+.IX Item "-flang-info-module-read"
+.PD 0
+.IP "\fB\-flang\-info\-module\-read=\fR\fImodule\fR" 4
+.IX Item "-flang-info-module-read=module"
+.PD
+Inform of Compiled Module Interface pathnames.  The first will note
+all read \s-1CMI\s0 pathnames.  The \fImodule\fR form will not reading a
+specific module's \s-1CMI.\s0  \fImodule\fR may be a named module or a
+header-unit (the latter indicated by either being a pathname containing
+directory separators or enclosed in \f(CW\*(C`<>\*(C'\fR or \f(CW""\fR).
 .IP "\fB\-stdlib=\fR\fIlibstdc++,libc++\fR" 4
 .IX Item "-stdlib=libstdc++,libc++"
 When G++ is configured to support this option, it allows specification of
