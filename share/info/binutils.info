@@ -2453,11 +2453,11 @@ given.
 
      'k'
      '=links'
-          Displays the contents of the '.gnu_debuglink' and/or
-          '.gnu_debugaltlink' sections.  Also displays any links to
-          separate dwarf object files (dwo), if they are specified by
-          the DW_AT_GNU_dwo_name or DW_AT_dwo_name attributes in the
-          '.debug_info' section.
+          Displays the contents of the '.gnu_debuglink',
+          '.gnu_debugaltlink' and '.debug_sup' sections, if any of them
+          are present.  Also displays any links to separate dwarf object
+          files (dwo), if they are specified by the DW_AT_GNU_dwo_name
+          or DW_AT_dwo_name attributes in the '.debug_info' section.
 
      'K'
      '=follow-links'
@@ -4268,6 +4268,7 @@ File: binutils.info,  Node: readelf,  Next: elfedit,  Prev: dlltool,  Up: Top
              [-s|--syms|--symbols]
              [--dyn-syms|--lto-syms]
              [--demangle=STYLE|--no-demangle]
+             [--quiet]
              [--recurse-limit|--no-recurse-limit]
              [-n|--notes]
              [-r|--relocs]
@@ -4333,6 +4334,9 @@ equivalent.  At least one option besides '-v' or '-H' must be given.
 '--segments'
      Displays the information contained in the file's segment headers,
      if it has any.
+
+'--quiet'
+     Suppress "no symbols" diagnostic.
 
 '-S'
 '--sections'
@@ -4530,11 +4534,11 @@ equivalent.  At least one option besides '-v' or '-H' must be given.
 
      'k'
      '=links'
-          Displays the contents of the '.gnu_debuglink' and/or
-          '.gnu_debugaltlink' sections.  Also displays any links to
-          separate dwarf object files (dwo), if they are specified by
-          the DW_AT_GNU_dwo_name or DW_AT_dwo_name attributes in the
-          '.debug_info' section.
+          Displays the contents of the '.gnu_debuglink',
+          '.gnu_debugaltlink' and '.debug_sup' sections, if any of them
+          are present.  Also displays any links to separate dwarf object
+          files (dwo), if they are specified by the DW_AT_GNU_dwo_name
+          or DW_AT_dwo_name attributes in the '.debug_info' section.
 
      'K'
      '=follow-links'
@@ -5659,7 +5663,7 @@ Binutils Index
 * architecture:                          objdump.             (line 259)
 * architectures available:               objdump.             (line 244)
 * archive contents:                      ranlib.              (line   6)
-* Archive file symbol index information: readelf.             (line 230)
+* Archive file symbol index information: readelf.             (line 234)
 * archive headers:                       objdump.             (line  77)
 * archives:                              ar.                  (line   6)
 * base files:                            dlltool.             (line 124)
@@ -5675,14 +5679,14 @@ Binutils Index
 * changing start address:                objcopy.             (line 399)
 * collections of files:                  ar.                  (line   6)
 * Compact Type Format:                   objdump.             (line 696)
-* Compact Type Format <1>:               readelf.             (line 390)
+* Compact Type Format <1>:               readelf.             (line 394)
 * compatibility, ar:                     ar.                  (line  63)
 * contents of archive:                   ar cmdline.          (line  97)
 * crash:                                 Bug Criteria.        (line   9)
 * creating archives:                     ar cmdline.          (line 144)
 * creating thin archive:                 ar cmdline.          (line 224)
 * CTF:                                   objdump.             (line 696)
-* CTF <1>:                               readelf.             (line 390)
+* CTF <1>:                               readelf.             (line 394)
 * cxxfilt:                               c++filt.             (line  16)
 * dates in archive:                      ar cmdline.          (line 188)
 * debug symbols:                         objdump.             (line 710)
@@ -5690,7 +5694,7 @@ Binutils Index
 * deleting from archive:                 ar cmdline.          (line  26)
 * demangling C++ symbols:                c++filt.             (line   6)
 * demangling in nm:                      nm.                  (line 180)
-* demangling in nm <1>:                  readelf.             (line 119)
+* demangling in nm <1>:                  readelf.             (line 123)
 * demangling in objdump:                 objdump.             (line 105)
 * demangling in objdump <1>:             addr2line.           (line  86)
 * deterministic archives:                ar cmdline.          (line 150)
@@ -5712,20 +5716,20 @@ Binutils Index
 * dynamic relocation entries, in object file: objdump.        (line 484)
 * dynamic symbol table entries, printing: objdump.            (line 809)
 * dynamic symbols:                       nm.                  (line 210)
-* ELF dynamic section information:       readelf.             (line 170)
-* ELF dynamic symbol table information:  readelf.             (line 110)
-* ELF file header information:           readelf.             (line  73)
+* ELF dynamic section information:       readelf.             (line 174)
+* ELF dynamic symbol table information:  readelf.             (line 114)
+* ELF file header information:           readelf.             (line  74)
 * ELF file information:                  readelf.             (line   6)
-* ELF notes:                             readelf.             (line 152)
+* ELF notes:                             readelf.             (line 156)
 * ELF object file format:                objdump.             (line 710)
-* ELF program header information:        readelf.             (line  79)
-* ELF reloc information:                 readelf.             (line 156)
-* ELF section group information:         readelf.             (line  90)
-* ELF section information:               readelf.             (line  85)
-* ELF section information <1>:           readelf.             (line  95)
-* ELF segment information:               readelf.             (line  79)
-* ELF symbol table information:          readelf.             (line 100)
-* ELF version sections information:      readelf.             (line 174)
+* ELF program header information:        readelf.             (line  80)
+* ELF reloc information:                 readelf.             (line 160)
+* ELF section group information:         readelf.             (line  94)
+* ELF section information:               readelf.             (line  89)
+* ELF section information <1>:           readelf.             (line  99)
+* ELF segment information:               readelf.             (line  80)
+* ELF symbol table information:          readelf.             (line 104)
+* ELF version sections information:      readelf.             (line 178)
 * elfedit:                               elfedit.             (line   6)
 * endianness:                            objdump.             (line 194)
 * error on valid input:                  Bug Criteria.        (line  12)
@@ -5741,7 +5745,7 @@ Binutils Index
 * Instruction width:                     objdump.             (line 524)
 * libraries:                             ar.                  (line  25)
 * listings strings:                      strings.             (line   6)
-* LTO symbol table:                      readelf.             (line 115)
+* LTO symbol table:                      readelf.             (line 119)
 * machine instructions:                  objdump.             (line 146)
 * moving in archive:                     ar cmdline.          (line  34)
 * MRI compatibility, ar:                 ar scripts.          (line   8)
@@ -5772,6 +5776,7 @@ Binutils Index
 * printing from archive:                 ar cmdline.          (line  46)
 * printing strings:                      strings.             (line   6)
 * quick append to archive:               ar cmdline.          (line  54)
+* quiet:                                 readelf.             (line  84)
 * radix for section sizes:               size.                (line  85)
 * ranlib:                                ranlib.              (line   6)
 * ranlib <1>:                            ar cmdline.          (line  91)
@@ -5816,7 +5821,7 @@ Binutils Index
 * undefined symbols:                     nm.                  (line 295)
 * undefined symbols <1>:                 nm.                  (line 309)
 * Unix compatibility, ar:                ar cmdline.          (line   8)
-* unwind information:                    readelf.             (line 161)
+* unwind information:                    readelf.             (line 165)
 * Update ELF header:                     elfedit.             (line   6)
 * updating an archive:                   ar cmdline.          (line 229)
 * version:                               Top.                 (line   6)
@@ -5834,29 +5839,29 @@ Node: ar scripts20013
 Node: nm25699
 Node: objcopy39406
 Node: objdump80019
-Node: ranlib113609
-Node: size115208
-Node: strings119177
-Node: strip123549
-Node: c++filt133158
-Ref: c++filt-Footnote-1139019
-Node: addr2line139125
-Node: windmc144803
-Node: windres148462
-Node: dlltool154821
-Node: def file format167818
-Node: readelf170348
-Node: elfedit185926
-Node: Common Options188900
-Node: Selecting the Target System189934
-Node: Target Selection190862
-Node: Architecture Selection192843
-Node: debuginfod193671
-Node: Reporting Bugs194430
-Node: Bug Criteria195192
-Node: Bug Reporting195745
-Node: GNU Free Documentation License202615
-Node: Binutils Index227775
+Node: ranlib113648
+Node: size115247
+Node: strings119216
+Node: strip123588
+Node: c++filt133197
+Ref: c++filt-Footnote-1139058
+Node: addr2line139164
+Node: windmc144842
+Node: windres148501
+Node: dlltool154860
+Node: def file format167857
+Node: readelf170387
+Node: elfedit186077
+Node: Common Options189051
+Node: Selecting the Target System190085
+Node: Target Selection191013
+Node: Architecture Selection192994
+Node: debuginfod193822
+Node: Reporting Bugs194581
+Node: Bug Criteria195343
+Node: Bug Reporting195896
+Node: GNU Free Documentation License202766
+Node: Binutils Index227926
 
 End Tag Table
 

@@ -3652,8 +3652,8 @@ but not defined.  The syntax is 'PROVIDE(SYMBOL = EXPRESSION)'.
      }
 
    In this example, if the program defines '_etext' (with a leading
-underscore), the linker will give a multiple definition error.  If, on
-the other hand, the program defines 'etext' (with no leading
+underscore), the linker will give a multiple definition diagnostic.  If,
+on the other hand, the program defines 'etext' (with no leading
 underscore), the linker will silently use the definition in the program.
 If the program references 'etext' but does not define it, the linker
 will use the definition in the linker script.
@@ -9223,75 +9223,75 @@ Node: Assignments159003
 Node: Simple Assignments159514
 Node: HIDDEN161245
 Node: PROVIDE161872
-Node: PROVIDE_HIDDEN163393
-Node: Source Code Reference163637
-Node: SECTIONS167554
-Node: Output Section Description169442
-Node: Output Section Name170683
-Node: Output Section Address171560
-Node: Input Section173793
-Node: Input Section Basics174594
-Node: Input Section Wildcards179612
-Node: Input Section Common184907
-Node: Input Section Keep186389
-Node: Input Section Example186879
-Node: Output Section Data188290
-Node: Output Section Keywords191069
-Node: Output Section Discarding194636
-Node: Output Section Attributes196526
-Node: Output Section Type197645
-Node: Output Section LMA198715
-Node: Forced Output Alignment201786
-Node: Forced Input Alignment202215
-Node: Output Section Constraint202603
-Node: Output Section Region203031
-Node: Output Section Phdr203464
-Node: Output Section Fill204128
-Node: Overlay Description205270
-Node: MEMORY209715
-Node: PHDRS214321
-Node: VERSION219647
-Node: Expressions227738
-Node: Constants228667
-Node: Symbolic Constants229541
-Node: Symbols230092
-Node: Orphan Sections230839
-Node: Location Counter232424
-Node: Operators236858
-Node: Evaluation237780
-Node: Expression Section239144
-Node: Builtin Functions243114
-Node: Implicit Linker Scripts251465
-Node: Plugins252240
-Node: libdep Plugin252700
-Node: Machine Dependent254497
-Node: H8/300255585
-Node: M68HC11/68HC12257658
-Node: ARM259105
-Node: HPPA ELF32271215
-Node: M68K272838
-Node: MIPS273747
-Node: MMIX274863
-Node: MSP430276028
-Node: NDS32277941
-Node: Nios II278905
-Node: PowerPC ELF32280221
-Node: PowerPC64 ELF64283052
-Node: S/390 ELF292810
-Node: SPU ELF293157
-Node: TI COFF295785
-Node: WIN32296311
-Node: Xtensa316458
-Node: BFD319901
-Node: BFD outline321359
-Node: BFD information loss322647
-Node: Canonical format325173
-Node: Reporting Bugs329501
-Node: Bug Criteria330195
-Node: Bug Reporting330894
-Node: MRI337932
-Node: GNU Free Documentation License342403
-Node: LD Index367540
+Node: PROVIDE_HIDDEN163398
+Node: Source Code Reference163642
+Node: SECTIONS167559
+Node: Output Section Description169447
+Node: Output Section Name170688
+Node: Output Section Address171565
+Node: Input Section173798
+Node: Input Section Basics174599
+Node: Input Section Wildcards179617
+Node: Input Section Common184912
+Node: Input Section Keep186394
+Node: Input Section Example186884
+Node: Output Section Data188295
+Node: Output Section Keywords191074
+Node: Output Section Discarding194641
+Node: Output Section Attributes196531
+Node: Output Section Type197650
+Node: Output Section LMA198720
+Node: Forced Output Alignment201791
+Node: Forced Input Alignment202220
+Node: Output Section Constraint202608
+Node: Output Section Region203036
+Node: Output Section Phdr203469
+Node: Output Section Fill204133
+Node: Overlay Description205275
+Node: MEMORY209720
+Node: PHDRS214326
+Node: VERSION219652
+Node: Expressions227743
+Node: Constants228672
+Node: Symbolic Constants229546
+Node: Symbols230097
+Node: Orphan Sections230844
+Node: Location Counter232429
+Node: Operators236863
+Node: Evaluation237785
+Node: Expression Section239149
+Node: Builtin Functions243119
+Node: Implicit Linker Scripts251470
+Node: Plugins252245
+Node: libdep Plugin252705
+Node: Machine Dependent254502
+Node: H8/300255590
+Node: M68HC11/68HC12257663
+Node: ARM259110
+Node: HPPA ELF32271220
+Node: M68K272843
+Node: MIPS273752
+Node: MMIX274868
+Node: MSP430276033
+Node: NDS32277946
+Node: Nios II278910
+Node: PowerPC ELF32280226
+Node: PowerPC64 ELF64283057
+Node: S/390 ELF292815
+Node: SPU ELF293162
+Node: TI COFF295790
+Node: WIN32296316
+Node: Xtensa316463
+Node: BFD319906
+Node: BFD outline321364
+Node: BFD information loss322652
+Node: Canonical format325178
+Node: Reporting Bugs329506
+Node: Bug Criteria330200
+Node: Bug Reporting330899
+Node: MRI337937
+Node: GNU Free Documentation License342408
+Node: LD Index367545
 
 End Tag Table
 

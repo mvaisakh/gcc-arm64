@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "READELF 1"
-.TH READELF 1 "2021-02-25" "binutils-2.36.50" "GNU Development Tools"
+.TH READELF 1 "2021-02-28" "binutils-2.36.50" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -152,6 +152,7 @@ readelf [\fB\-a\fR|\fB\-\-all\fR]
         [\fB\-s\fR|\fB\-\-syms\fR|\fB\-\-symbols\fR]
         [\fB\-\-dyn\-syms\fR|\fB\-\-lto\-syms\fR]
         [\fB\-\-demangle\fR\fI=style\fR|\fB\-\-no\-demangle\fR]
+        [\fB\-\-quiet\fR]
         [\fB\-\-recurse\-limit\fR|\fB\-\-no\-recurse\-limit\fR]
         [\fB\-n\fR|\fB\-\-notes\fR]
         [\fB\-r\fR|\fB\-\-relocs\fR]
@@ -232,6 +233,9 @@ file.
 .PD
 Displays the information contained in the file's segment headers, if it
 has any.
+.IP "\fB\-\-quiet\fR" 4
+.IX Item "--quiet"
+Suppress \*(L"no symbols\*(R" diagnostic.
 .IP "\fB\-S\fR" 4
 .IX Item "-S"
 .PD 0
@@ -533,11 +537,11 @@ output from this option can also be restricted by the use of the
 .el .IP "\f(CW=links\fR" 4
 .IX Item "=links"
 .PD
-Displays the contents of the \fB.gnu_debuglink\fR and/or
-\&\fB.gnu_debugaltlink\fR sections.  Also displays any links to
-separate dwarf object files (dwo), if they are specified by the 
-DW_AT_GNU_dwo_name or DW_AT_dwo_name attributes in the
-\&\fB.debug_info\fR section.
+Displays the contents of the \fB.gnu_debuglink\fR,
+\&\fB.gnu_debugaltlink\fR and \fB.debug_sup\fR sections, if any of
+them are present.  Also displays any links to separate dwarf object
+files (dwo), if they are specified by the DW_AT_GNU_dwo_name or
+DW_AT_dwo_name attributes in the \fB.debug_info\fR section.
 .ie n .IP """K""" 4
 .el .IP "\f(CWK\fR" 4
 .IX Item "K"

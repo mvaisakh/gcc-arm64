@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-02-24" "gcc-11.0.0" "GNU"
+.TH GCC 1 "2021-02-27" "gcc-11.0.1" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -270,7 +270,7 @@ in the following sections.
 \&\-fext\-numeric\-literals 
 \&\-flang\-info\-include\-translate\fR[\fB=\fR\fIheader\fR] 
 \&\fB\-flang\-info\-include\-translate\-not 
-\&\-flang\-info\-module\-read\fR[\fB=\fR\fImodule\fR] 
+\&\-flang\-info\-module\-cmi\fR[\fB=\fR\fImodule\fR] 
 \&\fB\-stdlib=\fR\fIlibstdc++,libc++\fR 
 \&\fB\-Wabi\-tag  \-Wcatch\-value  \-Wcatch\-value=\fR\fIn\fR 
 \&\fB\-Wno\-class\-conversion  \-Wclass\-memaccess 
@@ -3353,11 +3353,11 @@ translations.  The \fIheader\fR form will inform of include
 translations relating to that specific header.  If \fIheader\fR is of
 the form \f(CW"user"\fR or \f(CW\*(C`<system>\*(C'\fR it will be resolved to a
 specific user or system header using the include path.
-.IP "\fB\-flang\-info\-module\-read\fR" 4
-.IX Item "-flang-info-module-read"
+.IP "\fB\-flang\-info\-module\-cmi\fR" 4
+.IX Item "-flang-info-module-cmi"
 .PD 0
-.IP "\fB\-flang\-info\-module\-read=\fR\fImodule\fR" 4
-.IX Item "-flang-info-module-read=module"
+.IP "\fB\-flang\-info\-module\-cmi=\fR\fImodule\fR" 4
+.IX Item "-flang-info-module-cmi=module"
 .PD
 Inform of Compiled Module Interface pathnames.  The first will note
 all read \s-1CMI\s0 pathnames.  The \fImodule\fR form will not reading a
