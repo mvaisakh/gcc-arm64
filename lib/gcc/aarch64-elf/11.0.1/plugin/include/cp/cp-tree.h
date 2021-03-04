@@ -1578,10 +1578,18 @@ check_constraint_info (tree t)
 #define COMPOUND_REQ_NOEXCEPT_P(NODE) \
   TREE_LANG_FLAG_0 (TREE_CHECK (NODE, COMPOUND_REQ))
 
-/* The constraints on an 'auto' placeholder type, used in an argument deduction
-   constraint.  */
-#define PLACEHOLDER_TYPE_CONSTRAINTS(NODE) \
+/* A TREE_LIST whose TREE_VALUE is the constraints on the 'auto' placeholder
+   type NODE, used in an argument deduction constraint.  The TREE_PURPOSE
+   holds the set of template parameters that were in-scope when this 'auto'
+   was formed.  */
+#define PLACEHOLDER_TYPE_CONSTRAINTS_INFO(NODE) \
   DECL_SIZE_UNIT (TYPE_NAME (NODE))
+
+/* The constraints on the 'auto' placeholder type NODE.  */
+#define PLACEHOLDER_TYPE_CONSTRAINTS(NODE)		   \
+  (PLACEHOLDER_TYPE_CONSTRAINTS_INFO (NODE)		   \
+   ? TREE_VALUE (PLACEHOLDER_TYPE_CONSTRAINTS_INFO (NODE)) \
+   : NULL_TREE)
 
 /* True if NODE is a constraint.  */
 #define CONSTR_P(NODE)                  \
@@ -7271,6 +7279,7 @@ extern void emit_support_tinfos			(void);
 extern bool emit_tinfo_decl			(tree);
 extern unsigned get_pseudo_tinfo_index		(tree);
 extern tree get_pseudo_tinfo_type		(unsigned);
+extern tree build_if_nonnull			(tree, tree, tsubst_flags_t);
 
 /* in search.c */
 extern tree get_parent_with_private_access 	(tree decl, tree binfo);
@@ -8101,6 +8110,7 @@ extern tree finish_compound_requirement         (location_t, tree, tree, bool);
 extern tree finish_nested_requirement           (location_t, tree);
 extern void check_constrained_friend            (tree, tree);
 extern tree tsubst_requires_expr                (tree, tree, tsubst_flags_t, tree);
+extern tree evaluate_requires_expr		(tree);
 extern tree tsubst_constraint                   (tree, tree, tsubst_flags_t, tree);
 extern tree tsubst_constraint_info              (tree, tree, tsubst_flags_t, tree);
 extern tree tsubst_parameter_mapping		(tree, tree, tsubst_flags_t, tree);
@@ -8115,10 +8125,8 @@ struct processing_constraint_expression_sentinel
 extern bool processing_constraint_expression_p	();
 
 extern tree unpack_concept_check		(tree);
-extern tree evaluate_concept_check              (tree, tsubst_flags_t);
-extern tree satisfy_constraint_expression	(tree);
-extern bool constraints_satisfied_p		(tree);
-extern bool constraints_satisfied_p		(tree, tree);
+extern tree evaluate_concept_check              (tree);
+extern bool constraints_satisfied_p		(tree, tree = NULL_TREE);
 extern bool* lookup_subsumption_result          (tree, tree);
 extern bool save_subsumption_result             (tree, tree, bool);
 extern tree find_template_parameters		(tree, tree);
@@ -8420,7 +8428,7 @@ set_implicit_rvalue_p (tree ot)
 inline bool
 is_constrained_auto (const_tree t)
 {
-  return is_auto (t) && PLACEHOLDER_TYPE_CONSTRAINTS (t);
+  return is_auto (t) && PLACEHOLDER_TYPE_CONSTRAINTS_INFO (t);
 }
 
 /* RAII class to push/pop class scope T; if T is not a class, do nothing.  */

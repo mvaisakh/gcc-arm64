@@ -41126,6 +41126,17 @@ This concerns dispatch tables.
      the assembly for INSN has been emitted, false if the hook should be
      called afterward.
 
+ -- Target Hook: bool TARGET_ASM_SHOULD_RESTORE_CFA_STATE (void)
+     For DWARF-based unwind frames, two CFI instructions provide for
+     save and restore of register state.  GCC maintains the current
+     frame address (CFA) separately from the register bank but the
+     unwinder in libgcc preserves this state along with the registers
+     (and this is expected by the code that writes the unwind frames).
+     This hook allows the target to specify that the CFA data is not
+     saved/restored along with the registers by the target unwinder so
+     that suitable additional instructions should be emitted to restore
+     it.
+
 
 File: gccint.info,  Node: Exception Region Output,  Next: Alignment Output,  Prev: Dispatch Tables,  Up: Assembler Format
 
@@ -56656,6 +56667,7 @@ Concept Index
 * TARGET_ASM_RELOC_RW_MASK:              Sections.           (line  173)
 * TARGET_ASM_SELECT_RTX_SECTION:         Sections.           (line  244)
 * TARGET_ASM_SELECT_SECTION:             Sections.           (line  191)
+* TARGET_ASM_SHOULD_RESTORE_CFA_STATE:   Dispatch Tables.    (line  113)
 * TARGET_ASM_TM_CLONE_TABLE_SECTION:     Sections.           (line  240)
 * TARGET_ASM_TRAMPOLINE_TEMPLATE:        Trampolines.        (line   81)
 * TARGET_ASM_TTYPE:                      Exception Region Output.
@@ -58077,78 +58089,78 @@ Node: Initialization1751809
 Node: Macros for Initialization1757770
 Node: Instruction Output1764489
 Node: Dispatch Tables1775118
-Node: Exception Region Output1780237
-Node: Alignment Output1787319
-Node: Debugging Info1791006
-Node: All Debuggers1791660
-Node: DBX Options1794432
-Node: DBX Hooks1799870
-Node: File Names and DBX1801179
-Node: DWARF1803283
-Node: VMS Debug1809098
-Node: Floating Point1809677
-Node: Mode Switching1812432
-Node: Target Attributes1816869
-Node: Emulated TLS1826345
-Node: MIPS Coprocessors1829735
-Node: PCH Target1830894
-Node: C++ ABI1832736
-Node: D Language and ABI1837528
-Node: Named Address Spaces1839107
-Node: Misc1845034
-Ref: TARGET_SHIFT_TRUNCATION_MASK1852905
-Node: Host Config1911832
-Node: Host Common1912901
-Node: Filesystem1915275
-Node: Host Misc1919390
-Node: Fragments1921839
-Node: Target Fragment1923034
-Node: Host Fragment1933846
-Node: Collect21934086
-Node: Header Dirs1936722
-Node: Type Information1938145
-Node: GTY Options1941421
-Node: Inheritance and GTY1952680
-Ref: Inheritance and GTY-Footnote-11954245
-Node: User GC1954515
-Node: GGC Roots1958254
-Node: Files1958967
-Node: Invoking the garbage collector1961674
-Node: Troubleshooting1963179
-Node: Plugins1964254
-Node: Plugins loading1965383
-Node: Plugin API1966482
-Node: Plugins pass1974349
-Node: Plugins GC1976320
-Node: Plugins description1978037
-Node: Plugins attr1978573
-Node: Plugins recording1980853
-Node: Plugins gate1981703
-Node: Plugins tracking1982294
-Node: Plugins building1982882
-Node: LTO1986383
-Node: LTO Overview1987255
-Node: LTO object file layout1993082
-Node: IPA1997712
-Node: WHOPR2006762
-Node: Internal flags2011322
-Node: Match and Simplify2012733
-Node: GIMPLE API2013695
-Node: The Language2016490
-Node: Static Analyzer2028989
-Node: Analyzer Internals2029254
-Node: Debugging the Analyzer2043224
-Node: User Experience Guidelines2045661
-Node: Guidelines for Diagnostics2046597
-Ref: input_location_example2053658
-Node: Guidelines for Options2063341
-Node: Funding2063518
-Node: GNU Project2066025
-Node: Copying2066674
-Node: GNU Free Documentation License2104185
-Node: Contributors2129306
-Node: Option Index2170282
-Node: Concept Index2171159
+Node: Exception Region Output1780869
+Node: Alignment Output1787951
+Node: Debugging Info1791638
+Node: All Debuggers1792292
+Node: DBX Options1795064
+Node: DBX Hooks1800502
+Node: File Names and DBX1801811
+Node: DWARF1803915
+Node: VMS Debug1809730
+Node: Floating Point1810309
+Node: Mode Switching1813064
+Node: Target Attributes1817501
+Node: Emulated TLS1826977
+Node: MIPS Coprocessors1830367
+Node: PCH Target1831526
+Node: C++ ABI1833368
+Node: D Language and ABI1838160
+Node: Named Address Spaces1839739
+Node: Misc1845666
+Ref: TARGET_SHIFT_TRUNCATION_MASK1853537
+Node: Host Config1912464
+Node: Host Common1913533
+Node: Filesystem1915907
+Node: Host Misc1920022
+Node: Fragments1922471
+Node: Target Fragment1923666
+Node: Host Fragment1934478
+Node: Collect21934718
+Node: Header Dirs1937354
+Node: Type Information1938777
+Node: GTY Options1942053
+Node: Inheritance and GTY1953312
+Ref: Inheritance and GTY-Footnote-11954877
+Node: User GC1955147
+Node: GGC Roots1958886
+Node: Files1959599
+Node: Invoking the garbage collector1962306
+Node: Troubleshooting1963811
+Node: Plugins1964886
+Node: Plugins loading1966015
+Node: Plugin API1967114
+Node: Plugins pass1974981
+Node: Plugins GC1976952
+Node: Plugins description1978669
+Node: Plugins attr1979205
+Node: Plugins recording1981485
+Node: Plugins gate1982335
+Node: Plugins tracking1982926
+Node: Plugins building1983514
+Node: LTO1987015
+Node: LTO Overview1987887
+Node: LTO object file layout1993714
+Node: IPA1998344
+Node: WHOPR2007394
+Node: Internal flags2011954
+Node: Match and Simplify2013365
+Node: GIMPLE API2014327
+Node: The Language2017122
+Node: Static Analyzer2029621
+Node: Analyzer Internals2029886
+Node: Debugging the Analyzer2043856
+Node: User Experience Guidelines2046293
+Node: Guidelines for Diagnostics2047229
+Ref: input_location_example2054290
+Node: Guidelines for Options2063973
+Node: Funding2064150
+Node: GNU Project2066657
+Node: Copying2067306
+Node: GNU Free Documentation License2104817
+Node: Contributors2129938
+Node: Option Index2170914
+Node: Concept Index2171791
 
 End Tag Table
 

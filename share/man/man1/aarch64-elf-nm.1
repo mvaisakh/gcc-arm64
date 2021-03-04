@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "NM 1"
-.TH NM 1 "2021-02-28" "binutils-2.36.50" "GNU Development Tools"
+.TH NM 1 "2021-03-04" "binutils-2.36.50" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -157,7 +157,8 @@ nm [\fB\-A\fR|\fB\-o\fR|\fB\-\-print\-file\-name\fR] [\fB\-a\fR|\fB\-\-debug\-sy
    [\fB\-\-plugin\fR \fIname\fR]
    [\fB\-\-no\-recurse\-limit\fR|\fB\-\-recurse\-limit\fR]]
    [\fB\-\-size\-sort\fR] [\fB\-\-special\-syms\fR]
-   [\fB\-\-synthetic\fR] [\fB\-\-target=\fR\fIbfdname\fR]
+   [\fB\-\-synthetic\fR] [\fB\-\-with\-symbol\-versions\fR]
+   [\fB\-\-without\-symbol\-versions\fR] [\fB\-\-target=\fR\fIbfdname\fR]
    [\fIobjfile\fR...]
 .SH "DESCRIPTION"
 .IX Header "DESCRIPTION"
@@ -595,6 +596,19 @@ used to mark transitions between \s-1ARM\s0 code, \s-1THUMB\s0 code and data.
 Include synthetic symbols in the output.  These are special symbols
 created by the linker for various purposes.  They are not shown by
 default since they are not part of the binary's original source code.
+.IP "\fB\-\-with\-symbol\-versions\fR" 4
+.IX Item "--with-symbol-versions"
+.PD 0
+.IP "\fB\-\-without\-symbol\-versions\fR" 4
+.IX Item "--without-symbol-versions"
+.PD
+Enables or disables the display of symbol version information.  The
+version string is displayed as a suffix to the symbol name, preceded
+by an @ character.  For example \fBfoo@VER_1\fR.  If the version is
+the default version to be used when resolving unversioned references
+to the symbol then it is displayed as a suffix preceded by two @
+characters.  For example \fBfoo@@VER_2\fR.  By default, symbol
+version information is displayed.
 .IP "\fB\-\-target=\fR\fIbfdname\fR" 4
 .IX Item "--target=bfdname"
 Specify an object code format other than your system's default format.
