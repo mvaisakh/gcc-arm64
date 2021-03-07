@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "OBJCOPY 1"
-.TH OBJCOPY 1 "2021-03-04" "binutils-2.36.50" "GNU Development Tools"
+.TH OBJCOPY 1 "2021-03-07" "binutils-2.36.50" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -150,6 +150,8 @@ objcopy [\fB\-F\fR \fIbfdname\fR|\fB\-\-target=\fR\fIbfdname\fR]
         [\fB\-g\fR|\fB\-\-strip\-debug\fR]
         [\fB\-\-strip\-unneeded\fR]
         [\fB\-K\fR \fIsymbolname\fR|\fB\-\-keep\-symbol=\fR\fIsymbolname\fR]
+        [\fB\-\-keep\-file\-symbols\fR]
+        [\fB\-\-keep\-section\-symbols\fR]
         [\fB\-N\fR \fIsymbolname\fR|\fB\-\-strip\-symbol=\fR\fIsymbolname\fR]
         [\fB\-\-strip\-unneeded\-symbol=\fR\fIsymbolname\fR]
         [\fB\-G\fR \fIsymbolname\fR|\fB\-\-keep\-global\-symbol=\fR\fIsymbolname\fR]
@@ -206,7 +208,6 @@ objcopy [\fB\-F\fR \fIbfdname\fR|\fB\-\-target=\fR\fIbfdname\fR]
         [\fB\-\-prefix\-sections=\fR\fIstring\fR]
         [\fB\-\-prefix\-alloc\-sections=\fR\fIstring\fR]
         [\fB\-\-add\-gnu\-debuglink=\fR\fIpath-to-file\fR]
-        [\fB\-\-keep\-file\-symbols\fR]
         [\fB\-\-only\-keep\-debug\fR]
         [\fB\-\-strip\-dwo\fR]
         [\fB\-\-extract\-dwo\fR]
@@ -977,6 +978,11 @@ As long as the debug info file has been installed into one of these
 locations before the debugger is run everything should work
 correctly.
 .RE
+.IP "\fB\-\-keep\-section\-symbils\fR" 4
+.IX Item "--keep-section-symbils"
+When stripping a file, perhaps with \fB\-\-strip\-debug\fR or
+\&\fB\-\-strip\-unneeded\fR, retain any symbols specifying section names,
+which would otherwise get stripped.
 .IP "\fB\-\-keep\-file\-symbols\fR" 4
 .IX Item "--keep-file-symbols"
 When stripping a file, perhaps with \fB\-\-strip\-debug\fR or

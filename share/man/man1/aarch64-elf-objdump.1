@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "OBJDUMP 1"
-.TH OBJDUMP 1 "2021-03-04" "binutils-2.36.50" "GNU Development Tools"
+.TH OBJDUMP 1 "2021-03-07" "binutils-2.36.50" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -171,6 +171,7 @@ objdump [\fB\-a\fR|\fB\-\-archive\-headers\fR]
          \fB\-\-dwarf\fR[=rawline,=decodedline,=info,=abbrev,=pubnames,=aranges,=macro,=frames,=frames\-interp,=str,=str\-offsets,=loc,=Ranges,=pubtypes,=trace_info,=trace_abbrev,=trace_aranges,=gdb_index,=addr,=cu_index,=links]]
         [\fB\-WK\fR|\fB\-\-dwarf=follow\-links\fR]
         [\fB\-WN\fR|\fB\-\-dwarf=no\-follow\-links\fR]
+        [\fB\-L\fR|\fB\-\-process\-links\fR]
         [\fB\-\-ctf=\fR\fIsection\fR]
         [\fB\-G\fR|\fB\-\-stabs\fR]
         [\fB\-t\fR|\fB\-\-syms\fR]
@@ -435,6 +436,16 @@ for specification with \fB\-b\fR or \fB\-m\fR.
 .IX Item "--section=name"
 .PD
 Display information only for section \fIname\fR.
+.IP "\fB\-L\fR" 4
+.IX Item "-L"
+.PD 0
+.IP "\fB\-\-process\-links\fR" 4
+.IX Item "--process-links"
+.PD
+Display the contents of non-debug sections found in separate debuginfo
+files that are linked to the main file.  This option automatically
+implies the \fB\-WK\fR option, and only sections requested by other
+command line options will be displayed.
 .IP "\fB\-l\fR" 4
 .IX Item "-l"
 .PD 0

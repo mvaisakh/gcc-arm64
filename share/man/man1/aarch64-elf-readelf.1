@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "READELF 1"
-.TH READELF 1 "2021-03-04" "binutils-2.36.50" "GNU Development Tools"
+.TH READELF 1 "2021-03-07" "binutils-2.36.50" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -171,6 +171,7 @@ readelf [\fB\-a\fR|\fB\-\-all\fR]
          \fB\-\-debug\-dump\fR[=rawline,=decodedline,=info,=abbrev,=pubnames,=aranges,=macro,=frames,=frames\-interp,=str,=str\-offsets,=loc,=Ranges,=pubtypes,=trace_info,=trace_abbrev,=trace_aranges,=gdb_index,=addr,=cu_index,=links]]
         [\fB\-wK\fR|\fB\-\-debug\-dump=follow\-links\fR]
         [\fB\-wN\fR|\fB\-\-debug\-dump=no\-follow\-links\fR]
+        [\fB\-P\fR|\fB\-\-process\-links\fR]
         [\fB\-\-dwarf\-depth=\fR\fIn\fR]
         [\fB\-\-dwarf\-start=\fR\fIn\fR]
         [\fB\-\-ctf=\fR\fIsection\fR]
@@ -724,6 +725,16 @@ information and all DIEs before the \s-1DIE\s0 numbered \fIn\fR.  Only
 siblings and children of the specified \s-1DIE\s0 will be printed.
 .Sp
 This can be used in conjunction with \fB\-\-dwarf\-depth\fR.
+.IP "\fB\-P\fR" 4
+.IX Item "-P"
+.PD 0
+.IP "\fB\-\-process\-links\fR" 4
+.IX Item "--process-links"
+.PD
+Display the contents of non-debug sections found in separate debuginfo
+files that are linked to the main file.  This option automatically
+implies the \fB\-wK\fR option, and only sections requested by other
+command line options will be displayed.
 .IP "\fB\-\-ctf=\fR\fIsection\fR" 4
 .IX Item "--ctf=section"
 Display the contents of the specified \s-1CTF\s0 section.  \s-1CTF\s0 sections themselves
