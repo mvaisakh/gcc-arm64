@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "11.0.1 20210306 (experimental)")
+(!version  "11.0.1 20210309 (experimental)")
 (!srcdir  "../../gcc/gcc")
 (!languages 11 ada brig c cp d fortran go jit lto objc objcp)
 (!fileslist 224
@@ -27262,19 +27262,19 @@
   (!fields 4 
    (!pair  "decl"
     (!type already_seen 23)
-    (!srcfileloc  "cp/cp-tree.h" 8165)
+    (!srcfileloc  "cp/cp-tree.h" 8164)
     nil )
    (!pair  "body"
     (!type already_seen 23)
-    (!srcfileloc  "cp/cp-tree.h" 8166)
+    (!srcfileloc  "cp/cp-tree.h" 8165)
     nil )
    (!pair  "parms"
     (!type already_seen 23)
-    (!srcfileloc  "cp/cp-tree.h" 8167)
+    (!srcfileloc  "cp/cp-tree.h" 8166)
     nil )
    (!pair  "result"
     (!type already_seen 23)
-    (!srcfileloc  "cp/cp-tree.h" 8168)
+    (!srcfileloc  "cp/cp-tree.h" 8167)
     nil )
   )
   (!options 
@@ -27504,7 +27504,7 @@
    (!type already_seen 1982)
   )
   gc_pointed_to "cp_parser"
-  (!srcfileloc  "cp/parser.c" 44750)
+  (!srcfileloc  "cp/parser.c" 44756)
   (!fields 37 
    (!pair  "lexer"
     (!type already_seen 1968)
@@ -28692,15 +28692,15 @@
   nil 0 nil nil )
  
  (!type struct 2123 nil  gc_used "macro_export"
-  (!srcfileloc  "cp/module.cc" 16567)
+  (!srcfileloc  "cp/module.cc" 16576)
   (!fields 2 
    (!pair  "def"
     (!type already_seen 19)
-    (!srcfileloc  "cp/module.cc" 16560)
+    (!srcfileloc  "cp/module.cc" 16569)
     nil )
    (!pair  "undef_loc"
     (!type already_seen 2)
-    (!srcfileloc  "cp/module.cc" 16561)
+    (!srcfileloc  "cp/module.cc" 16570)
     nil )
   )
   nil 1032 nil nil )
@@ -28714,15 +28714,15 @@
    (!type already_seen 2125)
   )
   gc_pointed_to "vec<macro_export,va_gc>"
-  (!srcfileloc  "cp/module.cc" 16724)
+  (!srcfileloc  "cp/module.cc" 16733)
   (!fields 2 
    (!pair  "va_gc"
     (!type already_seen 79)
-    (!srcfileloc  "cp/module.cc" 16724)
+    (!srcfileloc  "cp/module.cc" 16733)
     nil )
    (!pair  "macro_export"
     (!type already_seen 2123)
-    (!srcfileloc  "cp/module.cc" 16724)
+    (!srcfileloc  "cp/module.cc" 16733)
     nil )
   )
  )
@@ -28792,7 +28792,7 @@
   nil 0 nil nil )
  
  (!type undefined 2143 nil  gc_unused "class_to_loc_map_t::iterator"
-  (!srcfileloc  "cp/parser.c" 32468)
+  (!srcfileloc  "cp/parser.c" 32474)
  )
  
  (!type struct 2144 
@@ -30075,15 +30075,15 @@
   nil )
  (!pair  "cp_parser"
   (!type already_seen 1982)
-  (!srcfileloc  "cp/parser.c" 44750)
+  (!srcfileloc  "cp/parser.c" 44756)
   nil )
  (!pair  "iter_t"
   (!type already_seen 2143)
-  (!srcfileloc  "cp/parser.c" 32468)
+  (!srcfileloc  "cp/parser.c" 32474)
   nil )
  (!pair  "class_to_loc_map_t::iterator"
   (!type already_seen 2143)
-  (!srcfileloc  "cp/parser.c" 32468)
+  (!srcfileloc  "cp/parser.c" 32474)
   nil )
  (!pair  "cp_parser_expression_stack"
   (!type array 2267 nil  gc_unused "NUM_PREC_VALUES" 
@@ -30097,11 +30097,11 @@
   nil )
  (!pair  "vec<macro_export,va_gc>"
   (!type already_seen 2125)
-  (!srcfileloc  "cp/module.cc" 16724)
+  (!srcfileloc  "cp/module.cc" 16733)
   nil )
  (!pair  "macro_export"
   (!type already_seen 2123)
-  (!srcfileloc  "cp/module.cc" 16563)
+  (!srcfileloc  "cp/module.cc" 16572)
   nil )
  (!pair  "note_defs_table_t"
   (!type already_seen 2119)
@@ -34501,11 +34501,11 @@
   nil )
  (!pair  "generic_parm_count"
   (!type already_seen 2)
-  (!srcfileloc  "cp/parser.c" 45242)
+  (!srcfileloc  "cp/parser.c" 45248)
   nil )
  (!pair  "the_parser"
   (!type already_seen 1983)
-  (!srcfileloc  "cp/parser.c" 44750)
+  (!srcfileloc  "cp/parser.c" 44756)
   nil )
  (!pair  "cp_parser_context_free_list"
   (!type already_seen 1975)
@@ -34516,7 +34516,7 @@
  )
  (!pair  "free_saved_scope"
   (!type already_seen 1919)
-  (!srcfileloc  "cp/name-lookup.c" 8375)
+  (!srcfileloc  "cp/name-lookup.c" 8377)
   (!options 
    (!option deletable string  "")
   )
@@ -34541,11 +34541,11 @@
  )
  (!pair  "headers"
   (!type already_seen 385)
-  (!srcfileloc  "cp/module.cc" 16728)
+  (!srcfileloc  "cp/module.cc" 16737)
   nil )
  (!pair  "macro_exports"
   (!type already_seen 2126)
-  (!srcfileloc  "cp/module.cc" 16724)
+  (!srcfileloc  "cp/module.cc" 16733)
   nil )
  (!pair  "note_defs"
   (!type already_seen 2120)
@@ -34909,7 +34909,7 @@
   nil )
  (!pair  "unemitted_tinfo_decls"
   (!type already_seen 84)
-  (!srcfileloc  "cp/cp-tree.h" 7253)
+  (!srcfileloc  "cp/cp-tree.h" 7252)
   nil )
  (!pair  "ovl_op_alternate"
   (!type array 2300 nil  gc_used "OVL_OP_MAX" 
