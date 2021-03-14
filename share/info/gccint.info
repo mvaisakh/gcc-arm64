@@ -46765,22 +46765,55 @@ just an incidental detail of the analyzer; it's required.
    * feasible
 
  Without state-merging, all paths in the exploded graph are feasible (in
-terms of constraints being satisified).  With state-merging, paths in
-the exploded graph can be infeasible.
+terms of constraints being satisfied).  With state-merging, paths in the
+exploded graph can be infeasible.
 
  We collate warnings and only emit them for the simplest path e.g.  for
 a bug in a utility function, with lots of routes to calling it, we only
 emit the simplest path (which could be intraprocedural, if it can be
-reproduced without a caller).  We apply a check that each duplicate
-warning's shortest path is feasible, rejecting any warnings for which
-the shortest path is infeasible (which could lead to false negatives).
-This check can be suppressed (for debugging purposes) using
-'-fno-analyzer-feasibility'.
+reproduced without a caller).
 
- We use the shortest feasible 'exploded_path' through the
-'exploded_graph' (a list of 'exploded_edge *') to build a
-'diagnostic_path' (a list of events for the diagnostic subsystem) -
-specifically a 'checker_path'.
+ We thus want to find the shortest feasible path through the exploded
+graph from the origin to the exploded node at which the diagnostic was
+saved.  Unfortunately, if we simply find the shortest such path and
+check if it's feasible we might falsely reject the diagnostic, as there
+might be a longer path that is feasible.  Examples include the cases
+where the diagnostic requires us to go at least once around a loop for a
+later condition to be satisfied, or where for a later condition to be
+satisfied we need to enter a suite of code that the simpler path skips.
+
+ We attempt to find the shortest feasible path to each diagnostic by
+first constructing a "trimmed graph" from the exploded graph, containing
+only those nodes and edges from which there are paths to the target
+node, and using Dijkstra's algorithm to order the trimmed nodes by
+minimal distance to the target.
+
+ We then use a worklist to iteratively build a "feasible graph"
+(actually a tree), capturing the pertinent state along each path, in
+which every path to a "feasible node" is feasible by construction,
+restricting ourselves to the trimmed graph to ensure we stay on target,
+and ordering the worklist so that the first feasible path we find to the
+target node is the shortest possible path.  Hence we start by trying the
+shortest possible path, but if that fails, we explore progressively
+longer paths, eventually trying iterations through loops.  The
+exploration is captured in the feasible_graph, which can be dumped as a
+.dot file via '-fdump-analyzer-feasibility' to visualize the
+exploration.  The indices of the feasible nodes show the order in which
+they were created.  We effectively explore the tree of feasible paths in
+order of shortest path until we either find a feasible path to the
+target node, or hit a limit and give up.
+
+ This is something of a brute-force approach, but the trimmed graph
+hopefully keeps the complexity manageable.
+
+ This algorithm can be disabled (for debugging purposes) via
+'-fno-analyzer-feasibility', which simply uses the shortest path, and
+notes if it is infeasible.
+
+ The above gives us a shortest feasible 'exploded_path' through the
+'exploded_graph' (a list of 'exploded_edge *').  We use this
+'exploded_path' to build a 'diagnostic_path' (a list of *events* for the
+diagnostic subsystem) - specifically a 'checker_path'.
 
  Having built the 'checker_path', we prune it to try to eliminate events
 that aren't relevant, to minimize how much the user has to read.
@@ -58179,18 +58212,18 @@ Node: GIMPLE API2014546
 Node: The Language2017341
 Node: Static Analyzer2029840
 Node: Analyzer Internals2030105
-Node: Debugging the Analyzer2044075
-Node: User Experience Guidelines2046512
-Node: Guidelines for Diagnostics2047448
-Ref: input_location_example2055623
-Node: Guidelines for Options2065308
-Node: Funding2065485
-Node: GNU Project2067992
-Node: Copying2068641
-Node: GNU Free Documentation License2106152
-Node: Contributors2131273
-Node: Option Index2172249
-Node: Concept Index2173126
+Node: Debugging the Analyzer2045931
+Node: User Experience Guidelines2048368
+Node: Guidelines for Diagnostics2049304
+Ref: input_location_example2057479
+Node: Guidelines for Options2067164
+Node: Funding2067341
+Node: GNU Project2069848
+Node: Copying2070497
+Node: GNU Free Documentation License2108008
+Node: Contributors2133129
+Node: Option Index2174105
+Node: Concept Index2174982
 
 End Tag Table
 

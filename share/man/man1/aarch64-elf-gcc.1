@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-03-10" "gcc-11.0.1" "GNU"
+.TH GCC 1 "2021-03-13" "gcc-11.0.1" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -447,6 +447,7 @@ in the following sections.
 \&\-fdump\-analyzer\-exploded\-nodes 
 \&\-fdump\-analyzer\-exploded\-nodes\-2 
 \&\-fdump\-analyzer\-exploded\-nodes\-3 
+\&\-fdump\-analyzer\-feasibility 
 \&\-fdump\-analyzer\-json 
 \&\-fdump\-analyzer\-state\-purge 
 \&\-fdump\-analyzer\-supergraph 
@@ -8857,6 +8858,12 @@ Dump a textual representation of the \*(L"exploded graph\*(R" to
 Dump a textual representation of the \*(L"exploded graph\*(R" to
 one dump file per node, to \fI\fIfile\fI.eg\-\fIid\fI.txt\fR.
 This is typically a large number of dump files.
+.IP "\fB\-fdump\-analyzer\-feasibility\fR" 4
+.IX Item "-fdump-analyzer-feasibility"
+Dump internal details about the analyzer's search for feasible paths.
+The details are written in a form suitable for viewing with GraphViz
+to filenames of the form \fI\fIfile\fI.*.fg.dot\fR and
+\&\fI\fIfile\fI.*.tg.dot\fR.
 .IP "\fB\-fdump\-analyzer\-json\fR" 4
 .IX Item "-fdump-analyzer-json"
 Dump a compressed \s-1JSON\s0 representation of analyzer internals to
@@ -13409,6 +13416,10 @@ recurse deeper.
 .IX Item "analyzer-max-svalue-depth"
 The maximum depth of a symbolic value, before approximating
 the value as unknown.
+.IP "\fBanalyzer-max-infeasible-edges\fR" 4
+.IX Item "analyzer-max-infeasible-edges"
+The maximum number of infeasible edges to reject before declaring
+a diagnostic as infeasible.
 .IP "\fBgimple-fe-computed-hot-bb-threshold\fR" 4
 .IX Item "gimple-fe-computed-hot-bb-threshold"
 The number of executions of a basic block which is considered hot.
