@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "NM 1"
-.TH NM 1 "2021-03-14" "binutils-2.36.50" "GNU Development Tools"
+.TH NM 1 "2021-03-18" "binutils-2.36.50" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -142,23 +142,37 @@
 nm \- list symbols from object files
 .SH "SYNOPSIS"
 .IX Header "SYNOPSIS"
-nm [\fB\-A\fR|\fB\-o\fR|\fB\-\-print\-file\-name\fR] [\fB\-a\fR|\fB\-\-debug\-syms\fR]
-   [\fB\-B\fR|\fB\-\-format=bsd\fR] [\fB\-C\fR|\fB\-\-demangle\fR[=\fIstyle\fR]]
-   [\fB\-D\fR|\fB\-\-dynamic\fR] [\fB\-f\fR\fIformat\fR|\fB\-\-format=\fR\fIformat\fR]
-   [\fB\-g\fR|\fB\-\-extern\-only\fR] [\fB\-h\fR|\fB\-\-help\fR]
+nm [\fB\-A\fR|\fB\-o\fR|\fB\-\-print\-file\-name\fR]
+   [\fB\-a\fR|\fB\-\-debug\-syms\fR]
+   [\fB\-B\fR|\fB\-\-format=bsd\fR]
+   [\fB\-C\fR|\fB\-\-demangle\fR[=\fIstyle\fR]]
+   [\fB\-D\fR|\fB\-\-dynamic\fR]
+   [\fB\-f\fR\fIformat\fR|\fB\-\-format=\fR\fIformat\fR]
+   [\fB\-g\fR|\fB\-\-extern\-only\fR]
+   [\fB\-h\fR|\fB\-\-help\fR]
    [\fB\-\-ifunc\-chars=\fR\fI\s-1CHARS\s0\fR]
+   [\fB\-j\fR|\fB\-\-format=just\-symbols\fR]
    [\fB\-l\fR|\fB\-\-line\-numbers\fR] [\fB\-\-inlines\fR]
    [\fB\-n\fR|\fB\-v\fR|\fB\-\-numeric\-sort\fR]
-   [\fB\-P\fR|\fB\-\-portability\fR] [\fB\-p\fR|\fB\-\-no\-sort\fR]
-   [\fB\-r\fR|\fB\-\-reverse\-sort\fR] [\fB\-S\fR|\fB\-\-print\-size\fR]
-   [\fB\-s\fR|\fB\-\-print\-armap\fR] [\fB\-t\fR \fIradix\fR|\fB\-\-radix=\fR\fIradix\fR]
-   [\fB\-u\fR|\fB\-\-undefined\-only\fR] [\fB\-V\fR|\fB\-\-version\fR]
-   [\fB\-X 32_64\fR] [\fB\-\-defined\-only\fR] [\fB\-\-no\-demangle\fR]
-   [\fB\-\-plugin\fR \fIname\fR]
+   [\fB\-P\fR|\fB\-\-portability\fR]
+   [\fB\-p\fR|\fB\-\-no\-sort\fR]
+   [\fB\-r\fR|\fB\-\-reverse\-sort\fR]
+   [\fB\-S\fR|\fB\-\-print\-size\fR]
+   [\fB\-s\fR|\fB\-\-print\-armap\fR]
+   [\fB\-t\fR \fIradix\fR|\fB\-\-radix=\fR\fIradix\fR]
+   [\fB\-u\fR|\fB\-\-undefined\-only\fR]
+   [\fB\-V\fR|\fB\-\-version\fR]
+   [\fB\-X 32_64\fR]
+   [\fB\-\-defined\-only\fR]
+   [\fB\-\-no\-demangle\fR]
    [\fB\-\-no\-recurse\-limit\fR|\fB\-\-recurse\-limit\fR]]
-   [\fB\-\-size\-sort\fR] [\fB\-\-special\-syms\fR]
-   [\fB\-\-synthetic\fR] [\fB\-\-with\-symbol\-versions\fR]
-   [\fB\-\-without\-symbol\-versions\fR] [\fB\-\-target=\fR\fIbfdname\fR]
+   [\fB\-\-plugin\fR \fIname\fR]
+   [\fB\-\-size\-sort\fR]
+   [\fB\-\-special\-syms\fR]
+   [\fB\-\-synthetic\fR]
+   [\fB\-\-target=\fR\fIbfdname\fR]
+   [\fB\-\-with\-symbol\-versions\fR]
+   [\fB\-\-without\-symbol\-versions\fR]
    [\fIobjfile\fR...]
 .SH "DESCRIPTION"
 .IX Header "DESCRIPTION"
@@ -427,7 +441,7 @@ libraries.
 .IX Item "--format=format"
 .PD
 Use the output format \fIformat\fR, which can be \f(CW\*(C`bsd\*(C'\fR,
-\&\f(CW\*(C`sysv\*(C'\fR, or \f(CW\*(C`posix\*(C'\fR.  The default is \f(CW\*(C`bsd\*(C'\fR.
+\&\f(CW\*(C`sysv\*(C'\fR, \f(CW\*(C`posix\*(C'\fR or \f(CW\*(C`just\-symbols\*(C'\fR.  The default is \f(CW\*(C`bsd\*(C'\fR.
 Only the first character of \fIformat\fR is significant; it can be
 either upper or lower case.
 .IP "\fB\-g\fR" 4
@@ -453,6 +467,9 @@ the user to specify a string containing one or two characters. The
 first character will be used for global indirect function symbols and
 the second character, if present, will be used for local indirect
 function symbols.
+.IP "\fBj\fR" 4
+.IX Item "j"
+The same as \fB\-\-format=just\-symbols\fR.
 .IP "\fB\-l\fR" 4
 .IX Item "-l"
 .PD 0
