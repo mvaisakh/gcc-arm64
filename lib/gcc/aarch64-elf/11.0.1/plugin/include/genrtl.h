@@ -1628,6 +1628,8 @@ gen_rtx_fmt_ssss_stat (RTX_CODE code, machine_mode mode,
   gen_rtx_fmt_sse (DEFINE_MEMORY_CONSTRAINT, (MODE), (ARG0), (ARG1), (ARG2))
 #define gen_rtx_DEFINE_SPECIAL_MEMORY_CONSTRAINT(MODE, ARG0, ARG1, ARG2) \
   gen_rtx_fmt_sse (DEFINE_SPECIAL_MEMORY_CONSTRAINT, (MODE), (ARG0), (ARG1), (ARG2))
+#define gen_rtx_DEFINE_RELAXED_MEMORY_CONSTRAINT(MODE, ARG0, ARG1, ARG2) \
+  gen_rtx_fmt_sse (DEFINE_RELAXED_MEMORY_CONSTRAINT, (MODE), (ARG0), (ARG1), (ARG2))
 #define gen_rtx_DEFINE_ADDRESS_CONSTRAINT(MODE, ARG0, ARG1, ARG2) \
   gen_rtx_fmt_sse (DEFINE_ADDRESS_CONSTRAINT, (MODE), (ARG0), (ARG1), (ARG2))
 #define gen_rtx_EXCLUSION_SET(MODE, ARG0, ARG1) \

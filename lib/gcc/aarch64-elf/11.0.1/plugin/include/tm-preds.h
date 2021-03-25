@@ -231,6 +231,7 @@ enum constraint_num
   CONSTRAINT_Utn,
   CONSTRAINT_Utr,
   CONSTRAINT_Utv,
+  CONSTRAINT_Utx,
   CONSTRAINT_Utq,
   CONSTRAINT_UtQ,
   CONSTRAINT_UOb,
@@ -238,7 +239,6 @@ enum constraint_num
   CONSTRAINT_UOw,
   CONSTRAINT_UOd,
   CONSTRAINT_Uty,
-  CONSTRAINT_Utx,
   CONSTRAINT_p,
   CONSTRAINT_UPb,
   CONSTRAINT_UPd,
@@ -364,6 +364,12 @@ insn_extra_special_memory_constraint (enum constraint_num)
 }
 
 static inline bool
+insn_extra_relaxed_memory_constraint (enum constraint_num c)
+{
+  return c >= CONSTRAINT_Utq && c <= CONSTRAINT_Uty;
+}
+
+static inline bool
 insn_extra_address_constraint (enum constraint_num c)
 {
   return c >= CONSTRAINT_p && c <= CONSTRAINT_Dp;
@@ -425,6 +431,7 @@ enum constraint_type
   CT_CONST_INT,
   CT_MEMORY,
   CT_SPECIAL_MEMORY,
+  CT_RELAXED_MEMORY,
   CT_ADDRESS,
   CT_FIXED_FORM
 };
@@ -432,11 +439,13 @@ enum constraint_type
 static inline enum constraint_type
 get_constraint_type (enum constraint_num c)
 {
-  if (c >= CONSTRAINT_p)
+  if (c >= CONSTRAINT_Utq)
     {
       if (c >= CONSTRAINT_Uaa)
         return CT_FIXED_FORM;
-      return CT_ADDRESS;
+      if (c >= CONSTRAINT_p)
+        return CT_ADDRESS;
+      return CT_RELAXED_MEMORY;
     }
   if (c >= CONSTRAINT_m)
     return CT_MEMORY;

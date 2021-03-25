@@ -11147,7 +11147,7 @@ The hidden information for an 'asymbol' is described in a
      /* Macro: Returns true if the bfd is a PE executable as opposed to a
         PE object file.  */
      #define bfd_pei_p(abfd) \
-       (CONST_STRNEQ ((abfd)->xvec->name, "pei-"))
+       (startswith ((abfd)->xvec->name, "pei-"))
 
 3.3.2.8 Writing relocations
 ...........................
@@ -14802,13 +14802,13 @@ Node: BFD back ends393857
 Node: What to Put Where394127
 Node: aout394307
 Node: coff400589
-Node: elf428740
-Node: mmo429141
-Node: File layout430011
-Node: Symbol-table435924
-Node: mmo section mapping439687
-Node: GNU Free Documentation License443341
-Node: BFD Index468405
+Node: elf428738
+Node: mmo429139
+Node: File layout430009
+Node: Symbol-table435922
+Node: mmo section mapping439685
+Node: GNU Free Documentation License443339
+Node: BFD Index468403
 
 End Tag Table
 
