@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-03-25" "gcc-11.0.1" "GNU"
+.TH GCC 1 "2021-03-28" "gcc-11.0.1" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -13478,6 +13478,14 @@ Use both Advanced \s-1SIMD\s0 and \s-1SVE.\s0  Prefer \s-1SVE\s0 when the costs 
 .Sp
 The default value is 0.
 .RE
+.IP "\fBaarch64\-loop\-vect\-issue\-rate\-niters\fR" 4
+.IX Item "aarch64-loop-vect-issue-rate-niters"
+The tuning for some AArch64 CPUs tries to take both latencies and issue
+rates into account when deciding whether a loop should be vectorized
+using \s-1SVE,\s0 vectorized using Advanced \s-1SIMD,\s0 or not vectorized at all.
+If this parameter is set to \fIn\fR, \s-1GCC\s0 will not use this heuristic
+for loops that are known to execute in fewer than \fIn\fR Advanced
+\&\s-1SIMD\s0 iterations.
 .RE
 .RS 4
 .RE
