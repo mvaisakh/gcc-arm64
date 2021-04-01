@@ -1581,6 +1581,12 @@
 #endif
 
 
+/* Define if the PE linker has broken DWARF 5 support. */
+#ifndef USED_FOR_TARGET
+/* #undef HAVE_LD_BROKEN_PE_DWARF5 */
+#endif
+
+
 /* Define if your linker supports --build-id. */
 #ifndef USED_FOR_TARGET
 #define HAVE_LD_BUILDID 1
