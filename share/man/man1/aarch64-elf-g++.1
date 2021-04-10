@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-04-08" "gcc-11.0.1" "GNU"
+.TH GCC 1 "2021-04-10" "gcc-11.0.1" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -11461,10 +11461,12 @@ the link-time optimization step directly from the \s-1WPA\s0 phase.
 .IX Item "-flto-compression-level=n"
 This option specifies the level of compression used for intermediate
 language written to \s-1LTO\s0 object files, and is only meaningful in
-conjunction with \s-1LTO\s0 mode (\fB\-flto\fR).  Valid
-values are 0 (no compression) to 9 (maximum compression).  Values
-outside this range are clamped to either 0 or 9.  If the option is not
-given, a default balanced compression setting is used.
+conjunction with \s-1LTO\s0 mode (\fB\-flto\fR).  \s-1GCC\s0 currently supports two
+\&\s-1LTO\s0 compression algorithms. For zstd, valid values are 0 (no compression)
+to 19 (maximum compression), while zlib supports values from 0 to 9.
+Values outside this range are clamped to either minimum or maximum
+of the supported values.  If the option is not given,
+a default balanced compression setting is used.
 .IP "\fB\-fuse\-linker\-plugin\fR" 4
 .IX Item "-fuse-linker-plugin"
 Enables the use of a linker plugin during link-time optimization.  This
