@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "11.0.1 20210411 (experimental)")
+(!version  "11.0.1 20210415 (experimental)")
 (!srcdir  "../../gcc/gcc")
 (!languages 11 ada brig c cp d fortran go jit lto objc objcp)
 (!fileslist 223
@@ -235,7 +235,7 @@
 (!structures 1747
  
  (!type struct 1 nil  gc_used "source_range"
-  (!srcfileloc  "../libcpp/include/line-map.h" 760)
+  (!srcfileloc  "../libcpp/include/line-map.h" 756)
   (!fields 2 
    (!pair  "m_start"
     (!type scalar_nonchar 2 
@@ -275,7 +275,7 @@
    (!type already_seen 6)
   )
   gc_used "line_map_ordinary"
-  (!srcfileloc  "../libcpp/include/line-map.h" 729)
+  (!srcfileloc  "../libcpp/include/line-map.h" 725)
   (!fields 7 
    (!pair  "reason"
     (!type already_seen 2)
@@ -8499,101 +8499,101 @@
                            (!type struct 420 
                             (!type already_seen 419)
                             gc_maybe_pointed_to "machine_function"
-                            (!srcfileloc  "config/aarch64/aarch64.h" 913)
+                            (!srcfileloc  "config/aarch64/aarch64.h" 914)
                             (!fields 4 
                              (!pair  "frame"
                               (!type struct 421 nil  gc_used "aarch64_frame"
-                               (!srcfileloc  "config/aarch64/aarch64.h" 903)
+                               (!srcfileloc  "config/aarch64/aarch64.h" 904)
                                (!fields 17 
                                 (!pair  "reg_offset"
                                  (!type array 422 nil  gc_used "LAST_SAVED_REGNUM + 1" 
                                   (!type already_seen 2)
                                  )
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 826)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 827)
                                  nil )
                                 (!pair  "saved_varargs_size"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 832)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 833)
                                  nil )
                                 (!pair  "saved_regs_size"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 835)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 836)
                                  nil )
                                 (!pair  "below_hard_fp_saved_regs_size"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 839)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 840)
                                  nil )
                                 (!pair  "locals_offset"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 844)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 845)
                                  nil )
                                 (!pair  "hard_fp_offset"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 849)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 850)
                                  nil )
                                 (!pair  "frame_size"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 854)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 855)
                                  nil )
                                 (!pair  "initial_adjust"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 857)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 858)
                                  nil )
                                 (!pair  "callee_adjust"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 861)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 862)
                                  nil )
                                 (!pair  "callee_offset"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 865)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 866)
                                  nil )
                                 (!pair  "sve_callee_adjust"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 869)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 870)
                                  nil )
                                 (!pair  "final_adjust"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 872)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 873)
                                  nil )
                                 (!pair  "emit_frame_chain"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 875)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 876)
                                  nil )
                                 (!pair  "wb_candidate1"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 894)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 895)
                                  nil )
                                 (!pair  "wb_candidate2"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 895)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 896)
                                  nil )
                                 (!pair  "spare_pred_reg"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 900)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 901)
                                  nil )
                                 (!pair  "laid_out"
                                  (!type already_seen 2)
-                                 (!srcfileloc  "config/aarch64/aarch64.h" 902)
+                                 (!srcfileloc  "config/aarch64/aarch64.h" 903)
                                  nil )
                                )
                                nil 2047 nil nil )
-                              (!srcfileloc  "config/aarch64/aarch64.h" 907)
+                              (!srcfileloc  "config/aarch64/aarch64.h" 908)
                               nil )
                              (!pair  "reg_is_wrapped_separately"
                               (!type array 423 nil  gc_used "LAST_SAVED_REGNUM" 
                                (!type already_seen 2)
                               )
-                              (!srcfileloc  "config/aarch64/aarch64.h" 909)
+                              (!srcfileloc  "config/aarch64/aarch64.h" 910)
                               nil )
                              (!pair  "call_via"
                               (!type array 424 nil  gc_used "SP_REGNUM" 
                                (!type already_seen 100)
                               )
-                              (!srcfileloc  "config/aarch64/aarch64.h" 911)
+                              (!srcfileloc  "config/aarch64/aarch64.h" 912)
                               nil )
                              (!pair  "label_is_assembled"
                               (!type already_seen 2)
-                              (!srcfileloc  "config/aarch64/aarch64.h" 912)
+                              (!srcfileloc  "config/aarch64/aarch64.h" 913)
                               nil )
                             )
                             nil 2047 nil nil )
@@ -13586,49 +13586,49 @@
                            (!type struct 581 
                             (!type already_seen 580)
                             gc_pointed_to "target_rtl"
-                            (!srcfileloc  "rtl.h" 3879)
+                            (!srcfileloc  "rtl.h" 3896)
                             (!fields 8 
                              (!pair  "x_global_rtl"
                               (!type array 582 nil  gc_used "GR_MAX" 
                                (!type already_seen 100)
                               )
-                              (!srcfileloc  "rtl.h" 3851)
+                              (!srcfileloc  "rtl.h" 3868)
                               nil )
                              (!pair  "x_pic_offset_table_rtx"
                               (!type already_seen 100)
-                              (!srcfileloc  "rtl.h" 3854)
+                              (!srcfileloc  "rtl.h" 3871)
                               nil )
                              (!pair  "x_return_address_pointer_rtx"
                               (!type already_seen 100)
-                              (!srcfileloc  "rtl.h" 3859)
+                              (!srcfileloc  "rtl.h" 3876)
                               nil )
                              (!pair  "x_initial_regno_reg_rtx"
                               (!type array 583 nil  gc_used "FIRST_PSEUDO_REGISTER" 
                                (!type already_seen 100)
                               )
-                              (!srcfileloc  "rtl.h" 3865)
+                              (!srcfileloc  "rtl.h" 3882)
                               nil )
                              (!pair  "x_top_of_stack"
                               (!type array 584 nil  gc_used "MAX_MACHINE_MODE" 
                                (!type already_seen 100)
                               )
-                              (!srcfileloc  "rtl.h" 3868)
+                              (!srcfileloc  "rtl.h" 3885)
                               nil )
                              (!pair  "x_static_reg_base_value"
                               (!type array 585 nil  gc_used "FIRST_PSEUDO_REGISTER" 
                                (!type already_seen 100)
                               )
-                              (!srcfileloc  "rtl.h" 3872)
+                              (!srcfileloc  "rtl.h" 3889)
                               nil )
                              (!pair  "x_mode_mem_attrs"
                               (!type array 586 nil  gc_used "(int) MAX_MACHINE_MODE" 
                                (!type already_seen 226)
                               )
-                              (!srcfileloc  "rtl.h" 3875)
+                              (!srcfileloc  "rtl.h" 3892)
                               nil )
                              (!pair  "target_specific_initialized"
                               (!type already_seen 2)
-                              (!srcfileloc  "rtl.h" 3878)
+                              (!srcfileloc  "rtl.h" 3895)
                               nil )
                             )
                             nil 2047 nil nil )
@@ -15290,7 +15290,7 @@
    (!type already_seen 686)
   )
   gc_used "line_map_macro"
-  (!srcfileloc  "../libcpp/include/line-map.h" 744)
+  (!srcfileloc  "../libcpp/include/line-map.h" 740)
   (!fields 4 
    (!pair  "n_tokens"
     (!type already_seen 2)
@@ -15325,43 +15325,43 @@
  )
  
  (!type struct 688 nil  gc_used "maps_info_ordinary"
-  (!srcfileloc  "../libcpp/include/line-map.h" 789)
+  (!srcfileloc  "../libcpp/include/line-map.h" 785)
   (!fields 3 
    (!pair  "maps"
     (!type already_seen 7)
-    (!srcfileloc  "../libcpp/include/line-map.h" 729)
+    (!srcfileloc  "../libcpp/include/line-map.h" 725)
     (!options 
      (!option length string  "%h.used")
     )
    )
    (!pair  "allocated"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 732)
+    (!srcfileloc  "../libcpp/include/line-map.h" 728)
     nil )
    (!pair  "used"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 736)
+    (!srcfileloc  "../libcpp/include/line-map.h" 732)
     nil )
   )
   nil 2047 nil nil )
  
  (!type struct 689 nil  gc_used "maps_info_macro"
-  (!srcfileloc  "../libcpp/include/line-map.h" 791)
+  (!srcfileloc  "../libcpp/include/line-map.h" 787)
   (!fields 3 
    (!pair  "maps"
     (!type already_seen 687)
-    (!srcfileloc  "../libcpp/include/line-map.h" 744)
+    (!srcfileloc  "../libcpp/include/line-map.h" 740)
     (!options 
      (!option length string  "%h.used")
     )
    )
    (!pair  "allocated"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 747)
+    (!srcfileloc  "../libcpp/include/line-map.h" 743)
     nil )
    (!pair  "used"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 751)
+    (!srcfileloc  "../libcpp/include/line-map.h" 747)
     nil )
   )
   nil 2047 nil nil )
@@ -15371,19 +15371,19 @@
    (!type already_seen 690)
   )
   gc_used "location_adhoc_data"
-  (!srcfileloc  "../libcpp/include/line-map.h" 762)
+  (!srcfileloc  "../libcpp/include/line-map.h" 758)
   (!fields 3 
    (!pair  "locus"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 759)
+    (!srcfileloc  "../libcpp/include/line-map.h" 755)
     nil )
    (!pair  "src_range"
     (!type already_seen 1)
-    (!srcfileloc  "../libcpp/include/line-map.h" 760)
+    (!srcfileloc  "../libcpp/include/line-map.h" 756)
     nil )
    (!pair  "data"
     (!type already_seen 3)
-    (!srcfileloc  "../libcpp/include/line-map.h" 761)
+    (!srcfileloc  "../libcpp/include/line-map.h" 757)
     (!options 
      (!option skip string  "")
     )
@@ -15394,26 +15394,26 @@
  (!type already_seen 332)
  
  (!type struct 692 nil  gc_used "location_adhoc_data_map"
-  (!srcfileloc  "../libcpp/include/line-map.h" 781)
+  (!srcfileloc  "../libcpp/include/line-map.h" 777)
   (!fields 4 
    (!pair  "htab"
     (!type already_seen 331)
-    (!srcfileloc  "../libcpp/include/line-map.h" 777)
+    (!srcfileloc  "../libcpp/include/line-map.h" 773)
     (!options 
      (!option skip string  "")
     )
    )
    (!pair  "curr_loc"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 778)
+    (!srcfileloc  "../libcpp/include/line-map.h" 774)
     nil )
    (!pair  "allocated"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 779)
+    (!srcfileloc  "../libcpp/include/line-map.h" 775)
     nil )
    (!pair  "data"
     (!type already_seen 691)
-    (!srcfileloc  "../libcpp/include/line-map.h" 780)
+    (!srcfileloc  "../libcpp/include/line-map.h" 776)
     (!options 
      (!option length string  "%h.allocated")
     )
@@ -15426,72 +15426,72 @@
    (!type already_seen 693)
   )
   gc_pointed_to "line_maps"
-  (!srcfileloc  "../libcpp/include/line-map.h" 830)
+  (!srcfileloc  "../libcpp/include/line-map.h" 826)
   (!fields 15 
    (!pair  "info_ordinary"
     (!type already_seen 688)
-    (!srcfileloc  "../libcpp/include/line-map.h" 789)
+    (!srcfileloc  "../libcpp/include/line-map.h" 785)
     nil )
    (!pair  "info_macro"
     (!type already_seen 689)
-    (!srcfileloc  "../libcpp/include/line-map.h" 791)
+    (!srcfileloc  "../libcpp/include/line-map.h" 787)
     nil )
    (!pair  "depth"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 794)
+    (!srcfileloc  "../libcpp/include/line-map.h" 790)
     nil )
    (!pair  "trace_includes"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 797)
+    (!srcfileloc  "../libcpp/include/line-map.h" 793)
     nil )
    (!pair  "highest_location"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 800)
+    (!srcfileloc  "../libcpp/include/line-map.h" 796)
     nil )
    (!pair  "highest_line"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 803)
+    (!srcfileloc  "../libcpp/include/line-map.h" 799)
     nil )
    (!pair  "max_column_hint"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 807)
+    (!srcfileloc  "../libcpp/include/line-map.h" 803)
     nil )
    (!pair  "reallocator"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 810)
+    (!srcfileloc  "../libcpp/include/line-map.h" 806)
     nil )
    (!pair  "round_alloc_size"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 814)
+    (!srcfileloc  "../libcpp/include/line-map.h" 810)
     nil )
    (!pair  "location_adhoc_data_map"
     (!type already_seen 692)
-    (!srcfileloc  "../libcpp/include/line-map.h" 816)
+    (!srcfileloc  "../libcpp/include/line-map.h" 812)
     nil )
    (!pair  "builtin_location"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 820)
+    (!srcfileloc  "../libcpp/include/line-map.h" 816)
     nil )
    (!pair  "seen_line_directive"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 823)
+    (!srcfileloc  "../libcpp/include/line-map.h" 819)
     nil )
    (!pair  "default_range_bits"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 826)
+    (!srcfileloc  "../libcpp/include/line-map.h" 822)
     nil )
    (!pair  "num_optimized_ranges"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 828)
+    (!srcfileloc  "../libcpp/include/line-map.h" 824)
     nil )
    (!pair  "num_unoptimized_ranges"
     (!type already_seen 2)
-    (!srcfileloc  "../libcpp/include/line-map.h" 829)
+    (!srcfileloc  "../libcpp/include/line-map.h" 825)
     nil )
   )
   nil 2047 nil nil )
  
- (!type struct 695 nil  gc_unused "anonymous:../../gcc/gcc/../libcpp/include/line-map.h:1304"nil 
+ (!type struct 695 nil  gc_unused "anonymous:../../gcc/gcc/../libcpp/include/line-map.h:1300"nil 
   (!fields 0 )
   nil 0 nil nil )
  
@@ -17023,15 +17023,15 @@
      (!type struct 823 
       (!type already_seen 822)
       gc_pointed_to "cgraph_rtl_info"
-      (!srcfileloc  "rtl.h" 4519)
+      (!srcfileloc  "rtl.h" 4536)
       (!fields 2 
        (!pair  "preferred_incoming_stack_boundary"
         (!type already_seen 2)
-        (!srcfileloc  "rtl.h" 4514)
+        (!srcfileloc  "rtl.h" 4531)
         nil )
        (!pair  "function_used_regs"
         (!type already_seen 2)
-        (!srcfileloc  "rtl.h" 4518)
+        (!srcfileloc  "rtl.h" 4535)
         nil )
       )
       nil 2047 nil nil )
@@ -17316,7 +17316,7 @@
  
  (!type already_seen 420)
  
- (!type struct 844 nil  gc_unused "anonymous:../../gcc/gcc/config/aarch64/aarch64.h:955"nil 
+ (!type struct 844 nil  gc_unused "anonymous:../../gcc/gcc/config/aarch64/aarch64.h:956"nil 
   (!fields 0 )
   nil 0 nil nil )
  
@@ -26970,7 +26970,7 @@
    (!type already_seen 1941)
   )
   gc_pointed_to "tinst_level"
-  (!srcfileloc  "cp/pt.c" 9459)
+  (!srcfileloc  "cp/pt.c" 9463)
   (!fields 8 
    (!pair  "next"
     (!type already_seen 1942)
@@ -27531,7 +27531,7 @@
    (!type already_seen 1985)
   )
   gc_pointed_to "cp_parser"
-  (!srcfileloc  "cp/parser.c" 44786)
+  (!srcfileloc  "cp/parser.c" 44807)
   (!fields 38 
    (!pair  "lexer"
     (!type already_seen 1971)
@@ -27751,15 +27751,15 @@
    (!type already_seen 2000)
   )
   gc_pointed_to "hash_map<tree,int>"
-  (!srcfileloc  "cp/class.c" 3369)
+  (!srcfileloc  "cp/class.c" 3376)
   (!fields 2 
    (!pair  "int"
     (!type already_seen 372)
-    (!srcfileloc  "cp/class.c" 3369)
+    (!srcfileloc  "cp/class.c" 3376)
     nil )
    (!pair  "tree"
     (!type already_seen 23)
-    (!srcfileloc  "cp/class.c" 3369)
+    (!srcfileloc  "cp/class.c" 3376)
     nil )
   )
  )
@@ -28156,7 +28156,7 @@
   nil 0 nil nil )
  
  (!type struct 2053 nil  gc_used "typename_hasher"
-  (!srcfileloc  "cp/decl.c" 3947)
+  (!srcfileloc  "cp/decl.c" 3948)
   (!fields 0 )
   nil 1032 nil nil )
  
@@ -28165,11 +28165,11 @@
    (!type already_seen 2054)
   )
   gc_pointed_to "hash_table<typename_hasher>"
-  (!srcfileloc  "cp/decl.c" 3947)
+  (!srcfileloc  "cp/decl.c" 3948)
   (!fields 1 
    (!pair  "typename_hasher"
     (!type already_seen 2053)
-    (!srcfileloc  "cp/decl.c" 3947)
+    (!srcfileloc  "cp/decl.c" 3948)
     nil )
   )
  )
@@ -28823,7 +28823,7 @@
   nil 0 nil nil )
  
  (!type undefined 2146 nil  gc_unused "class_to_loc_map_t::iterator"
-  (!srcfileloc  "cp/parser.c" 32503)
+  (!srcfileloc  "cp/parser.c" 32524)
  )
  
  (!type struct 2147 
@@ -28831,7 +28831,7 @@
    (!type already_seen 2147)
   )
   gc_pointed_to "pending_template"
-  (!srcfileloc  "cp/pt.c" 9468)
+  (!srcfileloc  "cp/pt.c" 9472)
   (!fields 2 
    (!pair  "next"
     (!type already_seen 2148)
@@ -28903,15 +28903,15 @@
    (!type already_seen 2160)
   )
   gc_pointed_to "hash_map<tree,tree_pair_p>"
-  (!srcfileloc  "cp/pt.c" 29177)
+  (!srcfileloc  "cp/pt.c" 29199)
   (!fields 2 
    (!pair  "tree_pair_p"
     (!type already_seen 532)
-    (!srcfileloc  "cp/pt.c" 29177)
+    (!srcfileloc  "cp/pt.c" 29199)
     nil )
    (!pair  "tree"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 29177)
+    (!srcfileloc  "cp/pt.c" 29199)
     nil )
   )
  )
@@ -30044,15 +30044,15 @@
   nil )
  (!pair  "hash_map<tree,tree_pair_p>"
   (!type already_seen 2160)
-  (!srcfileloc  "cp/pt.c" 29177)
+  (!srcfileloc  "cp/pt.c" 29199)
   nil )
  (!pair  "pending_template"
   (!type already_seen 2147)
-  (!srcfileloc  "cp/pt.c" 9468)
+  (!srcfileloc  "cp/pt.c" 9472)
   nil )
  (!pair  "tinst_level"
   (!type already_seen 1941)
-  (!srcfileloc  "cp/pt.c" 9459)
+  (!srcfileloc  "cp/pt.c" 9463)
   nil )
  (!pair  "spec_hash_table"
   (!type already_seen 2150)
@@ -30072,15 +30072,15 @@
   nil )
  (!pair  "cp_parser"
   (!type already_seen 1985)
-  (!srcfileloc  "cp/parser.c" 44786)
+  (!srcfileloc  "cp/parser.c" 44807)
   nil )
  (!pair  "iter_t"
   (!type already_seen 2146)
-  (!srcfileloc  "cp/parser.c" 32503)
+  (!srcfileloc  "cp/parser.c" 32524)
   nil )
  (!pair  "class_to_loc_map_t::iterator"
   (!type already_seen 2146)
-  (!srcfileloc  "cp/parser.c" 32503)
+  (!srcfileloc  "cp/parser.c" 32524)
   nil )
  (!pair  "cp_parser_expression_stack"
   (!type array 2269 nil  gc_unused "NUM_PREC_VALUES" 
@@ -30316,11 +30316,11 @@
   nil )
  (!pair  "typename_hasher"
   (!type already_seen 2053)
-  (!srcfileloc  "cp/decl.c" 3947)
+  (!srcfileloc  "cp/decl.c" 3948)
   nil )
  (!pair  "hash_table<typename_hasher>"
   (!type already_seen 2054)
-  (!srcfileloc  "cp/decl.c" 3947)
+  (!srcfileloc  "cp/decl.c" 3948)
   nil )
  (!pair  "incomplete_var"
   (!type already_seen 2048)
@@ -30392,7 +30392,7 @@
   nil )
  (!pair  "hash_map<tree,int>"
   (!type already_seen 2000)
-  (!srcfileloc  "cp/class.c" 3369)
+  (!srcfileloc  "cp/class.c" 3376)
   nil )
  (!pair  "subobject_offset_fn"
   (!type already_seen 2)
@@ -30720,7 +30720,7 @@
   nil )
  (!pair  "atomic_acces_t"
   (!type already_seen 2)
-  (!srcfileloc  "ada/gcc-interface/trans.c" 4154)
+  (!srcfileloc  "ada/gcc-interface/trans.c" 4159)
   nil )
  (!pair  "vec<loop_info,va_gc>"
   (!type already_seen 1826)
@@ -32648,15 +32648,15 @@
   nil )
  (!pair  "hash_rtx_callback_function"
   (!type already_seen 2)
-  (!srcfileloc  "rtl.h" 3667)
+  (!srcfileloc  "rtl.h" 3684)
   nil )
  (!pair  "rtx_equal_p_callback_function"
   (!type already_seen 2)
-  (!srcfileloc  "rtl.h" 3662)
+  (!srcfileloc  "rtl.h" 3679)
   nil )
  (!pair  "for_each_inc_dec_fn"
   (!type already_seen 2)
-  (!srcfileloc  "rtl.h" 3658)
+  (!srcfileloc  "rtl.h" 3675)
   nil )
  (!pair  "rtx_to_poly_wide_ref"
   (!type already_seen 909)
@@ -32952,7 +32952,7 @@
   nil )
  (!pair  "machine_function"
   (!type already_seen 420)
-  (!srcfileloc  "config/aarch64/aarch64.h" 913)
+  (!srcfileloc  "config/aarch64/aarch64.h" 914)
   nil )
  (!pair  "uchar"
   (!type already_seen 8)
@@ -33228,27 +33228,27 @@
   nil )
  (!pair  "expanded_location"
   (!type already_seen 695)
-  (!srcfileloc  "../libcpp/include/line-map.h" 1317)
+  (!srcfileloc  "../libcpp/include/line-map.h" 1313)
   nil )
  (!pair  "maps_info_macro"
   (!type already_seen 689)
-  (!srcfileloc  "../libcpp/include/line-map.h" 791)
+  (!srcfileloc  "../libcpp/include/line-map.h" 787)
   nil )
  (!pair  "maps_info_ordinary"
   (!type already_seen 688)
-  (!srcfileloc  "../libcpp/include/line-map.h" 789)
+  (!srcfileloc  "../libcpp/include/line-map.h" 785)
   nil )
  (!pair  "source_range"
   (!type already_seen 1)
-  (!srcfileloc  "../libcpp/include/line-map.h" 760)
+  (!srcfileloc  "../libcpp/include/line-map.h" 756)
   nil )
  (!pair  "line_map_macro"
   (!type already_seen 686)
-  (!srcfileloc  "../libcpp/include/line-map.h" 744)
+  (!srcfileloc  "../libcpp/include/line-map.h" 740)
   nil )
  (!pair  "line_map_ordinary"
   (!type already_seen 6)
-  (!srcfileloc  "../libcpp/include/line-map.h" 729)
+  (!srcfileloc  "../libcpp/include/line-map.h" 725)
   nil )
  (!pair  "line_map_round_alloc_size_func"
   (!type already_seen 2)
@@ -34305,37 +34305,37 @@
   (!type array 2297 nil  gc_used "(int) BT_LAST + 1" 
    (!type already_seen 23)
   )
-  (!srcfileloc  "d/d-builtins.cc" 1024)
+  (!srcfileloc  "d/d-builtins.cc" 1005)
   nil )
  (!pair  "built_in_attributes"
   (!type array 2298 nil  gc_used "(int) ATTR_LAST" 
    (!type already_seen 23)
   )
-  (!srcfileloc  "d/d-builtins.cc" 928)
+  (!srcfileloc  "d/d-builtins.cc" 909)
   nil )
  (!pair  "signed_size_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 779)
+  (!srcfileloc  "d/d-builtins.cc" 760)
   nil )
  (!pair  "uintmax_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 778)
+  (!srcfileloc  "d/d-builtins.cc" 759)
   nil )
  (!pair  "intmax_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 777)
+  (!srcfileloc  "d/d-builtins.cc" 758)
   nil )
  (!pair  "wint_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 776)
+  (!srcfileloc  "d/d-builtins.cc" 757)
   nil )
  (!pair  "const_string_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 775)
+  (!srcfileloc  "d/d-builtins.cc" 756)
   nil )
  (!pair  "string_type_node"
   (!type already_seen 23)
-  (!srcfileloc  "d/d-builtins.cc" 774)
+  (!srcfileloc  "d/d-builtins.cc" 755)
   nil )
  (!pair  "gcc_builtins_types"
   (!type already_seen 84)
@@ -34401,60 +34401,60 @@
   nil )
  (!pair  "dguide_cache"
   (!type already_seen 2161)
-  (!srcfileloc  "cp/pt.c" 29177)
+  (!srcfileloc  "cp/pt.c" 29199)
   (!options 
    (!option deletable string  "")
   )
  )
  (!pair  "explicit_specifier_map"
   (!type already_seen 925)
-  (!srcfileloc  "cp/pt.c" 13717)
+  (!srcfileloc  "cp/pt.c" 13737)
   (!options 
    (!option cache string  "")
   )
  )
  (!pair  "defarg_inst"
   (!type already_seen 925)
-  (!srcfileloc  "cp/pt.c" 13601)
+  (!srcfileloc  "cp/pt.c" 13621)
   (!options 
    (!option cache string  "")
   )
  )
  (!pair  "last_error_tinst_level"
   (!type already_seen 1942)
-  (!srcfileloc  "cp/pt.c" 10898)
+  (!srcfileloc  "cp/pt.c" 10918)
   nil )
  (!pair  "pending_template_freelist_head"
   (!type already_seen 2148)
-  (!srcfileloc  "cp/pt.c" 9468)
+  (!srcfileloc  "cp/pt.c" 9472)
   (!options 
    (!option deletable string  "")
   )
  )
  (!pair  "tinst_level_freelist_head"
   (!type already_seen 1942)
-  (!srcfileloc  "cp/pt.c" 9459)
+  (!srcfileloc  "cp/pt.c" 9463)
   (!options 
    (!option deletable string  "")
   )
  )
  (!pair  "tree_list_freelist_head"
   (!type already_seen 23)
-  (!srcfileloc  "cp/pt.c" 9450)
+  (!srcfileloc  "cp/pt.c" 9454)
   (!options 
    (!option deletable string  "")
   )
  )
  (!pair  "defaulted_ttp_cache"
   (!type already_seen 392)
-  (!srcfileloc  "cp/pt.c" 7765)
+  (!srcfileloc  "cp/pt.c" 7769)
   (!options 
    (!option deletable string  "")
   )
  )
  (!pair  "tparm_obj_values"
   (!type already_seen 392)
-  (!srcfileloc  "cp/pt.c" 7117)
+  (!srcfileloc  "cp/pt.c" 7121)
   nil )
  (!pair  "canonical_template_parms"
   (!type already_seen 84)
@@ -34486,15 +34486,15 @@
   nil )
  (!pair  "generic_parm_count"
   (!type already_seen 2)
-  (!srcfileloc  "cp/parser.c" 45278)
+  (!srcfileloc  "cp/parser.c" 45299)
   nil )
  (!pair  "the_parser"
   (!type already_seen 1986)
-  (!srcfileloc  "cp/parser.c" 44786)
+  (!srcfileloc  "cp/parser.c" 44807)
   nil )
  (!pair  "cp_parser_decl_specs_attrs"
   (!type already_seen 84)
-  (!srcfileloc  "cp/parser.c" 18352)
+  (!srcfileloc  "cp/parser.c" 18367)
   nil )
  (!pair  "cp_parser_context_free_list"
   (!type already_seen 1978)
@@ -34674,18 +34674,18 @@
   nil )
  (!pair  "start_cleanup_cnt"
   (!type already_seen 2)
-  (!srcfileloc  "cp/decl.c" 8941)
+  (!srcfileloc  "cp/decl.c" 8950)
   nil )
  (!pair  "decomp_type_table"
   (!type already_seen 925)
-  (!srcfileloc  "cp/decl.c" 8394)
+  (!srcfileloc  "cp/decl.c" 8403)
   (!options 
    (!option cache string  "")
   )
  )
  (!pair  "typename_htab"
   (!type already_seen 2055)
-  (!srcfileloc  "cp/decl.c" 3947)
+  (!srcfileloc  "cp/decl.c" 3948)
   nil )
  (!pair  "local_entities"
   (!type already_seen 84)
@@ -34875,15 +34875,15 @@
   nil )
  (!pair  "dvirt_fn"
   (!type already_seen 23)
-  (!srcfileloc  "cp/class.c" 9767)
+  (!srcfileloc  "cp/class.c" 9774)
   nil )
  (!pair  "abort_fndecl_addr"
   (!type already_seen 23)
-  (!srcfileloc  "cp/class.c" 9766)
+  (!srcfileloc  "cp/class.c" 9773)
   nil )
  (!pair  "enum_to_min_precision"
   (!type already_seen 2001)
-  (!srcfileloc  "cp/class.c" 3369)
+  (!srcfileloc  "cp/class.c" 3376)
   (!options 
    (!option deletable string  "")
   )
@@ -35156,7 +35156,7 @@
   nil )
  (!pair  "gnat_eh_personality_decl"
   (!type already_seen 23)
-  (!srcfileloc  "ada/gcc-interface/misc.c" 1284)
+  (!srcfileloc  "ada/gcc-interface/misc.c" 1287)
   nil )
  (!pair  "built_in_attributes"
   (!type array 2313 nil  gc_used "(int) ATTR_LAST" 
@@ -35248,7 +35248,7 @@
  )
  (!pair  "thunk_labelno"
   (!type already_seen 2)
-  (!srcfileloc  "ada/gcc-interface/trans.c" 10586)
+  (!srcfileloc  "ada/gcc-interface/trans.c" 10570)
   nil )
  (!pair  "gnu_loop_stack"
   (!type already_seen 1827)
@@ -35464,21 +35464,21 @@
   nil )
  (!pair  "aarch64_sls_shared_thunks_needed"
   (!type already_seen 2)
-  (!srcfileloc  "config/aarch64/aarch64.c" 25277)
+  (!srcfileloc  "config/aarch64/aarch64.c" 25331)
   nil )
  (!pair  "aarch64_sls_shared_thunks"
   (!type array 2327 nil  gc_used "30" 
    (!type already_seen 23)
   )
-  (!srcfileloc  "config/aarch64/aarch64.c" 25276)
+  (!srcfileloc  "config/aarch64/aarch64.c" 25330)
   nil )
  (!pair  "va_list_type"
   (!type already_seen 23)
-  (!srcfileloc  "config/aarch64/aarch64.c" 18003)
+  (!srcfileloc  "config/aarch64/aarch64.c" 18057)
   nil )
  (!pair  "aarch64_previous_fndecl"
   (!type already_seen 23)
-  (!srcfileloc  "config/aarch64/aarch64.c" 16985)
+  (!srcfileloc  "config/aarch64/aarch64.c" 17039)
   nil )
  (!pair  "tls_get_addr_libfunc"
   (!type already_seen 100)
@@ -36584,31 +36584,31 @@
   nil )
  (!pair  "stack_limit_rtx"
   (!type already_seen 100)
-  (!srcfileloc  "rtl.h" 4449)
+  (!srcfileloc  "rtl.h" 4466)
   nil )
  (!pair  "default_target_rtl"
   (!type already_seen 581)
-  (!srcfileloc  "rtl.h" 3881)
+  (!srcfileloc  "rtl.h" 3898)
   nil )
  (!pair  "invalid_insn_rtx"
   (!type already_seen 295)
-  (!srcfileloc  "rtl.h" 3779)
+  (!srcfileloc  "rtl.h" 3796)
   nil )
  (!pair  "simple_return_rtx"
   (!type already_seen 100)
-  (!srcfileloc  "rtl.h" 3778)
+  (!srcfileloc  "rtl.h" 3795)
   nil )
  (!pair  "ret_rtx"
   (!type already_seen 100)
-  (!srcfileloc  "rtl.h" 3777)
+  (!srcfileloc  "rtl.h" 3794)
   nil )
  (!pair  "cc0_rtx"
   (!type already_seen 100)
-  (!srcfileloc  "rtl.h" 3776)
+  (!srcfileloc  "rtl.h" 3793)
   nil )
  (!pair  "pc_rtx"
   (!type already_seen 100)
-  (!srcfileloc  "rtl.h" 3775)
+  (!srcfileloc  "rtl.h" 3792)
   nil )
  (!pair  "const_tiny_rtx"
   (!type array 2337 nil  gc_used "4" 
@@ -36616,17 +36616,17 @@
     (!type already_seen 100)
    )
   )
-  (!srcfileloc  "rtl.h" 3762)
+  (!srcfileloc  "rtl.h" 3779)
   nil )
  (!pair  "const_true_rtx"
   (!type already_seen 100)
-  (!srcfileloc  "rtl.h" 3760)
+  (!srcfileloc  "rtl.h" 3777)
   nil )
  (!pair  "const_int_rtx"
   (!type array 2339 nil  gc_used "MAX_SAVED_CONST_INT * 2 + 1" 
    (!type already_seen 100)
   )
-  (!srcfileloc  "rtl.h" 3754)
+  (!srcfileloc  "rtl.h" 3771)
   nil )
  (!pair  "gcov_fn_info_ptr_type"
   (!type already_seen 23)
