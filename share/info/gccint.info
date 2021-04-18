@@ -42438,6 +42438,12 @@ File: gccint.info,  Node: D Language and ABI,  Next: Named Address Spaces,  Prev
      'extern(System)' linkage, and LINK_WINDOWS to '1' to apply
      'stdcall' to functions with 'extern(Windows)' linkage.
 
+ -- D Target Hook: bool TARGET_D_TEMPLATES_ALWAYS_COMDAT
+     This flag is true if instantiated functions and variables are
+     always COMDAT if they have external linkage.  If this flag is
+     false, then instantiated decls will be emitted as weak symbols.
+     The default is 'false'.
+
 
 File: gccint.info,  Node: Named Address Spaces,  Next: Misc,  Prev: D Language and ABI,  Up: Target Macros
 
@@ -56903,6 +56909,7 @@ Concept Index
 * TARGET_D_OS_VERSIONS:                  D Language and ABI. (line   13)
 * TARGET_D_REGISTER_CPU_TARGET_INFO:     D Language and ABI. (line   17)
 * TARGET_D_REGISTER_OS_TARGET_INFO:      D Language and ABI. (line   25)
+* TARGET_D_TEMPLATES_ALWAYS_COMDAT:      D Language and ABI. (line   55)
 * TARGET_EDOM:                           Library Calls.      (line   59)
 * TARGET_EMIT_CALL_BUILTIN___CLEAR_CACHE: Trampolines.       (line  128)
 * TARGET_EMPTY_RECORD_P:                 Aggregate Return.   (line   86)
@@ -58235,61 +58242,61 @@ Node: MIPS Coprocessors1832163
 Node: PCH Target1833322
 Node: C++ ABI1835164
 Node: D Language and ABI1839956
-Node: Named Address Spaces1842609
-Node: Misc1848536
-Ref: TARGET_SHIFT_TRUNCATION_MASK1856407
-Node: Host Config1915493
-Node: Host Common1916562
-Node: Filesystem1918936
-Node: Host Misc1923051
-Node: Fragments1925500
-Node: Target Fragment1926695
-Node: Host Fragment1937507
-Node: Collect21937747
-Node: Header Dirs1940383
-Node: Type Information1941806
-Node: GTY Options1945082
-Node: Inheritance and GTY1956341
-Ref: Inheritance and GTY-Footnote-11957906
-Node: User GC1958176
-Node: GGC Roots1961915
-Node: Files1962628
-Node: Invoking the garbage collector1965335
-Node: Troubleshooting1966840
-Node: Plugins1967915
-Node: Plugins loading1969044
-Node: Plugin API1970143
-Node: Plugins pass1978010
-Node: Plugins GC1979981
-Node: Plugins description1981698
-Node: Plugins attr1982234
-Node: Plugins recording1984514
-Node: Plugins gate1985364
-Node: Plugins tracking1985955
-Node: Plugins building1986543
-Node: LTO1990044
-Node: LTO Overview1990916
-Node: LTO object file layout1996743
-Node: IPA2001373
-Node: WHOPR2010423
-Node: Internal flags2014983
-Node: Match and Simplify2016394
-Node: GIMPLE API2017356
-Node: The Language2020151
-Node: Static Analyzer2032650
-Node: Analyzer Internals2032915
-Node: Debugging the Analyzer2048802
-Node: User Experience Guidelines2051239
-Node: Guidelines for Diagnostics2052175
-Ref: input_location_example2060350
-Node: Guidelines for Options2070035
-Node: Funding2070212
-Node: GNU Project2072719
-Node: Copying2073368
-Node: GNU Free Documentation License2110879
-Node: Contributors2136000
-Node: Option Index2176976
-Node: Concept Index2177853
+Node: Named Address Spaces1842899
+Node: Misc1848826
+Ref: TARGET_SHIFT_TRUNCATION_MASK1856697
+Node: Host Config1915783
+Node: Host Common1916852
+Node: Filesystem1919226
+Node: Host Misc1923341
+Node: Fragments1925790
+Node: Target Fragment1926985
+Node: Host Fragment1937797
+Node: Collect21938037
+Node: Header Dirs1940673
+Node: Type Information1942096
+Node: GTY Options1945372
+Node: Inheritance and GTY1956631
+Ref: Inheritance and GTY-Footnote-11958196
+Node: User GC1958466
+Node: GGC Roots1962205
+Node: Files1962918
+Node: Invoking the garbage collector1965625
+Node: Troubleshooting1967130
+Node: Plugins1968205
+Node: Plugins loading1969334
+Node: Plugin API1970433
+Node: Plugins pass1978300
+Node: Plugins GC1980271
+Node: Plugins description1981988
+Node: Plugins attr1982524
+Node: Plugins recording1984804
+Node: Plugins gate1985654
+Node: Plugins tracking1986245
+Node: Plugins building1986833
+Node: LTO1990334
+Node: LTO Overview1991206
+Node: LTO object file layout1997033
+Node: IPA2001663
+Node: WHOPR2010713
+Node: Internal flags2015273
+Node: Match and Simplify2016684
+Node: GIMPLE API2017646
+Node: The Language2020441
+Node: Static Analyzer2032940
+Node: Analyzer Internals2033205
+Node: Debugging the Analyzer2049092
+Node: User Experience Guidelines2051529
+Node: Guidelines for Diagnostics2052465
+Ref: input_location_example2060640
+Node: Guidelines for Options2070325
+Node: Funding2070502
+Node: GNU Project2073009
+Node: Copying2073658
+Node: GNU Free Documentation License2111169
+Node: Contributors2136290
+Node: Option Index2177266
+Node: Concept Index2178143
 
 End Tag Table
 

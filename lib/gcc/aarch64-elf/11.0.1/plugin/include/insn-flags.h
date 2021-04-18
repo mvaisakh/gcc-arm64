@@ -6020,6 +6020,10 @@
 #define HAVE_aarch64_sve_trn2vnx2bi (TARGET_SVE)
 #define HAVE_aarch64_sve_uzp1vnx2bi (TARGET_SVE)
 #define HAVE_aarch64_sve_uzp2vnx2bi (TARGET_SVE)
+#define HAVE_aarch64_sve_trn1_convvnx16bi (TARGET_SVE)
+#define HAVE_aarch64_sve_trn1_convvnx8bi (TARGET_SVE)
+#define HAVE_aarch64_sve_trn1_convvnx4bi (TARGET_SVE)
+#define HAVE_aarch64_sve_trn1_convvnx2bi (TARGET_SVE)
 #define HAVE_vec_pack_trunc_vnx8hi (TARGET_SVE)
 #define HAVE_vec_pack_trunc_vnx4si (TARGET_SVE)
 #define HAVE_vec_pack_trunc_vnx2di (TARGET_SVE)
@@ -16395,6 +16399,10 @@ extern rtx        gen_aarch64_sve_trn1vnx2bi                         (rtx, rtx, 
 extern rtx        gen_aarch64_sve_trn2vnx2bi                         (rtx, rtx, rtx);
 extern rtx        gen_aarch64_sve_uzp1vnx2bi                         (rtx, rtx, rtx);
 extern rtx        gen_aarch64_sve_uzp2vnx2bi                         (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sve_trn1_convvnx16bi                   (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_sve_trn1_convvnx8bi                    (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_sve_trn1_convvnx4bi                    (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_sve_trn1_convvnx2bi                    (rtx, rtx, rtx, rtx);
 extern rtx        gen_vec_pack_trunc_vnx8hi                          (rtx, rtx, rtx);
 extern rtx        gen_vec_pack_trunc_vnx4si                          (rtx, rtx, rtx);
 extern rtx        gen_vec_pack_trunc_vnx2di                          (rtx, rtx, rtx);
