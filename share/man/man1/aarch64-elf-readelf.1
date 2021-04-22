@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "READELF 1"
-.TH READELF 1 "2021-04-18" "binutils-2.36.50" "GNU Development Tools"
+.TH READELF 1 "2021-04-22" "binutils-2.36.50" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -151,6 +151,7 @@ readelf [\fB\-a\fR|\fB\-\-all\fR]
         [\fB\-e\fR|\fB\-\-headers\fR]
         [\fB\-s\fR|\fB\-\-syms\fR|\fB\-\-symbols\fR]
         [\fB\-\-dyn\-syms\fR|\fB\-\-lto\-syms\fR]
+        [\fB\-\-sym\-base=[0|8|10|16]\fR]
         [\fB\-\-demangle\fR\fI=style\fR|\fB\-\-no\-demangle\fR]
         [\fB\-\-quiet\fR]
         [\fB\-\-recurse\-limit\fR|\fB\-\-no\-recurse\-limit\fR]
@@ -286,6 +287,17 @@ has one.  The output format is the same as the format used by the
 .IP "\fB\-\-lto\-syms\fR" 4
 .IX Item "--lto-syms"
 Displays the contents of any \s-1LTO\s0 symbol tables in the file.
+.IP "\fB\-\-sym\-base=[0|8|10|16]\fR" 4
+.IX Item "--sym-base=[0|8|10|16]"
+Forces the size field of the symbol table to use the given base.  Any
+unrecognized options will be treated as \fB0\fR.  \fB\-\-sym\-base=0\fR
+represents the default and legacy behaviour.  This will output sizes as decimal
+for numbers less than 100000.  For sizes 100000 and greater hexadecimal notation
+will be used with a 0x prefix.
+\&\fB\-\-sym\-base=8\fR will give the symbol sizes in octal.
+\&\fB\-\-sym\-base=10\fR will always give the symbol sizes in decimal.
+\&\fB\-\-sym\-base=16\fR will always give the symbol sizes in hexadecimal with a
+0x prefix.
 .IP "\fB\-C\fR" 4
 .IX Item "-C"
 .PD 0

@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-04-18" "gcc-11.0.1" "GNU"
+.TH GCC 1 "2021-04-22" "gcc-12.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -231,7 +231,7 @@ in the following sections.
 \&\fB\-aux\-info\fR \fIfilename\fR  \fB\-fallow\-parameterless\-variadic\-functions 
 \&\-fno\-asm  \-fno\-builtin  \-fno\-builtin\-\fR\fIfunction\fR  \fB\-fgimple
 \&\-fhosted  \-ffreestanding 
-\&\-fopenacc  \-fopenacc\-dim=\fR\fIgeom\fR  \fB\-fopenacc\-kernels=\fR\fImode\fR 
+\&\-fopenacc  \-fopenacc\-dim=\fR\fIgeom\fR 
 \&\fB\-fopenmp  \-fopenmp\-simd 
 \&\-fms\-extensions  \-fplan9\-extensions  \-fsso\-struct=\fR\fIendianness\fR 
 \&\fB\-fallow\-single\-precision  \-fcond\-mismatch  \-flax\-vector\-conversions 
@@ -1378,7 +1378,7 @@ See \s-1RS/6000\s0 and PowerPC Options.
 \&\-mno\-wide\-multiply  \-mrtd  \-malign\-double 
 \&\-mpreferred\-stack\-boundary=\fR\fInum\fR 
 \&\fB\-mincoming\-stack\-boundary=\fR\fInum\fR 
-\&\fB\-mcld  \-mcx16  \-msahf  \-mmovbe  \-mcrc32 
+\&\fB\-mcld  \-mcx16  \-msahf  \-mmovbe  \-mcrc32 \-mmwait 
 \&\-mrecip  \-mrecip=\fR\fIopt\fR 
 \&\fB\-mvzeroupper  \-mprefer\-avx128  \-mprefer\-vector\-width=\fR\fIopt\fR 
 \&\fB\-mmmx  \-msse  \-msse2  \-msse3  \-mssse3  \-msse4.1  \-msse4.2  \-msse4  \-mavx 
@@ -2655,16 +2655,6 @@ Specify default compute dimensions for parallel offload regions that do
 not explicitly specify.  The \fIgeom\fR value is a triple of
 \&':'\-separated sizes, in order 'gang', 'worker' and, 'vector'.  A size
 can be omitted, to use a target-specific default value.
-.IP "\fB\-fopenacc\-kernels=\fR\fImode\fR" 4
-.IX Item "-fopenacc-kernels=mode"
-Specify mode of OpenACC `kernels' constructs handling.
-With \fB\-fopenacc\-kernels=decompose\fR, OpenACC `kernels'
-constructs are decomposed into parts, a sequence of compute
-constructs, each then handled individually.
-This is work in progress.
-With \fB\-fopenacc\-kernels=parloops\fR, OpenACC `kernels' constructs
-are handled by the \fBparloops\fR pass, en bloc.
-This is the current default.
 .IP "\fB\-fopenmp\fR" 4
 .IX Item "-fopenmp"
 Enable handling of OpenMP directives \f(CW\*(C`#pragma omp\*(C'\fR in C/\*(C+ and
@@ -13427,6 +13417,20 @@ The parameter is used only in \s-1GIMPLE FE.\s0
 .IX Item "analyzer-bb-explosion-factor"
 The maximum number of 'after supernode' exploded nodes within the analyzer
 per supernode, before terminating analysis.
+.IP "\fBranger-logical-depth\fR" 4
+.IX Item "ranger-logical-depth"
+Maximum depth of logical expression evaluation ranger will look through
+when evaluating outgoing edge ranges.
+.IP "\fBopenacc-kernels\fR" 4
+.IX Item "openacc-kernels"
+Specify mode of OpenACC `kernels' constructs handling.
+With \fB\-\-param=openacc\-kernels=decompose\fR, OpenACC `kernels'
+constructs are decomposed into parts, a sequence of compute
+constructs, each then handled individually.
+This is work in progress.
+With \fB\-\-param=openacc\-kernels=parloops\fR, OpenACC `kernels'
+constructs are handled by the \fBparloops\fR pass, en bloc.
+This is the current default.
 .RE
 .RS 4
 .Sp
@@ -29969,6 +29973,11 @@ from x86 Control-flow Enforcement Technology (\s-1CET\s0).
 This option enables built-in functions \f(CW\*(C`_\|_builtin_ia32_crc32qi\*(C'\fR,
 \&\f(CW\*(C`_\|_builtin_ia32_crc32hi\*(C'\fR, \f(CW\*(C`_\|_builtin_ia32_crc32si\*(C'\fR and
 \&\f(CW\*(C`_\|_builtin_ia32_crc32di\*(C'\fR to generate the \f(CW\*(C`crc32\*(C'\fR machine instruction.
+.IP "\fB\-mmwait\fR" 4
+.IX Item "-mmwait"
+This option enables built-in functions \f(CW\*(C`_\|_builtin_ia32_monitor\*(C'\fR,
+and \f(CW\*(C`_\|_builtin_ia32_mwait\*(C'\fR to generate the \f(CW\*(C`monitor\*(C'\fR and
+\&\f(CW\*(C`mwait\*(C'\fR machine instructions.
 .IP "\fB\-mrecip\fR" 4
 .IX Item "-mrecip"
 This option enables use of \f(CW\*(C`RCPSS\*(C'\fR and \f(CW\*(C`RSQRTSS\*(C'\fR instructions
