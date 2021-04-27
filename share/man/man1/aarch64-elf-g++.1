@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-04-25" "gcc-12.0.0" "GNU"
+.TH GCC 1 "2021-04-27" "gcc-12.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -388,7 +388,9 @@ in the following sections.
 \&\-Wmissing\-include\-dirs  \-Wmissing\-noreturn  \-Wno\-missing\-profile 
 \&\-Wno\-multichar  \-Wmultistatement\-macros  \-Wnonnull  \-Wnonnull\-compare 
 \&\-Wnormalized=\fR[\fBnone\fR|\fBid\fR|\fBnfc\fR|\fBnfkc\fR] 
-\&\fB\-Wnull\-dereference  \-Wno\-odr  \-Wopenmp\-simd  
+\&\fB\-Wnull\-dereference  \-Wno\-odr  
+\&\-Wopenacc\-parallelism  
+\&\-Wopenmp\-simd  
 \&\-Wno\-overflow  \-Woverlength\-strings  \-Wno\-override\-init\-side\-effects 
 \&\-Wpacked  \-Wno\-packed\-bitfield\-compat  \-Wpacked\-not\-aligned  \-Wpadded 
 \&\-Wparentheses  \-Wno\-pedantic\-ms\-format 
@@ -8190,6 +8192,9 @@ Do not warn about compile-time overflow in constant expressions.
 .IX Item "-Wno-odr"
 Warn about One Definition Rule violations during link-time optimization.
 Enabled by default.
+.IP "\fB\-Wopenacc\-parallelism\fR" 4
+.IX Item "-Wopenacc-parallelism"
+Warn about potentially suboptimal choices related to OpenACC parallelism.
 .IP "\fB\-Wopenmp\-simd\fR" 4
 .IX Item "-Wopenmp-simd"
 Warn if the vectorizer cost model overrides the OpenMP
