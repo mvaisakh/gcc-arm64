@@ -2191,6 +2191,12 @@
 #endif
 
 
+/* Define to 1 to if -foffload is defaulted */
+#ifndef USED_FOR_TARGET
+/* #undef OFFLOAD_DEFAULTED */
+#endif
+
+
 /* Define to offload targets, separated by commas. */
 #ifndef USED_FOR_TARGET
 #define OFFLOAD_TARGETS ""
