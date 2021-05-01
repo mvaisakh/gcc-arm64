@@ -20513,13 +20513,13 @@
      (!type user_struct 1134 
       (!type already_seen 1133)
       gc_pointed_to "int_range<1>"
-      (!srcfileloc  "value-range.h" 177)
+      (!srcfileloc  "value-range.h" 180)
       (!fields 1 
        (!pair  "1"
         (!type undefined 1135 nil  gc_unused "1"
-         (!srcfileloc  "value-range.h" 177)
+         (!srcfileloc  "value-range.h" 180)
         )
-        (!srcfileloc  "value-range.h" 177)
+        (!srcfileloc  "value-range.h" 180)
         nil )
       )
      )
@@ -24641,12 +24641,13 @@
   (!fields 0 )
   nil 0 nil nil )
  
- (!type struct 1647 nil  gc_unused "irange"nil 
+ (!type user_struct 1647 nil  gc_unused "irange"
+  (!srcfileloc  "value-range.h" 140)
   (!fields 0 )
-  nil 0 nil nil )
+ )
  
  (!type user_struct 1648 nil  gc_unused "int_range"
-  (!srcfileloc  "value-range.h" 167)
+  (!srcfileloc  "value-range.h" 170)
   (!fields 0 )
  )
  
@@ -24655,13 +24656,13 @@
  (!type already_seen 1135)
  
  (!type user_struct 1649 nil  gc_unused "int_range<255>"
-  (!srcfileloc  "value-range.h" 181)
+  (!srcfileloc  "value-range.h" 184)
   (!fields 1 
    (!pair  "255"
     (!type undefined 1650 nil  gc_unused "255"
-     (!srcfileloc  "value-range.h" 181)
+     (!srcfileloc  "value-range.h" 184)
     )
-    (!srcfileloc  "value-range.h" 181)
+    (!srcfileloc  "value-range.h" 184)
     nil )
   )
  )
@@ -29801,7 +29802,7 @@
   )
  )
 )
-(!typedefs 887
+(!typedefs 888
  (!pair  "ivarref_entry"
   (!type already_seen 2265)
   (!srcfileloc  "objc/objc-next-runtime-abi-02.c" 3001)
@@ -31118,31 +31119,35 @@
   nil )
  (!pair  "int_range_max"
   (!type already_seen 1649)
-  (!srcfileloc  "value-range.h" 181)
+  (!srcfileloc  "value-range.h" 184)
   nil )
  (!pair  "255"
   (!type already_seen 1650)
-  (!srcfileloc  "value-range.h" 181)
+  (!srcfileloc  "value-range.h" 184)
   nil )
  (!pair  "int_range<255>"
   (!type already_seen 1649)
-  (!srcfileloc  "value-range.h" 181)
+  (!srcfileloc  "value-range.h" 184)
   nil )
  (!pair  "value_range"
   (!type already_seen 1134)
-  (!srcfileloc  "value-range.h" 177)
+  (!srcfileloc  "value-range.h" 180)
   nil )
  (!pair  "1"
   (!type already_seen 1135)
-  (!srcfileloc  "value-range.h" 177)
+  (!srcfileloc  "value-range.h" 180)
   nil )
  (!pair  "int_range<1>"
   (!type already_seen 1134)
-  (!srcfileloc  "value-range.h" 177)
+  (!srcfileloc  "value-range.h" 180)
   nil )
  (!pair  "int_range"
   (!type already_seen 1648)
-  (!srcfileloc  "value-range.h" 167)
+  (!srcfileloc  "value-range.h" 170)
+  nil )
+ (!pair  "irange"
+  (!type already_seen 1647)
+  (!srcfileloc  "value-range.h" 140)
   nil )
  (!pair  "TRAILING_WIDE_INT_ACCESSOR"
   (!type already_seen 1645)
