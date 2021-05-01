@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "WINDRES 1"
-.TH WINDRES 1 "2021-04-29" "binutils-2.36.50" "GNU Development Tools"
+.TH WINDRES 1 "2021-05-01" "binutils-2.36.50" "GNU Development Tools"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -246,7 +246,7 @@ format, which is the first one listed by the \fB\-\-help\fR option.
 When \fBwindres\fR reads an \f(CW\*(C`rc\*(C'\fR file, it runs it through the C
 preprocessor first.  This option may be used to specify the preprocessor
 to use, including any leading arguments.  The default preprocessor
-argument is \f(CW\*(C`gcc \-E \-xc\-header \-DRC_INVOKED\*(C'\fR.
+argument is \f(CW\*(C`gcc\*(C'\fR.
 .IP "\fB\-\-preprocessor\-arg\fR \fIoption\fR" 4
 .IX Item "--preprocessor-arg option"
 When \fBwindres\fR reads an \f(CW\*(C`rc\*(C'\fR file, it runs it through
@@ -254,6 +254,11 @@ the C preprocessor first.  This option may be used to specify additional
 text to be passed to preprocessor on its command line.
 This option can be used multiple times to add multiple options to the
 preprocessor command line.
+If the \fB\-\-preprocessor\fR option has not been specified then a
+default set of preprocessor arguments will be used, with any
+\&\fB\-\-preprocessor\-arg\fR options being placed after them on the
+command line.  These default arguments are \f(CW\*(C`\-E \-xc\-header
+\&\-DRC_INVOKED\*(C'\fR.
 .IP "\fB\-I\fR \fIdirectory\fR" 4
 .IX Item "-I directory"
 .PD 0

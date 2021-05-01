@@ -42,7 +42,7 @@ Introduction
 ************
 
 This brief manual contains documentation for the GNU binary utilities
-(Custom BinUtils) version 2.36.50:
+(Eva BinUtils) version 2.36.50:
 
    This document is distributed under the terms of the GNU Free
 Documentation License version 1.3.  A copy of the license is included in
@@ -3854,14 +3854,18 @@ available to Windows.
      When 'windres' reads an 'rc' file, it runs it through the C
      preprocessor first.  This option may be used to specify the
      preprocessor to use, including any leading arguments.  The default
-     preprocessor argument is 'gcc -E -xc-header -DRC_INVOKED'.
+     preprocessor argument is 'gcc'.
 
 '--preprocessor-arg OPTION'
      When 'windres' reads an 'rc' file, it runs it through the C
      preprocessor first.  This option may be used to specify additional
      text to be passed to preprocessor on its command line.  This option
      can be used multiple times to add multiple options to the
-     preprocessor command line.
+     preprocessor command line.  If the '--preprocessor' option has not
+     been specified then a default set of preprocessor arguments will be
+     used, with any '--preprocessor-arg' options being placed after them
+     on the command line.  These default arguments are '-E -xc-header
+     -DRC_INVOKED'.
 
 '-I DIRECTORY'
 '--include-dir DIRECTORY'
@@ -5902,35 +5906,35 @@ Binutils Index
 
 Tag Table:
 Node: Top1834
-Node: ar3557
-Node: ar cmdline6891
-Node: ar scripts20013
-Node: nm25699
-Node: objcopy40185
-Node: objdump81033
-Node: ranlib114981
-Node: size116580
-Node: strings120549
-Node: strip124921
-Node: c++filt134763
-Ref: c++filt-Footnote-1140624
-Node: addr2line140730
-Node: windmc146408
-Node: windres150067
-Node: dlltool156426
-Node: def file format169423
-Node: readelf171953
-Node: elfedit188590
-Node: Common Options191564
-Node: Selecting the Target System192598
-Node: Target Selection193526
-Node: Architecture Selection195507
-Node: debuginfod196335
-Node: Reporting Bugs197094
-Node: Bug Criteria197856
-Node: Bug Reporting198409
-Node: GNU Free Documentation License205280
-Node: Binutils Index230440
+Node: ar3554
+Node: ar cmdline6888
+Node: ar scripts20010
+Node: nm25696
+Node: objcopy40182
+Node: objdump81030
+Node: ranlib114978
+Node: size116577
+Node: strings120546
+Node: strip124918
+Node: c++filt134760
+Ref: c++filt-Footnote-1140621
+Node: addr2line140727
+Node: windmc146405
+Node: windres150064
+Node: dlltool156672
+Node: def file format169669
+Node: readelf172199
+Node: elfedit188836
+Node: Common Options191810
+Node: Selecting the Target System192844
+Node: Target Selection193772
+Node: Architecture Selection195753
+Node: debuginfod196581
+Node: Reporting Bugs197340
+Node: Bug Criteria198102
+Node: Bug Reporting198655
+Node: GNU Free Documentation License205526
+Node: Binutils Index230686
 
 End Tag Table
 

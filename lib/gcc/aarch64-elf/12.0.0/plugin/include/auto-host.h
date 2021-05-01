@@ -1920,6 +1920,12 @@
 #endif
 
 
+/* Define to 1 if you have the <sys/locking.h> header file. */
+#ifndef USED_FOR_TARGET
+/* #undef HAVE_SYS_LOCKING_H */
+#endif
+
+
 /* Define to 1 if you have the <sys/mman.h> header file. */
 #ifndef USED_FOR_TARGET
 #define HAVE_SYS_MMAN_H 1
@@ -2090,6 +2096,12 @@
 /* Define if F_SETLKW supported by fcntl. */
 #ifndef USED_FOR_TARGET
 #define HOST_HAS_F_SETLKW 1
+#endif
+
+
+/* Define if _LK_LOC supported by _locking. */
+#ifndef USED_FOR_TARGET
+/* #undef HOST_HAS_LK_LOCK */
 #endif
 
 
