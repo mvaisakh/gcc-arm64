@@ -9362,7 +9362,73 @@ File: bfd.info,  Node: Internal,  Next: File Caching,  Prev: Opening and Closing
 These routines are used within BFD. They are not intended for export,
 but are documented here for completeness.
 
-2.15.1.1 'bfd_write_bigendian_4byte_int'
+2.15.1.1 'bfd_malloc'
+.....................
+
+*Synopsis*
+     extern void * bfd_malloc (bfd_size_type SIZE) ATTRIBUTE_HIDDEN;
+   *Description*
+Returns a pointer to an allocated block of memory that is at least SIZE
+bytes long.  If SIZE is 0 then it will be treated as if it were 1.  If
+SIZE is too big then NULL will be returned.  Returns NULL upon error and
+sets bfd_error.
+
+2.15.1.2 'bfd_realloc'
+......................
+
+*Synopsis*
+     extern void * bfd_realloc (void * MEM, bfd_size_type SIZE) ATTRIBUTE_HIDDEN;
+   *Description*
+Returns a pointer to an allocated block of memory that is at least SIZE
+bytes long.  If SIZE is 0 then it will be treated as if it were 1.  If
+SIZE is too big then NULL will be returned.  If MEM is not NULL then it
+must point to an allocated block of memory.  If this block is large
+enough then MEM may be used as the return value for this function, but
+this is not guaranteed.
+
+   If MEM is not returned then the first N bytes in the returned block
+will be identical to the first N bytes in region pointed to by MEM,
+where N is the lessor of SIZE and the length of the region of memory
+currently addressed by MEM.
+
+   Returns NULL upon error and sets bfd_error.
+
+2.15.1.3 'bfd_realloc_or_free'
+..............................
+
+*Synopsis*
+     extern void * bfd_realloc_or_free (void * MEM, bfd_size_type SIZE) ATTRIBUTE_HIDDEN;
+   *Description*
+Returns a pointer to an allocated block of memory that is at least SIZE
+bytes long.  If SIZE is 0 then no memory will be allocated, MEM will be
+freed, and NULL will be returned.  This will not cause bfd_error to be
+set.
+
+   If SIZE is too big then NULL will be returned and bfd_error will be
+set.  If MEM is not NULL then it must point to an allocated block of
+memory.  If this block is large enough then MEM may be used as the
+return value for this function, but this is not guaranteed.
+
+   If MEM is not returned then the first N bytes in the returned block
+will be identical to the first N bytes in region pointed to by MEM,
+where N is the lessor of SIZE and the length of the region of memory
+currently addressed by MEM.
+
+2.15.1.4 'bfd_zmalloc'
+......................
+
+*Synopsis*
+     extern void * bfd_zmalloc (bfd_size_type SIZE) ATTRIBUTE_HIDDEN;
+   *Description*
+Returns a pointer to an allocated block of memory that is at least SIZE
+bytes long.  If SIZE is 0 then it will be treated as if it were 1.  If
+SIZE is too big then NULL will be returned.  Returns NULL upon error and
+sets bfd_error.
+
+   If NULL is not returned then the allocated block of memory will have
+been cleared.
+
+2.15.1.5 'bfd_write_bigendian_4byte_int'
 ........................................
 
 *Synopsis*
@@ -9371,10 +9437,10 @@ but are documented here for completeness.
 Write a 4 byte integer I to the output BFD ABFD, in big endian order
 regardless of what else is going on.  This is useful in archives.
 
-2.15.1.2 'bfd_put_size'
+2.15.1.6 'bfd_put_size'
 .......................
 
-2.15.1.3 'bfd_get_size'
+2.15.1.7 'bfd_get_size'
 .......................
 
 *Description*
@@ -9461,7 +9527,7 @@ less than a 'bfd_vma', use 'gcc -Wconversion' on a host with 64 bit
         : (abort (), (void) 0))
 
 
-2.15.1.4 'bfd_h_put_size'
+2.15.1.8 'bfd_h_put_size'
 .........................
 
 *Description*
@@ -9530,7 +9596,7 @@ order.
 
 
 
-2.15.1.5 'bfd_log2'
+2.15.1.9 'bfd_log2'
 ...................
 
 *Synopsis*
@@ -12212,7 +12278,7 @@ BFD Index
 * bfd_get_section_contents:              section prototypes. (line  252)
 * bfd_get_sign_extend_vma:               Miscellaneous.      (line   78)
 * bfd_get_size:                          Miscellaneous.      (line  445)
-* bfd_get_size <1>:                      Internal.           (line   24)
+* bfd_get_size <1>:                      Internal.           (line   90)
 * bfd_get_symtab_upper_bound:            symbol handling functions.
                                                              (line    5)
 * bfd_get_target_info:                   bfd_target.         (line  597)
@@ -12235,7 +12301,7 @@ BFD Index
                                                              (line    6)
 * bfd_hide_sym_by_version:               Writing the symbol table.
                                                              (line  123)
-* bfd_h_put_size:                        Internal.           (line  111)
+* bfd_h_put_size:                        Internal.           (line  177)
 * bfd_init:                              Initialization.     (line   10)
 * bfd_install_relocation:                typedef arelent.    (line  382)
 * bfd_is_local_label:                    symbol handling functions.
@@ -12251,7 +12317,7 @@ BFD Index
                                                              (line  133)
 * bfd_link_split_section:                Writing the symbol table.
                                                              (line   43)
-* bfd_log2:                              Internal.           (line  180)
+* bfd_log2:                              Internal.           (line  246)
 * bfd_lookup_arch:                       Architectures.      (line  702)
 * bfd_make_debug_symbol:                 symbol handling functions.
                                                              (line  106)
@@ -12266,6 +12332,7 @@ BFD Index
 * bfd_make_section_with_flags:           section prototypes. (line  131)
 * bfd_make_writable:                     Opening and Closing.
                                                              (line  220)
+* bfd_malloc:                            Internal.           (line   12)
 * bfd_malloc_and_get_section:            section prototypes. (line  269)
 * bfd_map_over_sections:                 section prototypes. (line  176)
 * bfd_merge_private_bfd_data:            Writing the symbol table.
@@ -12288,7 +12355,9 @@ BFD Index
 * bfd_printable_name:                    Architectures.      (line  573)
 * bfd_print_symbol_vandf:                symbol handling functions.
                                                              (line   73)
-* bfd_put_size:                          Internal.           (line   21)
+* bfd_put_size:                          Internal.           (line   87)
+* bfd_realloc:                           Internal.           (line   23)
+* bfd_realloc_or_free:                   Internal.           (line   43)
 * BFD_RELOC_12_PCREL:                    howto manager.      (line   37)
 * BFD_RELOC_14:                          howto manager.      (line   30)
 * BFD_RELOC_16:                          howto manager.      (line   29)
@@ -14707,9 +14776,10 @@ BFD Index
                                                              (line  135)
 * bfd_target_list:                       bfd_target.         (line  623)
 * bfd_update_compression_header:         Miscellaneous.      (line  336)
-* bfd_write_bigendian_4byte_int:         Internal.           (line   12)
+* bfd_write_bigendian_4byte_int:         Internal.           (line   78)
 * bfd_zalloc:                            Opening and Closing.
                                                              (line  257)
+* bfd_zmalloc:                           Internal.           (line   64)
 * check_build_id_file:                   Opening and Closing.
                                                              (line  482)
 * coff_symbol_type:                      coff.               (line  233)
@@ -14777,36 +14847,36 @@ Node: bfd_target274422
 Node: Architectures301183
 Node: Opening and Closing332870
 Node: Internal351038
-Node: File Caching357863
-Node: Linker Functions359760
-Node: Creating a Linker Hash Table361434
-Node: Adding Symbols to the Hash Table363173
-Node: Differing file formats364073
-Node: Adding symbols from an object file365798
-Node: Adding symbols from an archive367948
-Node: Performing the Final Link370294
-Node: Information provided by the linker371535
-Node: Relocating the section contents372689
-Node: Writing the symbol table374441
-Node: Hash Tables381532
-Node: Creating and Freeing a Hash Table382730
-Node: Looking Up or Entering a String383980
-Node: Traversing a Hash Table385233
-Node: Deriving a New Hash Table Type386022
-Node: Define the Derived Structures387088
-Node: Write the Derived Creation Routine388169
-Node: Write Other Derived Routines390794
-Node: BFD back ends392109
-Node: What to Put Where392379
-Node: aout392559
-Node: coff398813
-Node: elf426794
-Node: mmo427195
-Node: File layout428065
-Node: Symbol-table433978
-Node: mmo section mapping437741
-Node: GNU Free Documentation License441395
-Node: BFD Index466459
+Node: File Caching360431
+Node: Linker Functions362328
+Node: Creating a Linker Hash Table364002
+Node: Adding Symbols to the Hash Table365741
+Node: Differing file formats366641
+Node: Adding symbols from an object file368366
+Node: Adding symbols from an archive370516
+Node: Performing the Final Link372862
+Node: Information provided by the linker374103
+Node: Relocating the section contents375257
+Node: Writing the symbol table377009
+Node: Hash Tables384100
+Node: Creating and Freeing a Hash Table385298
+Node: Looking Up or Entering a String386548
+Node: Traversing a Hash Table387801
+Node: Deriving a New Hash Table Type388590
+Node: Define the Derived Structures389656
+Node: Write the Derived Creation Routine390737
+Node: Write Other Derived Routines393362
+Node: BFD back ends394677
+Node: What to Put Where394947
+Node: aout395127
+Node: coff401381
+Node: elf429362
+Node: mmo429763
+Node: File layout430633
+Node: Symbol-table436546
+Node: mmo section mapping440309
+Node: GNU Free Documentation License443963
+Node: BFD Index469027
 
 End Tag Table
 

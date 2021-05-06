@@ -1398,8 +1398,6 @@ gen_rtx_fmt_ssss_stat (RTX_CODE code, machine_mode mode,
   gen_rtx_fmt_u (LABEL_REF, (MODE), (ARG0))
 #define gen_rtx_SYMBOL_REF(MODE, ARG0) \
   gen_rtx_fmt_s0 (SYMBOL_REF, (MODE), (ARG0))
-#define gen_rtx_raw_CC0(MODE) \
-  gen_rtx_fmt_ (CC0, (MODE))
 #define gen_rtx_IF_THEN_ELSE(MODE, ARG0, ARG1, ARG2) \
   gen_rtx_fmt_eee (IF_THEN_ELSE, (MODE), (ARG0), (ARG1), (ARG2))
 #define gen_rtx_COMPARE(MODE, ARG0, ARG1) \

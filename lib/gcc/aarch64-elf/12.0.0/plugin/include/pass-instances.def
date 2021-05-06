@@ -47,7 +47,6 @@ along with GCC; see the file COPYING3.  If not see
   NEXT_PASS (pass_warn_function_return, 1);
   NEXT_PASS (pass_coroutine_early_expand_ifns, 1);
   NEXT_PASS (pass_expand_omp, 1);
-  NEXT_PASS (pass_warn_printf, 1);
   NEXT_PASS_WITH_ARG (pass_walloca, 1, /*strict_mode_p=*/true);
   NEXT_PASS (pass_build_cgraph_edges, 1);
   TERMINATE_PASS_LIST (all_lowering_passes)
@@ -60,6 +59,7 @@ along with GCC; see the file COPYING3.  If not see
   PUSH_INSERT_PASSES_WITHIN (pass_build_ssa_passes)
       NEXT_PASS (pass_fixup_cfg, 1);
       NEXT_PASS (pass_build_ssa, 1);
+      NEXT_PASS (pass_warn_printf, 1);
       NEXT_PASS (pass_warn_nonnull_compare, 1);
       NEXT_PASS (pass_early_warn_uninitialized, 1);
       NEXT_PASS (pass_ubsan, 1);
@@ -338,8 +338,9 @@ along with GCC; see the file COPYING3.  If not see
       NEXT_PASS (pass_thread_jumps, 4);
       NEXT_PASS_WITH_ARG (pass_vrp, 2, false /* warn_array_bounds_p */);
       /* Threading can leave many const/copy propagations in the IL.
-	 Clean them up.  */
-      NEXT_PASS (pass_copy_prop, 5);
+	 Clean them up.  Instead of just copy_prop, we use ccp to
+	 compute alignment and nonzero bits.  */
+      NEXT_PASS_WITH_ARG (pass_ccp, 4, true /* nonzero_p */);
       NEXT_PASS (pass_warn_restrict, 1);
       NEXT_PASS (pass_dse, 5);
       NEXT_PASS_WITH_ARG (pass_cd_dce, 3, true /* update_address_taken_p */);
@@ -373,7 +374,7 @@ along with GCC; see the file COPYING3.  If not see
       NEXT_PASS (pass_lower_vector_ssa, 2);
       NEXT_PASS (pass_lower_switch, 2);
       /* Perform simple scalar cleanup which is constant/copy propagation.  */
-      NEXT_PASS_WITH_ARG (pass_ccp, 4, true /* nonzero_p */);
+      NEXT_PASS_WITH_ARG (pass_ccp, 5, true /* nonzero_p */);
       NEXT_PASS (pass_post_ipa_warn, 2);
       NEXT_PASS (pass_object_sizes, 3);
       /* Fold remaining builtins.  */
@@ -381,7 +382,7 @@ along with GCC; see the file COPYING3.  If not see
       NEXT_PASS (pass_strlen, 2);
       /* Copy propagation also copy-propagates constants, this is necessary
          to forward object-size and builtin folding results properly.  */
-      NEXT_PASS (pass_copy_prop, 6);
+      NEXT_PASS (pass_copy_prop, 5);
       NEXT_PASS (pass_dce, 8);
       NEXT_PASS (pass_sancov, 2);
       NEXT_PASS (pass_asan, 2);

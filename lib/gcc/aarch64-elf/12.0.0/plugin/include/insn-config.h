@@ -9,8 +9,6 @@
 #ifndef MAX_INSNS_PER_SPLIT
 #define MAX_INSNS_PER_SPLIT 4
 #endif
-#define HAVE_cc0 0
-#define CC0_P(X) ((X) ? 0 : 0)
 #define HAVE_conditional_move 1
 #define HAVE_conditional_execution 0
 #define HAVE_lo_sum 1
