@@ -589,6 +589,10 @@ extern void gt_ggc_mx_vec_dw_fde_ref_va_gc_ (void *);
   if (X != NULL) gt_ggc_mx_hash_table_indirect_string_hasher_ (X);\
   } while (0)
 extern void gt_ggc_mx_hash_table_indirect_string_hasher_ (void *);
+#define gt_ggc_m_16vec_char__va_gc_(X) do { \
+  if (X != NULL) gt_ggc_mx_vec_char__va_gc_ (X);\
+  } while (0)
+extern void gt_ggc_mx_vec_char__va_gc_ (void *);
 #define gt_ggc_m_16comdat_type_node(X) do { \
   if (X != NULL) gt_ggc_mx_comdat_type_node (X);\
   } while (0)
@@ -1994,6 +1998,10 @@ extern void gt_pch_nx_vec_dw_fde_ref_va_gc_ (void *);
   if (X != NULL) gt_pch_nx_hash_table_indirect_string_hasher_ (X);\
   } while (0)
 extern void gt_pch_nx_hash_table_indirect_string_hasher_ (void *);
+#define gt_pch_n_16vec_char__va_gc_(X) do { \
+  if (X != NULL) gt_pch_nx_vec_char__va_gc_ (X);\
+  } while (0)
+extern void gt_pch_nx_vec_char__va_gc_ (void *);
 #define gt_pch_n_16comdat_type_node(X) do { \
   if (X != NULL) gt_pch_nx_comdat_type_node (X);\
   } while (0)
@@ -3202,6 +3210,8 @@ extern void gt_pch_p_17reg_saved_in_data
 extern void gt_pch_p_21vec_dw_fde_ref_va_gc_
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_34hash_table_indirect_string_hasher_
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_16vec_char__va_gc_
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_16comdat_type_node
     (void *, void *, gt_pointer_operator, void *);
