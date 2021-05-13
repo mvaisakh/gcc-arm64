@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-05-09" "gcc-12.0.0" "GNU"
+.TH GCC 1 "2021-05-13" "gcc-12.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -1582,9 +1582,6 @@ traditional preprocessor).
 .IP "\fIfile\fR\fB.go\fR" 4
 .IX Item "file.go"
 Go source code.
-.IP "\fIfile\fR\fB.brig\fR" 4
-.IX Item "file.brig"
-\&\s-1BRIG\s0 files (binary representation of \s-1HSAIL\s0).
 .IP "\fIfile\fR\fB.d\fR" 4
 .IX Item "file.d"
 D source code.
@@ -1628,7 +1625,7 @@ Specify explicitly the \fIlanguage\fR for the following input files
 name suffix).  This option applies to all following input files until
 the next \fB\-x\fR option.  Possible values for \fIlanguage\fR are:
 .Sp
-.Vb 10
+.Vb 9
 \&        c  c\-header  cpp\-output
 \&        c++  c++\-header  c++\-system\-header c++\-user\-header c++\-cpp\-output
 \&        objective\-c  objective\-c\-header  objective\-c\-cpp\-output
@@ -1638,7 +1635,6 @@ the next \fB\-x\fR option.  Possible values for \fIlanguage\fR are:
 \&        d
 \&        f77  f77\-cpp\-input f95  f95\-cpp\-input
 \&        go
-\&        brig
 .Ve
 .IP "\fB\-x none\fR" 4
 .IX Item "-x none"
@@ -25319,6 +25315,11 @@ supported.
 Generate code for given the specified \s-1PTX ISA\s0 (e.g. \fBsm_35\fR).  \s-1ISA\s0
 strings must be lower-case.  Valid \s-1ISA\s0 strings include \fBsm_30\fR and
 \&\fBsm_35\fR.  The default \s-1ISA\s0 is sm_35.
+.IP "\fB\-mptx=\fR\fIversion-string\fR" 4
+.IX Item "-mptx=version-string"
+Generate code for given the specified \s-1PTX\s0 version (e.g. \fB6.3\fR).
+Valid version strings include \fB3.1\fR and \fB6.3\fR.  The default \s-1PTX\s0
+version is 3.1.
 .IP "\fB\-mmainkernel\fR" 4
 .IX Item "-mmainkernel"
 Link in code for a _\|_main kernel.  This is for stand-alone instead of

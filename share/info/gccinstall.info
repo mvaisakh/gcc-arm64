@@ -2648,10 +2648,8 @@ the full distribution, but if you downloaded the "core" compiler plus
 any front ends, you must download the testsuites separately.
 
    Second, you must have the testing tools installed.  This includes
-DejaGnu, Tcl, and Expect; the DejaGnu site has links to these.  For
-running the BRIG frontend tests, a tool to assemble the binary BRIGs
-from HSAIL text, HSAILasm must be installed.  Some optional tests also
-require Python3 and pytest module.
+DejaGnu, Tcl, and Expect; the DejaGnu site has links to these.  Some
+optional tests also require Python3 and pytest module.
 
    If the directories where 'runtest' and 'expect' were installed are
 not in the 'PATH', you may need to set the following environment
@@ -4918,95 +4916,95 @@ Ref: WithAixSoname59796
 Ref: AixLdCommand60457
 Node: Building102622
 Node: Testing118745
-Node: Final install126693
-Node: Binaries131993
-Node: Specific133100
-Ref: aarch64-x-x133607
-Ref: alpha-x-x135627
-Ref: amd64-x-solaris2135841
-Ref: amdgcn-x-amdhsa135923
-Ref: arc-x-elf32136449
-Ref: arc-linux-uclibc136625
-Ref: arm-x-eabi136766
-Ref: avr137019
-Ref: bfin137600
-Ref: cr16137863
-Ref: cris138279
-Ref: dos138977
-Ref: epiphany-x-elf139300
-Ref: x-x-freebsd139405
-Ref: ft32-x-elf141205
-Ref: h8300-hms141303
-Ref: hppa-hp-hpux141655
-Ref: hppa-hp-hpux10144027
-Ref: hppa-hp-hpux11144440
-Ref: x-x-linux-gnu149842
-Ref: ix86-x-linux150035
-Ref: ix86-x-solaris2150348
-Ref: ia64-x-linux151424
-Ref: ia64-x-hpux152194
-Ref: x-ibm-aix152749
-Ref: TransferAixShobj156411
-Ref: iq2000-x-elf160221
-Ref: lm32-x-elf160361
-Ref: lm32-x-uclinux160465
-Ref: m32c-x-elf160593
-Ref: m32r-x-elf160695
-Ref: m68k-x-x160797
-Ref: m68k-x-uclinux161835
-Ref: microblaze-x-elf162080
-Ref: mips-x-x162199
-Ref: moxie-x-elf164109
-Ref: msp430-x-elf164156
-Ref: nds32le-x-elf164713
-Ref: nds32be-x-elf164785
-Ref: nvptx-x-none164854
-Ref: or1k-x-elf165417
-Ref: or1k-x-linux165548
-Ref: powerpc-x-x165629
-Ref: powerpc-x-darwin165820
-Ref: powerpc-x-elf166314
-Ref: powerpc-x-linux-gnu166399
-Ref: powerpc-x-netbsd166494
-Ref: powerpc-x-eabisim166582
-Ref: powerpc-x-eabi166708
-Ref: powerpcle-x-elf166784
-Ref: powerpcle-x-eabisim166876
-Ref: powerpcle-x-eabi167009
-Ref: rl78-x-elf167092
-Ref: riscv32-x-elf167198
-Ref: riscv32-x-linux167387
-Ref: riscv64-x-elf167544
-Ref: riscv64-x-linux167733
-Ref: rx-x-elf167890
-Ref: s390-x-linux167936
-Ref: s390x-x-linux168008
-Ref: s390x-ibm-tpf168095
-Ref: x-x-solaris2168226
-Ref: sparc-x-x171333
-Ref: sparc-sun-solaris2171835
-Ref: sparc-x-linux172978
-Ref: sparc64-x-solaris2173009
-Ref: sparcv9-x-solaris2173727
-Ref: c6x-x-x173814
-Ref: tilegx-*-linux173906
-Ref: tilegxbe-*-linux174048
-Ref: tilepro-*-linux174191
-Ref: visium-x-elf174312
-Ref: x-x-vxworks174420
-Ref: x86-64-x-x175943
-Ref: x86-64-x-solaris2176271
-Ref: xtensa-x-elf176921
-Ref: xtensa-x-linux177592
-Ref: windows177933
-Ref: x-x-cygwin179774
-Ref: x-x-mingw32180327
-Ref: older180553
-Ref: elf182670
-Node: Old182928
-Node: Configurations186061
-Node: GNU Free Documentation License189599
-Node: Concept Index214727
+Node: Final install126574
+Node: Binaries131874
+Node: Specific132981
+Ref: aarch64-x-x133488
+Ref: alpha-x-x135508
+Ref: amd64-x-solaris2135722
+Ref: amdgcn-x-amdhsa135804
+Ref: arc-x-elf32136330
+Ref: arc-linux-uclibc136506
+Ref: arm-x-eabi136647
+Ref: avr136900
+Ref: bfin137481
+Ref: cr16137744
+Ref: cris138160
+Ref: dos138858
+Ref: epiphany-x-elf139181
+Ref: x-x-freebsd139286
+Ref: ft32-x-elf141086
+Ref: h8300-hms141184
+Ref: hppa-hp-hpux141536
+Ref: hppa-hp-hpux10143908
+Ref: hppa-hp-hpux11144321
+Ref: x-x-linux-gnu149723
+Ref: ix86-x-linux149916
+Ref: ix86-x-solaris2150229
+Ref: ia64-x-linux151305
+Ref: ia64-x-hpux152075
+Ref: x-ibm-aix152630
+Ref: TransferAixShobj156292
+Ref: iq2000-x-elf160102
+Ref: lm32-x-elf160242
+Ref: lm32-x-uclinux160346
+Ref: m32c-x-elf160474
+Ref: m32r-x-elf160576
+Ref: m68k-x-x160678
+Ref: m68k-x-uclinux161716
+Ref: microblaze-x-elf161961
+Ref: mips-x-x162080
+Ref: moxie-x-elf163990
+Ref: msp430-x-elf164037
+Ref: nds32le-x-elf164594
+Ref: nds32be-x-elf164666
+Ref: nvptx-x-none164735
+Ref: or1k-x-elf165298
+Ref: or1k-x-linux165429
+Ref: powerpc-x-x165510
+Ref: powerpc-x-darwin165701
+Ref: powerpc-x-elf166195
+Ref: powerpc-x-linux-gnu166280
+Ref: powerpc-x-netbsd166375
+Ref: powerpc-x-eabisim166463
+Ref: powerpc-x-eabi166589
+Ref: powerpcle-x-elf166665
+Ref: powerpcle-x-eabisim166757
+Ref: powerpcle-x-eabi166890
+Ref: rl78-x-elf166973
+Ref: riscv32-x-elf167079
+Ref: riscv32-x-linux167268
+Ref: riscv64-x-elf167425
+Ref: riscv64-x-linux167614
+Ref: rx-x-elf167771
+Ref: s390-x-linux167817
+Ref: s390x-x-linux167889
+Ref: s390x-ibm-tpf167976
+Ref: x-x-solaris2168107
+Ref: sparc-x-x171214
+Ref: sparc-sun-solaris2171716
+Ref: sparc-x-linux172859
+Ref: sparc64-x-solaris2172890
+Ref: sparcv9-x-solaris2173608
+Ref: c6x-x-x173695
+Ref: tilegx-*-linux173787
+Ref: tilegxbe-*-linux173929
+Ref: tilepro-*-linux174072
+Ref: visium-x-elf174193
+Ref: x-x-vxworks174301
+Ref: x86-64-x-x175824
+Ref: x86-64-x-solaris2176152
+Ref: xtensa-x-elf176802
+Ref: xtensa-x-linux177473
+Ref: windows177814
+Ref: x-x-cygwin179655
+Ref: x-x-mingw32180208
+Ref: older180434
+Ref: elf182551
+Node: Old182809
+Node: Configurations185942
+Node: GNU Free Documentation License189480
+Node: Concept Index214608
 
 End Tag Table
 

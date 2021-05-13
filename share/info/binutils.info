@@ -3853,8 +3853,7 @@ available to Windows.
 '--preprocessor PROGRAM'
      When 'windres' reads an 'rc' file, it runs it through the C
      preprocessor first.  This option may be used to specify the
-     preprocessor to use, including any leading arguments.  The default
-     preprocessor argument is 'gcc'.
+     preprocessor to use.  The default preprocessor is 'gcc'.
 
 '--preprocessor-arg OPTION'
      When 'windres' reads an 'rc' file, it runs it through the C
@@ -3864,8 +3863,8 @@ available to Windows.
      preprocessor command line.  If the '--preprocessor' option has not
      been specified then a default set of preprocessor arguments will be
      used, with any '--preprocessor-arg' options being placed after them
-     on the command line.  These default arguments are '-E -xc-header
-     -DRC_INVOKED'.
+     on the command line.  These default arguments are '-E',
+     '-xc-header' and '-DRC_INVOKED'.
 
 '-I DIRECTORY'
 '--include-dir DIRECTORY'
@@ -5921,20 +5920,20 @@ Ref: c++filt-Footnote-1140621
 Node: addr2line140727
 Node: windmc146405
 Node: windres150064
-Node: dlltool156672
-Node: def file format169669
-Node: readelf172199
-Node: elfedit188836
-Node: Common Options191810
-Node: Selecting the Target System192844
-Node: Target Selection193772
-Node: Architecture Selection195753
-Node: debuginfod196581
-Node: Reporting Bugs197340
-Node: Bug Criteria198102
-Node: Bug Reporting198655
-Node: GNU Free Documentation License205526
-Node: Binutils Index230686
+Node: dlltool156634
+Node: def file format169631
+Node: readelf172161
+Node: elfedit188798
+Node: Common Options191772
+Node: Selecting the Target System192806
+Node: Target Selection193734
+Node: Architecture Selection195715
+Node: debuginfod196543
+Node: Reporting Bugs197302
+Node: Bug Criteria198064
+Node: Bug Reporting198617
+Node: GNU Free Documentation License205488
+Node: Binutils Index230648
 
 End Tag Table
 
