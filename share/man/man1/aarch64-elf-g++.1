@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-05-13" "gcc-12.0.0" "GNU"
+.TH GCC 1 "2021-05-16" "gcc-12.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -1248,7 +1248,8 @@ See \s-1RS/6000\s0 and PowerPC Options.
 \&\-mgnu\-attribute  \-mno\-gnu\-attribute 
 \&\-mstack\-protector\-guard=\fR\fIguard\fR \fB\-mstack\-protector\-guard\-reg=\fR\fIreg\fR 
 \&\fB\-mstack\-protector\-guard\-offset=\fR\fIoffset\fR \fB\-mprefixed \-mno\-prefixed 
-\&\-mpcrel \-mno\-pcrel \-mmma \-mno\-mmma\fR
+\&\-mpcrel \-mno\-pcrel \-mmma \-mno\-mmma \-mrop\-protect \-mno\-rop\-protect 
+\&\-mprivileged \-mno\-privileged\fR
 .Sp
 \&\fI\s-1RX\s0 Options\fR
 \&\fB\-m64bit\-doubles  \-m32bit\-doubles  \-fpu  \-nofpu
@@ -26020,7 +26021,8 @@ following options:
 \&\-mmulhw  \-mdlmzb  \-mmfpgpr  \-mvsx 
 \&\-mcrypto  \-mhtm  \-mpower8\-fusion  \-mpower8\-vector 
 \&\-mquad\-memory  \-mquad\-memory\-atomic  \-mfloat128 
-\&\-mfloat128\-hardware \-mprefixed \-mpcrel \-mmma\fR
+\&\-mfloat128\-hardware \-mprefixed \-mpcrel \-mmma 
+\&\-mrop\-protect\fR
 .Sp
 The particular options set for any particular \s-1CPU\s0 varies between
 compiler versions, depending on what setting seems to produce optimal
@@ -27038,6 +27040,22 @@ store instructions when the option \fB\-mcpu=future\fR is used.
 .PD
 Generate (do not generate) the \s-1MMA\s0 instructions when the option
 \&\fB\-mcpu=future\fR is used.
+.IP "\fB\-mrop\-protect\fR" 4
+.IX Item "-mrop-protect"
+.PD 0
+.IP "\fB\-mno\-rop\-protect\fR" 4
+.IX Item "-mno-rop-protect"
+.PD
+Generate (do not generate) \s-1ROP\s0 protection instructions when the target
+processor supports them.  Currently this option disables the shrink-wrap
+optimization (\fB\-fshrink\-wrap\fR).
+.IP "\fB\-mprivileged\fR" 4
+.IX Item "-mprivileged"
+.PD 0
+.IP "\fB\-mno\-privileged\fR" 4
+.IX Item "-mno-privileged"
+.PD
+Generate (do not generate) code that will run in privileged state.
 .IP "\fB\-mblock\-ops\-unaligned\-vsx\fR" 4
 .IX Item "-mblock-ops-unaligned-vsx"
 .PD 0
