@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "12.0.0 20210516 (experimental)")
+(!version  "12.0.0 20210518 (experimental)")
 (!srcdir  "../../gcc/gcc")
 (!languages 10 ada c cp d fortran go jit lto objc objcp)
 (!fileslist 221
@@ -28946,7 +28946,7 @@
   nil 0 nil nil )
  
  (!type struct 2169 nil  gc_used "list_hasher"
-  (!srcfileloc  "cp/tree.c" 2098)
+  (!srcfileloc  "cp/tree.c" 2111)
   (!fields 0 )
   nil 516 nil nil )
  
@@ -28955,11 +28955,11 @@
    (!type already_seen 2170)
   )
   gc_pointed_to "hash_table<list_hasher>"
-  (!srcfileloc  "cp/tree.c" 2098)
+  (!srcfileloc  "cp/tree.c" 2111)
   (!fields 1 
    (!pair  "list_hasher"
     (!type already_seen 2169)
-    (!srcfileloc  "cp/tree.c" 2098)
+    (!srcfileloc  "cp/tree.c" 2111)
     nil )
   )
  )
@@ -29089,7 +29089,7 @@
   nil 0 nil nil )
  
  (!type struct 2196 nil  gc_used "module_hasher"
-  (!srcfileloc  "fortran/trans-decl.c" 5168)
+  (!srcfileloc  "fortran/trans-decl.c" 5169)
   (!fields 0 )
   nil 16 nil nil )
  
@@ -29098,11 +29098,11 @@
    (!type already_seen 2197)
   )
   gc_pointed_to "hash_table<module_hasher>"
-  (!srcfileloc  "fortran/trans-decl.c" 5168)
+  (!srcfileloc  "fortran/trans-decl.c" 5169)
   (!fields 1 
    (!pair  "module_hasher"
     (!type already_seen 2196)
-    (!srcfileloc  "fortran/trans-decl.c" 5168)
+    (!srcfileloc  "fortran/trans-decl.c" 5169)
     nil )
   )
  )
@@ -29878,11 +29878,11 @@
   nil )
  (!pair  "module_hasher"
   (!type already_seen 2196)
-  (!srcfileloc  "fortran/trans-decl.c" 5168)
+  (!srcfileloc  "fortran/trans-decl.c" 5169)
   nil )
  (!pair  "hash_table<module_hasher>"
   (!type already_seen 2197)
-  (!srcfileloc  "fortran/trans-decl.c" 5168)
+  (!srcfileloc  "fortran/trans-decl.c" 5169)
   nil )
  (!pair  "tree_frame_info"
   (!type already_seen 645)
@@ -29942,11 +29942,11 @@
   nil )
  (!pair  "list_hasher"
   (!type already_seen 2169)
-  (!srcfileloc  "cp/tree.c" 2098)
+  (!srcfileloc  "cp/tree.c" 2111)
   nil )
  (!pair  "hash_table<list_hasher>"
   (!type already_seen 2170)
-  (!srcfileloc  "cp/tree.c" 2098)
+  (!srcfileloc  "cp/tree.c" 2111)
   nil )
  (!pair  "cplus_array_hasher"
   (!type already_seen 2165)
@@ -34179,7 +34179,7 @@
   nil )
  (!pair  "module_htab"
   (!type already_seen 2198)
-  (!srcfileloc  "fortran/trans-decl.c" 5168)
+  (!srcfileloc  "fortran/trans-decl.c" 5169)
   nil )
  (!pair  "saved_local_decls"
   (!type already_seen 23)
@@ -34315,11 +34315,11 @@
   nil )
  (!pair  "deleted_copy_types"
   (!type already_seen 462)
-  (!srcfileloc  "cp/tree.c" 4285)
+  (!srcfileloc  "cp/tree.c" 4298)
   nil )
  (!pair  "list_hash_table"
   (!type already_seen 2171)
-  (!srcfileloc  "cp/tree.c" 2098)
+  (!srcfileloc  "cp/tree.c" 2111)
   nil )
  (!pair  "cplus_array_htab"
   (!type already_seen 2167)
@@ -34832,7 +34832,7 @@
   nil )
  (!pair  "default_arg_context"
   (!type already_seen 84)
-  (!srcfileloc  "cp/call.c" 8314)
+  (!srcfileloc  "cp/call.c" 8318)
   nil )
  (!pair  "unemitted_tinfo_decls"
   (!type already_seen 84)
@@ -35388,7 +35388,7 @@
   nil )
  (!pair  "critical_name_mutexes"
   (!type already_seen 390)
-  (!srcfileloc  "omp-low.c" 9919)
+  (!srcfileloc  "omp-low.c" 9920)
   nil )
  (!pair  "omp_declare_variant_alt"
   (!type already_seen 1594)
@@ -35550,23 +35550,23 @@
   nil )
  (!pair  "gcc_eh_personality_decl"
   (!type already_seen 23)
-  (!srcfileloc  "tree.c" 11847)
+  (!srcfileloc  "tree.c" 11854)
   nil )
  (!pair  "anon_cnt"
   (!type already_seen 2)
-  (!srcfileloc  "tree.c" 8530)
+  (!srcfileloc  "tree.c" 8537)
   nil )
  (!pair  "nonstandard_boolean_type_cache"
   (!type array 2321 nil  gc_used "MAX_BOOL_CACHED_PREC + 1" 
    (!type already_seen 23)
   )
-  (!srcfileloc  "tree.c" 6977)
+  (!srcfileloc  "tree.c" 6984)
   nil )
  (!pair  "nonstandard_integer_type_cache"
   (!type array 2322 nil  gc_used "2 * MAX_INT_CACHED_PREC + 2" 
    (!type already_seen 23)
   )
-  (!srcfileloc  "tree.c" 6937)
+  (!srcfileloc  "tree.c" 6944)
   nil )
  (!pair  "debug_args_for_decl"
   (!type already_seen 1494)

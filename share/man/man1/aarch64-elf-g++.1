@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-05-16" "gcc-12.0.0" "GNU"
+.TH GCC 1 "2021-05-18" "gcc-12.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -12180,7 +12180,7 @@ function prologue and epilogue.
 .IP "\fBuninlined-function-time\fR" 4
 .IX Item "uninlined-function-time"
 Extra time accounted by inliner for function overhead such as time needed to
-execute function prologue and epilogue
+execute function prologue and epilogue.
 .IP "\fBinline-heuristics-hint-percent\fR" 4
 .IX Item "inline-heuristics-hint-percent"
 The scale (in percents) applied to \fBinline-insns-single\fR,
@@ -12194,7 +12194,7 @@ very profitable (will enable later optimizations).
 .IX Item "uninlined-thunk-time"
 .PD
 Same as \fB\-\-param uninlined-function-insns\fR and
-\&\fB\-\-param uninlined-function-time\fR but applied to function thunks
+\&\fB\-\-param uninlined-function-time\fR but applied to function thunks.
 .IP "\fBinline-min-speedup\fR" 4
 .IX Item "inline-min-speedup"
 When estimated performance improvement of caller + callee runtime exceeds this
