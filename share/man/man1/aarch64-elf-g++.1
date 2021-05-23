@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-05-20" "gcc-12.0.0" "GNU"
+.TH GCC 1 "2021-05-23" "gcc-12.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -354,7 +354,9 @@ in the following sections.
 \&\-Wno\-builtin\-macro\-redefined  \-Wc90\-c99\-compat  \-Wc99\-c11\-compat 
 \&\-Wc11\-c2x\-compat 
 \&\-Wc++\-compat  \-Wc++11\-compat  \-Wc++14\-compat  \-Wc++17\-compat  
-\&\-Wc++20\-compat  
+\&\-Wc++20\-compat   
+\&\-Wno\-c++11\-extensions  \-Wno\-c++14\-extensions \-Wno\-c++17\-extensions  
+\&\-Wno\-c++20\-extensions  \-Wno\-c++23\-extensions  
 \&\-Wcast\-align  \-Wcast\-align=strict  \-Wcast\-function\-type  \-Wcast\-qual  
 \&\-Wchar\-subscripts 
 \&\-Wclobbered  \-Wcomment 
@@ -7697,6 +7699,31 @@ and \s-1ISO \*(C+ 2017.\s0  This warning is enabled by \fB\-Wall\fR.
 .IX Item "-Wc++20-compat ( and Objective- only)"
 Warn about \*(C+ constructs whose meaning differs between \s-1ISO \*(C+ 2017\s0
 and \s-1ISO \*(C+ 2020.\s0  This warning is enabled by \fB\-Wall\fR.
+.IP "\fB\-Wno\-c++11\-extensions\fR (\*(C+ and Objective\-\*(C+ only)" 4
+.IX Item "-Wno-c++11-extensions ( and Objective- only)"
+Do not warn about \*(C+11 constructs in code being compiled using
+an older \*(C+ standard.  Even without this option, some \*(C+11 constructs
+will only be diagnosed if \fB\-Wpedantic\fR is used.
+.IP "\fB\-Wno\-c++14\-extensions\fR (\*(C+ and Objective\-\*(C+ only)" 4
+.IX Item "-Wno-c++14-extensions ( and Objective- only)"
+Do not warn about \*(C+14 constructs in code being compiled using
+an older \*(C+ standard.  Even without this option, some \*(C+14 constructs
+will only be diagnosed if \fB\-Wpedantic\fR is used.
+.IP "\fB\-Wno\-c++17\-extensions\fR (\*(C+ and Objective\-\*(C+ only)" 4
+.IX Item "-Wno-c++17-extensions ( and Objective- only)"
+Do not warn about \*(C+17 constructs in code being compiled using
+an older \*(C+ standard.  Even without this option, some \*(C+17 constructs
+will only be diagnosed if \fB\-Wpedantic\fR is used.
+.IP "\fB\-Wno\-c++20\-extensions\fR (\*(C+ and Objective\-\*(C+ only)" 4
+.IX Item "-Wno-c++20-extensions ( and Objective- only)"
+Do not warn about \*(C+20 constructs in code being compiled using
+an older \*(C+ standard.  Even without this option, some \*(C+20 constructs
+will only be diagnosed if \fB\-Wpedantic\fR is used.
+.IP "\fB\-Wno\-c++23\-extensions\fR (\*(C+ and Objective\-\*(C+ only)" 4
+.IX Item "-Wno-c++23-extensions ( and Objective- only)"
+Do not warn about \*(C+23 constructs in code being compiled using
+an older \*(C+ standard.  Even without this option, some \*(C+23 constructs
+will only be diagnosed if \fB\-Wpedantic\fR is used.
 .IP "\fB\-Wcast\-qual\fR" 4
 .IX Item "-Wcast-qual"
 Warn whenever a pointer is cast so as to remove a type qualifier from
@@ -13276,6 +13303,11 @@ partial vector loads and stores if vectorization removes the need for the
 code to iterate.  2 allows partial vector loads and stores in all loops.
 The parameter only has an effect on targets that support partial
 vector loads and stores.
+.IP "\fBvect-inner-loop-cost-factor\fR" 4
+.IX Item "vect-inner-loop-cost-factor"
+The factor which the loop vectorizer applies to the cost of statements
+in an inner loop relative to the loop being vectorized.  The default
+value is 50.
 .IP "\fBavoid-fma-max-bits\fR" 4
 .IX Item "avoid-fma-max-bits"
 Maximum number of bits for which we avoid creating FMAs.
@@ -13433,6 +13465,14 @@ This is work in progress.
 With \fB\-\-param=openacc\-kernels=parloops\fR, OpenACC `kernels'
 constructs are handled by the \fBparloops\fR pass, en bloc.
 This is the current default.
+.IP "\fBopenacc-privatization\fR" 4
+.IX Item "openacc-privatization"
+Specify mode of OpenACC privatization diagnostics for
+\&\fB\-fopt\-info\-omp\-note\fR and applicable
+\&\fB\-fdump\-tree\-*\-details\fR.
+With \fB\-\-param=openacc\-privatization=quiet\fR, don't diagnose.
+This is the current default.
+With \fB\-\-param=openacc\-privatization=noisy\fR, do diagnose.
 .RE
 .RS 4
 .Sp

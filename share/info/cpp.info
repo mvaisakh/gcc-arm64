@@ -1794,6 +1794,13 @@ double underscores.
      of a C string constant.  This is the source file that was specified
      on the command line of the preprocessor or C compiler.
 
+'__FILE_NAME__'
+     This macro expands to the basename of the current input file, in
+     the form of a C string constant.  This is the last path component
+     by which the preprocessor opened the file.  For example, processing
+     '"/usr/local/include/myheader.h"' would set this macro to
+     '"myheader.h"'.
+
 '__INCLUDE_LEVEL__'
      This macro expands to a decimal integer constant that represents
      the depth of nesting in include files.  The value of this macro is
@@ -5540,56 +5547,56 @@ Node: Variadic Macros59129
 Node: Predefined Macros64081
 Node: Standard Predefined Macros64669
 Node: Common Predefined Macros71043
-Node: System-specific Predefined Macros92740
-Node: C++ Named Operators94763
-Node: Undefining and Redefining Macros95727
-Node: Directives Within Macro Arguments97825
-Node: Macro Pitfalls98766
-Node: Misnesting99299
-Node: Operator Precedence Problems100411
-Node: Swallowing the Semicolon102277
-Node: Duplication of Side Effects104300
-Node: Self-Referential Macros106483
-Node: Argument Prescan108892
-Node: Newlines in Arguments112643
-Node: Conditionals113594
-Node: Conditional Uses115290
-Node: Conditional Syntax116648
-Node: Ifdef117070
-Node: If120227
-Node: Defined122531
-Node: Else123924
-Node: Elif124494
-Node: __has_attribute125807
-Node: __has_cpp_attribute127401
-Node: __has_c_attribute128291
-Node: __has_builtin129064
-Node: __has_include130197
-Node: Deleted Code131786
-Node: Diagnostics133033
-Node: Line Control134582
-Node: Pragmas136860
-Node: Other Directives141257
-Node: Preprocessor Output142307
-Node: Traditional Mode145460
-Node: Traditional lexical analysis146597
-Node: Traditional macros149100
-Node: Traditional miscellany152897
-Node: Traditional warnings153893
-Node: Implementation Details156090
-Node: Implementation-defined behavior156653
-Ref: Identifier characters157403
-Node: Implementation limits160451
-Node: Obsolete Features163124
-Node: Invocation165968
-Ref: dashMF172003
-Ref: fdollars-in-identifiers176665
-Ref: Wtrigraphs190791
-Node: Environment Variables192846
-Node: GNU Free Documentation License196537
-Node: Index of Directives221682
-Node: Option Index223835
-Node: Concept Index229937
+Node: System-specific Predefined Macros93055
+Node: C++ Named Operators95078
+Node: Undefining and Redefining Macros96042
+Node: Directives Within Macro Arguments98140
+Node: Macro Pitfalls99081
+Node: Misnesting99614
+Node: Operator Precedence Problems100726
+Node: Swallowing the Semicolon102592
+Node: Duplication of Side Effects104615
+Node: Self-Referential Macros106798
+Node: Argument Prescan109207
+Node: Newlines in Arguments112958
+Node: Conditionals113909
+Node: Conditional Uses115605
+Node: Conditional Syntax116963
+Node: Ifdef117385
+Node: If120542
+Node: Defined122846
+Node: Else124239
+Node: Elif124809
+Node: __has_attribute126122
+Node: __has_cpp_attribute127716
+Node: __has_c_attribute128606
+Node: __has_builtin129379
+Node: __has_include130512
+Node: Deleted Code132101
+Node: Diagnostics133348
+Node: Line Control134897
+Node: Pragmas137175
+Node: Other Directives141572
+Node: Preprocessor Output142622
+Node: Traditional Mode145775
+Node: Traditional lexical analysis146912
+Node: Traditional macros149415
+Node: Traditional miscellany153212
+Node: Traditional warnings154208
+Node: Implementation Details156405
+Node: Implementation-defined behavior156968
+Ref: Identifier characters157718
+Node: Implementation limits160766
+Node: Obsolete Features163439
+Node: Invocation166283
+Ref: dashMF172318
+Ref: fdollars-in-identifiers176980
+Ref: Wtrigraphs191106
+Node: Environment Variables193161
+Node: GNU Free Documentation License196852
+Node: Index of Directives221997
+Node: Option Index224150
+Node: Concept Index230252
 
 End Tag Table
 
