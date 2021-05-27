@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCOV 1"
-.TH GCOV 1 "2021-05-23" "gcc-12.0.0" "GNU"
+.TH GCOV 1 "2021-05-27" "gcc-12.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -997,13 +997,15 @@ same source lines, the line counts themselves might seem inconsistent.
 .PP
 Long-running applications can use the \f(CW\*(C`_\|_gcov_reset\*(C'\fR and \f(CW\*(C`_\|_gcov_dump\*(C'\fR
 facilities to restrict profile collection to the program region of
-interest. Calling \f(CW\*(C`_\|_gcov_reset(void)\*(C'\fR will clear all profile counters
-to zero, and calling \f(CW\*(C`_\|_gcov_dump(void)\*(C'\fR will cause the profile information
-collected at that point to be dumped to \fI.gcda\fR output files.
+interest. Calling \f(CW\*(C`_\|_gcov_reset(void)\*(C'\fR will clear all run-time profile
+counters to zero, and calling \f(CW\*(C`_\|_gcov_dump(void)\*(C'\fR will cause the profile
+information collected at that point to be dumped to \fI.gcda\fR output files
+(the function can be called just once).
 Instrumented applications use a static destructor with priority 99
 to invoke the \f(CW\*(C`_\|_gcov_dump\*(C'\fR function. Thus \f(CW\*(C`_\|_gcov_dump\*(C'\fR
 is executed after all user defined static destructors,
 as well as handlers registered with \f(CW\*(C`atexit\*(C'\fR.
+.PP
 If an executable loads a dynamic shared object via dlopen functionality,
 \&\fB\-Wl,\-\-dynamic\-list\-data\fR is needed to dump all profile data.
 .PP

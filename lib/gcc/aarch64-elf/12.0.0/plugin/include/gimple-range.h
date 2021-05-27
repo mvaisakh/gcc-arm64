@@ -65,7 +65,8 @@ public:
   virtual void range_on_entry (irange &r, basic_block bb, tree name);
   virtual void range_on_exit (irange &r, basic_block bb, tree name);
   void export_global_ranges ();
-  void dump (FILE *f);
+  virtual void dump (FILE *f) OVERRIDE;
+  void dump_bb (FILE *f, basic_block bb);
 protected:
   bool fold_range_internal (irange &r, gimple *s, tree name);
   ranger_cache m_cache;
@@ -83,10 +84,10 @@ class fur_source
 public:
   inline fur_source (range_query *q, edge e);
   inline fur_source (range_query *q, gimple *s);
-  inline fur_source (range_query *q, class ranger_cache *g, edge e, gimple *s);
+  inline fur_source (range_query *q, gori_compute *g, edge e, gimple *s);
   bool get_operand (irange &r, tree expr);
 protected:
-  ranger_cache *m_cache;
+  gori_compute *m_gori;
   range_query *m_query;
   edge m_edge;
   gimple *m_stmt;
@@ -123,7 +124,7 @@ inline
 fur_source::fur_source (range_query *q, edge e)
 {
   m_query = q;
-  m_cache = NULL;
+  m_gori = NULL;
   m_edge = e;
   m_stmt = NULL;
 }
@@ -134,7 +135,7 @@ inline
 fur_source::fur_source (range_query *q, gimple *s)
 {
   m_query = q;
-  m_cache = NULL;
+  m_gori = NULL;
   m_edge = NULL;
   m_stmt = s;
 }
@@ -143,10 +144,10 @@ fur_source::fur_source (range_query *q, gimple *s)
 // and can also set the dependency information as appropriate when invoked.
 
 inline
-fur_source::fur_source (range_query *q, ranger_cache *g, edge e, gimple *s)
+fur_source::fur_source (range_query *q, gori_compute *g, edge e, gimple *s)
 {
   m_query = q;
-  m_cache = g;
+  m_gori = g;
   m_edge = e;
   m_stmt = s;
 }
@@ -226,50 +227,6 @@ range_compatible_p (tree type1, tree type2)
 	  && TYPE_SIGN (type1) == TYPE_SIGN (type2));
 }
 
-// Return the legacy GCC global range for NAME if it has one, otherwise
-// return VARYING.
-
-static inline value_range
-gimple_range_global (tree name)
-{
-  gcc_checking_assert (gimple_range_ssa_p (name));
-  tree type = TREE_TYPE (name);
-
-  if (SSA_NAME_IS_DEFAULT_DEF (name))
-    {
-      tree sym = SSA_NAME_VAR (name);
-      // Adapted from vr_values::get_lattice_entry().
-      // Use a range from an SSA_NAME's available range.
-      if (TREE_CODE (sym) == PARM_DECL)
-	{
-	  // Try to use the "nonnull" attribute to create ~[0, 0]
-	  // anti-ranges for pointers.  Note that this is only valid with
-	  // default definitions of PARM_DECLs.
-	  if (POINTER_TYPE_P (type)
-	      && (nonnull_arg_p (sym) || get_ptr_nonnull (name)))
-	    {
-	      value_range r;
-	      r.set_nonzero (type);
-	      return r;
-	    }
-	  else if (INTEGRAL_TYPE_P (type))
-	    {
-	      value_range r;
-	      get_range_info (name, r);
-	      if (r.undefined_p ())
-		r.set_varying (type);
-	      return r;
-	    }
-	}
-      // If this is a local automatic with no definition, use undefined.
-      else if (TREE_CODE (sym) != RESULT_DECL)
-	return value_range ();
-   }
-  // Otherwise return range for the type.
-  return value_range (type);
-}
-
-
 // This class overloads the ranger routines to provide tracing facilties
 // Entry and exit values to each of the APIs is placed in the dumpfile.
 
@@ -294,5 +251,19 @@ private:
 
 // Flag to enable debugging the various internal Caches.
 #define DEBUG_RANGE_CACHE (dump_file && (param_evrp_mode & EVRP_MODE_DEBUG))
+
+// Global ranges for SSA names using SSA_NAME_RANGE_INFO.
+
+class global_range_query : public range_query
+{
+public:
+  bool range_of_expr (irange &r, tree expr, gimple * = NULL) OVERRIDE;
+};
+
+extern global_range_query global_ranges;
+extern value_range gimple_range_global (tree name);
+
+extern gimple_ranger *enable_ranger (struct function *);
+extern void disable_ranger (struct function *);
 
 #endif // GCC_GIMPLE_RANGE_STMT_H

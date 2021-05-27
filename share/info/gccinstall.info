@@ -55,8 +55,6 @@ File: gccinstall.info,  Node: Top,  Up: (dir)
 * Specific::        Host/target specific installation notes for GCC.
 * Binaries::        Where to get pre-compiled binaries.
 
-* Old::             Old installation documentation.
-
 * GNU Free Documentation License:: How you can copy and share this manual.
 * Concept Index::   This index has two entries.
 
@@ -520,20 +518,64 @@ to make clear that your version contains modifications.
 
      The default value is https://gcc.gnu.org/.
 
-Target specification
-====================
+Host, Build and Target specification
+====================================
 
-   * GCC has code to correctly determine the correct value for TARGET
-     for nearly all native systems.  Therefore, we highly recommend you
-     do not provide a configure target when configuring a native
-     compiler.
+Specify the host, build and target machine configurations.  You do this
+when you run the 'configure' script.
 
-   * TARGET must be specified as '--target=TARGET' when configuring a
-     cross compiler; examples of valid targets would be m68k-elf,
-     sh-elf, etc.
+   The "build" machine is the system which you are using, the "host"
+machine is the system where you want to run the resulting compiler
+(normally the build machine), and the "target" machine is the system for
+which you want the compiler to generate code.
 
-   * Specifying just TARGET instead of '--target=TARGET' implies that
-     the host defaults to TARGET.
+   If you are building a compiler to produce code for the machine it
+runs on (a native compiler), you normally do not need to specify any
+operands to 'configure'; it will try to guess the type of machine you
+are on and use that as the build, host and target machines.  So you
+don't need to specify a configuration when building a native compiler
+unless 'configure' cannot figure out what your configuration is or
+guesses wrong.
+
+   In those cases, specify the build machine's "configuration name" with
+the '--host' option; the host and target will default to be the same as
+the host machine.
+
+   Here is an example:
+
+     ./configure --host=x86_64-pc-linux-gnu
+
+   A configuration name may be canonical or it may be more or less
+abbreviated ('config.sub' script produces canonical versions).
+
+   A canonical configuration name has three parts, separated by dashes.
+It looks like this: 'CPU-COMPANY-SYSTEM'.
+
+   Here are the possible CPU types:
+
+     aarch64, aarch64_be, alpha, alpha64, amdgcn, arc, arceb, arm,
+     armeb, avr, bfin, bpf, cr16, cris, csky, epiphany, fido, fr30, frv,
+     ft32, h8300, hppa, hppa2.0, hppa64, i486, i686, ia64, iq2000, lm32,
+     m32c, m32r, m32rle, m68k, mcore, microblaze, microblazeel, mips,
+     mips64, mips64el, mips64octeon, mips64orion, mips64vr, mipsel,
+     mipsisa32, mipsisa32r2, mipsisa64, mipsisa64r2, mipsisa64r2el,
+     mipsisa64sb1, mipsisa64sr71k, mipstx39, mmix, mn10300, moxie,
+     msp430, nds32be, nds32le, nios2, nvptx, or1k, pdp11, powerpc,
+     powerpc64, powerpc64le, powerpcle, pru, riscv32, riscv32be,
+     riscv64, riscv64be, rl78, rx, s390, s390x, sh, shle, sparc,
+     sparc64, tic6x, tilegx, tilegxbe, tilepro, v850, v850e, v850e1,
+     vax, visium, x86_64, xstormy16, xtensa
+
+   Here is a list of system types:
+
+     aixVERSION, amdhsa, aout, cygwin, darwinVERSION, eabi, eabialtivec,
+     eabisim, eabisimaltivec, elf, elf32, elfbare, elfoabi,
+     freebsdVERSION, gnu, hpux, hpuxVERSION, kfreebsd-gnu,
+     kopensolaris-gnu, linux-androideabi, linux-gnu, linux-gnu_altivec,
+     linux-musl, linux-uclibc, lynxos, mingw32, mingw32crt, mmixware,
+     msdosdjgpp, netbsd, netbsdelfVERSION, nto-qnx, openbsd, rtems,
+     solarisVERSION, symbianelf, tpf, uclinux, uclinux_eabi, vms,
+     vxworks, vxworksae, vxworksmils
 
 Options specification
 =====================
@@ -2965,7 +3007,7 @@ makers.
      platforms.
 
 
-File: gccinstall.info,  Node: Specific,  Next: Old,  Prev: Binaries,  Up: Top
+File: gccinstall.info,  Node: Specific,  Next: GNU Free Documentation License,  Prev: Binaries,  Up: Top
 
 9 Host/target specific installation notes for GCC
 *************************************************
@@ -4237,155 +4279,7 @@ linker; duplicate copies of inlines, vtables and template instantiations
 will be discarded automatically.
 
 
-File: gccinstall.info,  Node: Old,  Next: GNU Free Documentation License,  Prev: Specific,  Up: Top
-
-10 Old installation documentation
-*********************************
-
-Note most of this information is out of date and superseded by the
-previous chapters of this manual.  It is provided for historical
-reference only, because of a lack of volunteers to merge it into the
-main manual.
-
-* Menu:
-
-* Configurations::    Configurations Supported by GCC.
-
-   Here is the procedure for installing GCC on a GNU or Unix system.
-
-  1. If you have chosen a configuration for GCC which requires other GNU
-     tools (such as GAS or the GNU linker) instead of the standard
-     system tools, install the required tools in the build directory
-     under the names 'as', 'ld' or whatever is appropriate.
-
-     Alternatively, you can do subsequent compilation using a value of
-     the 'PATH' environment variable such that the necessary GNU tools
-     come before the standard system tools.
-
-  2. Specify the host, build and target machine configurations.  You do
-     this when you run the 'configure' script.
-
-     The "build" machine is the system which you are using, the "host"
-     machine is the system where you want to run the resulting compiler
-     (normally the build machine), and the "target" machine is the
-     system for which you want the compiler to generate code.
-
-     If you are building a compiler to produce code for the machine it
-     runs on (a native compiler), you normally do not need to specify
-     any operands to 'configure'; it will try to guess the type of
-     machine you are on and use that as the build, host and target
-     machines.  So you don't need to specify a configuration when
-     building a native compiler unless 'configure' cannot figure out
-     what your configuration is or guesses wrong.
-
-     In those cases, specify the build machine's "configuration name"
-     with the '--host' option; the host and target will default to be
-     the same as the host machine.
-
-     Here is an example:
-
-          ./configure --host=sparc-sun-sunos4.1
-
-     A configuration name may be canonical or it may be more or less
-     abbreviated.
-
-     A canonical configuration name has three parts, separated by
-     dashes.  It looks like this: 'CPU-COMPANY-SYSTEM'.  (The three
-     parts may themselves contain dashes; 'configure' can figure out
-     which dashes serve which purpose.)  For example,
-     'm68k-sun-sunos4.1' specifies a Sun 3.
-
-     You can also replace parts of the configuration by nicknames or
-     aliases.  For example, 'sun3' stands for 'm68k-sun', so
-     'sun3-sunos4.1' is another way to specify a Sun 3.
-
-     You can specify a version number after any of the system types, and
-     some of the CPU types.  In most cases, the version is irrelevant,
-     and will be ignored.  So you might as well specify the version if
-     you know it.
-
-     See *note Configurations::, for a list of supported configuration
-     names and notes on many of the configurations.  You should check
-     the notes in that section before proceeding any further with the
-     installation of GCC.
-
-
-File: gccinstall.info,  Node: Configurations,  Up: Old
-
-10.1 Configurations Supported by GCC
-====================================
-
-Here are the possible CPU types:
-
-     1750a, a29k, alpha, arm, avr, cN, clipper, dsp16xx, elxsi, fr30,
-     h8300, hppa1.0, hppa1.1, i370, i386, i486, i586, i686, i786, i860,
-     i960, ip2k, m32r, m68000, m68k, m88k, mcore, mips, mipsel, mips64,
-     mips64el, mn10200, mn10300, ns32k, pdp11, powerpc, powerpcle, romp,
-     rs6000, sh, sparc, sparclite, sparc64, v850, vax, we32k.
-
-   Here are the recognized company names.  As you can see, customary
-abbreviations are used rather than the longer official names.
-
-     acorn, alliant, altos, apollo, apple, att, bull, cbm, convergent,
-     convex, crds, dec, dg, dolphin, elxsi, encore, harris, hitachi, hp,
-     ibm, intergraph, isi, mips, motorola, ncr, next, ns, omron, plexus,
-     sequent, sgi, sony, sun, tti, unicom, wrs.
-
-   The company name is meaningful only to disambiguate when the rest of
-the information supplied is insufficient.  You can omit it, writing just
-'CPU-SYSTEM', if it is not needed.  For example, 'vax-ultrix4.2' is
-equivalent to 'vax-dec-ultrix4.2'.
-
-   Here is a list of system types:
-
-     386bsd, aix, acis, amigaos, aos, aout, aux, bosx, bsd, clix, coff,
-     ctix, cxux, dgux, dynix, ebmon, ecoff, elf, esix, freebsd, hms,
-     genix, gnu, linux, linux-gnu, hiux, hpux, iris, irix, isc, luna,
-     lynxos, mach, minix, msdos, mvs, netbsd, newsos, nindy, ns, osf,
-     osfrose, ptx, riscix, riscos, rtu, sco, sim, solaris, sunos, sym,
-     sysv, udi, ultrix, unicos, uniplus, unos, vms, vsta, vxworks,
-     winnt, xenix.
-
-You can omit the system type; then 'configure' guesses the operating
-system from the CPU and company.
-
-   You can add a version number to the system type; this may or may not
-make a difference.  For example, you can write 'bsd4.3' or 'bsd4.4' to
-distinguish versions of BSD.  In practice, the version number is most
-needed for 'sysv3' and 'sysv4', which are often treated differently.
-
-   'linux-gnu' is the canonical name for the GNU/Linux target; however
-GCC will also accept 'linux'.  The version of the kernel in use is not
-relevant on these systems.  A suffix such as 'libc1' or 'aout'
-distinguishes major versions of the C library; all of the suffixed
-versions are obsolete.
-
-   If you specify an impossible combination such as 'i860-dg-vms', then
-you may get an error message from 'configure', or it may ignore part of
-the information and do the best it can with the rest.  'configure'
-always prints the canonical name for the alternative that it used.  GCC
-does not support all possible alternatives.
-
-   Often a particular model of machine has a name.  Many machine names
-are recognized as aliases for CPU/company combinations.  Thus, the
-machine name 'sun3', mentioned above, is an alias for 'm68k-sun'.
-Sometimes we accept a company name as a machine name, when the name is
-popularly used for a particular machine.  Here is a table of the known
-machine names:
-
-     3300, 3b1, 3bN, 7300, altos3068, altos, apollo68, att-7300,
-     balance, convex-cN, crds, decstation-3100, decstation, delta,
-     encore, fx2800, gmicro, hp7NN, hp8NN, hp9k2NN, hp9k3NN, hp9k7NN,
-     hp9k8NN, iris4d, iris, isi68, m3230, magnum, merlin, miniframe,
-     mmax, news-3600, news800, news, next, pbd, pc532, pmax, powerpc,
-     powerpcle, ps2, risc-news, rtpc, sun2, sun386i, sun386, sun3, sun4,
-     symmetry, tower-32, tower.
-
-Remember that a machine name specifies both the cpu type and the company
-name.
-
-
-File: gccinstall.info,  Node: GNU Free Documentation License,  Next: Concept Index,  Prev: Old,  Up: Top
+File: gccinstall.info,  Node: GNU Free Documentation License,  Next: Concept Index,  Prev: Specific,  Up: Top
 
 GNU Free Documentation License
 ******************************
@@ -4876,9 +4770,8 @@ Concept Index
 * Menu:
 
 * Binaries:                              Binaries.           (line    6)
-* build_configargs:                      Configuration.      (line 1749)
+* build_configargs:                      Configuration.      (line 1793)
 * Configuration:                         Configuration.      (line    6)
-* configurations supported by GCC:       Configurations.     (line    6)
 * Downloading GCC:                       Downloading the source.
                                                              (line    6)
 * Downloading the Source:                Downloading the source.
@@ -4886,7 +4779,7 @@ Concept Index
 * FDL, GNU Free Documentation License:   GNU Free Documentation License.
                                                              (line    6)
 * Host specific installation:            Specific.           (line    6)
-* host_configargs:                       Configuration.      (line 1753)
+* host_configargs:                       Configuration.      (line 1797)
 * Installing GCC: Binaries:              Binaries.           (line    6)
 * Installing GCC: Building:              Building.           (line    6)
 * Installing GCC: Configuration:         Configuration.      (line    6)
@@ -4896,7 +4789,7 @@ Concept Index
 * Specific installation notes:           Specific.           (line    6)
 * Target specific installation:          Specific.           (line    6)
 * Target specific installation notes:    Specific.           (line    6)
-* target_configargs:                     Configuration.      (line 1757)
+* target_configargs:                     Configuration.      (line 1801)
 * Testing:                               Testing.            (line    6)
 * Testsuite:                             Testing.            (line    6)
 
@@ -4904,107 +4797,105 @@ Concept Index
 
 Tag Table:
 Node: Top1696
-Node: Installing GCC2254
-Node: Prerequisites3888
-Ref: GNAT-prerequisite5954
-Node: Downloading the source15566
-Node: Configuration17237
-Ref: with-gnu-as33325
-Ref: with-as34220
-Ref: with-gnu-ld35629
-Ref: WithAixSoname59796
-Ref: AixLdCommand60457
-Node: Building102622
-Node: Testing118745
-Node: Final install126574
-Node: Binaries131874
-Node: Specific132981
-Ref: aarch64-x-x133488
-Ref: alpha-x-x135508
-Ref: amd64-x-solaris2135722
-Ref: amdgcn-x-amdhsa135804
-Ref: arc-x-elf32136330
-Ref: arc-linux-uclibc136506
-Ref: arm-x-eabi136647
-Ref: avr136900
-Ref: bfin137481
-Ref: cr16137744
-Ref: cris138160
-Ref: dos138858
-Ref: epiphany-x-elf139181
-Ref: x-x-freebsd139286
-Ref: ft32-x-elf141086
-Ref: h8300-hms141184
-Ref: hppa-hp-hpux141536
-Ref: hppa-hp-hpux10143908
-Ref: hppa-hp-hpux11144321
-Ref: x-x-linux-gnu149723
-Ref: ix86-x-linux149916
-Ref: ix86-x-solaris2150229
-Ref: ia64-x-linux151305
-Ref: ia64-x-hpux152075
-Ref: x-ibm-aix152630
-Ref: TransferAixShobj156292
-Ref: iq2000-x-elf160102
-Ref: lm32-x-elf160242
-Ref: lm32-x-uclinux160346
-Ref: m32c-x-elf160474
-Ref: m32r-x-elf160576
-Ref: m68k-x-x160678
-Ref: m68k-x-uclinux161716
-Ref: microblaze-x-elf161961
-Ref: mips-x-x162080
-Ref: moxie-x-elf163990
-Ref: msp430-x-elf164037
-Ref: nds32le-x-elf164594
-Ref: nds32be-x-elf164666
-Ref: nvptx-x-none164735
-Ref: or1k-x-elf165298
-Ref: or1k-x-linux165429
-Ref: powerpc-x-x165510
-Ref: powerpc-x-darwin165701
-Ref: powerpc-x-elf166195
-Ref: powerpc-x-linux-gnu166280
-Ref: powerpc-x-netbsd166375
-Ref: powerpc-x-eabisim166463
-Ref: powerpc-x-eabi166589
-Ref: powerpcle-x-elf166665
-Ref: powerpcle-x-eabisim166757
-Ref: powerpcle-x-eabi166890
-Ref: rl78-x-elf166973
-Ref: riscv32-x-elf167079
-Ref: riscv32-x-linux167268
-Ref: riscv64-x-elf167425
-Ref: riscv64-x-linux167614
-Ref: rx-x-elf167771
-Ref: s390-x-linux167817
-Ref: s390x-x-linux167889
-Ref: s390x-ibm-tpf167976
-Ref: x-x-solaris2168107
-Ref: sparc-x-x171214
-Ref: sparc-sun-solaris2171716
-Ref: sparc-x-linux172859
-Ref: sparc64-x-solaris2172890
-Ref: sparcv9-x-solaris2173608
-Ref: c6x-x-x173695
-Ref: tilegx-*-linux173787
-Ref: tilegxbe-*-linux173929
-Ref: tilepro-*-linux174072
-Ref: visium-x-elf174193
-Ref: x-x-vxworks174301
-Ref: x86-64-x-x175824
-Ref: x86-64-x-solaris2176152
-Ref: xtensa-x-elf176802
-Ref: xtensa-x-linux177473
-Ref: windows177814
-Ref: x-x-cygwin179655
-Ref: x-x-mingw32180208
-Ref: older180434
-Ref: elf182551
-Node: Old182809
-Node: Configurations185942
-Node: GNU Free Documentation License189480
-Node: Concept Index214608
+Node: Installing GCC2201
+Node: Prerequisites3835
+Ref: GNAT-prerequisite5901
+Node: Downloading the source15513
+Node: Configuration17184
+Ref: with-gnu-as35471
+Ref: with-as36366
+Ref: with-gnu-ld37775
+Ref: WithAixSoname61942
+Ref: AixLdCommand62603
+Node: Building104768
+Node: Testing120891
+Node: Final install128720
+Node: Binaries134020
+Node: Specific135127
+Ref: aarch64-x-x135661
+Ref: alpha-x-x137681
+Ref: amd64-x-solaris2137895
+Ref: amdgcn-x-amdhsa137977
+Ref: arc-x-elf32138503
+Ref: arc-linux-uclibc138679
+Ref: arm-x-eabi138820
+Ref: avr139073
+Ref: bfin139654
+Ref: cr16139917
+Ref: cris140333
+Ref: dos141031
+Ref: epiphany-x-elf141354
+Ref: x-x-freebsd141459
+Ref: ft32-x-elf143259
+Ref: h8300-hms143357
+Ref: hppa-hp-hpux143709
+Ref: hppa-hp-hpux10146081
+Ref: hppa-hp-hpux11146494
+Ref: x-x-linux-gnu151896
+Ref: ix86-x-linux152089
+Ref: ix86-x-solaris2152402
+Ref: ia64-x-linux153478
+Ref: ia64-x-hpux154248
+Ref: x-ibm-aix154803
+Ref: TransferAixShobj158465
+Ref: iq2000-x-elf162275
+Ref: lm32-x-elf162415
+Ref: lm32-x-uclinux162519
+Ref: m32c-x-elf162647
+Ref: m32r-x-elf162749
+Ref: m68k-x-x162851
+Ref: m68k-x-uclinux163889
+Ref: microblaze-x-elf164134
+Ref: mips-x-x164253
+Ref: moxie-x-elf166163
+Ref: msp430-x-elf166210
+Ref: nds32le-x-elf166767
+Ref: nds32be-x-elf166839
+Ref: nvptx-x-none166908
+Ref: or1k-x-elf167471
+Ref: or1k-x-linux167602
+Ref: powerpc-x-x167683
+Ref: powerpc-x-darwin167874
+Ref: powerpc-x-elf168368
+Ref: powerpc-x-linux-gnu168453
+Ref: powerpc-x-netbsd168548
+Ref: powerpc-x-eabisim168636
+Ref: powerpc-x-eabi168762
+Ref: powerpcle-x-elf168838
+Ref: powerpcle-x-eabisim168930
+Ref: powerpcle-x-eabi169063
+Ref: rl78-x-elf169146
+Ref: riscv32-x-elf169252
+Ref: riscv32-x-linux169441
+Ref: riscv64-x-elf169598
+Ref: riscv64-x-linux169787
+Ref: rx-x-elf169944
+Ref: s390-x-linux169990
+Ref: s390x-x-linux170062
+Ref: s390x-ibm-tpf170149
+Ref: x-x-solaris2170280
+Ref: sparc-x-x173387
+Ref: sparc-sun-solaris2173889
+Ref: sparc-x-linux175032
+Ref: sparc64-x-solaris2175063
+Ref: sparcv9-x-solaris2175781
+Ref: c6x-x-x175868
+Ref: tilegx-*-linux175960
+Ref: tilegxbe-*-linux176102
+Ref: tilepro-*-linux176245
+Ref: visium-x-elf176366
+Ref: x-x-vxworks176474
+Ref: x86-64-x-x177997
+Ref: x86-64-x-solaris2178325
+Ref: xtensa-x-elf178975
+Ref: xtensa-x-linux179646
+Ref: windows179987
+Ref: x-x-cygwin181828
+Ref: x-x-mingw32182381
+Ref: older182607
+Ref: elf184724
+Node: GNU Free Documentation License184982
+Node: Concept Index210115
 
 End Tag Table
 
