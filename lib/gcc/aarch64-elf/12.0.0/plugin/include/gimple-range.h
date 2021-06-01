@@ -25,10 +25,10 @@ along with GCC; see the file COPYING3.  If not see
 
 #include "range.h"
 #include "range-op.h"
+#include "value-query.h"
 #include "gimple-range-edge.h"
 #include "gimple-range-gori.h"
 #include "gimple-range-cache.h"
-#include "value-query.h"
 
 // This file is the main include point for gimple ranges.
 // There are two fold_range routines of interest:
@@ -65,6 +65,7 @@ public:
   virtual void range_on_entry (irange &r, basic_block bb, tree name);
   virtual void range_on_exit (irange &r, basic_block bb, tree name);
   void export_global_ranges ();
+  inline gori_compute &gori ()  { return m_cache.m_gori; }
   virtual void dump (FILE *f) OVERRIDE;
   void dump_bb (FILE *f, basic_block bb);
 protected:
@@ -251,17 +252,6 @@ private:
 
 // Flag to enable debugging the various internal Caches.
 #define DEBUG_RANGE_CACHE (dump_file && (param_evrp_mode & EVRP_MODE_DEBUG))
-
-// Global ranges for SSA names using SSA_NAME_RANGE_INFO.
-
-class global_range_query : public range_query
-{
-public:
-  bool range_of_expr (irange &r, tree expr, gimple * = NULL) OVERRIDE;
-};
-
-extern global_range_query global_ranges;
-extern value_range gimple_range_global (tree name);
 
 extern gimple_ranger *enable_ranger (struct function *);
 extern void disable_ranger (struct function *);
