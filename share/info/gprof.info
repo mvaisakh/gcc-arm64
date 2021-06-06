@@ -217,10 +217,11 @@ the time used in initialization and in cleanup, but not much else.
 
    Your program will write the profile data into a file called
 'gmon.out' just before exiting.  If there is already a file called
-'gmon.out', its contents are overwritten.  There is currently no way to
-tell the program to write the profile data under a different name, but
-you can rename the file afterwards if you are concerned that it may be
-overwritten.
+'gmon.out', its contents are overwritten.  You can rename the file
+afterwards if you are concerned that it may be overwritten.  If your
+system libc allows you may be able to write the profile data under a
+different name.  Set the GMON_OUT_PREFIX environment variable; this name
+will be appended with the PID of the running program.
 
    In order to write the 'gmon.out' file properly, your program must
 exit normally: by returning from 'main' or by calling 'exit'.  Calling
@@ -2428,32 +2429,32 @@ Node: Top719
 Node: Introduction2045
 Node: Compiling4536
 Node: Executing8592
-Node: Invoking11380
-Node: Output Options12795
-Node: Analysis Options19887
-Node: Miscellaneous Options23807
-Node: Deprecated Options25061
-Node: Symspecs27124
-Node: Output28950
-Node: Flat Profile29990
-Node: Call Graph34943
-Node: Primary38175
-Node: Callers40763
-Node: Subroutines42881
-Node: Cycles44722
-Node: Line-by-line51499
-Node: Annotated Source55575
-Node: Inaccuracy58573
-Node: Sampling Error58831
-Node: Assumptions61735
-Node: How do I?63205
-Node: Incompatibilities64762
-Node: Details66256
-Node: Implementation66649
-Node: File Format72548
-Node: Internals76840
-Node: Debugging85330
-Node: GNU Free Documentation License86920
+Node: Invoking11485
+Node: Output Options12900
+Node: Analysis Options19992
+Node: Miscellaneous Options23912
+Node: Deprecated Options25166
+Node: Symspecs27229
+Node: Output29055
+Node: Flat Profile30095
+Node: Call Graph35048
+Node: Primary38280
+Node: Callers40868
+Node: Subroutines42986
+Node: Cycles44827
+Node: Line-by-line51604
+Node: Annotated Source55680
+Node: Inaccuracy58678
+Node: Sampling Error58936
+Node: Assumptions61840
+Node: How do I?63310
+Node: Incompatibilities64867
+Node: Details66361
+Node: Implementation66754
+Node: File Format72653
+Node: Internals76945
+Node: Debugging85435
+Node: GNU Free Documentation License87025
 
 End Tag Table
 

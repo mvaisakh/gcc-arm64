@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-06-03" "gcc-12.0.0" "GNU"
+.TH GCC 1 "2021-06-06" "gcc-12.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -18486,7 +18486,7 @@ Enable cache bypass for volatile references.
 The following options fine tune code generation:
 .IP "\fB\-malign\-call\fR" 4
 .IX Item "-malign-call"
-Do alignment optimizations for call instructions.
+Does nothing.  Preserved for backward compatibility.
 .IP "\fB\-mauto\-modify\-reg\fR" 4
 .IX Item "-mauto-modify-reg"
 Enable the use of pre/post modify with register displacement.
@@ -18565,9 +18565,7 @@ instructions.  These instructions are only valid for CPUs with
 code-density feature.
 .IP "\fB\-mmixed\-code\fR" 4
 .IX Item "-mmixed-code"
-Tweak register allocation to help 16\-bit instruction generation.
-This generally has the effect of decreasing the average instruction size
-while increasing the instruction count.
+Does nothing.  Preserved for backward compatibility.
 .IP "\fB\-mq\-class\fR" 4
 .IX Item "-mq-class"
 Ths option is deprecated.  Enable \fBq\fR instruction alternatives.
@@ -18639,12 +18637,7 @@ Cost to assume for a multiply instruction, with \fB4\fR being equal to a
 normal instruction.
 .IP "\fB\-munalign\-prob\-threshold=\fR\fIprobability\fR" 4
 .IX Item "-munalign-prob-threshold=probability"
-Set probability threshold for unaligning branches.
-When tuning for \fB\s-1ARC700\s0\fR and optimizing for speed, branches without
-filled delay slot are preferably emitted unaligned and long, unless
-profiling indicates that the probability for the branch to be taken
-is below \fIprobability\fR.  
-The default is (\s-1REG_BR_PROB_BASE/2\s0), i.e. 5000.
+Does nothing.  Preserved for backward compatibility.
 .PP
 The following options are maintained for backward compatibility, but
 are now deprecated and will be removed in a future release:
