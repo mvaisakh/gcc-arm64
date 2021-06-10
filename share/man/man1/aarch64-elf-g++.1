@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-06-06" "gcc-12.0.0" "GNU"
+.TH GCC 1 "2021-06-10" "gcc-12.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -4920,8 +4920,7 @@ might be printed in \s-1JSON\s0 form (after formatting) like this:
 \&                    }
 \&                ]
 \&                "column\-origin": 1,
-\&            },
-\&            ...
+\&            }
 \&        ]
 .Ve
 .Sp
@@ -13247,6 +13246,9 @@ we may be able to devirtualize speculatively.
 .IX Item "max-vrp-switch-assertions"
 The maximum number of assertions to add along the default edge of a switch
 statement during \s-1VRP.\s0
+.IP "\fBevrp-sparse-threshold\fR" 4
+.IX Item "evrp-sparse-threshold"
+Maximum number of basic blocks before \s-1EVRP\s0 uses a sparse cache.
 .IP "\fBevrp-mode\fR" 4
 .IX Item "evrp-mode"
 Specifies the mode Early \s-1VRP\s0 should operate in.
@@ -16035,6 +16037,11 @@ Moreover, code compiled with \fB\-ftrampolines\fR and code compiled with
 \&\fB\-fno\-trampolines\fR are not binary compatible if nested functions are
 present.  This option must therefore be used on a program-wide basis and be
 manipulated with extreme care.
+.Sp
+For languages other than Ada, the \f(CW\*(C`\-ftrampolines\*(C'\fR and
+\&\f(CW\*(C`\-fno\-trampolines\*(C'\fR options currently have no effect, and
+trampolines are always generated on platforms that need them
+for nested functions.
 .IP "\fB\-fvisibility=\fR[\fBdefault\fR|\fBinternal\fR|\fBhidden\fR|\fBprotected\fR]" 4
 .IX Item "-fvisibility=[default|internal|hidden|protected]"
 Set the default \s-1ELF\s0 image symbol visibility to the specified option\-\-\-all
@@ -19358,7 +19365,7 @@ For some \s-1ARM\s0 implementations better performance can be obtained by using
 this option.
 Permissible names are: \fBarm7tdmi\fR, \fBarm7tdmi\-s\fR, \fBarm710t\fR,
 \&\fBarm720t\fR, \fBarm740t\fR, \fBstrongarm\fR, \fBstrongarm110\fR,
-\&\fBstrongarm1100\fR, 0\fBstrongarm1110\fR, \fBarm8\fR, \fBarm810\fR,
+\&\fBstrongarm1100\fR, \fBstrongarm1110\fR, \fBarm8\fR, \fBarm810\fR,
 \&\fBarm9\fR, \fBarm9e\fR, \fBarm920\fR, \fBarm920t\fR, \fBarm922t\fR,
 \&\fBarm946e\-s\fR, \fBarm966e\-s\fR, \fBarm968e\-s\fR, \fBarm926ej\-s\fR,
 \&\fBarm940t\fR, \fBarm9tdmi\fR, \fBarm10tdmi\fR, \fBarm1020t\fR,
@@ -22692,7 +22699,7 @@ The M680x0 \fIcpu\fRs are: \fB68000\fR, \fB68010\fR, \fB68020\fR,
 and \fBcpu32\fR.  The ColdFire \fIcpu\fRs are given by the table
 below, which also classifies the CPUs into families:
 .RS 4
-.IP "Family : \fB\-mcpu\fR arguments" 4
+.IP "\fIFamily\fR : \fB\-mcpu\fR \fIarguments\fR" 4
 .IX Item "Family : -mcpu arguments"
 .PD 0
 .IP "\fB51\fR : \fB51\fR \fB51ac\fR \fB51ag\fR \fB51cn\fR \fB51em\fR \fB51je\fR \fB51jf\fR \fB51jg\fR \fB51jm\fR \fB51mm\fR \fB51qe\fR \fB51qm\fR" 4
@@ -30651,8 +30658,8 @@ startup object and entry point.
 .IX Item "-mnop-fun-dllimport"
 This option is available for Cygwin and MinGW targets.  It
 specifies that the \f(CW\*(C`dllimport\*(C'\fR attribute should be ignored.
-.IP "\fB\-mthread\fR" 4
-.IX Item "-mthread"
+.IP "\fB\-mthreads\fR" 4
+.IX Item "-mthreads"
 This option is available for MinGW targets. It specifies
 that MinGW-specific thread support is to be used.
 .IP "\fB\-municode\fR" 4

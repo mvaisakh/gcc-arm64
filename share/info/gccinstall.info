@@ -3413,8 +3413,11 @@ not supported, so '--enable-threads=dce' does not work.
 *-*-linux-gnu
 =============
 
-Versions of libstdc++-v3 starting with 3.2.1 require bug fixes present
-in glibc 2.2.5 and later.  More information is available in the
+The '.init_array' and '.fini_array' sections are enabled unconditionally
+which requires at least glibc 2.1 and binutils 2.12.
+
+   Versions of libstdc++-v3 starting with 3.2.1 require bug fixes
+present in glibc 2.2.5 and later.  More information is available in the
 libstdc++-v3 documentation.
 
 i?86-*-linux*
@@ -4832,70 +4835,70 @@ Ref: hppa-hp-hpux143709
 Ref: hppa-hp-hpux10146081
 Ref: hppa-hp-hpux11146494
 Ref: x-x-linux-gnu151896
-Ref: ix86-x-linux152089
-Ref: ix86-x-solaris2152402
-Ref: ia64-x-linux153478
-Ref: ia64-x-hpux154248
-Ref: x-ibm-aix154803
-Ref: TransferAixShobj158465
-Ref: iq2000-x-elf162275
-Ref: lm32-x-elf162415
-Ref: lm32-x-uclinux162519
-Ref: m32c-x-elf162647
-Ref: m32r-x-elf162749
-Ref: m68k-x-x162851
-Ref: m68k-x-uclinux163889
-Ref: microblaze-x-elf164134
-Ref: mips-x-x164253
-Ref: moxie-x-elf166163
-Ref: msp430-x-elf166210
-Ref: nds32le-x-elf166767
-Ref: nds32be-x-elf166839
-Ref: nvptx-x-none166908
-Ref: or1k-x-elf167471
-Ref: or1k-x-linux167602
-Ref: powerpc-x-x167683
-Ref: powerpc-x-darwin167874
-Ref: powerpc-x-elf168368
-Ref: powerpc-x-linux-gnu168453
-Ref: powerpc-x-netbsd168548
-Ref: powerpc-x-eabisim168636
-Ref: powerpc-x-eabi168762
-Ref: powerpcle-x-elf168838
-Ref: powerpcle-x-eabisim168930
-Ref: powerpcle-x-eabi169063
-Ref: rl78-x-elf169146
-Ref: riscv32-x-elf169252
-Ref: riscv32-x-linux169441
-Ref: riscv64-x-elf169598
-Ref: riscv64-x-linux169787
-Ref: rx-x-elf169944
-Ref: s390-x-linux169990
-Ref: s390x-x-linux170062
-Ref: s390x-ibm-tpf170149
-Ref: x-x-solaris2170280
-Ref: sparc-x-x173387
-Ref: sparc-sun-solaris2173889
-Ref: sparc-x-linux175032
-Ref: sparc64-x-solaris2175063
-Ref: sparcv9-x-solaris2175781
-Ref: c6x-x-x175868
-Ref: tilegx-*-linux175960
-Ref: tilegxbe-*-linux176102
-Ref: tilepro-*-linux176245
-Ref: visium-x-elf176366
-Ref: x-x-vxworks176474
-Ref: x86-64-x-x177997
-Ref: x86-64-x-solaris2178325
-Ref: xtensa-x-elf178975
-Ref: xtensa-x-linux179646
-Ref: windows179987
-Ref: x-x-cygwin181828
-Ref: x-x-mingw32182381
-Ref: older182607
-Ref: elf184724
-Node: GNU Free Documentation License184982
-Node: Concept Index210115
+Ref: ix86-x-linux152219
+Ref: ix86-x-solaris2152532
+Ref: ia64-x-linux153608
+Ref: ia64-x-hpux154378
+Ref: x-ibm-aix154933
+Ref: TransferAixShobj158595
+Ref: iq2000-x-elf162405
+Ref: lm32-x-elf162545
+Ref: lm32-x-uclinux162649
+Ref: m32c-x-elf162777
+Ref: m32r-x-elf162879
+Ref: m68k-x-x162981
+Ref: m68k-x-uclinux164019
+Ref: microblaze-x-elf164264
+Ref: mips-x-x164383
+Ref: moxie-x-elf166293
+Ref: msp430-x-elf166340
+Ref: nds32le-x-elf166897
+Ref: nds32be-x-elf166969
+Ref: nvptx-x-none167038
+Ref: or1k-x-elf167601
+Ref: or1k-x-linux167732
+Ref: powerpc-x-x167813
+Ref: powerpc-x-darwin168004
+Ref: powerpc-x-elf168498
+Ref: powerpc-x-linux-gnu168583
+Ref: powerpc-x-netbsd168678
+Ref: powerpc-x-eabisim168766
+Ref: powerpc-x-eabi168892
+Ref: powerpcle-x-elf168968
+Ref: powerpcle-x-eabisim169060
+Ref: powerpcle-x-eabi169193
+Ref: rl78-x-elf169276
+Ref: riscv32-x-elf169382
+Ref: riscv32-x-linux169571
+Ref: riscv64-x-elf169728
+Ref: riscv64-x-linux169917
+Ref: rx-x-elf170074
+Ref: s390-x-linux170120
+Ref: s390x-x-linux170192
+Ref: s390x-ibm-tpf170279
+Ref: x-x-solaris2170410
+Ref: sparc-x-x173517
+Ref: sparc-sun-solaris2174019
+Ref: sparc-x-linux175162
+Ref: sparc64-x-solaris2175193
+Ref: sparcv9-x-solaris2175911
+Ref: c6x-x-x175998
+Ref: tilegx-*-linux176090
+Ref: tilegxbe-*-linux176232
+Ref: tilepro-*-linux176375
+Ref: visium-x-elf176496
+Ref: x-x-vxworks176604
+Ref: x86-64-x-x178127
+Ref: x86-64-x-solaris2178455
+Ref: xtensa-x-elf179105
+Ref: xtensa-x-linux179776
+Ref: windows180117
+Ref: x-x-cygwin181958
+Ref: x-x-mingw32182511
+Ref: older182737
+Ref: elf184854
+Node: GNU Free Documentation License185112
+Node: Concept Index210245
 
 End Tag Table
 
