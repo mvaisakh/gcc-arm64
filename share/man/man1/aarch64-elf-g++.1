@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-06-10" "gcc-12.0.0" "GNU"
+.TH GCC 1 "2021-06-13" "gcc-12.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -5504,6 +5504,15 @@ disable the error.  Disabling the error for this warning can result in
 poorly optimized code and is useful only in the
 case of very minor changes such as bug fixes to an existing code-base.
 Completely disabling the warning is not recommended.
+.IP "\fB\-Wno\-coverage\-invalid\-line\-number\fR" 4
+.IX Item "-Wno-coverage-invalid-line-number"
+Warn in case a function ends earlier than it begins due
+to an invalid linenum macros.  The warning is emitted only
+with \fB\-\-coverage\fR enabled.
+ By default, this warning is enabled and is treated as an
+error.  \fB\-Wno\-coverage\-invalid\-line\-number\fR can be used to disable the
+warning or \fB\-Wno\-error=coverage\-invalid\-line\-number\fR can be used to
+disable the error.
 .IP "\fB\-Wno\-cpp\fR" 4
 .IX Item "-Wno-cpp"
 (C, Objective-C, \*(C+, Objective\-\*(C+ and Fortran only)
