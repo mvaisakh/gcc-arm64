@@ -46924,6 +46924,11 @@ when debugging, and may be of use in DejaGnu tests.
  will dump the copious information about the analyzer's state each time
 it reaches the call in its traversal of the source.
 
+     extern void __analyzer_dump_capacity (const void *ptr);
+
+ will emit a warning describing the capacity of the base region of the
+region pointed to by the 1st argument.
+
      __analyzer_dump_path ();
 
  will emit a placeholder "note" diagnostic with a path to that call
@@ -58232,17 +58237,17 @@ Node: The Language2016389
 Node: Static Analyzer2028888
 Node: Analyzer Internals2029153
 Node: Debugging the Analyzer2045040
-Node: User Experience Guidelines2047477
-Node: Guidelines for Diagnostics2048413
-Ref: input_location_example2056588
-Node: Guidelines for Options2066273
-Node: Funding2066450
-Node: GNU Project2068957
-Node: Copying2069606
-Node: GNU Free Documentation License2107117
-Node: Contributors2132238
-Node: Option Index2173214
-Node: Concept Index2174091
+Node: User Experience Guidelines2047650
+Node: Guidelines for Diagnostics2048586
+Ref: input_location_example2056761
+Node: Guidelines for Options2066446
+Node: Funding2066623
+Node: GNU Project2069130
+Node: Copying2069779
+Node: GNU Free Documentation License2107290
+Node: Contributors2132411
+Node: Option Index2173387
+Node: Concept Index2174264
 
 End Tag Table
 

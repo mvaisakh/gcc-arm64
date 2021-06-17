@@ -4,7 +4,7 @@
 ;;; Don't parse this file wihout knowing GCC gengtype internals.
 ;;; This file should be parsed by the same gengtype which wrote it.
 
-(!version  "12.0.0 20210613 (experimental)")
+(!version  "12.0.0 20210617 (experimental)")
 (!srcdir  "../../gcc/gcc")
 (!languages 10 ada c cp d fortran go jit lto objc objcp)
 (!fileslist 221
@@ -1150,39 +1150,43 @@
                           nil )
                          
                          (!type struct 59 nil  gc_pointed_to "lang_decl"
-                          (!srcfileloc  "fortran/trans.h" 1034)
-                          (!fields 8 
+                          (!srcfileloc  "fortran/trans.h" 1037)
+                          (!fields 9 
                            (!pair  "saved_descriptor"
                             (!type already_seen 23)
-                            (!srcfileloc  "fortran/trans.h" 1022)
+                            (!srcfileloc  "fortran/trans.h" 1024)
                             nil )
                            (!pair  "stringlen"
                             (!type already_seen 23)
-                            (!srcfileloc  "fortran/trans.h" 1027)
+                            (!srcfileloc  "fortran/trans.h" 1029)
                             nil )
                            (!pair  "addr"
                             (!type already_seen 23)
-                            (!srcfileloc  "fortran/trans.h" 1028)
+                            (!srcfileloc  "fortran/trans.h" 1030)
                             nil )
                            (!pair  "token"
                             (!type already_seen 23)
-                            (!srcfileloc  "fortran/trans.h" 1030)
+                            (!srcfileloc  "fortran/trans.h" 1032)
                             nil )
                            (!pair  "caf_offset"
                             (!type already_seen 23)
-                            (!srcfileloc  "fortran/trans.h" 1030)
+                            (!srcfileloc  "fortran/trans.h" 1032)
                             nil )
                            (!pair  "scalar_allocatable"
                             (!type already_seen 2)
-                            (!srcfileloc  "fortran/trans.h" 1031)
+                            (!srcfileloc  "fortran/trans.h" 1033)
                             nil )
                            (!pair  "scalar_pointer"
                             (!type already_seen 2)
-                            (!srcfileloc  "fortran/trans.h" 1032)
+                            (!srcfileloc  "fortran/trans.h" 1034)
+                            nil )
+                           (!pair  "scalar_target"
+                            (!type already_seen 2)
+                            (!srcfileloc  "fortran/trans.h" 1035)
                             nil )
                            (!pair  "optional_arg"
                             (!type already_seen 2)
-                            (!srcfileloc  "fortran/trans.h" 1033)
+                            (!srcfileloc  "fortran/trans.h" 1036)
                             nil )
                           )
                           nil 16 
@@ -8636,23 +8640,23 @@
                                   24 
                                   (!homotypes 2
                                    (!type struct 431 nil  gc_pointed_to "binding_level"
-                                    (!srcfileloc  "fortran/f95-lang.c" 306)
+                                    (!srcfileloc  "fortran/f95-lang.c" 310)
                                     (!fields 4 
                                      (!pair  "names"
                                       (!type already_seen 23)
-                                      (!srcfileloc  "fortran/f95-lang.c" 297)
+                                      (!srcfileloc  "fortran/f95-lang.c" 301)
                                       nil )
                                      (!pair  "blocks"
                                       (!type already_seen 23)
-                                      (!srcfileloc  "fortran/f95-lang.c" 300)
+                                      (!srcfileloc  "fortran/f95-lang.c" 304)
                                       nil )
                                      (!pair  "level_chain"
                                       (!type already_seen 429)
-                                      (!srcfileloc  "fortran/f95-lang.c" 302)
+                                      (!srcfileloc  "fortran/f95-lang.c" 306)
                                       nil )
                                      (!pair  "reversed"
                                       (!type already_seen 2)
-                                      (!srcfileloc  "fortran/f95-lang.c" 305)
+                                      (!srcfileloc  "fortran/f95-lang.c" 309)
                                       nil )
                                     )
                                     nil 16 
@@ -10534,71 +10538,71 @@
                           nil )
                          
                          (!type struct 519 nil  gc_pointed_to "lang_type"
-                          (!srcfileloc  "fortran/trans.h" 1018)
+                          (!srcfileloc  "fortran/trans.h" 1020)
                           (!fields 14 
                            (!pair  "rank"
                             (!type already_seen 2)
-                            (!srcfileloc  "fortran/trans.h" 1005)
+                            (!srcfileloc  "fortran/trans.h" 1007)
                             nil )
                            (!pair  "corank"
                             (!type already_seen 2)
-                            (!srcfileloc  "fortran/trans.h" 1005)
+                            (!srcfileloc  "fortran/trans.h" 1007)
                             nil )
                            (!pair  "akind"
                             (!type already_seen 2)
-                            (!srcfileloc  "fortran/trans.h" 1006)
+                            (!srcfileloc  "fortran/trans.h" 1008)
                             nil )
                            (!pair  "lbound"
                             (!type array 520 nil  gc_used "GFC_MAX_DIMENSIONS" 
                              (!type already_seen 23)
                             )
-                            (!srcfileloc  "fortran/trans.h" 1007)
+                            (!srcfileloc  "fortran/trans.h" 1009)
                             nil )
                            (!pair  "ubound"
                             (!type array 521 nil  gc_used "GFC_MAX_DIMENSIONS" 
                              (!type already_seen 23)
                             )
-                            (!srcfileloc  "fortran/trans.h" 1008)
+                            (!srcfileloc  "fortran/trans.h" 1010)
                             nil )
                            (!pair  "stride"
                             (!type array 522 nil  gc_used "GFC_MAX_DIMENSIONS" 
                              (!type already_seen 23)
                             )
-                            (!srcfileloc  "fortran/trans.h" 1009)
+                            (!srcfileloc  "fortran/trans.h" 1011)
                             nil )
                            (!pair  "size"
                             (!type already_seen 23)
-                            (!srcfileloc  "fortran/trans.h" 1010)
+                            (!srcfileloc  "fortran/trans.h" 1012)
                             nil )
                            (!pair  "offset"
                             (!type already_seen 23)
-                            (!srcfileloc  "fortran/trans.h" 1011)
+                            (!srcfileloc  "fortran/trans.h" 1013)
                             nil )
                            (!pair  "dtype"
                             (!type already_seen 23)
-                            (!srcfileloc  "fortran/trans.h" 1012)
+                            (!srcfileloc  "fortran/trans.h" 1014)
                             nil )
                            (!pair  "dataptr_type"
                             (!type already_seen 23)
-                            (!srcfileloc  "fortran/trans.h" 1013)
+                            (!srcfileloc  "fortran/trans.h" 1015)
                             nil )
                            (!pair  "base_decl"
                             (!type array 523 nil  gc_used "2" 
                              (!type already_seen 23)
                             )
-                            (!srcfileloc  "fortran/trans.h" 1014)
+                            (!srcfileloc  "fortran/trans.h" 1016)
                             nil )
                            (!pair  "nonrestricted_type"
                             (!type already_seen 23)
-                            (!srcfileloc  "fortran/trans.h" 1015)
+                            (!srcfileloc  "fortran/trans.h" 1017)
                             nil )
                            (!pair  "caf_token"
                             (!type already_seen 23)
-                            (!srcfileloc  "fortran/trans.h" 1016)
+                            (!srcfileloc  "fortran/trans.h" 1018)
                             nil )
                            (!pair  "caf_offset"
                             (!type already_seen 23)
-                            (!srcfileloc  "fortran/trans.h" 1017)
+                            (!srcfileloc  "fortran/trans.h" 1019)
                             nil )
                           )
                           nil 16 
@@ -27497,7 +27501,7 @@
    (!type already_seen 1983)
   )
   gc_pointed_to "cp_parser"
-  (!srcfileloc  "cp/parser.c" 45132)
+  (!srcfileloc  "cp/parser.c" 45128)
   (!fields 38 
    (!pair  "lexer"
     (!type already_seen 1969)
@@ -28122,7 +28126,7 @@
   nil 0 nil nil )
  
  (!type struct 2051 nil  gc_used "typename_hasher"
-  (!srcfileloc  "cp/decl.c" 3970)
+  (!srcfileloc  "cp/decl.c" 3972)
   (!fields 0 )
   nil 516 nil nil )
  
@@ -28131,11 +28135,11 @@
    (!type already_seen 2052)
   )
   gc_pointed_to "hash_table<typename_hasher>"
-  (!srcfileloc  "cp/decl.c" 3970)
+  (!srcfileloc  "cp/decl.c" 3972)
   (!fields 1 
    (!pair  "typename_hasher"
     (!type already_seen 2051)
-    (!srcfileloc  "cp/decl.c" 3970)
+    (!srcfileloc  "cp/decl.c" 3972)
     nil )
   )
  )
@@ -28789,7 +28793,7 @@
   nil 0 nil nil )
  
  (!type undefined 2144 nil  gc_unused "class_to_loc_map_t::iterator"
-  (!srcfileloc  "cp/parser.c" 32719)
+  (!srcfileloc  "cp/parser.c" 32717)
  )
  
  (!type struct 2145 
@@ -28869,15 +28873,15 @@
    (!type already_seen 2158)
   )
   gc_pointed_to "hash_map<tree,tree_pair_p>"
-  (!srcfileloc  "cp/pt.c" 29174)
+  (!srcfileloc  "cp/pt.c" 29185)
   (!fields 2 
    (!pair  "tree_pair_p"
     (!type already_seen 531)
-    (!srcfileloc  "cp/pt.c" 29174)
+    (!srcfileloc  "cp/pt.c" 29185)
     nil )
    (!pair  "tree"
     (!type already_seen 23)
-    (!srcfileloc  "cp/pt.c" 29174)
+    (!srcfileloc  "cp/pt.c" 29185)
     nil )
   )
  )
@@ -29125,7 +29129,7 @@
   nil 0 nil nil )
  
  (!type struct 2199 nil  gc_used "module_hasher"
-  (!srcfileloc  "fortran/trans-decl.c" 5176)
+  (!srcfileloc  "fortran/trans-decl.c" 5181)
   (!fields 0 )
   nil 16 nil nil )
  
@@ -29134,11 +29138,11 @@
    (!type already_seen 2200)
   )
   gc_pointed_to "hash_table<module_hasher>"
-  (!srcfileloc  "fortran/trans-decl.c" 5176)
+  (!srcfileloc  "fortran/trans-decl.c" 5181)
   (!fields 1 
    (!pair  "module_hasher"
     (!type already_seen 2199)
-    (!srcfileloc  "fortran/trans-decl.c" 5176)
+    (!srcfileloc  "fortran/trans-decl.c" 5181)
     nil )
   )
  )
@@ -29358,19 +29362,19 @@
   nil 0 nil nil )
  
  (!type struct 2221 nil  gc_used "gfc_powdecl_list"
-  (!srcfileloc  "fortran/trans.h" 916)
+  (!srcfileloc  "fortran/trans.h" 918)
   (!fields 3 
    (!pair  "integer"
     (!type already_seen 23)
-    (!srcfileloc  "fortran/trans.h" 913)
+    (!srcfileloc  "fortran/trans.h" 915)
     nil )
    (!pair  "real"
     (!type already_seen 23)
-    (!srcfileloc  "fortran/trans.h" 914)
+    (!srcfileloc  "fortran/trans.h" 916)
     nil )
    (!pair  "cmplx"
     (!type already_seen 23)
-    (!srcfileloc  "fortran/trans.h" 915)
+    (!srcfileloc  "fortran/trans.h" 917)
     nil )
   )
   nil 16 nil nil )
@@ -29838,15 +29842,15 @@
   nil )
  (!pair  "gfc_interface_mapping"
   (!type already_seen 2223)
-  (!srcfileloc  "fortran/trans.h" 1163)
+  (!srcfileloc  "fortran/trans.h" 1170)
   nil )
  (!pair  "gfc_interface_sym_mapping"
   (!type already_seen 2222)
-  (!srcfileloc  "fortran/trans.h" 1148)
+  (!srcfileloc  "fortran/trans.h" 1155)
   nil )
  (!pair  "gfc_powdecl_list"
   (!type already_seen 2221)
-  (!srcfileloc  "fortran/trans.h" 917)
+  (!srcfileloc  "fortran/trans.h" 919)
   nil )
  (!pair  "module_decl_hasher"
   (!type already_seen 2205)
@@ -29914,11 +29918,11 @@
   nil )
  (!pair  "module_hasher"
   (!type already_seen 2199)
-  (!srcfileloc  "fortran/trans-decl.c" 5176)
+  (!srcfileloc  "fortran/trans-decl.c" 5181)
   nil )
  (!pair  "hash_table<module_hasher>"
   (!type already_seen 2200)
-  (!srcfileloc  "fortran/trans-decl.c" 5176)
+  (!srcfileloc  "fortran/trans-decl.c" 5181)
   nil )
  (!pair  "tree_frame_info"
   (!type already_seen 647)
@@ -30010,7 +30014,7 @@
   nil )
  (!pair  "hash_map<tree,tree_pair_p>"
   (!type already_seen 2158)
-  (!srcfileloc  "cp/pt.c" 29174)
+  (!srcfileloc  "cp/pt.c" 29185)
   nil )
  (!pair  "pending_template"
   (!type already_seen 2145)
@@ -30038,15 +30042,15 @@
   nil )
  (!pair  "cp_parser"
   (!type already_seen 1983)
-  (!srcfileloc  "cp/parser.c" 45132)
+  (!srcfileloc  "cp/parser.c" 45128)
   nil )
  (!pair  "iter_t"
   (!type already_seen 2144)
-  (!srcfileloc  "cp/parser.c" 32719)
+  (!srcfileloc  "cp/parser.c" 32717)
   nil )
  (!pair  "class_to_loc_map_t::iterator"
   (!type already_seen 2144)
-  (!srcfileloc  "cp/parser.c" 32719)
+  (!srcfileloc  "cp/parser.c" 32717)
   nil )
  (!pair  "cp_parser_expression_stack"
   (!type array 2267 nil  gc_unused "NUM_PREC_VALUES" 
@@ -30282,11 +30286,11 @@
   nil )
  (!pair  "typename_hasher"
   (!type already_seen 2051)
-  (!srcfileloc  "cp/decl.c" 3970)
+  (!srcfileloc  "cp/decl.c" 3972)
   nil )
  (!pair  "hash_table<typename_hasher>"
   (!type already_seen 2052)
-  (!srcfileloc  "cp/decl.c" 3970)
+  (!srcfileloc  "cp/decl.c" 3972)
   nil )
  (!pair  "incomplete_var"
   (!type already_seen 2046)
@@ -33625,179 +33629,179 @@
   nil )
  (!pair  "gfor_fndecl_caf_random_init"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 977)
+  (!srcfileloc  "fortran/trans.h" 979)
   nil )
  (!pair  "gfor_fndecl_random_init"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 976)
+  (!srcfileloc  "fortran/trans.h" 978)
   nil )
  (!pair  "gfor_fndecl_ieee_procedure_exit"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 973)
+  (!srcfileloc  "fortran/trans.h" 975)
   nil )
  (!pair  "gfor_fndecl_ieee_procedure_entry"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 972)
+  (!srcfileloc  "fortran/trans.h" 974)
   nil )
  (!pair  "gfor_fndecl_sr_kind"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 969)
+  (!srcfileloc  "fortran/trans.h" 971)
   nil )
  (!pair  "gfor_fndecl_si_kind"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 968)
+  (!srcfileloc  "fortran/trans.h" 970)
   nil )
  (!pair  "gfor_fndecl_sc_kind"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 967)
+  (!srcfileloc  "fortran/trans.h" 969)
   nil )
  (!pair  "gfor_fndecl_is_contiguous0"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 964)
+  (!srcfileloc  "fortran/trans.h" 966)
   nil )
  (!pair  "gfor_fndecl_kill_sub"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 963)
+  (!srcfileloc  "fortran/trans.h" 965)
   nil )
  (!pair  "gfor_fndecl_kill"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 962)
+  (!srcfileloc  "fortran/trans.h" 964)
   nil )
  (!pair  "gfor_fndecl_iargc"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 961)
+  (!srcfileloc  "fortran/trans.h" 963)
   nil )
  (!pair  "gfor_fndecl_size1"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 960)
+  (!srcfileloc  "fortran/trans.h" 962)
   nil )
  (!pair  "gfor_fndecl_size0"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 959)
+  (!srcfileloc  "fortran/trans.h" 961)
   nil )
  (!pair  "gfor_fndecl_convert_char4_to_char1"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 956)
+  (!srcfileloc  "fortran/trans.h" 958)
   nil )
  (!pair  "gfor_fndecl_convert_char1_to_char4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 955)
+  (!srcfileloc  "fortran/trans.h" 957)
   nil )
  (!pair  "gfor_fndecl_select_string_char4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 952)
+  (!srcfileloc  "fortran/trans.h" 954)
   nil )
  (!pair  "gfor_fndecl_adjustr_char4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 951)
+  (!srcfileloc  "fortran/trans.h" 953)
   nil )
  (!pair  "gfor_fndecl_adjustl_char4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 950)
+  (!srcfileloc  "fortran/trans.h" 952)
   nil )
  (!pair  "gfor_fndecl_string_minmax_char4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 949)
+  (!srcfileloc  "fortran/trans.h" 951)
   nil )
  (!pair  "gfor_fndecl_string_trim_char4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 948)
+  (!srcfileloc  "fortran/trans.h" 950)
   nil )
  (!pair  "gfor_fndecl_string_verify_char4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 947)
+  (!srcfileloc  "fortran/trans.h" 949)
   nil )
  (!pair  "gfor_fndecl_string_scan_char4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 946)
+  (!srcfileloc  "fortran/trans.h" 948)
   nil )
  (!pair  "gfor_fndecl_string_index_char4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 945)
+  (!srcfileloc  "fortran/trans.h" 947)
   nil )
  (!pair  "gfor_fndecl_string_len_trim_char4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 944)
+  (!srcfileloc  "fortran/trans.h" 946)
   nil )
  (!pair  "gfor_fndecl_concat_string_char4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 943)
+  (!srcfileloc  "fortran/trans.h" 945)
   nil )
  (!pair  "gfor_fndecl_compare_string_char4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 942)
+  (!srcfileloc  "fortran/trans.h" 944)
   nil )
  (!pair  "gfor_fndecl_select_string"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 941)
+  (!srcfileloc  "fortran/trans.h" 943)
   nil )
  (!pair  "gfor_fndecl_adjustr"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 940)
+  (!srcfileloc  "fortran/trans.h" 942)
   nil )
  (!pair  "gfor_fndecl_adjustl"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 939)
+  (!srcfileloc  "fortran/trans.h" 941)
   nil )
  (!pair  "gfor_fndecl_string_minmax"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 938)
+  (!srcfileloc  "fortran/trans.h" 940)
   nil )
  (!pair  "gfor_fndecl_string_trim"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 937)
+  (!srcfileloc  "fortran/trans.h" 939)
   nil )
  (!pair  "gfor_fndecl_string_verify"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 936)
+  (!srcfileloc  "fortran/trans.h" 938)
   nil )
  (!pair  "gfor_fndecl_string_scan"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 935)
+  (!srcfileloc  "fortran/trans.h" 937)
   nil )
  (!pair  "gfor_fndecl_string_index"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 934)
+  (!srcfileloc  "fortran/trans.h" 936)
   nil )
  (!pair  "gfor_fndecl_string_len_trim"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 933)
+  (!srcfileloc  "fortran/trans.h" 935)
   nil )
  (!pair  "gfor_fndecl_concat_string"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 932)
+  (!srcfileloc  "fortran/trans.h" 934)
   nil )
  (!pair  "gfor_fndecl_compare_string"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 931)
+  (!srcfileloc  "fortran/trans.h" 933)
   nil )
  (!pair  "gfor_fndecl_zgemm"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 928)
+  (!srcfileloc  "fortran/trans.h" 930)
   nil )
  (!pair  "gfor_fndecl_cgemm"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 927)
+  (!srcfileloc  "fortran/trans.h" 929)
   nil )
  (!pair  "gfor_fndecl_dgemm"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 926)
+  (!srcfileloc  "fortran/trans.h" 928)
   nil )
  (!pair  "gfor_fndecl_sgemm"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 925)
+  (!srcfileloc  "fortran/trans.h" 927)
   nil )
  (!pair  "gfor_fndecl_math_ishftc16"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 922)
+  (!srcfileloc  "fortran/trans.h" 924)
   nil )
  (!pair  "gfor_fndecl_math_ishftc8"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 921)
+  (!srcfileloc  "fortran/trans.h" 923)
   nil )
  (!pair  "gfor_fndecl_math_ishftc4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 920)
+  (!srcfileloc  "fortran/trans.h" 922)
   nil )
  (!pair  "gfor_fndecl_math_powi"
   (!type array 2279 nil  gc_used "4" 
@@ -33805,275 +33809,275 @@
     (!type already_seen 2221)
    )
   )
-  (!srcfileloc  "fortran/trans.h" 919)
+  (!srcfileloc  "fortran/trans.h" 921)
   nil )
  (!pair  "gfor_fndecl_caf_is_present"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 907)
+  (!srcfileloc  "fortran/trans.h" 909)
   nil )
  (!pair  "gfor_fndecl_co_sum"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 906)
+  (!srcfileloc  "fortran/trans.h" 908)
   nil )
  (!pair  "gfor_fndecl_co_reduce"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 905)
+  (!srcfileloc  "fortran/trans.h" 907)
   nil )
  (!pair  "gfor_fndecl_co_min"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 904)
+  (!srcfileloc  "fortran/trans.h" 906)
   nil )
  (!pair  "gfor_fndecl_co_max"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 903)
+  (!srcfileloc  "fortran/trans.h" 905)
   nil )
  (!pair  "gfor_fndecl_co_broadcast"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 902)
+  (!srcfileloc  "fortran/trans.h" 904)
   nil )
  (!pair  "gfor_fndecl_caf_team_number"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 901)
+  (!srcfileloc  "fortran/trans.h" 903)
   nil )
  (!pair  "gfor_fndecl_caf_sync_team"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 900)
+  (!srcfileloc  "fortran/trans.h" 902)
   nil )
  (!pair  "gfor_fndecl_caf_get_team"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 899)
+  (!srcfileloc  "fortran/trans.h" 901)
   nil )
  (!pair  "gfor_fndecl_caf_end_team"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 898)
+  (!srcfileloc  "fortran/trans.h" 900)
   nil )
  (!pair  "gfor_fndecl_caf_change_team"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 897)
+  (!srcfileloc  "fortran/trans.h" 899)
   nil )
  (!pair  "gfor_fndecl_caf_form_team"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 896)
+  (!srcfileloc  "fortran/trans.h" 898)
   nil )
  (!pair  "gfor_fndecl_caf_stopped_images"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 895)
+  (!srcfileloc  "fortran/trans.h" 897)
   nil )
  (!pair  "gfor_fndecl_caf_image_status"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 894)
+  (!srcfileloc  "fortran/trans.h" 896)
   nil )
  (!pair  "gfor_fndecl_caf_failed_images"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 893)
+  (!srcfileloc  "fortran/trans.h" 895)
   nil )
  (!pair  "gfor_fndecl_caf_fail_image"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 892)
+  (!srcfileloc  "fortran/trans.h" 894)
   nil )
  (!pair  "gfor_fndecl_caf_event_query"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 891)
+  (!srcfileloc  "fortran/trans.h" 893)
   nil )
  (!pair  "gfor_fndecl_caf_event_wait"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 890)
+  (!srcfileloc  "fortran/trans.h" 892)
   nil )
  (!pair  "gfor_fndecl_caf_event_post"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 889)
+  (!srcfileloc  "fortran/trans.h" 891)
   nil )
  (!pair  "gfor_fndecl_caf_unlock"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 888)
+  (!srcfileloc  "fortran/trans.h" 890)
   nil )
  (!pair  "gfor_fndecl_caf_lock"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 887)
+  (!srcfileloc  "fortran/trans.h" 889)
   nil )
  (!pair  "gfor_fndecl_caf_atomic_op"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 886)
+  (!srcfileloc  "fortran/trans.h" 888)
   nil )
  (!pair  "gfor_fndecl_caf_atomic_cas"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 885)
+  (!srcfileloc  "fortran/trans.h" 887)
   nil )
  (!pair  "gfor_fndecl_caf_atomic_ref"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 884)
+  (!srcfileloc  "fortran/trans.h" 886)
   nil )
  (!pair  "gfor_fndecl_caf_atomic_def"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 883)
+  (!srcfileloc  "fortran/trans.h" 885)
   nil )
  (!pair  "gfor_fndecl_caf_error_stop_str"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 882)
+  (!srcfileloc  "fortran/trans.h" 884)
   nil )
  (!pair  "gfor_fndecl_caf_error_stop"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 881)
+  (!srcfileloc  "fortran/trans.h" 883)
   nil )
  (!pair  "gfor_fndecl_caf_stop_str"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 880)
+  (!srcfileloc  "fortran/trans.h" 882)
   nil )
  (!pair  "gfor_fndecl_caf_stop_numeric"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 879)
+  (!srcfileloc  "fortran/trans.h" 881)
   nil )
  (!pair  "gfor_fndecl_caf_sync_images"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 878)
+  (!srcfileloc  "fortran/trans.h" 880)
   nil )
  (!pair  "gfor_fndecl_caf_sync_memory"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 877)
+  (!srcfileloc  "fortran/trans.h" 879)
   nil )
  (!pair  "gfor_fndecl_caf_sync_all"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 876)
+  (!srcfileloc  "fortran/trans.h" 878)
   nil )
  (!pair  "gfor_fndecl_caf_sendget_by_ref"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 875)
+  (!srcfileloc  "fortran/trans.h" 877)
   nil )
  (!pair  "gfor_fndecl_caf_send_by_ref"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 874)
+  (!srcfileloc  "fortran/trans.h" 876)
   nil )
  (!pair  "gfor_fndecl_caf_get_by_ref"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 873)
+  (!srcfileloc  "fortran/trans.h" 875)
   nil )
  (!pair  "gfor_fndecl_caf_sendget"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 872)
+  (!srcfileloc  "fortran/trans.h" 874)
   nil )
  (!pair  "gfor_fndecl_caf_send"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 871)
+  (!srcfileloc  "fortran/trans.h" 873)
   nil )
  (!pair  "gfor_fndecl_caf_get"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 870)
+  (!srcfileloc  "fortran/trans.h" 872)
   nil )
  (!pair  "gfor_fndecl_caf_deregister"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 869)
+  (!srcfileloc  "fortran/trans.h" 871)
   nil )
  (!pair  "gfor_fndecl_caf_register"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 868)
+  (!srcfileloc  "fortran/trans.h" 870)
   nil )
  (!pair  "gfor_fndecl_caf_num_images"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 867)
+  (!srcfileloc  "fortran/trans.h" 869)
   nil )
  (!pair  "gfor_fndecl_caf_this_image"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 866)
+  (!srcfileloc  "fortran/trans.h" 868)
   nil )
  (!pair  "gfor_fndecl_caf_finalize"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 865)
+  (!srcfileloc  "fortran/trans.h" 867)
   nil )
  (!pair  "gfor_fndecl_caf_init"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 864)
+  (!srcfileloc  "fortran/trans.h" 866)
   nil )
  (!pair  "gfor_fndecl_system_clock8"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 860)
+  (!srcfileloc  "fortran/trans.h" 862)
   nil )
  (!pair  "gfor_fndecl_system_clock4"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 859)
+  (!srcfileloc  "fortran/trans.h" 861)
   nil )
  (!pair  "gfor_fndecl_associated"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 858)
+  (!srcfileloc  "fortran/trans.h" 860)
   nil )
  (!pair  "gfor_fndecl_gfc_to_cfi"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 857)
+  (!srcfileloc  "fortran/trans.h" 859)
   nil )
  (!pair  "gfor_fndecl_cfi_to_gfc"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 856)
+  (!srcfileloc  "fortran/trans.h" 858)
   nil )
  (!pair  "gfor_fndecl_in_unpack"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 855)
+  (!srcfileloc  "fortran/trans.h" 857)
   nil )
  (!pair  "gfor_fndecl_in_pack"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 854)
+  (!srcfileloc  "fortran/trans.h" 856)
   nil )
  (!pair  "gfor_fndecl_fdate"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 853)
+  (!srcfileloc  "fortran/trans.h" 855)
   nil )
  (!pair  "gfor_fndecl_ctime"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 852)
+  (!srcfileloc  "fortran/trans.h" 854)
   nil )
  (!pair  "gfor_fndecl_ttynam"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 851)
+  (!srcfileloc  "fortran/trans.h" 853)
   nil )
  (!pair  "gfor_fndecl_set_options"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 850)
+  (!srcfileloc  "fortran/trans.h" 852)
   nil )
  (!pair  "gfor_fndecl_set_fpe"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 849)
+  (!srcfileloc  "fortran/trans.h" 851)
   nil )
  (!pair  "gfor_fndecl_generate_error"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 848)
+  (!srcfileloc  "fortran/trans.h" 850)
   nil )
  (!pair  "gfor_fndecl_os_error_at"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 847)
+  (!srcfileloc  "fortran/trans.h" 849)
   nil )
  (!pair  "gfor_fndecl_runtime_warning_at"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 846)
+  (!srcfileloc  "fortran/trans.h" 848)
   nil )
  (!pair  "gfor_fndecl_runtime_error_at"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 845)
+  (!srcfileloc  "fortran/trans.h" 847)
   nil )
  (!pair  "gfor_fndecl_runtime_error"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 844)
+  (!srcfileloc  "fortran/trans.h" 846)
   nil )
  (!pair  "gfor_fndecl_error_stop_string"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 843)
+  (!srcfileloc  "fortran/trans.h" 845)
   nil )
  (!pair  "gfor_fndecl_error_stop_numeric"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 842)
+  (!srcfileloc  "fortran/trans.h" 844)
   nil )
  (!pair  "gfor_fndecl_stop_string"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 841)
+  (!srcfileloc  "fortran/trans.h" 843)
   nil )
  (!pair  "gfor_fndecl_stop_numeric"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 840)
+  (!srcfileloc  "fortran/trans.h" 842)
   nil )
  (!pair  "gfor_fndecl_pause_string"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 839)
+  (!srcfileloc  "fortran/trans.h" 841)
   nil )
  (!pair  "gfor_fndecl_pause_numeric"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/trans.h" 838)
+  (!srcfileloc  "fortran/trans.h" 840)
   nil )
  (!pair  "gfc_static_ctors"
   (!type already_seen 23)
@@ -34223,7 +34227,7 @@
   nil )
  (!pair  "module_htab"
   (!type already_seen 2201)
-  (!srcfileloc  "fortran/trans-decl.c" 5176)
+  (!srcfileloc  "fortran/trans-decl.c" 5181)
   nil )
  (!pair  "saved_local_decls"
   (!type already_seen 23)
@@ -34247,19 +34251,19 @@
   nil )
  (!pair  "global_binding_level"
   (!type already_seen 429)
-  (!srcfileloc  "fortran/f95-lang.c" 313)
+  (!srcfileloc  "fortran/f95-lang.c" 317)
   nil )
  (!pair  "current_binding_level"
   (!type already_seen 429)
-  (!srcfileloc  "fortran/f95-lang.c" 309)
+  (!srcfileloc  "fortran/f95-lang.c" 313)
   nil )
  (!pair  "current_translation_unit"
   (!type already_seen 23)
-  (!srcfileloc  "fortran/f95-lang.c" 187)
+  (!srcfileloc  "fortran/f95-lang.c" 191)
   nil )
  (!pair  "free_binding_level"
   (!type already_seen 429)
-  (!srcfileloc  "fortran/f95-lang.c" 181)
+  (!srcfileloc  "fortran/f95-lang.c" 185)
   nil )
  (!pair  "tinfo_types"
   (!type array 2294 nil  gc_used "TK_END" 
@@ -34383,7 +34387,7 @@
   nil )
  (!pair  "dguide_cache"
   (!type already_seen 2159)
-  (!srcfileloc  "cp/pt.c" 29174)
+  (!srcfileloc  "cp/pt.c" 29185)
   (!options 
    (!option deletable string  "")
   )
@@ -34468,15 +34472,15 @@
   nil )
  (!pair  "generic_parm_count"
   (!type already_seen 2)
-  (!srcfileloc  "cp/parser.c" 45624)
+  (!srcfileloc  "cp/parser.c" 45620)
   nil )
  (!pair  "the_parser"
   (!type already_seen 1984)
-  (!srcfileloc  "cp/parser.c" 45132)
+  (!srcfileloc  "cp/parser.c" 45128)
   nil )
  (!pair  "cp_parser_decl_specs_attrs"
   (!type already_seen 84)
-  (!srcfileloc  "cp/parser.c" 18514)
+  (!srcfileloc  "cp/parser.c" 18512)
   nil )
  (!pair  "cp_parser_context_free_list"
   (!type already_seen 1976)
@@ -34656,22 +34660,22 @@
   nil )
  (!pair  "start_cleanup_cnt"
   (!type already_seen 2)
-  (!srcfileloc  "cp/decl.c" 9041)
+  (!srcfileloc  "cp/decl.c" 9042)
   nil )
  (!pair  "decomp_type_table"
   (!type already_seen 921)
-  (!srcfileloc  "cp/decl.c" 8494)
+  (!srcfileloc  "cp/decl.c" 8495)
   (!options 
    (!option cache string  "")
   )
  )
  (!pair  "typename_htab"
   (!type already_seen 2053)
-  (!srcfileloc  "cp/decl.c" 3970)
+  (!srcfileloc  "cp/decl.c" 3972)
   nil )
  (!pair  "local_entities"
   (!type already_seen 84)
-  (!srcfileloc  "cp/decl.c" 904)
+  (!srcfileloc  "cp/decl.c" 902)
   (!options 
    (!option deletable string  "")
   )
@@ -34838,7 +34842,7 @@
  )
  (!pair  "cv_cache"
   (!type already_seen 390)
-  (!srcfileloc  "cp/constexpr.c" 7520)
+  (!srcfileloc  "cp/constexpr.c" 7510)
   (!options 
    (!option deletable string  "")
   )
@@ -35042,7 +35046,7 @@
   nil )
  (!pair  "ext_block"
   (!type already_seen 23)
-  (!srcfileloc  "c/c-decl.c" 12155)
+  (!srcfileloc  "c/c-decl.c" 12158)
   nil )
  (!pair  "last_structptr_types"
   (!type array 2308 nil  gc_used "builtin_structptr_type_count" 

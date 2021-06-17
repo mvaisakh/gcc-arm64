@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-06-13" "gcc-12.0.0" "GNU"
+.TH GCC 1 "2021-06-17" "gcc-12.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -283,7 +283,7 @@ in the following sections.
 \&\-Wno\-inherited\-variadic\-ctor  \-Wno\-init\-list\-lifetime 
 \&\-Winvalid\-imported\-macros 
 \&\-Wno\-invalid\-offsetof  \-Wno\-literal\-suffix 
-\&\-Wno\-mismatched\-new\-delete \-Wmismatched\-tags 
+\&\-Wmismatched\-new\-delete \-Wmismatched\-tags 
 \&\-Wmultiple\-inheritance  \-Wnamespaces  \-Wnarrowing 
 \&\-Wnoexcept  \-Wnoexcept\-type  \-Wnon\-virtual\-dtor 
 \&\-Wpessimizing\-move  \-Wno\-placement\-new  \-Wplacement\-new=\fR\fIn\fR 
@@ -1184,8 +1184,8 @@ See \s-1RS/6000\s0 and PowerPC Options.
 \&\-mriscv\-attribute  \-mmo\-riscv\-attribute 
 \&\-malign\-data=\fR\fItype\fR 
 \&\fB\-mbig\-endian  \-mlittle\-endian 
-+\-mstack\-protector\-guard=\fR\fIguard\fR \fB\-mstack\-protector\-guard\-reg=\fR\fIreg\fR 
-\&\fB+\-mstack\-protector\-guard\-offset=\fR\fIoffset\fR
+\&\-mstack\-protector\-guard=\fR\fIguard\fR \fB\-mstack\-protector\-guard\-reg=\fR\fIreg\fR 
+\&\fB\-mstack\-protector\-guard\-offset=\fR\fIoffset\fR
 .Sp
 \&\fI\s-1RL78\s0 Options\fR
 \&\fB\-msim  \-mmul=none  \-mmul=g13  \-mmul=g14  \-mallregs 
@@ -3849,8 +3849,8 @@ rules disallow templates, and this may be used to enforce that rule.
 The warning is inactive inside a system header file, such as the \s-1STL,\s0 so
 one can still use the \s-1STL.\s0  One may also instantiate or specialize
 templates.
-.IP "\fB\-Wno\-mismatched\-new\-delete\fR (\*(C+ and Objective\-\*(C+ only)" 4
-.IX Item "-Wno-mismatched-new-delete ( and Objective- only)"
+.IP "\fB\-Wmismatched\-new\-delete\fR (\*(C+ and Objective\-\*(C+ only)" 4
+.IX Item "-Wmismatched-new-delete ( and Objective- only)"
 Warn for mismatches between calls to \f(CW\*(C`operator new\*(C'\fR or \f(CW\*(C`operator
 delete\*(C'\fR and the corresponding call to the allocation or deallocation function.
 This includes invocations of \*(C+ \f(CW\*(C`operator delete\*(C'\fR with pointers
@@ -3880,7 +3880,7 @@ The related option \fB\-Wmismatched\-dealloc\fR diagnoses mismatches
 involving allocation and deallocation functions other than \f(CW\*(C`operator
 new\*(C'\fR and \f(CW\*(C`operator delete\*(C'\fR.
 .Sp
-\&\fB\-Wmismatched\-new\-delete\fR is enabled by default.
+\&\fB\-Wmismatched\-new\-delete\fR is included in \fB\-Wall\fR.
 .IP "\fB\-Wmismatched\-tags\fR (\*(C+ and Objective\-\*(C+ only)" 4
 .IX Item "-Wmismatched-tags ( and Objective- only)"
 Warn for declarations of structs, classes, and class templates and their
@@ -5278,6 +5278,8 @@ Options\fR and \fBObjective-C and Objective\-\*(C+ Dialect Options\fR.
 \&\-Wmemset\-elt\-size 
 \&\-Wmemset\-transposed\-args 
 \&\-Wmisleading\-indentation\fR (only for C/\*(C+) 
+\&\fB\-Wmismatched\-dealloc 
+\&\-Wmismatched\-new\-delete\fR (only for C/\*(C+) 
 \&\fB\-Wmissing\-attributes 
 \&\-Wmissing\-braces\fR (only for C/ObjC) 
 \&\fB\-Wmultistatement\-macros  
@@ -5509,13 +5511,13 @@ Completely disabling the warning is not recommended.
 Warn in case a function ends earlier than it begins due
 to an invalid linenum macros.  The warning is emitted only
 with \fB\-\-coverage\fR enabled.
- By default, this warning is enabled and is treated as an
+.Sp
+By default, this warning is enabled and is treated as an
 error.  \fB\-Wno\-coverage\-invalid\-line\-number\fR can be used to disable the
 warning or \fB\-Wno\-error=coverage\-invalid\-line\-number\fR can be used to
 disable the error.
-.IP "\fB\-Wno\-cpp\fR" 4
-.IX Item "-Wno-cpp"
-(C, Objective-C, \*(C+, Objective\-\*(C+ and Fortran only)
+.IP "\fB\-Wno\-cpp\fR (C, Objective-C, \*(C+, Objective\-\*(C+ and Fortran only)" 4
+.IX Item "-Wno-cpp (C, Objective-C, , Objective- and Fortran only)"
 Suppress warning messages emitted by \f(CW\*(C`#warning\*(C'\fR directives.
 .IP "\fB\-Wdouble\-promotion\fR (C, \*(C+, Objective-C and Objective\-\*(C+ only)" 4
 .IX Item "-Wdouble-promotion (C, , Objective-C and Objective- only)"
@@ -6101,8 +6103,8 @@ Ignoring the warning can result in poorly optimized code.
 \&\fB\-Wno\-missing\-profile\fR can be used to
 disable the warning, but this is not recommended and should be done only
 when non-existent profile data is justified.
-.IP "\fB\-Wno\-mismatched\-dealloc\fR" 4
-.IX Item "-Wno-mismatched-dealloc"
+.IP "\fB\-Wmismatched\-dealloc\fR" 4
+.IX Item "-Wmismatched-dealloc"
 Warn for calls to deallocation functions with pointer arguments returned
 from from allocations functions for which the former isn't a suitable
 deallocator.  A pair of functions can be associated as matching allocators
@@ -6132,7 +6134,7 @@ example \f(CW\*(C`mydealloc\*(C'\fR is the deallocator for pointers returned fro
 In \*(C+, the related option \fB\-Wmismatched\-new\-delete\fR diagnoses
 mismatches involving either \f(CW\*(C`operator new\*(C'\fR or \f(CW\*(C`operator delete\*(C'\fR.
 .Sp
-Option \fB\-Wmismatched\-dealloc\fR is enabled by default.
+Option \fB\-Wmismatched\-dealloc\fR is included in \fB\-Wall\fR.
 .IP "\fB\-Wmultistatement\-macros\fR" 4
 .IX Item "-Wmultistatement-macros"
 Warn about unsafe multiple statement macros that appear to be guarded
@@ -7473,8 +7475,8 @@ Warnings controlled by the option can be disabled either by specifying
 .IX Item "-Wno-frame-larger-than"
 Disable \fB\-Wframe\-larger\-than=\fR warnings.  The option is equivalent
 to \fB\-Wframe\-larger\-than=\fR\fB\s-1SIZE_MAX\s0\fR or larger.
-.IP "\fB\-Wno\-free\-nonheap\-object\fR" 4
-.IX Item "-Wno-free-nonheap-object"
+.IP "\fB\-Wfree\-nonheap\-object\fR" 4
+.IX Item "-Wfree-nonheap-object"
 Warn when attempting to deallocate an object that was either not allocated
 on the heap, or by using a pointer that was not returned from a prior call
 to the corresponding allocation function.  For example, because the call
@@ -7491,7 +7493,7 @@ diagnosed.
 \&        }
 .Ve
 .Sp
-\&\fB\-Wfree\-nonheap\-object\fR is enabled by default.
+\&\fB\-Wfree\-nonheap\-object\fR is included in \fB\-Wall\fR.
 .IP "\fB\-Wstack\-usage=\fR\fIbyte-size\fR" 4
 .IX Item "-Wstack-usage=byte-size"
 Warn if the stack usage of a function might exceed \fIbyte-size\fR.

@@ -2056,15 +2056,18 @@
 #define HAVE_aarch64_simd_move_hi_quad_be_v8bf (TARGET_SIMD && BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_simd_move_hi_quad_be_v4sf (TARGET_SIMD && BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_simd_move_hi_quad_be_v2df (TARGET_SIMD && BYTES_BIG_ENDIAN)
-#define HAVE_aarch64_xtnv8hi (TARGET_SIMD)
-#define HAVE_aarch64_xtnv4si (TARGET_SIMD)
-#define HAVE_aarch64_xtnv2di (TARGET_SIMD)
-#define HAVE_aarch64_xtn2v8hi_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
-#define HAVE_aarch64_xtn2v4si_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
-#define HAVE_aarch64_xtn2v2di_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
-#define HAVE_aarch64_xtn2v8hi_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
-#define HAVE_aarch64_xtn2v4si_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
-#define HAVE_aarch64_xtn2v2di_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_xtnv8hi_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_xtnv4si_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_xtnv2di_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_xtnv8hi_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_xtnv4si_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_xtnv2di_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_xtn2v8hi_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_xtn2v4si_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_xtn2v2di_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_xtn2v8hi_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_xtn2v4si_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_xtn2v2di_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_shrnv8hi_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_shrnv4si_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_shrnv2di_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
@@ -2724,18 +2727,30 @@
 #define HAVE_aarch64_urhaddv4si (TARGET_SIMD)
 #define HAVE_aarch64_shsubv4si (TARGET_SIMD)
 #define HAVE_aarch64_uhsubv4si (TARGET_SIMD)
-#define HAVE_aarch64_addhnv8hi (TARGET_SIMD)
-#define HAVE_aarch64_raddhnv8hi (TARGET_SIMD)
-#define HAVE_aarch64_subhnv8hi (TARGET_SIMD)
-#define HAVE_aarch64_rsubhnv8hi (TARGET_SIMD)
-#define HAVE_aarch64_addhnv4si (TARGET_SIMD)
-#define HAVE_aarch64_raddhnv4si (TARGET_SIMD)
-#define HAVE_aarch64_subhnv4si (TARGET_SIMD)
-#define HAVE_aarch64_rsubhnv4si (TARGET_SIMD)
-#define HAVE_aarch64_addhnv2di (TARGET_SIMD)
-#define HAVE_aarch64_raddhnv2di (TARGET_SIMD)
-#define HAVE_aarch64_subhnv2di (TARGET_SIMD)
-#define HAVE_aarch64_rsubhnv2di (TARGET_SIMD)
+#define HAVE_aarch64_addhnv8hi_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_raddhnv8hi_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_subhnv8hi_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_rsubhnv8hi_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_addhnv4si_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_raddhnv4si_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_subhnv4si_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_rsubhnv4si_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_addhnv2di_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_raddhnv2di_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_subhnv2di_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_rsubhnv2di_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_addhnv8hi_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_raddhnv8hi_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_subhnv8hi_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_rsubhnv8hi_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_addhnv4si_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_raddhnv4si_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_subhnv4si_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_rsubhnv4si_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_addhnv2di_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_raddhnv2di_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_subhnv2di_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_rsubhnv2di_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_addhn2v8hi_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_raddhn2v8hi_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_subhn2v8hi_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
@@ -2838,24 +2853,24 @@
 #define HAVE_aarch64_usqaddsi (TARGET_SIMD)
 #define HAVE_aarch64_suqadddi (TARGET_SIMD)
 #define HAVE_aarch64_usqadddi (TARGET_SIMD)
-#define HAVE_aarch64_sqmovunv8hi (TARGET_SIMD)
-#define HAVE_aarch64_sqmovunv4si (TARGET_SIMD)
-#define HAVE_aarch64_sqmovunv2di (TARGET_SIMD)
-#define HAVE_aarch64_sqmovunhi (TARGET_SIMD)
-#define HAVE_aarch64_sqmovunsi (TARGET_SIMD)
-#define HAVE_aarch64_sqmovundi (TARGET_SIMD)
-#define HAVE_aarch64_sqmovnv8hi (TARGET_SIMD)
-#define HAVE_aarch64_uqmovnv8hi (TARGET_SIMD)
-#define HAVE_aarch64_sqmovnv4si (TARGET_SIMD)
-#define HAVE_aarch64_uqmovnv4si (TARGET_SIMD)
-#define HAVE_aarch64_sqmovnv2di (TARGET_SIMD)
-#define HAVE_aarch64_uqmovnv2di (TARGET_SIMD)
 #define HAVE_aarch64_sqmovnhi (TARGET_SIMD)
 #define HAVE_aarch64_uqmovnhi (TARGET_SIMD)
 #define HAVE_aarch64_sqmovnsi (TARGET_SIMD)
 #define HAVE_aarch64_uqmovnsi (TARGET_SIMD)
 #define HAVE_aarch64_sqmovndi (TARGET_SIMD)
 #define HAVE_aarch64_uqmovndi (TARGET_SIMD)
+#define HAVE_aarch64_sqmovnv8hi_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_uqmovnv8hi_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_sqmovnv4si_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_uqmovnv4si_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_sqmovnv2di_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_uqmovnv2di_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_sqmovnv8hi_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_uqmovnv8hi_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_sqmovnv4si_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_uqmovnv4si_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_sqmovnv2di_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_uqmovnv2di_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_sqxtn2v8hi_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_uqxtn2v8hi_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_sqxtn2v4si_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
@@ -2868,6 +2883,15 @@
 #define HAVE_aarch64_uqxtn2v4si_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_sqxtn2v2di_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_uqxtn2v2di_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_sqmovunhi (TARGET_SIMD)
+#define HAVE_aarch64_sqmovunsi (TARGET_SIMD)
+#define HAVE_aarch64_sqmovundi (TARGET_SIMD)
+#define HAVE_aarch64_sqmovunv8hi_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_sqmovunv4si_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_sqmovunv2di_insn_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_sqmovunv8hi_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_sqmovunv4si_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
+#define HAVE_aarch64_sqmovunv2di_insn_be (TARGET_SIMD && BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_sqxtun2v8hi_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_sqxtun2v4si_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
 #define HAVE_aarch64_sqxtun2v2di_le (TARGET_SIMD && !BYTES_BIG_ENDIAN)
@@ -7287,12 +7311,18 @@
 #define HAVE_move_hi_quad_v8bf (TARGET_SIMD)
 #define HAVE_move_hi_quad_v4sf (TARGET_SIMD)
 #define HAVE_move_hi_quad_v2df (TARGET_SIMD)
+#define HAVE_aarch64_xtnv8hi (TARGET_SIMD)
+#define HAVE_aarch64_xtnv4si (TARGET_SIMD)
+#define HAVE_aarch64_xtnv2di (TARGET_SIMD)
 #define HAVE_aarch64_xtn2v8hi (TARGET_SIMD)
 #define HAVE_aarch64_xtn2v4si (TARGET_SIMD)
 #define HAVE_aarch64_xtn2v2di (TARGET_SIMD)
 #define HAVE_vec_pack_trunc_v4hi (TARGET_SIMD)
 #define HAVE_vec_pack_trunc_v2si (TARGET_SIMD)
 #define HAVE_vec_pack_trunc_di (TARGET_SIMD)
+#define HAVE_vec_pack_trunc_v8hi (TARGET_SIMD)
+#define HAVE_vec_pack_trunc_v4si (TARGET_SIMD)
+#define HAVE_vec_pack_trunc_v2di (TARGET_SIMD)
 #define HAVE_aarch64_shrnv8hi (TARGET_SIMD)
 #define HAVE_aarch64_shrnv4si (TARGET_SIMD)
 #define HAVE_aarch64_shrnv2di (TARGET_SIMD)
@@ -7305,9 +7335,6 @@
 #define HAVE_aarch64_rshrn2v8hi (TARGET_SIMD)
 #define HAVE_aarch64_rshrn2v4si (TARGET_SIMD)
 #define HAVE_aarch64_rshrn2v2di (TARGET_SIMD)
-#define HAVE_vec_pack_trunc_v8hi (TARGET_SIMD)
-#define HAVE_vec_pack_trunc_v4si (TARGET_SIMD)
-#define HAVE_vec_pack_trunc_v2di (TARGET_SIMD)
 #define HAVE_vec_unpacks_hi_v16qi (TARGET_SIMD)
 #define HAVE_vec_unpacku_hi_v16qi (TARGET_SIMD)
 #define HAVE_vec_unpacks_hi_v8hi (TARGET_SIMD)
@@ -7665,6 +7692,18 @@
 #define HAVE_uavgv2si3_ceil (TARGET_SIMD)
 #define HAVE_avgv4si3_ceil (TARGET_SIMD)
 #define HAVE_uavgv4si3_ceil (TARGET_SIMD)
+#define HAVE_aarch64_addhnv8hi (TARGET_SIMD)
+#define HAVE_aarch64_raddhnv8hi (TARGET_SIMD)
+#define HAVE_aarch64_subhnv8hi (TARGET_SIMD)
+#define HAVE_aarch64_rsubhnv8hi (TARGET_SIMD)
+#define HAVE_aarch64_addhnv4si (TARGET_SIMD)
+#define HAVE_aarch64_raddhnv4si (TARGET_SIMD)
+#define HAVE_aarch64_subhnv4si (TARGET_SIMD)
+#define HAVE_aarch64_rsubhnv4si (TARGET_SIMD)
+#define HAVE_aarch64_addhnv2di (TARGET_SIMD)
+#define HAVE_aarch64_raddhnv2di (TARGET_SIMD)
+#define HAVE_aarch64_subhnv2di (TARGET_SIMD)
+#define HAVE_aarch64_rsubhnv2di (TARGET_SIMD)
 #define HAVE_aarch64_addhn2v8hi (TARGET_SIMD)
 #define HAVE_aarch64_raddhn2v8hi (TARGET_SIMD)
 #define HAVE_aarch64_subhn2v8hi (TARGET_SIMD)
@@ -7678,12 +7717,21 @@
 #define HAVE_aarch64_subhn2v2di (TARGET_SIMD)
 #define HAVE_aarch64_rsubhn2v2di (TARGET_SIMD)
 #define HAVE_aarch64_pmull_hiv16qi (TARGET_SIMD)
+#define HAVE_aarch64_sqmovnv8hi (TARGET_SIMD)
+#define HAVE_aarch64_uqmovnv8hi (TARGET_SIMD)
+#define HAVE_aarch64_sqmovnv4si (TARGET_SIMD)
+#define HAVE_aarch64_uqmovnv4si (TARGET_SIMD)
+#define HAVE_aarch64_sqmovnv2di (TARGET_SIMD)
+#define HAVE_aarch64_uqmovnv2di (TARGET_SIMD)
 #define HAVE_aarch64_sqxtn2v8hi (TARGET_SIMD)
 #define HAVE_aarch64_uqxtn2v8hi (TARGET_SIMD)
 #define HAVE_aarch64_sqxtn2v4si (TARGET_SIMD)
 #define HAVE_aarch64_uqxtn2v4si (TARGET_SIMD)
 #define HAVE_aarch64_sqxtn2v2di (TARGET_SIMD)
 #define HAVE_aarch64_uqxtn2v2di (TARGET_SIMD)
+#define HAVE_aarch64_sqmovunv8hi (TARGET_SIMD)
+#define HAVE_aarch64_sqmovunv4si (TARGET_SIMD)
+#define HAVE_aarch64_sqmovunv2di (TARGET_SIMD)
 #define HAVE_aarch64_sqxtun2v8hi (TARGET_SIMD)
 #define HAVE_aarch64_sqxtun2v4si (TARGET_SIMD)
 #define HAVE_aarch64_sqxtun2v2di (TARGET_SIMD)
@@ -11252,15 +11300,18 @@ extern rtx        gen_aarch64_simd_move_hi_quad_be_v8hf              (rtx, rtx, 
 extern rtx        gen_aarch64_simd_move_hi_quad_be_v8bf              (rtx, rtx, rtx);
 extern rtx        gen_aarch64_simd_move_hi_quad_be_v4sf              (rtx, rtx, rtx);
 extern rtx        gen_aarch64_simd_move_hi_quad_be_v2df              (rtx, rtx, rtx);
-extern rtx        gen_aarch64_xtnv8hi                                (rtx, rtx);
-extern rtx        gen_aarch64_xtnv4si                                (rtx, rtx);
-extern rtx        gen_aarch64_xtnv2di                                (rtx, rtx);
-extern rtx        gen_aarch64_xtn2v8hi_le                            (rtx, rtx, rtx);
-extern rtx        gen_aarch64_xtn2v4si_le                            (rtx, rtx, rtx);
-extern rtx        gen_aarch64_xtn2v2di_le                            (rtx, rtx, rtx);
-extern rtx        gen_aarch64_xtn2v8hi_be                            (rtx, rtx, rtx);
-extern rtx        gen_aarch64_xtn2v4si_be                            (rtx, rtx, rtx);
-extern rtx        gen_aarch64_xtn2v2di_be                            (rtx, rtx, rtx);
+extern rtx        gen_aarch64_xtnv8hi_insn_le                        (rtx, rtx, rtx);
+extern rtx        gen_aarch64_xtnv4si_insn_le                        (rtx, rtx, rtx);
+extern rtx        gen_aarch64_xtnv2di_insn_le                        (rtx, rtx, rtx);
+extern rtx        gen_aarch64_xtnv8hi_insn_be                        (rtx, rtx, rtx);
+extern rtx        gen_aarch64_xtnv4si_insn_be                        (rtx, rtx, rtx);
+extern rtx        gen_aarch64_xtnv2di_insn_be                        (rtx, rtx, rtx);
+extern rtx        gen_aarch64_xtn2v8hi_insn_le                       (rtx, rtx, rtx);
+extern rtx        gen_aarch64_xtn2v4si_insn_le                       (rtx, rtx, rtx);
+extern rtx        gen_aarch64_xtn2v2di_insn_le                       (rtx, rtx, rtx);
+extern rtx        gen_aarch64_xtn2v8hi_insn_be                       (rtx, rtx, rtx);
+extern rtx        gen_aarch64_xtn2v4si_insn_be                       (rtx, rtx, rtx);
+extern rtx        gen_aarch64_xtn2v2di_insn_be                       (rtx, rtx, rtx);
 extern rtx        gen_aarch64_shrnv8hi_insn_le                       (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_shrnv4si_insn_le                       (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_shrnv2di_insn_le                       (rtx, rtx, rtx, rtx);
@@ -11888,18 +11939,30 @@ extern rtx        gen_aarch64_srhaddv4si                             (rtx, rtx, 
 extern rtx        gen_aarch64_urhaddv4si                             (rtx, rtx, rtx);
 extern rtx        gen_aarch64_shsubv4si                              (rtx, rtx, rtx);
 extern rtx        gen_aarch64_uhsubv4si                              (rtx, rtx, rtx);
-extern rtx        gen_aarch64_addhnv8hi                              (rtx, rtx, rtx);
-extern rtx        gen_aarch64_raddhnv8hi                             (rtx, rtx, rtx);
-extern rtx        gen_aarch64_subhnv8hi                              (rtx, rtx, rtx);
-extern rtx        gen_aarch64_rsubhnv8hi                             (rtx, rtx, rtx);
-extern rtx        gen_aarch64_addhnv4si                              (rtx, rtx, rtx);
-extern rtx        gen_aarch64_raddhnv4si                             (rtx, rtx, rtx);
-extern rtx        gen_aarch64_subhnv4si                              (rtx, rtx, rtx);
-extern rtx        gen_aarch64_rsubhnv4si                             (rtx, rtx, rtx);
-extern rtx        gen_aarch64_addhnv2di                              (rtx, rtx, rtx);
-extern rtx        gen_aarch64_raddhnv2di                             (rtx, rtx, rtx);
-extern rtx        gen_aarch64_subhnv2di                              (rtx, rtx, rtx);
-extern rtx        gen_aarch64_rsubhnv2di                             (rtx, rtx, rtx);
+extern rtx        gen_aarch64_addhnv8hi_insn_le                      (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_raddhnv8hi_insn_le                     (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_subhnv8hi_insn_le                      (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_rsubhnv8hi_insn_le                     (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_addhnv4si_insn_le                      (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_raddhnv4si_insn_le                     (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_subhnv4si_insn_le                      (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_rsubhnv4si_insn_le                     (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_addhnv2di_insn_le                      (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_raddhnv2di_insn_le                     (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_subhnv2di_insn_le                      (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_rsubhnv2di_insn_le                     (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_addhnv8hi_insn_be                      (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_raddhnv8hi_insn_be                     (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_subhnv8hi_insn_be                      (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_rsubhnv8hi_insn_be                     (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_addhnv4si_insn_be                      (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_raddhnv4si_insn_be                     (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_subhnv4si_insn_be                      (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_rsubhnv4si_insn_be                     (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_addhnv2di_insn_be                      (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_raddhnv2di_insn_be                     (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_subhnv2di_insn_be                      (rtx, rtx, rtx, rtx);
+extern rtx        gen_aarch64_rsubhnv2di_insn_be                     (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_addhn2v8hi_insn_le                     (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_raddhn2v8hi_insn_le                    (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_subhn2v8hi_insn_le                     (rtx, rtx, rtx, rtx);
@@ -12002,24 +12065,24 @@ extern rtx        gen_aarch64_suqaddsi                               (rtx, rtx, 
 extern rtx        gen_aarch64_usqaddsi                               (rtx, rtx, rtx);
 extern rtx        gen_aarch64_suqadddi                               (rtx, rtx, rtx);
 extern rtx        gen_aarch64_usqadddi                               (rtx, rtx, rtx);
-extern rtx        gen_aarch64_sqmovunv8hi                            (rtx, rtx);
-extern rtx        gen_aarch64_sqmovunv4si                            (rtx, rtx);
-extern rtx        gen_aarch64_sqmovunv2di                            (rtx, rtx);
-extern rtx        gen_aarch64_sqmovunhi                              (rtx, rtx);
-extern rtx        gen_aarch64_sqmovunsi                              (rtx, rtx);
-extern rtx        gen_aarch64_sqmovundi                              (rtx, rtx);
-extern rtx        gen_aarch64_sqmovnv8hi                             (rtx, rtx);
-extern rtx        gen_aarch64_uqmovnv8hi                             (rtx, rtx);
-extern rtx        gen_aarch64_sqmovnv4si                             (rtx, rtx);
-extern rtx        gen_aarch64_uqmovnv4si                             (rtx, rtx);
-extern rtx        gen_aarch64_sqmovnv2di                             (rtx, rtx);
-extern rtx        gen_aarch64_uqmovnv2di                             (rtx, rtx);
 extern rtx        gen_aarch64_sqmovnhi                               (rtx, rtx);
 extern rtx        gen_aarch64_uqmovnhi                               (rtx, rtx);
 extern rtx        gen_aarch64_sqmovnsi                               (rtx, rtx);
 extern rtx        gen_aarch64_uqmovnsi                               (rtx, rtx);
 extern rtx        gen_aarch64_sqmovndi                               (rtx, rtx);
 extern rtx        gen_aarch64_uqmovndi                               (rtx, rtx);
+extern rtx        gen_aarch64_sqmovnv8hi_insn_le                     (rtx, rtx, rtx);
+extern rtx        gen_aarch64_uqmovnv8hi_insn_le                     (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sqmovnv4si_insn_le                     (rtx, rtx, rtx);
+extern rtx        gen_aarch64_uqmovnv4si_insn_le                     (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sqmovnv2di_insn_le                     (rtx, rtx, rtx);
+extern rtx        gen_aarch64_uqmovnv2di_insn_le                     (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sqmovnv8hi_insn_be                     (rtx, rtx, rtx);
+extern rtx        gen_aarch64_uqmovnv8hi_insn_be                     (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sqmovnv4si_insn_be                     (rtx, rtx, rtx);
+extern rtx        gen_aarch64_uqmovnv4si_insn_be                     (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sqmovnv2di_insn_be                     (rtx, rtx, rtx);
+extern rtx        gen_aarch64_uqmovnv2di_insn_be                     (rtx, rtx, rtx);
 extern rtx        gen_aarch64_sqxtn2v8hi_le                          (rtx, rtx, rtx);
 extern rtx        gen_aarch64_uqxtn2v8hi_le                          (rtx, rtx, rtx);
 extern rtx        gen_aarch64_sqxtn2v4si_le                          (rtx, rtx, rtx);
@@ -12032,6 +12095,15 @@ extern rtx        gen_aarch64_sqxtn2v4si_be                          (rtx, rtx, 
 extern rtx        gen_aarch64_uqxtn2v4si_be                          (rtx, rtx, rtx);
 extern rtx        gen_aarch64_sqxtn2v2di_be                          (rtx, rtx, rtx);
 extern rtx        gen_aarch64_uqxtn2v2di_be                          (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sqmovunhi                              (rtx, rtx);
+extern rtx        gen_aarch64_sqmovunsi                              (rtx, rtx);
+extern rtx        gen_aarch64_sqmovundi                              (rtx, rtx);
+extern rtx        gen_aarch64_sqmovunv8hi_insn_le                    (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sqmovunv4si_insn_le                    (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sqmovunv2di_insn_le                    (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sqmovunv8hi_insn_be                    (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sqmovunv4si_insn_be                    (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sqmovunv2di_insn_be                    (rtx, rtx, rtx);
 extern rtx        gen_aarch64_sqxtun2v8hi_le                         (rtx, rtx, rtx);
 extern rtx        gen_aarch64_sqxtun2v4si_le                         (rtx, rtx, rtx);
 extern rtx        gen_aarch64_sqxtun2v2di_le                         (rtx, rtx, rtx);
@@ -18378,12 +18450,18 @@ extern rtx        gen_move_hi_quad_v8hf                              (rtx, rtx);
 extern rtx        gen_move_hi_quad_v8bf                              (rtx, rtx);
 extern rtx        gen_move_hi_quad_v4sf                              (rtx, rtx);
 extern rtx        gen_move_hi_quad_v2df                              (rtx, rtx);
+extern rtx        gen_aarch64_xtnv8hi                                (rtx, rtx);
+extern rtx        gen_aarch64_xtnv4si                                (rtx, rtx);
+extern rtx        gen_aarch64_xtnv2di                                (rtx, rtx);
 extern rtx        gen_aarch64_xtn2v8hi                               (rtx, rtx, rtx);
 extern rtx        gen_aarch64_xtn2v4si                               (rtx, rtx, rtx);
 extern rtx        gen_aarch64_xtn2v2di                               (rtx, rtx, rtx);
 extern rtx        gen_vec_pack_trunc_v4hi                            (rtx, rtx, rtx);
 extern rtx        gen_vec_pack_trunc_v2si                            (rtx, rtx, rtx);
 extern rtx        gen_vec_pack_trunc_di                              (rtx, rtx, rtx);
+extern rtx        gen_vec_pack_trunc_v8hi                            (rtx, rtx, rtx);
+extern rtx        gen_vec_pack_trunc_v4si                            (rtx, rtx, rtx);
+extern rtx        gen_vec_pack_trunc_v2di                            (rtx, rtx, rtx);
 extern rtx        gen_aarch64_shrnv8hi                               (rtx, rtx, rtx);
 extern rtx        gen_aarch64_shrnv4si                               (rtx, rtx, rtx);
 extern rtx        gen_aarch64_shrnv2di                               (rtx, rtx, rtx);
@@ -18396,9 +18474,6 @@ extern rtx        gen_aarch64_shrn2v2di                              (rtx, rtx, 
 extern rtx        gen_aarch64_rshrn2v8hi                             (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_rshrn2v4si                             (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_rshrn2v2di                             (rtx, rtx, rtx, rtx);
-extern rtx        gen_vec_pack_trunc_v8hi                            (rtx, rtx, rtx);
-extern rtx        gen_vec_pack_trunc_v4si                            (rtx, rtx, rtx);
-extern rtx        gen_vec_pack_trunc_v2di                            (rtx, rtx, rtx);
 extern rtx        gen_vec_unpacks_hi_v16qi                           (rtx, rtx);
 extern rtx        gen_vec_unpacku_hi_v16qi                           (rtx, rtx);
 extern rtx        gen_vec_unpacks_hi_v8hi                            (rtx, rtx);
@@ -18756,6 +18831,18 @@ extern rtx        gen_avgv2si3_ceil                                  (rtx, rtx, 
 extern rtx        gen_uavgv2si3_ceil                                 (rtx, rtx, rtx);
 extern rtx        gen_avgv4si3_ceil                                  (rtx, rtx, rtx);
 extern rtx        gen_uavgv4si3_ceil                                 (rtx, rtx, rtx);
+extern rtx        gen_aarch64_addhnv8hi                              (rtx, rtx, rtx);
+extern rtx        gen_aarch64_raddhnv8hi                             (rtx, rtx, rtx);
+extern rtx        gen_aarch64_subhnv8hi                              (rtx, rtx, rtx);
+extern rtx        gen_aarch64_rsubhnv8hi                             (rtx, rtx, rtx);
+extern rtx        gen_aarch64_addhnv4si                              (rtx, rtx, rtx);
+extern rtx        gen_aarch64_raddhnv4si                             (rtx, rtx, rtx);
+extern rtx        gen_aarch64_subhnv4si                              (rtx, rtx, rtx);
+extern rtx        gen_aarch64_rsubhnv4si                             (rtx, rtx, rtx);
+extern rtx        gen_aarch64_addhnv2di                              (rtx, rtx, rtx);
+extern rtx        gen_aarch64_raddhnv2di                             (rtx, rtx, rtx);
+extern rtx        gen_aarch64_subhnv2di                              (rtx, rtx, rtx);
+extern rtx        gen_aarch64_rsubhnv2di                             (rtx, rtx, rtx);
 extern rtx        gen_aarch64_addhn2v8hi                             (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_raddhn2v8hi                            (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_subhn2v8hi                             (rtx, rtx, rtx, rtx);
@@ -18769,12 +18856,21 @@ extern rtx        gen_aarch64_raddhn2v2di                            (rtx, rtx, 
 extern rtx        gen_aarch64_subhn2v2di                             (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_rsubhn2v2di                            (rtx, rtx, rtx, rtx);
 extern rtx        gen_aarch64_pmull_hiv16qi                          (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sqmovnv8hi                             (rtx, rtx);
+extern rtx        gen_aarch64_uqmovnv8hi                             (rtx, rtx);
+extern rtx        gen_aarch64_sqmovnv4si                             (rtx, rtx);
+extern rtx        gen_aarch64_uqmovnv4si                             (rtx, rtx);
+extern rtx        gen_aarch64_sqmovnv2di                             (rtx, rtx);
+extern rtx        gen_aarch64_uqmovnv2di                             (rtx, rtx);
 extern rtx        gen_aarch64_sqxtn2v8hi                             (rtx, rtx, rtx);
 extern rtx        gen_aarch64_uqxtn2v8hi                             (rtx, rtx, rtx);
 extern rtx        gen_aarch64_sqxtn2v4si                             (rtx, rtx, rtx);
 extern rtx        gen_aarch64_uqxtn2v4si                             (rtx, rtx, rtx);
 extern rtx        gen_aarch64_sqxtn2v2di                             (rtx, rtx, rtx);
 extern rtx        gen_aarch64_uqxtn2v2di                             (rtx, rtx, rtx);
+extern rtx        gen_aarch64_sqmovunv8hi                            (rtx, rtx);
+extern rtx        gen_aarch64_sqmovunv4si                            (rtx, rtx);
+extern rtx        gen_aarch64_sqmovunv2di                            (rtx, rtx);
 extern rtx        gen_aarch64_sqxtun2v8hi                            (rtx, rtx, rtx);
 extern rtx        gen_aarch64_sqxtun2v4si                            (rtx, rtx, rtx);
 extern rtx        gen_aarch64_sqxtun2v2di                            (rtx, rtx, rtx);
