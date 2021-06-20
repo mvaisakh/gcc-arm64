@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-06-17" "gcc-12.0.0" "GNU"
+.TH GCC 1 "2021-06-20" "gcc-12.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -9197,7 +9197,7 @@ This option causes \s-1GCC\s0 to create markers in the internal representation
 at the beginning of statements, and to keep them roughly in place
 throughout compilation, using them to guide the output of \f(CW\*(C`is_stmt\*(C'\fR
 markers in the line number table.  This is enabled by default when
-compiling with optimization (\fB\-Os\fR, \fB\-O\fR, \fB\-O2\fR,
+compiling with optimization (\fB\-Os\fR, \fB\-O1\fR, \fB\-O2\fR,
 \&...), and outputting \s-1DWARF 2\s0 debug information at the normal level.
 .IP "\fB\-gvariable\-location\-views\fR" 4
 .IX Item "-gvariable-location-views"
@@ -9458,7 +9458,7 @@ that do not involve a space-speed tradeoff.
 As compared to \fB\-O\fR, this option increases both compilation time
 and the performance of the generated code.
 .Sp
-\&\fB\-O2\fR turns on all optimization flags specified by \fB\-O\fR.  It
+\&\fB\-O2\fR turns on all optimization flags specified by \fB\-O1\fR.  It
 also turns on the following optimization flags:
 .Sp
 \&\fB\-falign\-functions  \-falign\-jumps 
@@ -9592,7 +9592,7 @@ instructions and checks if the result can be simplified.  If loop unrolling
 is active, two passes are performed and the second is scheduled after
 loop unrolling.
 .Sp
-This option is enabled by default at optimization levels \fB\-O\fR,
+This option is enabled by default at optimization levels \fB\-O1\fR,
 \&\fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR.
 .IP "\fB\-ffp\-contract=\fR\fIstyle\fR" 4
 .IX Item "-ffp-contract=style"
@@ -9618,7 +9618,7 @@ Note that \fB\-fno\-omit\-frame\-pointer\fR doesn't guarantee the frame pointer
 is used in all functions.  Several targets always omit the frame pointer in
 leaf functions.
 .Sp
-Enabled by default at \fB\-O\fR and higher.
+Enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-foptimize\-sibling\-calls\fR" 4
 .IX Item "-foptimize-sibling-calls"
 Optimize sibling and tail recursive calls.
@@ -9757,7 +9757,7 @@ This option is the default for optimized compilation if the assembler and
 linker support it.  Use \fB\-fno\-merge\-constants\fR to inhibit this
 behavior.
 .Sp
-Enabled at levels \fB\-O\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR.
+Enabled at levels \fB\-O1\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR.
 .IP "\fB\-fmerge\-all\-constants\fR" 4
 .IX Item "-fmerge-all-constants"
 Attempt to merge identical constants and identical variables.
@@ -9832,7 +9832,7 @@ long\*(C'\fR on a 32\-bit system, split the registers apart and allocate them
 independently.  This normally generates better code for those types,
 but may make debugging more difficult.
 .Sp
-Enabled at levels \fB\-O\fR, \fB\-O2\fR, \fB\-O3\fR,
+Enabled at levels \fB\-O1\fR, \fB\-O2\fR, \fB\-O3\fR,
 \&\fB\-Os\fR.
 .IP "\fB\-fsplit\-wide\-types\-early\fR" 4
 .IX Item "-fsplit-wide-types-early"
@@ -9931,16 +9931,16 @@ Enabled at levels \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR.
 .IX Item "-fauto-inc-dec"
 Combine increments or decrements of addresses with memory accesses.
 This pass is always skipped on architectures that do not have
-instructions to support this.  Enabled by default at \fB\-O\fR and
+instructions to support this.  Enabled by default at \fB\-O1\fR and
 higher on architectures that support this.
 .IP "\fB\-fdce\fR" 4
 .IX Item "-fdce"
 Perform dead code elimination (\s-1DCE\s0) on \s-1RTL.\s0
-Enabled by default at \fB\-O\fR and higher.
+Enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-fdse\fR" 4
 .IX Item "-fdse"
 Perform dead store elimination (\s-1DSE\s0) on \s-1RTL.\s0
-Enabled by default at \fB\-O\fR and higher.
+Enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-fif\-conversion\fR" 4
 .IX Item "-fif-conversion"
 Attempt to transform conditional jumps into branch-less equivalents.  This
@@ -9948,14 +9948,14 @@ includes use of conditional moves, min, max, set flags and abs instructions, and
 some tricks doable by standard arithmetics.  The use of conditional execution
 on chips where it is available is controlled by \fB\-fif\-conversion2\fR.
 .Sp
-Enabled at levels \fB\-O\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR, but
+Enabled at levels \fB\-O1\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR, but
 not with \fB\-Og\fR.
 .IP "\fB\-fif\-conversion2\fR" 4
 .IX Item "-fif-conversion2"
 Use conditional execution (where available) to transform conditional jumps into
 branch-less equivalents.
 .Sp
-Enabled at levels \fB\-O\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR, but
+Enabled at levels \fB\-O1\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR, but
 not with \fB\-Og\fR.
 .IP "\fB\-fdeclone\-ctor\-dtor\fR" 4
 .IX Item "-fdeclone-ctor-dtor"
@@ -10115,7 +10115,7 @@ If supported for the target machine, attempt to reorder instructions
 to exploit instruction slots available after delayed branch
 instructions.
 .Sp
-Enabled at levels \fB\-O\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR,
+Enabled at levels \fB\-O1\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR,
 but not at \fB\-Og\fR.
 .IP "\fB\-fschedule\-insns\fR" 4
 .IX Item "-fschedule-insns"
@@ -10328,7 +10328,7 @@ and the \fBlarge-stack-frame-growth\fR parameter to 400.
 .IP "\fB\-ftree\-reassoc\fR" 4
 .IX Item "-ftree-reassoc"
 Perform reassociation on trees.  This flag is enabled by default
-at \fB\-O\fR and higher.
+at \fB\-O1\fR and higher.
 .IP "\fB\-fcode\-hoisting\fR" 4
 .IX Item "-fcode-hoisting"
 Perform code hoisting.  Code hoisting tries to move the
@@ -10347,18 +10347,18 @@ enabled by default at \fB\-O3\fR.
 .IP "\fB\-ftree\-forwprop\fR" 4
 .IX Item "-ftree-forwprop"
 Perform forward propagation on trees.  This flag is enabled by default
-at \fB\-O\fR and higher.
+at \fB\-O1\fR and higher.
 .IP "\fB\-ftree\-fre\fR" 4
 .IX Item "-ftree-fre"
 Perform full redundancy elimination (\s-1FRE\s0) on trees.  The difference
 between \s-1FRE\s0 and \s-1PRE\s0 is that \s-1FRE\s0 only considers expressions
 that are computed on all paths leading to the redundant computation.
 This analysis is faster than \s-1PRE,\s0 though it exposes fewer redundancies.
-This flag is enabled by default at \fB\-O\fR and higher.
+This flag is enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-ftree\-phiprop\fR" 4
 .IX Item "-ftree-phiprop"
 Perform hoisting of loads from conditional pointers on trees.  This
-pass is enabled by default at \fB\-O\fR and higher.
+pass is enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-fhoist\-adjacent\-loads\fR" 4
 .IX Item "-fhoist-adjacent-loads"
 Speculatively hoist loads from both branches of an if-then-else if the
@@ -10368,21 +10368,21 @@ by default at \fB\-O2\fR and higher.
 .IP "\fB\-ftree\-copy\-prop\fR" 4
 .IX Item "-ftree-copy-prop"
 Perform copy propagation on trees.  This pass eliminates unnecessary
-copy operations.  This flag is enabled by default at \fB\-O\fR and
+copy operations.  This flag is enabled by default at \fB\-O1\fR and
 higher.
 .IP "\fB\-fipa\-pure\-const\fR" 4
 .IX Item "-fipa-pure-const"
 Discover which functions are pure or constant.
-Enabled by default at \fB\-O\fR and higher.
+Enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-fipa\-reference\fR" 4
 .IX Item "-fipa-reference"
 Discover which static variables do not escape the
 compilation unit.
-Enabled by default at \fB\-O\fR and higher.
+Enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-fipa\-reference\-addressable\fR" 4
 .IX Item "-fipa-reference-addressable"
 Discover read-only, write-only and non-addressable static variables.
-Enabled by default at \fB\-O\fR and higher.
+Enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-fipa\-stack\-alignment\fR" 4
 .IX Item "-fipa-stack-alignment"
 Reduce stack alignment on call sites if possible.
@@ -10400,13 +10400,13 @@ cold functions are marked as cold. Also functions executed once (such as
 \&\f(CW\*(C`cold\*(C'\fR, \f(CW\*(C`noreturn\*(C'\fR, static constructors or destructors) are
 identified. Cold functions and loop less parts of functions executed once are
 then optimized for size.
-Enabled by default at \fB\-O\fR and higher.
+Enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-fipa\-modref\fR" 4
 .IX Item "-fipa-modref"
 Perform interprocedural mod/ref analysis.  This optimization analyzes the side
 effects of functions (memory locations that are modified or referenced) and
 enables better optimization across the function call boundary.  This flag is
-enabled by default at \fB\-O\fR and higher.
+enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-fipa\-cp\fR" 4
 .IX Item "-fipa-cp"
 Perform interprocedural constant propagation.
@@ -10523,7 +10523,7 @@ currently enabled, but may be enabled by \fB\-O2\fR in the future.
 .IP "\fB\-ftree\-sink\fR" 4
 .IX Item "-ftree-sink"
 Perform forward store motion on trees.  This flag is
-enabled by default at \fB\-O\fR and higher.
+enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-ftree\-bit\-ccp\fR" 4
 .IX Item "-ftree-bit-ccp"
 Perform sparse conditional bit constant propagation on trees and propagate
@@ -10535,13 +10535,13 @@ It requires that \fB\-ftree\-ccp\fR is enabled.
 .IX Item "-ftree-ccp"
 Perform sparse conditional constant propagation (\s-1CCP\s0) on trees.  This
 pass only operates on local scalar variables and is enabled by default
-at \fB\-O\fR and higher.
+at \fB\-O1\fR and higher.
 .IP "\fB\-fssa\-backprop\fR" 4
 .IX Item "-fssa-backprop"
 Propagate information about uses of a value up the definition chain
 in order to simplify the definitions.  For example, this pass strips
 sign operations if the sign of a value never matters.  The flag is
-enabled by default at \fB\-O\fR and higher.
+enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-fssa\-phiopt\fR" 4
 .IX Item "-fssa-phiopt"
 Perform pattern matching on \s-1SSA PHI\s0 nodes to optimize conditional
@@ -10563,7 +10563,7 @@ be limited using \fBmax-tail-merge-comparisons\fR parameter and
 .IP "\fB\-ftree\-dce\fR" 4
 .IX Item "-ftree-dce"
 Perform dead code elimination (\s-1DCE\s0) on trees.  This flag is enabled by
-default at \fB\-O\fR and higher.
+default at \fB\-O1\fR and higher.
 .IP "\fB\-ftree\-builtin\-call\-dce\fR" 4
 .IX Item "-ftree-builtin-call-dce"
 Perform conditional dead code elimination (\s-1DCE\s0) for calls to built-in functions
@@ -10584,23 +10584,23 @@ Perform a variety of simple scalar cleanups (constant/copy
 propagation, redundancy elimination, range propagation and expression
 simplification) based on a dominator tree traversal.  This also
 performs jump threading (to reduce jumps to jumps). This flag is
-enabled by default at \fB\-O\fR and higher.
+enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-ftree\-dse\fR" 4
 .IX Item "-ftree-dse"
 Perform dead store elimination (\s-1DSE\s0) on trees.  A dead store is a store into
 a memory location that is later overwritten by another store without
 any intervening loads.  In this case the earlier store can be deleted.  This
-flag is enabled by default at \fB\-O\fR and higher.
+flag is enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-ftree\-ch\fR" 4
 .IX Item "-ftree-ch"
 Perform loop header copying on trees.  This is beneficial since it increases
 effectiveness of code motion optimizations.  It also saves one jump.  This flag
-is enabled by default at \fB\-O\fR and higher.  It is not enabled
+is enabled by default at \fB\-O1\fR and higher.  It is not enabled
 for \fB\-Os\fR, since it usually increases code size.
 .IP "\fB\-ftree\-loop\-optimize\fR" 4
 .IX Item "-ftree-loop-optimize"
 Perform loop optimizations on trees.  This flag is enabled by default
-at \fB\-O\fR and higher.
+at \fB\-O1\fR and higher.
 .IP "\fB\-ftree\-loop\-linear\fR" 4
 .IX Item "-ftree-loop-linear"
 .PD 0
@@ -10756,7 +10756,7 @@ in such a way that its value when exiting the loop can be determined using
 only its initial value and the number of loop iterations, replace uses of
 the final value by such a computation, provided it is sufficiently cheap.
 This reduces data dependencies and may allow further simplifications.
-Enabled by default at \fB\-O\fR and higher.
+Enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-fivopts\fR" 4
 .IX Item "-fivopts"
 Perform induction variable optimizations (strength reduction, induction
@@ -10792,12 +10792,12 @@ Perform temporary expression replacement during the \s-1SSA\-\s0>normal phase.  
 use/single def temporaries are replaced at their use location with their
 defining expression.  This results in non-GIMPLE code, but gives the expanders
 much more complex trees to work on resulting in better \s-1RTL\s0 generation.  This is
-enabled by default at \fB\-O\fR and higher.
+enabled by default at \fB\-O1\fR and higher.
 .IP "\fB\-ftree\-slsr\fR" 4
 .IX Item "-ftree-slsr"
 Perform straight-line strength reduction on trees.  This recognizes related
 expressions involving multiplications and replaces them by less expensive
-calculations when possible.  This is enabled by default at \fB\-O\fR and
+calculations when possible.  This is enabled by default at \fB\-O1\fR and
 higher.
 .IP "\fB\-ftree\-vectorize\fR" 4
 .IX Item "-ftree-vectorize"
@@ -10960,7 +10960,7 @@ The default is \fB\-fguess\-branch\-probability\fR at levels
 Reorder basic blocks in the compiled function in order to reduce number of
 taken branches and improve code locality.
 .Sp
-Enabled at levels \fB\-O\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR.
+Enabled at levels \fB\-O1\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR.
 .IP "\fB\-freorder\-blocks\-algorithm=\fR\fIalgorithm\fR" 4
 .IX Item "-freorder-blocks-algorithm=algorithm"
 Use the specified algorithm for basic block reordering.  The
@@ -10970,7 +10970,7 @@ or \fBstc\fR, the \*(L"software trace cache\*(R" algorithm, which tries to
 put all often executed code together, minimizing the number of branches
 executed by making extra copies of code.
 .Sp
-The default is \fBsimple\fR at levels \fB\-O\fR, \fB\-Os\fR, and
+The default is \fBsimple\fR at levels \fB\-O1\fR, \fB\-Os\fR, and
 \&\fBstc\fR at levels \fB\-O2\fR, \fB\-O3\fR.
 .IP "\fB\-freorder\-blocks\-and\-partition\fR" 4
 .IX Item "-freorder-blocks-and-partition"
@@ -11547,14 +11547,14 @@ explicit comparison operation.
 This pass only applies to certain targets that cannot explicitly represent
 the comparison operation before register allocation is complete.
 .Sp
-Enabled at levels \fB\-O\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR.
+Enabled at levels \fB\-O1\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR.
 .IP "\fB\-fcprop\-registers\fR" 4
 .IX Item "-fcprop-registers"
 After register allocation and post-register allocation instruction splitting,
 perform a copy-propagation pass to try to reduce scheduling dependencies
 and occasionally eliminate the copy.
 .Sp
-Enabled at levels \fB\-O\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR.
+Enabled at levels \fB\-O1\fR, \fB\-O2\fR, \fB\-O3\fR, \fB\-Os\fR.
 .IP "\fB\-fprofile\-correction\fR" 4
 .IX Item "-fprofile-correction"
 Profiles collected using an instrumented binary for multi-threaded programs may

@@ -35634,13 +35634,16 @@ certain arguments in registers.
      cases of mismatch, it also makes for better code on certain
      machines.  The default is to not promote prototypes.
 
- -- Macro: PUSH_ARGS
-     A C expression.  If nonzero, push insns will be used to pass
-     outgoing arguments.  If the target machine does not have a push
-     instruction, set it to zero.  That directs GCC to use an alternate
-     strategy: to allocate the entire argument block and then store the
-     arguments into it.  When 'PUSH_ARGS' is nonzero, 'PUSH_ROUNDING'
-     must be defined too.
+ -- Target Hook: bool TARGET_PUSH_ARGUMENT (unsigned int NPUSH)
+     This target hook returns 'true' if push instructions will be used
+     to pass outgoing arguments.  When the push instruction usage is
+     optional, NPUSH is nonzero to indicate the number of bytes to push.
+     Otherwise, NPUSH is zero.  If the target machine does not have a
+     push instruction or push instruction should be avoided, 'false'
+     should be returned.  That directs GCC to use an alternate strategy:
+     to allocate the entire argument block and then store the arguments
+     into it.  If this target hook may return 'true', 'PUSH_ROUNDING'
+     must be defined.
 
  -- Macro: PUSH_ARGS_REVERSED
      A C expression.  If nonzero, function arguments will be evaluated
@@ -53467,7 +53470,7 @@ Concept Index
 * access to operands:                    Accessors.          (line    6)
 * access to special operands:            Special Accessors.  (line    6)
 * accessors:                             Accessors.          (line    6)
-* ACCUMULATE_OUTGOING_ARGS:              Stack Arguments.    (line   48)
+* ACCUMULATE_OUTGOING_ARGS:              Stack Arguments.    (line   51)
 * ACCUMULATE_OUTGOING_ARGS and stack frames: Function Entry. (line  140)
 * ACCUM_TYPE_SIZE:                       Type Layout.        (line   87)
 * acosM2 instruction pattern:            Standard Names.     (line 1004)
@@ -53802,7 +53805,7 @@ Concept Index
 * call_insn and /v:                      Flags.              (line   33)
 * CALL_INSN_FUNCTION_USAGE:              Insns.              (line  101)
 * call_pop instruction pattern:          Standard Names.     (line 1936)
-* CALL_POPS_ARGS:                        Stack Arguments.    (line  138)
+* CALL_POPS_ARGS:                        Stack Arguments.    (line  141)
 * CALL_REALLY_USED_REGISTERS:            Register Basics.    (line   49)
 * CALL_USED_REGISTERS:                   Register Basics.    (line   34)
 * call_used_regs:                        Register Basics.    (line  102)
@@ -54061,7 +54064,7 @@ Concept Index
 * CROSSING_JUMP_P:                       Flags.              (line   10)
 * crtl->args.pops_args:                  Function Entry.     (line  111)
 * crtl->args.pretend_args_size:          Function Entry.     (line  117)
-* crtl->outgoing_args_size:              Stack Arguments.    (line   48)
+* crtl->outgoing_args_size:              Stack Arguments.    (line   51)
 * CRTSTUFF_T_CFLAGS:                     Target Fragment.    (line   15)
 * CRTSTUFF_T_CFLAGS_S:                   Target Fragment.    (line   19)
 * CRT_CALL_STATIC_FUNCTION:              Sections.           (line  125)
@@ -55240,7 +55243,7 @@ Concept Index
 * inclusive-or, bitwise:                 Arithmetic.         (line  162)
 * INCOMING_FRAME_SP_OFFSET:              Frame Layout.       (line  188)
 * INCOMING_REGNO:                        Register Basics.    (line  129)
-* INCOMING_REG_PARM_STACK_SPACE:         Stack Arguments.    (line   73)
+* INCOMING_REG_PARM_STACK_SPACE:         Stack Arguments.    (line   76)
 * INCOMING_RETURN_ADDR_RTX:              Frame Layout.       (line  133)
 * INCOMING_STACK_BOUNDARY:               Storage Layout.     (line  171)
 * INDEX_REG_CLASS:                       Register Classes.   (line  140)
@@ -55875,9 +55878,9 @@ Concept Index
 * Ordering of Patterns:                  Pattern Ordering.   (line    6)
 * ORIGINAL_REGNO:                        Special Accessors.  (line   53)
 * other register constraints:            Simple Constraints. (line  171)
-* outgoing_args_size:                    Stack Arguments.    (line   48)
+* outgoing_args_size:                    Stack Arguments.    (line   51)
 * OUTGOING_REGNO:                        Register Basics.    (line  136)
-* OUTGOING_REG_PARM_STACK_SPACE:         Stack Arguments.    (line   79)
+* OUTGOING_REG_PARM_STACK_SPACE:         Stack Arguments.    (line   82)
 * output of assembler code:              File Framework.     (line    6)
 * output statements:                     Output Statement.   (line    6)
 * output templates:                      Output Template.    (line    6)
@@ -56046,12 +56049,11 @@ Concept Index
                                                              (line   81)
 * push address instruction:              Simple Constraints. (line  162)
 * pushM1 instruction pattern:            Standard Names.     (line  453)
-* PUSH_ARGS:                             Stack Arguments.    (line   17)
-* PUSH_ARGS_REVERSED:                    Stack Arguments.    (line   25)
+* PUSH_ARGS_REVERSED:                    Stack Arguments.    (line   28)
 * push_operand:                          Machine-Independent Predicates.
                                                              (line   80)
 * push_reload:                           Addressing Modes.   (line  176)
-* PUSH_ROUNDING:                         Stack Arguments.    (line   31)
+* PUSH_ROUNDING:                         Stack Arguments.    (line   34)
 * PUT_CODE:                              RTL Objects.        (line   47)
 * PUT_MODE:                              Machine Modes.      (line  384)
 * PUT_REG_NOTE_KIND:                     Insns.              (line  349)
@@ -56184,7 +56186,7 @@ Concept Index
 * REG_NOTE_KIND:                         Insns.              (line  349)
 * REG_OFFSET:                            Special Accessors.  (line   62)
 * REG_OK_STRICT:                         Addressing Modes.   (line   99)
-* REG_PARM_STACK_SPACE:                  Stack Arguments.    (line   58)
+* REG_PARM_STACK_SPACE:                  Stack Arguments.    (line   61)
 * REG_PARM_STACK_SPACE, and TARGET_FUNCTION_ARG: Register Arguments.
                                                              (line   49)
 * REG_POINTER:                           Flags.              (line  102)
@@ -56483,7 +56485,7 @@ Concept Index
 * STACK_DYNAMIC_OFFSET and virtual registers: Regs and Memory.
                                                              (line   83)
 * STACK_GROWS_DOWNWARD:                  Frame Layout.       (line    8)
-* STACK_PARMS_IN_REG_PARM_AREA:          Stack Arguments.    (line   89)
+* STACK_PARMS_IN_REG_PARM_AREA:          Stack Arguments.    (line   92)
 * STACK_POINTER_OFFSET:                  Frame Layout.       (line   51)
 * STACK_POINTER_OFFSET and virtual registers: Regs and Memory.
                                                              (line   93)
@@ -57082,6 +57084,7 @@ Concept Index
 * TARGET_PROMOTE_FUNCTION_MODE:          Storage Layout.     (line  126)
 * TARGET_PROMOTE_PROTOTYPES:             Stack Arguments.    (line   10)
 * TARGET_PTRMEMFUNC_VBIT_LOCATION:       Type Layout.        (line  250)
+* TARGET_PUSH_ARGUMENT:                  Stack Arguments.    (line   17)
 * TARGET_RECORD_OFFLOAD_SYMBOL:          Misc.               (line 1153)
 * TARGET_REF_MAY_ALIAS_ERRNO:            Register Arguments. (line  318)
 * TARGET_REGISTER_MOVE_COST:             Costs.              (line   31)
@@ -57092,7 +57095,7 @@ Concept Index
 * TARGET_RESOLVE_OVERLOADED_BUILTIN:     Misc.               (line  662)
 * TARGET_RETURN_IN_MEMORY:               Aggregate Return.   (line   15)
 * TARGET_RETURN_IN_MSB:                  Scalar Return.      (line  124)
-* TARGET_RETURN_POPS_ARGS:               Stack Arguments.    (line   98)
+* TARGET_RETURN_POPS_ARGS:               Stack Arguments.    (line  101)
 * TARGET_RTX_COSTS:                      Costs.              (line  320)
 * TARGET_RUN_TARGET_SELFTESTS:           Misc.               (line 1244)
 * TARGET_SCALAR_MODE_SUPPORTED_P:        Register Arguments. (line  334)
@@ -58145,109 +58148,109 @@ Node: Stack Checking1486396
 Node: Frame Registers1492022
 Node: Elimination1500573
 Node: Stack Arguments1504429
-Node: Register Arguments1511625
-Node: Scalar Return1536486
-Node: Aggregate Return1542942
-Node: Caller Saves1547496
-Node: Function Entry1548238
-Node: Profiling1559790
-Node: Tail Calls1561900
-Node: Shrink-wrapping separate components1563810
-Node: Stack Smashing Protection1566851
-Node: Miscellaneous Register Hooks1569340
-Node: Varargs1570205
-Node: Trampolines1579605
-Node: Library Calls1589298
-Node: Addressing Modes1594384
-Node: Anchored Addresses1625374
-Node: Condition Code1628017
-Node: MODE_CC Condition Codes1629862
-Node: Costs1636625
-Node: Scheduling1658945
-Node: Sections1682867
-Node: PIC1699232
-Node: Assembler Format1701291
-Node: File Framework1702429
-Ref: TARGET_HAVE_SWITCHABLE_BSS_SECTIONS1710028
-Node: Data Output1711703
-Node: Uninitialized Data1719991
-Node: Label Output1725005
-Node: Initialization1749616
-Node: Macros for Initialization1755577
-Node: Instruction Output1762296
-Node: Dispatch Tables1772925
-Node: Exception Region Output1778676
-Node: Alignment Output1785758
-Node: Debugging Info1789445
-Node: All Debuggers1790099
-Node: DBX Options1792871
-Node: DBX Hooks1798309
-Node: File Names and DBX1799618
-Node: DWARF1801722
-Node: VMS Debug1807537
-Node: Floating Point1808116
-Node: Mode Switching1810871
-Node: Target Attributes1815308
-Node: Emulated TLS1824784
-Node: MIPS Coprocessors1828174
-Node: PCH Target1829333
-Node: C++ ABI1831175
-Node: D Language and ABI1835967
-Node: Named Address Spaces1838910
-Node: Misc1844837
-Ref: TARGET_SHIFT_TRUNCATION_MASK1852708
-Node: Host Config1911731
-Node: Host Common1912800
-Node: Filesystem1915174
-Node: Host Misc1919289
-Node: Fragments1921738
-Node: Target Fragment1922933
-Node: Host Fragment1933745
-Node: Collect21933985
-Node: Header Dirs1936621
-Node: Type Information1938044
-Node: GTY Options1941320
-Node: Inheritance and GTY1952579
-Ref: Inheritance and GTY-Footnote-11954144
-Node: User GC1954414
-Node: GGC Roots1958153
-Node: Files1958866
-Node: Invoking the garbage collector1961573
-Node: Troubleshooting1963078
-Node: Plugins1964153
-Node: Plugins loading1965282
-Node: Plugin API1966381
-Node: Plugins pass1974248
-Node: Plugins GC1976219
-Node: Plugins description1977936
-Node: Plugins attr1978472
-Node: Plugins recording1980752
-Node: Plugins gate1981602
-Node: Plugins tracking1982193
-Node: Plugins building1982781
-Node: LTO1986282
-Node: LTO Overview1987154
-Node: LTO object file layout1992981
-Node: IPA1997611
-Node: WHOPR2006661
-Node: Internal flags2011221
-Node: Match and Simplify2012632
-Node: GIMPLE API2013594
-Node: The Language2016389
-Node: Static Analyzer2028888
-Node: Analyzer Internals2029153
-Node: Debugging the Analyzer2045040
-Node: User Experience Guidelines2047650
-Node: Guidelines for Diagnostics2048586
-Ref: input_location_example2056761
-Node: Guidelines for Options2066446
-Node: Funding2066623
-Node: GNU Project2069130
-Node: Copying2069779
-Node: GNU Free Documentation License2107290
-Node: Contributors2132411
-Node: Option Index2173387
-Node: Concept Index2174264
+Node: Register Arguments1511882
+Node: Scalar Return1536743
+Node: Aggregate Return1543199
+Node: Caller Saves1547753
+Node: Function Entry1548495
+Node: Profiling1560047
+Node: Tail Calls1562157
+Node: Shrink-wrapping separate components1564067
+Node: Stack Smashing Protection1567108
+Node: Miscellaneous Register Hooks1569597
+Node: Varargs1570462
+Node: Trampolines1579862
+Node: Library Calls1589555
+Node: Addressing Modes1594641
+Node: Anchored Addresses1625631
+Node: Condition Code1628274
+Node: MODE_CC Condition Codes1630119
+Node: Costs1636882
+Node: Scheduling1659202
+Node: Sections1683124
+Node: PIC1699489
+Node: Assembler Format1701548
+Node: File Framework1702686
+Ref: TARGET_HAVE_SWITCHABLE_BSS_SECTIONS1710285
+Node: Data Output1711960
+Node: Uninitialized Data1720248
+Node: Label Output1725262
+Node: Initialization1749873
+Node: Macros for Initialization1755834
+Node: Instruction Output1762553
+Node: Dispatch Tables1773182
+Node: Exception Region Output1778933
+Node: Alignment Output1786015
+Node: Debugging Info1789702
+Node: All Debuggers1790356
+Node: DBX Options1793128
+Node: DBX Hooks1798566
+Node: File Names and DBX1799875
+Node: DWARF1801979
+Node: VMS Debug1807794
+Node: Floating Point1808373
+Node: Mode Switching1811128
+Node: Target Attributes1815565
+Node: Emulated TLS1825041
+Node: MIPS Coprocessors1828431
+Node: PCH Target1829590
+Node: C++ ABI1831432
+Node: D Language and ABI1836224
+Node: Named Address Spaces1839167
+Node: Misc1845094
+Ref: TARGET_SHIFT_TRUNCATION_MASK1852965
+Node: Host Config1911988
+Node: Host Common1913057
+Node: Filesystem1915431
+Node: Host Misc1919546
+Node: Fragments1921995
+Node: Target Fragment1923190
+Node: Host Fragment1934002
+Node: Collect21934242
+Node: Header Dirs1936878
+Node: Type Information1938301
+Node: GTY Options1941577
+Node: Inheritance and GTY1952836
+Ref: Inheritance and GTY-Footnote-11954401
+Node: User GC1954671
+Node: GGC Roots1958410
+Node: Files1959123
+Node: Invoking the garbage collector1961830
+Node: Troubleshooting1963335
+Node: Plugins1964410
+Node: Plugins loading1965539
+Node: Plugin API1966638
+Node: Plugins pass1974505
+Node: Plugins GC1976476
+Node: Plugins description1978193
+Node: Plugins attr1978729
+Node: Plugins recording1981009
+Node: Plugins gate1981859
+Node: Plugins tracking1982450
+Node: Plugins building1983038
+Node: LTO1986539
+Node: LTO Overview1987411
+Node: LTO object file layout1993238
+Node: IPA1997868
+Node: WHOPR2006918
+Node: Internal flags2011478
+Node: Match and Simplify2012889
+Node: GIMPLE API2013851
+Node: The Language2016646
+Node: Static Analyzer2029145
+Node: Analyzer Internals2029410
+Node: Debugging the Analyzer2045297
+Node: User Experience Guidelines2047907
+Node: Guidelines for Diagnostics2048843
+Ref: input_location_example2057018
+Node: Guidelines for Options2066703
+Node: Funding2066880
+Node: GNU Project2069387
+Node: Copying2070036
+Node: GNU Free Documentation License2107547
+Node: Contributors2132668
+Node: Option Index2173644
+Node: Concept Index2174521
 
 End Tag Table
 
