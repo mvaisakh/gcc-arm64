@@ -2012,7 +2012,7 @@ extern void vect_free_slp_instance (slp_instance);
 extern bool vect_transform_slp_perm_load (vec_info *, slp_tree, vec<tree>,
 					  gimple_stmt_iterator *, poly_uint64,
 					  bool, unsigned *,
-					  unsigned * = nullptr);
+					  unsigned * = nullptr, bool = false);
 extern bool vect_slp_analyze_operations (vec_info *);
 extern void vect_schedule_slp (vec_info *, vec<slp_instance>);
 extern opt_result vect_analyze_slp (vec_info *, unsigned);
@@ -2100,7 +2100,8 @@ class vect_pattern
       this->m_ifn = ifn;
       this->m_node = node;
       this->m_ops.create (0);
-      this->m_ops.safe_splice (*m_ops);
+      if (m_ops)
+	this->m_ops.safe_splice (*m_ops);
     }
 
   public:

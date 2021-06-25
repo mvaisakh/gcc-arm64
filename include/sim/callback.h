@@ -91,6 +91,8 @@ struct host_callback_struct
   int (*to_lstat) (host_callback *, const char *, struct stat *);
   int (*ftruncate) (host_callback *, int, int64_t);
   int (*truncate) (host_callback *, const char *, int64_t);
+  int (*getpid) (host_callback *);
+  int (*kill) (host_callback *, int, int);
   int (*pipe) (host_callback *, int *);
 
   /* Called by the framework when a read call has emptied a pipe buffer.  */
@@ -239,7 +241,7 @@ typedef struct cb_syscall {
   /* The target's value of what system call to perform.  */
   int func;
   /* The arguments to the syscall.  */
-  long arg1, arg2, arg3, arg4;
+  long arg1, arg2, arg3, arg4, arg5, arg6, arg7;
 
   /* The result.  */
   long result;
