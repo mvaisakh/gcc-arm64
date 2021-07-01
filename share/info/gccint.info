@@ -9879,7 +9879,7 @@ currently the frontends perform this lowering before handing off to
 
 * Menu:
 
-* Deficiencies::                Topics net yet covered in this document.
+* Deficiencies::                Topics not yet covered in this document.
 * Tree overview::               All about 'tree's.
 * Types::                       Fundamental and aggregate types.
 * Declarations::                Type declarations and variables.
