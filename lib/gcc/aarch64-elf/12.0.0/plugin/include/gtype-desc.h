@@ -429,10 +429,6 @@ extern void gt_ggc_mx_vec_ipa_replace_map__va_gc_ (void *);
   if (X != NULL) gt_ggc_mx_ipa_param_adjustments (X);\
   } while (0)
 extern void gt_ggc_mx_ipa_param_adjustments (void *);
-#define gt_ggc_m_36vec_ipa_param_performed_split_va_gc_(X) do { \
-  if (X != NULL) gt_ggc_mx_vec_ipa_param_performed_split_va_gc_ (X);\
-  } while (0)
-extern void gt_ggc_mx_vec_ipa_param_performed_split_va_gc_ (void *);
 #define gt_ggc_m_28hash_map_alias_set_hash_int_(X) do { \
   if (X != NULL) gt_ggc_mx_hash_map_alias_set_hash_int_ (X);\
   } while (0)
@@ -705,6 +701,42 @@ extern void gt_ggc_mx_inline_entry_data (void *);
   if (X != NULL) gt_ggc_mx_hash_table_inline_entry_data_hasher_ (X);\
   } while (0)
 extern void gt_ggc_mx_hash_table_inline_entry_data_hasher_ (void *);
+#define gt_ggc_m_10ctf_string(X) do { \
+  if (X != NULL) gt_ggc_mx_ctf_string (X);\
+  } while (0)
+extern void gt_ggc_mx_ctf_string (void *);
+#define gt_ggc_m_9ctf_dmdef(X) do { \
+  if (X != NULL) gt_ggc_mx_ctf_dmdef (X);\
+  } while (0)
+extern void gt_ggc_mx_ctf_dmdef (void *);
+#define gt_ggc_m_12ctf_func_arg(X) do { \
+  if (X != NULL) gt_ggc_mx_ctf_func_arg (X);\
+  } while (0)
+extern void gt_ggc_mx_ctf_func_arg (void *);
+#define gt_ggc_m_9ctf_dtdef(X) do { \
+  if (X != NULL) gt_ggc_mx_ctf_dtdef (X);\
+  } while (0)
+extern void gt_ggc_mx_ctf_dtdef (void *);
+#define gt_ggc_m_9ctf_dvdef(X) do { \
+  if (X != NULL) gt_ggc_mx_ctf_dvdef (X);\
+  } while (0)
+extern void gt_ggc_mx_ctf_dvdef (void *);
+#define gt_ggc_m_27hash_table_ctfc_dtd_hasher_(X) do { \
+  if (X != NULL) gt_ggc_mx_hash_table_ctfc_dtd_hasher_ (X);\
+  } while (0)
+extern void gt_ggc_mx_hash_table_ctfc_dtd_hasher_ (void *);
+#define gt_ggc_m_27hash_table_ctfc_dvd_hasher_(X) do { \
+  if (X != NULL) gt_ggc_mx_hash_table_ctfc_dvd_hasher_ (X);\
+  } while (0)
+extern void gt_ggc_mx_hash_table_ctfc_dvd_hasher_ (void *);
+#define gt_ggc_m_13ctf_container(X) do { \
+  if (X != NULL) gt_ggc_mx_ctf_container (X);\
+  } while (0)
+extern void gt_ggc_mx_ctf_container (void *);
+#define gt_ggc_m_24vec_ctf_dtdef_ref_va_gc_(X) do { \
+  if (X != NULL) gt_ggc_mx_vec_ctf_dtdef_ref_va_gc_ (X);\
+  } while (0)
+extern void gt_ggc_mx_vec_ctf_dtdef_ref_va_gc_ (void *);
 #define gt_ggc_m_9temp_slot(X) do { \
   if (X != NULL) gt_ggc_mx_temp_slot (X);\
   } while (0)
@@ -1842,10 +1874,6 @@ extern void gt_pch_nx_vec_ipa_replace_map__va_gc_ (void *);
   if (X != NULL) gt_pch_nx_ipa_param_adjustments (X);\
   } while (0)
 extern void gt_pch_nx_ipa_param_adjustments (void *);
-#define gt_pch_n_36vec_ipa_param_performed_split_va_gc_(X) do { \
-  if (X != NULL) gt_pch_nx_vec_ipa_param_performed_split_va_gc_ (X);\
-  } while (0)
-extern void gt_pch_nx_vec_ipa_param_performed_split_va_gc_ (void *);
 #define gt_pch_n_28hash_map_alias_set_hash_int_(X) do { \
   if (X != NULL) gt_pch_nx_hash_map_alias_set_hash_int_ (X);\
   } while (0)
@@ -2118,6 +2146,42 @@ extern void gt_pch_nx_inline_entry_data (void *);
   if (X != NULL) gt_pch_nx_hash_table_inline_entry_data_hasher_ (X);\
   } while (0)
 extern void gt_pch_nx_hash_table_inline_entry_data_hasher_ (void *);
+#define gt_pch_n_10ctf_string(X) do { \
+  if (X != NULL) gt_pch_nx_ctf_string (X);\
+  } while (0)
+extern void gt_pch_nx_ctf_string (void *);
+#define gt_pch_n_9ctf_dmdef(X) do { \
+  if (X != NULL) gt_pch_nx_ctf_dmdef (X);\
+  } while (0)
+extern void gt_pch_nx_ctf_dmdef (void *);
+#define gt_pch_n_12ctf_func_arg(X) do { \
+  if (X != NULL) gt_pch_nx_ctf_func_arg (X);\
+  } while (0)
+extern void gt_pch_nx_ctf_func_arg (void *);
+#define gt_pch_n_9ctf_dtdef(X) do { \
+  if (X != NULL) gt_pch_nx_ctf_dtdef (X);\
+  } while (0)
+extern void gt_pch_nx_ctf_dtdef (void *);
+#define gt_pch_n_9ctf_dvdef(X) do { \
+  if (X != NULL) gt_pch_nx_ctf_dvdef (X);\
+  } while (0)
+extern void gt_pch_nx_ctf_dvdef (void *);
+#define gt_pch_n_27hash_table_ctfc_dtd_hasher_(X) do { \
+  if (X != NULL) gt_pch_nx_hash_table_ctfc_dtd_hasher_ (X);\
+  } while (0)
+extern void gt_pch_nx_hash_table_ctfc_dtd_hasher_ (void *);
+#define gt_pch_n_27hash_table_ctfc_dvd_hasher_(X) do { \
+  if (X != NULL) gt_pch_nx_hash_table_ctfc_dvd_hasher_ (X);\
+  } while (0)
+extern void gt_pch_nx_hash_table_ctfc_dvd_hasher_ (void *);
+#define gt_pch_n_13ctf_container(X) do { \
+  if (X != NULL) gt_pch_nx_ctf_container (X);\
+  } while (0)
+extern void gt_pch_nx_ctf_container (void *);
+#define gt_pch_n_24vec_ctf_dtdef_ref_va_gc_(X) do { \
+  if (X != NULL) gt_pch_nx_vec_ctf_dtdef_ref_va_gc_ (X);\
+  } while (0)
+extern void gt_pch_nx_vec_ctf_dtdef_ref_va_gc_ (void *);
 #define gt_pch_n_9temp_slot(X) do { \
   if (X != NULL) gt_pch_nx_temp_slot (X);\
   } while (0)
@@ -3139,8 +3203,6 @@ extern void gt_pch_p_27vec_ipa_replace_map__va_gc_
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_21ipa_param_adjustments
     (void *, void *, gt_pointer_operator, void *);
-extern void gt_pch_p_36vec_ipa_param_performed_split_va_gc_
-    (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_28hash_map_alias_set_hash_int_
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_15alias_set_entry
@@ -3276,6 +3338,24 @@ extern void gt_pch_p_27hash_map_tree_sym_off_pair_
 extern void gt_pch_p_17inline_entry_data
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_36hash_table_inline_entry_data_hasher_
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_10ctf_string
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_9ctf_dmdef
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_12ctf_func_arg
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_9ctf_dtdef
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_9ctf_dvdef
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_27hash_table_ctfc_dtd_hasher_
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_27hash_table_ctfc_dvd_hasher_
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_13ctf_container
+    (void *, void *, gt_pointer_operator, void *);
+extern void gt_pch_p_24vec_ctf_dtdef_ref_va_gc_
     (void *, void *, gt_pointer_operator, void *);
 extern void gt_pch_p_9temp_slot
     (void *, void *, gt_pointer_operator, void *);

@@ -133,7 +133,7 @@
 .\" ========================================================================
 .\"
 .IX Title "GCC 1"
-.TH GCC 1 "2021-06-27" "gcc-12.0.0" "GNU"
+.TH GCC 1 "2021-07-01" "gcc-12.0.0" "GNU"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -226,17 +226,17 @@ in the following sections.
 \&\fB\-fdump\-ada\-spec\fR[\fB\-slim\fR]  \fB\-fada\-spec\-parent=\fR\fIunit\fR  \fB\-fdump\-go\-spec=\fR\fIfile\fR
 .IP "\fIC Language Options\fR" 4
 .IX Item "C Language Options"
-\&\fB\-ansi  \-std=\fR\fIstandard\fR  \fB\-fgnu89\-inline 
-\&\-fpermitted\-flt\-eval\-methods=\fR\fIstandard\fR 
-\&\fB\-aux\-info\fR \fIfilename\fR  \fB\-fallow\-parameterless\-variadic\-functions 
-\&\-fno\-asm  \-fno\-builtin  \-fno\-builtin\-\fR\fIfunction\fR  \fB\-fgimple
-\&\-fhosted  \-ffreestanding 
-\&\-fopenacc  \-fopenacc\-dim=\fR\fIgeom\fR 
+\&\fB\-ansi  \-std=\fR\fIstandard\fR  \fB\-aux\-info\fR \fIfilename\fR 
+\&\fB\-fallow\-parameterless\-variadic\-functions  \-fno\-asm  
+\&\-fno\-builtin  \-fno\-builtin\-\fR\fIfunction\fR  \fB\-fcond\-mismatch 
+\&\-ffreestanding  \-fgimple  \-fgnu\-tm  \-fgnu89\-inline  \-fhosted 
+\&\-flax\-vector\-conversions  \-fms\-extensions 
+\&\-foffload=\fR\fIarg\fR  \fB\-foffload\-options=\fR\fIarg\fR 
+\&\fB\-fopenacc  \-fopenacc\-dim=\fR\fIgeom\fR 
 \&\fB\-fopenmp  \-fopenmp\-simd 
-\&\-fms\-extensions  \-fplan9\-extensions  \-fsso\-struct=\fR\fIendianness\fR 
-\&\fB\-fallow\-single\-precision  \-fcond\-mismatch  \-flax\-vector\-conversions 
-\&\-fsigned\-bitfields  \-fsigned\-char 
-\&\-funsigned\-bitfields  \-funsigned\-char\fR
+\&\-fpermitted\-flt\-eval\-methods=\fR\fIstandard\fR 
+\&\fB\-fplan9\-extensions  \-fsigned\-bitfields  \-funsigned\-bitfields 
+\&\-fsigned\-char  \-funsigned\-char  \-fsso\-struct=\fR\fIendianness\fR
 .IP "\fI\*(C+ Language Options\fR" 4
 .IX Item " Language Options"
 \&\fB\-fabi\-version=\fR\fIn\fR  \fB\-fno\-access\-control 
@@ -487,6 +487,7 @@ in the following sections.
 .IP "\fIDebugging Options\fR" 4
 .IX Item "Debugging Options"
 \&\fB\-g  \-g\fR\fIlevel\fR  \fB\-gdwarf  \-gdwarf\-\fR\fIversion\fR 
+\&\fB\-gbtf \-gctf  \-gctf\fR\fIlevel\fR 
 \&\fB\-ggdb  \-grecord\-gcc\-switches  \-gno\-record\-gcc\-switches 
 \&\-gstabs  \-gstabs+  \-gstrict\-dwarf  \-gno\-strict\-dwarf 
 \&\-gas\-loc\-support  \-gno\-as\-loc\-support 
@@ -2513,44 +2514,6 @@ releases.
 .RE
 .RS 4
 .RE
-.IP "\fB\-fgnu89\-inline\fR" 4
-.IX Item "-fgnu89-inline"
-The option \fB\-fgnu89\-inline\fR tells \s-1GCC\s0 to use the traditional
-\&\s-1GNU\s0 semantics for \f(CW\*(C`inline\*(C'\fR functions when in C99 mode.
-.Sp
-Using this option is roughly equivalent to adding the
-\&\f(CW\*(C`gnu_inline\*(C'\fR function attribute to all inline functions.
-.Sp
-The option \fB\-fno\-gnu89\-inline\fR explicitly tells \s-1GCC\s0 to use the
-C99 semantics for \f(CW\*(C`inline\*(C'\fR when in C99 or gnu99 mode (i.e., it
-specifies the default behavior).
-This option is not supported in \fB\-std=c90\fR or
-\&\fB\-std=gnu90\fR mode.
-.Sp
-The preprocessor macros \f(CW\*(C`_\|_GNUC_GNU_INLINE_\|_\*(C'\fR and
-\&\f(CW\*(C`_\|_GNUC_STDC_INLINE_\|_\*(C'\fR may be used to check which semantics are
-in effect for \f(CW\*(C`inline\*(C'\fR functions.
-.IP "\fB\-fpermitted\-flt\-eval\-methods=\fR\fIstyle\fR" 4
-.IX Item "-fpermitted-flt-eval-methods=style"
-\&\s-1ISO/IEC TS 18661\-3\s0 defines new permissible values for
-\&\f(CW\*(C`FLT_EVAL_METHOD\*(C'\fR that indicate that operations and constants with
-a semantic type that is an interchange or extended format should be
-evaluated to the precision and range of that type.  These new values are
-a superset of those permitted under C99/C11, which does not specify the
-meaning of other positive values of \f(CW\*(C`FLT_EVAL_METHOD\*(C'\fR.  As such, code
-conforming to C11 may not have been written expecting the possibility of
-the new values.
-.Sp
-\&\fB\-fpermitted\-flt\-eval\-methods\fR specifies whether the compiler
-should allow only the values of \f(CW\*(C`FLT_EVAL_METHOD\*(C'\fR specified in C99/C11,
-or the extended set of values specified in \s-1ISO/IEC TS 18661\-3.\s0
-.Sp
-\&\fIstyle\fR is either \f(CW\*(C`c11\*(C'\fR or \f(CW\*(C`ts\-18661\-3\*(C'\fR as appropriate.
-.Sp
-The default when in a standards compliant mode (\fB\-std=c11\fR or similar)
-is \fB\-fpermitted\-flt\-eval\-methods=c11\fR.  The default when in a \s-1GNU\s0
-dialect (\fB\-std=gnu11\fR or similar) is
-\&\fB\-fpermitted\-flt\-eval\-methods=ts\-18661\-3\fR.
 .IP "\fB\-aux\-info\fR \fIfilename\fR" 4
 .IX Item "-aux-info filename"
 Output to the given filename prototyped declarations for all functions
@@ -2623,18 +2586,11 @@ built-in functions selectively when using \fB\-fno\-builtin\fR or
 \&        #define abs(n)          _\|_builtin_abs ((n))
 \&        #define strcpy(d, s)    _\|_builtin_strcpy ((d), (s))
 .Ve
-.IP "\fB\-fgimple\fR" 4
-.IX Item "-fgimple"
-Enable parsing of function definitions marked with \f(CW\*(C`_\|_GIMPLE\*(C'\fR.
-This is an experimental feature that allows unit testing of \s-1GIMPLE\s0
-passes.
-.IP "\fB\-fhosted\fR" 4
-.IX Item "-fhosted"
-Assert that compilation targets a hosted environment.  This implies
-\&\fB\-fbuiltin\fR.  A hosted environment is one in which the
-entire standard library is available, and in which \f(CW\*(C`main\*(C'\fR has a return
-type of \f(CW\*(C`int\*(C'\fR.  Examples are nearly everything except a kernel.
-This is equivalent to \fB\-fno\-freestanding\fR.
+.IP "\fB\-fcond\-mismatch\fR" 4
+.IX Item "-fcond-mismatch"
+Allow conditional expressions with mismatched types in the second and
+third arguments.  The value of such an expression is void.  This option
+is not supported for \*(C+.
 .IP "\fB\-ffreestanding\fR" 4
 .IX Item "-ffreestanding"
 Assert that compilation targets a freestanding environment.  This
@@ -2642,6 +2598,110 @@ implies \fB\-fno\-builtin\fR.  A freestanding environment
 is one in which the standard library may not exist, and program startup may
 not necessarily be at \f(CW\*(C`main\*(C'\fR.  The most obvious example is an \s-1OS\s0 kernel.
 This is equivalent to \fB\-fno\-hosted\fR.
+.IP "\fB\-fgimple\fR" 4
+.IX Item "-fgimple"
+Enable parsing of function definitions marked with \f(CW\*(C`_\|_GIMPLE\*(C'\fR.
+This is an experimental feature that allows unit testing of \s-1GIMPLE\s0
+passes.
+.IP "\fB\-fgnu\-tm\fR" 4
+.IX Item "-fgnu-tm"
+When the option \fB\-fgnu\-tm\fR is specified, the compiler
+generates code for the Linux variant of Intel's current Transactional
+Memory \s-1ABI\s0 specification document (Revision 1.1, May 6 2009).  This is
+an experimental feature whose interface may change in future versions
+of \s-1GCC,\s0 as the official specification changes.  Please note that not
+all architectures are supported for this feature.
+.Sp
+For more information on \s-1GCC\s0's support for transactional memory,
+.Sp
+Note that the transactional memory feature is not supported with
+non-call exceptions (\fB\-fnon\-call\-exceptions\fR).
+.IP "\fB\-fgnu89\-inline\fR" 4
+.IX Item "-fgnu89-inline"
+The option \fB\-fgnu89\-inline\fR tells \s-1GCC\s0 to use the traditional
+\&\s-1GNU\s0 semantics for \f(CW\*(C`inline\*(C'\fR functions when in C99 mode.
+.Sp
+Using this option is roughly equivalent to adding the
+\&\f(CW\*(C`gnu_inline\*(C'\fR function attribute to all inline functions.
+.Sp
+The option \fB\-fno\-gnu89\-inline\fR explicitly tells \s-1GCC\s0 to use the
+C99 semantics for \f(CW\*(C`inline\*(C'\fR when in C99 or gnu99 mode (i.e., it
+specifies the default behavior).
+This option is not supported in \fB\-std=c90\fR or
+\&\fB\-std=gnu90\fR mode.
+.Sp
+The preprocessor macros \f(CW\*(C`_\|_GNUC_GNU_INLINE_\|_\*(C'\fR and
+\&\f(CW\*(C`_\|_GNUC_STDC_INLINE_\|_\*(C'\fR may be used to check which semantics are
+in effect for \f(CW\*(C`inline\*(C'\fR functions.
+.IP "\fB\-fhosted\fR" 4
+.IX Item "-fhosted"
+Assert that compilation targets a hosted environment.  This implies
+\&\fB\-fbuiltin\fR.  A hosted environment is one in which the
+entire standard library is available, and in which \f(CW\*(C`main\*(C'\fR has a return
+type of \f(CW\*(C`int\*(C'\fR.  Examples are nearly everything except a kernel.
+This is equivalent to \fB\-fno\-freestanding\fR.
+.IP "\fB\-flax\-vector\-conversions\fR" 4
+.IX Item "-flax-vector-conversions"
+Allow implicit conversions between vectors with differing numbers of
+elements and/or incompatible element types.  This option should not be
+used for new code.
+.IP "\fB\-fms\-extensions\fR" 4
+.IX Item "-fms-extensions"
+Accept some non-standard constructs used in Microsoft header files.
+.Sp
+In \*(C+ code, this allows member names in structures to be similar
+to previous types declarations.
+.Sp
+.Vb 4
+\&        typedef int UOW;
+\&        struct ABC {
+\&          UOW UOW;
+\&        };
+.Ve
+.Sp
+Some cases of unnamed fields in structures and unions are only
+accepted with this option.
+.Sp
+Note that this option is off for all targets except for x86
+targets using ms-abi.
+.IP "\fB\-foffload=disable\fR" 4
+.IX Item "-foffload=disable"
+.PD 0
+.IP "\fB\-foffload=default\fR" 4
+.IX Item "-foffload=default"
+.IP "\fB\-foffload=\fR\fItarget-list\fR" 4
+.IX Item "-foffload=target-list"
+.PD
+Specify for which OpenMP and OpenACC offload targets code should be generated.
+The default behavior, equivalent to \fB\-foffload=default\fR, is to generate
+code for all supported offload targets.  The \fB\-foffload=disable\fR form
+generates code only for the host fallback, while
+\&\fB\-foffload=\fR\fItarget-list\fR generates code only for the specified
+comma-separated list of offload targets.
+.Sp
+Offload targets are specified in \s-1GCC\s0's internal target-triplet format. You can
+run the compiler with \fB\-v\fR to show the list of configured offload targets
+under \f(CW\*(C`OFFLOAD_TARGET_NAMES\*(C'\fR.
+.IP "\fB\-foffload\-options=\fR\fIoptions\fR" 4
+.IX Item "-foffload-options=options"
+.PD 0
+.IP "\fB\-foffload\-options=\fR\fItarget-triplet-list\fR\fB=\fR\fIoptions\fR" 4
+.IX Item "-foffload-options=target-triplet-list=options"
+.PD
+With \fB\-foffload\-options=\fR\fIoptions\fR, \s-1GCC\s0 passes the specified
+\&\fIoptions\fR to the compilers for all enabled offloading targets.  You can
+specify options that apply only to a specific target or targets by using
+the \fB\-foffload\-options=\fR\fItarget-list\fR\fB=\fR\fIoptions\fR form.  The
+\&\fItarget-list\fR is a comma-separated list in the same format as for the
+\&\fB\-foffload=\fR option.
+.Sp
+Typical command lines are
+.Sp
+.Vb 3
+\&        \-foffload\-options=\-lgfortran \-foffload\-options=\-lm
+\&        \-foffload\-options="\-lgfortran \-lm" \-foffload\-options=nvptx\-none=\-latomic
+\&        \-foffload\-options=amdgcn\-amdhsa=\-march=gfx906 \-foffload\-options=\-lm
+.Ve
 .IP "\fB\-fopenacc\fR" 4
 .IX Item "-fopenacc"
 Enable handling of OpenACC directives \f(CW\*(C`#pragma acc\*(C'\fR in C/\*(C+ and
@@ -2670,38 +2730,27 @@ have support for \fB\-pthread\fR. \fB\-fopenmp\fR implies
 Enable handling of OpenMP's \s-1SIMD\s0 directives with \f(CW\*(C`#pragma omp\*(C'\fR
 in C/\*(C+ and \f(CW\*(C`!$omp\*(C'\fR in Fortran. Other OpenMP directives
 are ignored.
-.IP "\fB\-fgnu\-tm\fR" 4
-.IX Item "-fgnu-tm"
-When the option \fB\-fgnu\-tm\fR is specified, the compiler
-generates code for the Linux variant of Intel's current Transactional
-Memory \s-1ABI\s0 specification document (Revision 1.1, May 6 2009).  This is
-an experimental feature whose interface may change in future versions
-of \s-1GCC,\s0 as the official specification changes.  Please note that not
-all architectures are supported for this feature.
+.IP "\fB\-fpermitted\-flt\-eval\-methods=\fR\fIstyle\fR" 4
+.IX Item "-fpermitted-flt-eval-methods=style"
+\&\s-1ISO/IEC TS 18661\-3\s0 defines new permissible values for
+\&\f(CW\*(C`FLT_EVAL_METHOD\*(C'\fR that indicate that operations and constants with
+a semantic type that is an interchange or extended format should be
+evaluated to the precision and range of that type.  These new values are
+a superset of those permitted under C99/C11, which does not specify the
+meaning of other positive values of \f(CW\*(C`FLT_EVAL_METHOD\*(C'\fR.  As such, code
+conforming to C11 may not have been written expecting the possibility of
+the new values.
 .Sp
-For more information on \s-1GCC\s0's support for transactional memory,
+\&\fB\-fpermitted\-flt\-eval\-methods\fR specifies whether the compiler
+should allow only the values of \f(CW\*(C`FLT_EVAL_METHOD\*(C'\fR specified in C99/C11,
+or the extended set of values specified in \s-1ISO/IEC TS 18661\-3.\s0
 .Sp
-Note that the transactional memory feature is not supported with
-non-call exceptions (\fB\-fnon\-call\-exceptions\fR).
-.IP "\fB\-fms\-extensions\fR" 4
-.IX Item "-fms-extensions"
-Accept some non-standard constructs used in Microsoft header files.
+\&\fIstyle\fR is either \f(CW\*(C`c11\*(C'\fR or \f(CW\*(C`ts\-18661\-3\*(C'\fR as appropriate.
 .Sp
-In \*(C+ code, this allows member names in structures to be similar
-to previous types declarations.
-.Sp
-.Vb 4
-\&        typedef int UOW;
-\&        struct ABC {
-\&          UOW UOW;
-\&        };
-.Ve
-.Sp
-Some cases of unnamed fields in structures and unions are only
-accepted with this option.
-.Sp
-Note that this option is off for all targets except for x86
-targets using ms-abi.
+The default when in a standards compliant mode (\fB\-std=c11\fR or similar)
+is \fB\-fpermitted\-flt\-eval\-methods=c11\fR.  The default when in a \s-1GNU\s0
+dialect (\fB\-std=gnu11\fR or similar) is
+\&\fB\-fpermitted\-flt\-eval\-methods=ts\-18661\-3\fR.
 .IP "\fB\-fplan9\-extensions\fR" 4
 .IX Item "-fplan9-extensions"
 Accept some non-standard constructs used in Plan 9 code.
@@ -2711,16 +2760,27 @@ structures with anonymous fields to functions that expect pointers to
 elements of the type of the field, and permits referring to anonymous
 fields declared using a typedef.    This is only
 supported for C, not \*(C+.
-.IP "\fB\-fcond\-mismatch\fR" 4
-.IX Item "-fcond-mismatch"
-Allow conditional expressions with mismatched types in the second and
-third arguments.  The value of such an expression is void.  This option
-is not supported for \*(C+.
-.IP "\fB\-flax\-vector\-conversions\fR" 4
-.IX Item "-flax-vector-conversions"
-Allow implicit conversions between vectors with differing numbers of
-elements and/or incompatible element types.  This option should not be
-used for new code.
+.IP "\fB\-fsigned\-bitfields\fR" 4
+.IX Item "-fsigned-bitfields"
+.PD 0
+.IP "\fB\-funsigned\-bitfields\fR" 4
+.IX Item "-funsigned-bitfields"
+.IP "\fB\-fno\-signed\-bitfields\fR" 4
+.IX Item "-fno-signed-bitfields"
+.IP "\fB\-fno\-unsigned\-bitfields\fR" 4
+.IX Item "-fno-unsigned-bitfields"
+.PD
+These options control whether a bit-field is signed or unsigned, when the
+declaration does not use either \f(CW\*(C`signed\*(C'\fR or \f(CW\*(C`unsigned\*(C'\fR.  By
+default, such a bit-field is signed, because this is consistent: the
+basic integer types such as \f(CW\*(C`int\*(C'\fR are signed types.
+.IP "\fB\-fsigned\-char\fR" 4
+.IX Item "-fsigned-char"
+Let the type \f(CW\*(C`char\*(C'\fR be signed, like \f(CW\*(C`signed char\*(C'\fR.
+.Sp
+Note that this is equivalent to \fB\-fno\-unsigned\-char\fR, which is
+the negative form of \fB\-funsigned\-char\fR.  Likewise, the option
+\&\fB\-fno\-signed\-char\fR is equivalent to \fB\-funsigned\-char\fR.
 .IP "\fB\-funsigned\-char\fR" 4
 .IX Item "-funsigned-char"
 Let the type \f(CW\*(C`char\*(C'\fR be unsigned, like \f(CW\*(C`unsigned char\*(C'\fR.
@@ -2739,27 +2799,6 @@ make such a program work with the opposite default.
 The type \f(CW\*(C`char\*(C'\fR is always a distinct type from each of
 \&\f(CW\*(C`signed char\*(C'\fR or \f(CW\*(C`unsigned char\*(C'\fR, even though its behavior
 is always just like one of those two.
-.IP "\fB\-fsigned\-char\fR" 4
-.IX Item "-fsigned-char"
-Let the type \f(CW\*(C`char\*(C'\fR be signed, like \f(CW\*(C`signed char\*(C'\fR.
-.Sp
-Note that this is equivalent to \fB\-fno\-unsigned\-char\fR, which is
-the negative form of \fB\-funsigned\-char\fR.  Likewise, the option
-\&\fB\-fno\-signed\-char\fR is equivalent to \fB\-funsigned\-char\fR.
-.IP "\fB\-fsigned\-bitfields\fR" 4
-.IX Item "-fsigned-bitfields"
-.PD 0
-.IP "\fB\-funsigned\-bitfields\fR" 4
-.IX Item "-funsigned-bitfields"
-.IP "\fB\-fno\-signed\-bitfields\fR" 4
-.IX Item "-fno-signed-bitfields"
-.IP "\fB\-fno\-unsigned\-bitfields\fR" 4
-.IX Item "-fno-unsigned-bitfields"
-.PD
-These options control whether a bit-field is signed or unsigned, when the
-declaration does not use either \f(CW\*(C`signed\*(C'\fR or \f(CW\*(C`unsigned\*(C'\fR.  By
-default, such a bit-field is signed, because this is consistent: the
-basic integer types such as \f(CW\*(C`int\*(C'\fR are signed types.
 .IP "\fB\-fsso\-struct=\fR\fIendianness\fR" 4
 .IX Item "-fsso-struct=endianness"
 Set the default scalar storage order of structures and unions to the
@@ -8916,7 +8955,9 @@ in the \*(L"exploded graph\*(R" and diagnostics associated with them.
 .SS "Options for Debugging Your Program"
 .IX Subsection "Options for Debugging Your Program"
 To tell \s-1GCC\s0 to emit extra information for use by a debugger, in almost 
-all cases you need only to add \fB\-g\fR to your other options.
+all cases you need only to add \fB\-g\fR to your other options.  Some debug
+formats can co-exist (like \s-1DWARF\s0 with \s-1CTF\s0) when each of them is enabled
+explicitly by adding the respective command line option to your other options.
 .PP
 \&\s-1GCC\s0 allows you to use \fB\-g\fR with
 \&\fB\-O\fR.  The shortcuts taken by optimized code may occasionally
@@ -8975,6 +9016,34 @@ different than Version 2 and later.  For historical reasons, some
 other DWARF-related options such as
 \&\fB\-fno\-dwarf2\-cfi\-asm\fR) retain a reference to \s-1DWARF\s0 Version 2
 in their names, but apply to all currently-supported versions of \s-1DWARF.\s0
+.IP "\fB\-gbtf\fR" 4
+.IX Item "-gbtf"
+Request \s-1BTF\s0 debug information.  \s-1BTF\s0 is the default debugging format for the
+eBPF target.  On other targets, like x86, \s-1BTF\s0 debug information can be
+generated along with \s-1DWARF\s0 debug information when both of the debug formats are
+enabled explicitly via their respective command line options.
+.IP "\fB\-gctf\fR" 4
+.IX Item "-gctf"
+.PD 0
+.IP "\fB\-gctf\fR\fIlevel\fR" 4
+.IX Item "-gctflevel"
+.PD
+Request \s-1CTF\s0 debug information and use level to specify how much \s-1CTF\s0 debug
+information should be produced.  If \fB\-gctf\fR is specified
+without a value for level, the default level of \s-1CTF\s0 debug information is 2.
+.Sp
+\&\s-1CTF\s0 debug information can be generated along with \s-1DWARF\s0 debug information when
+both of the debug formats are enabled explicitly via their respective command
+line options.
+.Sp
+Level 0 produces no \s-1CTF\s0 debug information at all.  Thus, \fB\-gctf0\fR
+negates \fB\-gctf\fR.
+.Sp
+Level 1 produces \s-1CTF\s0 information for tracebacks only.  This includes callsite
+information, but does not include type information.
+.Sp
+Level 2 produces type information for entities (functions, data objects etc.)
+at file-scope or global-scope only.
 .IP "\fB\-gstabs\fR" 4
 .IX Item "-gstabs"
 Produce debugging information in stabs format (if that is supported),
