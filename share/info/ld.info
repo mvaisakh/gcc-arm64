@@ -1,6 +1,6 @@
 This is ld.info, produced by makeinfo version 6.7 from ld.texi.
 
-This file documents the GNU linker LD (Eva BinUtils) version 2.36.50.
+This file documents the GNU linker LD (Eva BinUtils) version 2.37.50.
 
    Copyright (C) 1991-2021 Free Software Foundation, Inc.
 
@@ -21,7 +21,7 @@ File: ld.info,  Node: Top,  Next: Overview,  Up: (dir)
 LD
 **
 
-This file documents the GNU linker ld (Eva BinUtils) version 2.36.50.
+This file documents the GNU linker ld (Eva BinUtils) version 2.37.50.
 
    This document is distributed under the terms of the GNU Free
 Documentation License version 1.3.  A copy of the license is included in
