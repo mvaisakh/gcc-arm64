@@ -53,7 +53,7 @@ if [ x$1 != x ] ; then
   prefix=$1
   shift
 else
-  prefix=/home/runner/work/gcc-build/gcc-build/../gcc-arm64
+  prefix=/__w/gcc-build/gcc-build/../gcc-arm64
 fi
 
 # Allow for alternate isysroot in which to find headers
@@ -82,7 +82,7 @@ mkinstalldirs="${itoolsdir}/mkinstalldirs"
 cd ${itoolsdir}
 rm -rf ${incdir}/*
 
-for shell in $CONFIG_SHELL $SHELL /bin/bash /bin/sh ""; do
+for shell in $CONFIG_SHELL $SHELL /bin/sh /bin/sh ""; do
   if { test -x $shell || test -x $shell.exe; } \
   && $shell $mkinstalldirs > /dev/null 2>&1; then
     mkinstalldirs="$shell $mkinstalldirs"

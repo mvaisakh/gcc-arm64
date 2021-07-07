@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/runner/work/gcc-build/gcc-build/../gcc-arm64/libexec/gcc/aarch64-elf/12.0.0'
+libdir='/__w/gcc-build/gcc-build/../gcc-arm64/libexec/gcc/aarch64-elf/12.0.0'

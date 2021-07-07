@@ -1,4 +1,4 @@
-This is as.info, produced by makeinfo version 6.7 from as.texi.
+This is as.info, produced by makeinfo version 6.8 from as.texi.
 
 This file documents the GNU Assembler "as".
 
@@ -27344,7 +27344,7 @@ AS Index
 * builtin math functions, TIC54X:        TIC54X-Builtins.    (line    6)
 * builtin subsym functions, TIC54X:      TIC54X-Macros.      (line   16)
 * bundle:                                Bundle directives.  (line    9)
-* bundle-locked:                         Bundle directives.  (line   39)
+* bundle-locked:                         Bundle directives.  (line   38)
 * bundle_align_mode directive:           Bundle directives.  (line    9)
 * bundle_lock directive:                 Bundle directives.  (line   31)
 * bundle_unlock directive:               Bundle directives.  (line   31)
